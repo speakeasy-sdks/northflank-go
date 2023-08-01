@@ -27,7 +27,13 @@ func newBilling(sdkConfig sdkConfiguration) *billing {
 
 // Get - List invoices
 // Get a list of past invoices
-func (s *billing) Get(ctx context.Context, request operations.GetPastInvoicesRequest) (*operations.GetPastInvoicesResponse, error) {
+func (s *billing) Get(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetPastInvoicesResponse, error) {
+	request := operations.GetPastInvoicesRequest{
+		Cursor:  cursor,
+		Page:    page,
+		PerPage: perPage,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/billing/invoices"
 

@@ -242,11 +242,10 @@ func main() {
             },
         }),
     )
+    clusterID := "gcp-cluster-1"
 
     ctx := context.Background()
-    res, err := s.CloudProviders.DeleteCluster(ctx, operations.DeleteClusterRequest{
-        ClusterID: "gcp-cluster-1",
-    })
+    res, err := s.CloudProviders.DeleteCluster(ctx, clusterID)
     if err != nil {
         log.Fatal(err)
     }
@@ -259,10 +258,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.DeleteClusterRequest](../../models/operations/deleteclusterrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `clusterID`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | gcp-cluster-1                                         |
 
 
 ### Response
@@ -296,11 +295,10 @@ func main() {
             },
         }),
     )
+    integrationID := "gcp-integration-1"
 
     ctx := context.Background()
-    res, err := s.CloudProviders.DeleteIntegration(ctx, operations.DeleteIntegrationRequest{
-        IntegrationID: "gcp-integration-1",
-    })
+    res, err := s.CloudProviders.DeleteIntegration(ctx, integrationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -313,10 +311,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.DeleteIntegrationRequest](../../models/operations/deleteintegrationrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `integrationID`                                       | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | gcp-integration-1                                     |
 
 
 ### Response
@@ -400,11 +398,10 @@ func main() {
             },
         }),
     )
+    clusterID := "gcp-cluster-1"
 
     ctx := context.Background()
-    res, err := s.CloudProviders.GetCluster(ctx, operations.GetClusterRequest{
-        ClusterID: "gcp-cluster-1",
-    })
+    res, err := s.CloudProviders.GetCluster(ctx, clusterID)
     if err != nil {
         log.Fatal(err)
     }
@@ -417,10 +414,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `request`                                                                    | [operations.GetClusterRequest](../../models/operations/getclusterrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `clusterID`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | gcp-cluster-1                                         |
 
 
 ### Response
@@ -454,11 +451,10 @@ func main() {
             },
         }),
     )
+    integrationID := "gcp-integration-1"
 
     ctx := context.Background()
-    res, err := s.CloudProviders.GetIntegration(ctx, operations.GetIntegrationRequest{
-        IntegrationID: "gcp-integration-1",
-    })
+    res, err := s.CloudProviders.GetIntegration(ctx, integrationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -471,10 +467,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.GetIntegrationRequest](../../models/operations/getintegrationrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `integrationID`                                       | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | gcp-integration-1                                     |
 
 
 ### Response
@@ -508,13 +504,12 @@ func main() {
             },
         }),
     )
+    cursor := "24"
+    page := 1
+    perPage := 50
 
     ctx := context.Background()
-    res, err := s.CloudProviders.ListClusters(ctx, operations.GetClustersRequest{
-        Cursor: northflank.String("24"),
-        Page: northflank.Int64(1),
-        PerPage: northflank.Int64(50),
-    })
+    res, err := s.CloudProviders.ListClusters(ctx, cursor, page, perPage)
     if err != nil {
         log.Fatal(err)
     }
@@ -527,10 +522,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [operations.GetClustersRequest](../../models/operations/getclustersrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `cursor`                                              | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   | 24                                                    |
+| `page`                                                | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 1                                                     |
+| `perPage`                                             | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 50                                                    |
 
 
 ### Response
@@ -564,13 +561,12 @@ func main() {
             },
         }),
     )
+    cursor := "nisi"
+    page := 1
+    perPage := 50
 
     ctx := context.Background()
-    res, err := s.CloudProviders.ListIntegrations(ctx, operations.GetIntegrationsRequest{
-        Cursor: northflank.String("nisi"),
-        Page: northflank.Int64(1),
-        PerPage: northflank.Int64(50),
-    })
+    res, err := s.CloudProviders.ListIntegrations(ctx, cursor, page, perPage)
     if err != nil {
         log.Fatal(err)
     }
@@ -583,10 +579,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.GetIntegrationsRequest](../../models/operations/getintegrationsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `cursor`                                              | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   |                                                       |
+| `page`                                                | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 1                                                     |
+| `perPage`                                             | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 50                                                    |
 
 
 ### Response
@@ -620,110 +618,109 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.CloudProviders.UpdateCluster(ctx, operations.UpdateClusterRequest{
-        UpdateClusterRequest: shared.UpdateClusterRequest{
-            Description: northflank.String("This is an updated description."),
-            NodePools: []shared.UpdateClusterRequestNodePools{
-                shared.UpdateClusterRequestNodePools{
-                    Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                        Enabled: northflank.Bool(true),
-                        Max: northflank.Int64(10),
-                        Min: northflank.Int64(1),
-                    },
-                    AvailabilityZones: []string{
-                        "ab",
-                        "quis",
-                        "veritatis",
-                        "deserunt",
-                    },
-                    DiskSize: 100,
-                    DiskType: northflank.String("perferendis"),
-                    ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                    Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
-                    NodeCount: 3,
-                    NodeType: "n2-standard-8",
-                    Preemptible: northflank.Bool(false),
-                    SystemPool: northflank.Bool(false),
+    updateClusterRequest := shared.UpdateClusterRequest{
+        Description: northflank.String("This is an updated description."),
+        NodePools: []shared.UpdateClusterRequestNodePools{
+            shared.UpdateClusterRequestNodePools{
+                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
+                    Enabled: northflank.Bool(true),
+                    Max: northflank.Int64(10),
+                    Min: northflank.Int64(1),
                 },
-                shared.UpdateClusterRequestNodePools{
-                    Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                        Enabled: northflank.Bool(true),
-                        Max: northflank.Int64(10),
-                        Min: northflank.Int64(1),
-                    },
-                    AvailabilityZones: []string{
-                        "repellendus",
-                        "sapiente",
-                    },
-                    DiskSize: 100,
-                    DiskType: northflank.String("quo"),
-                    ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                    Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
-                    NodeCount: 3,
-                    NodeType: "n2-standard-8",
-                    Preemptible: northflank.Bool(false),
-                    SystemPool: northflank.Bool(false),
+                AvailabilityZones: []string{
+                    "ab",
+                    "quis",
+                    "veritatis",
+                    "deserunt",
                 },
-                shared.UpdateClusterRequestNodePools{
-                    Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                        Enabled: northflank.Bool(true),
-                        Max: northflank.Int64(10),
-                        Min: northflank.Int64(1),
-                    },
-                    AvailabilityZones: []string{
-                        "at",
-                    },
-                    DiskSize: 100,
-                    DiskType: northflank.String("at"),
-                    ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                    Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
-                    NodeCount: 3,
-                    NodeType: "n2-standard-8",
-                    Preemptible: northflank.Bool(false),
-                    SystemPool: northflank.Bool(false),
-                },
-                shared.UpdateClusterRequestNodePools{
-                    Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                        Enabled: northflank.Bool(true),
-                        Max: northflank.Int64(10),
-                        Min: northflank.Int64(1),
-                    },
-                    AvailabilityZones: []string{
-                        "molestiae",
-                        "quod",
-                        "quod",
-                        "esse",
-                    },
-                    DiskSize: 100,
-                    DiskType: northflank.String("totam"),
-                    ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                    Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
-                    NodeCount: 3,
-                    NodeType: "n2-standard-8",
-                    Preemptible: northflank.Bool(false),
-                    SystemPool: northflank.Bool(false),
-                },
+                DiskSize: 100,
+                DiskType: northflank.String("perferendis"),
+                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
+                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
+                NodeCount: 3,
+                NodeType: "n2-standard-8",
+                Preemptible: northflank.Bool(false),
+                SystemPool: northflank.Bool(false),
             },
-            Settings: &shared.UpdateClusterRequestSettings{
-                Builds: &shared.UpdateClusterRequestSettingsBuilds{
-                    ClusterID: northflank.String("build-cluster"),
-                    Mode: shared.UpdateClusterRequestSettingsBuildsModeBuildCluster.ToPointer(),
-                    Plan: northflank.String("nf-compute-200"),
+            shared.UpdateClusterRequestNodePools{
+                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
+                    Enabled: northflank.Bool(true),
+                    Max: northflank.Int64(10),
+                    Min: northflank.Int64(1),
                 },
-                Logging: &shared.UpdateClusterRequestSettingsLogging{
-                    Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{},
-                    Mode: shared.UpdateClusterRequestSettingsLoggingModeLoki.ToPointer(),
+                AvailabilityZones: []string{
+                    "repellendus",
+                    "sapiente",
                 },
-                Registry: &shared.UpdateClusterRequestSettingsRegistry{
-                    Mode: shared.UpdateClusterRequestSettingsRegistryModePaas.ToPointer(),
-                    RegistryID: northflank.String("my-registry-credentials"),
+                DiskSize: 100,
+                DiskType: northflank.String("quo"),
+                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
+                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
+                NodeCount: 3,
+                NodeType: "n2-standard-8",
+                Preemptible: northflank.Bool(false),
+                SystemPool: northflank.Bool(false),
+            },
+            shared.UpdateClusterRequestNodePools{
+                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
+                    Enabled: northflank.Bool(true),
+                    Max: northflank.Int64(10),
+                    Min: northflank.Int64(1),
                 },
+                AvailabilityZones: []string{
+                    "at",
+                },
+                DiskSize: 100,
+                DiskType: northflank.String("at"),
+                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
+                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
+                NodeCount: 3,
+                NodeType: "n2-standard-8",
+                Preemptible: northflank.Bool(false),
+                SystemPool: northflank.Bool(false),
+            },
+            shared.UpdateClusterRequestNodePools{
+                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
+                    Enabled: northflank.Bool(true),
+                    Max: northflank.Int64(10),
+                    Min: northflank.Int64(1),
+                },
+                AvailabilityZones: []string{
+                    "molestiae",
+                    "quod",
+                    "quod",
+                    "esse",
+                },
+                DiskSize: 100,
+                DiskType: northflank.String("totam"),
+                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
+                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
+                NodeCount: 3,
+                NodeType: "n2-standard-8",
+                Preemptible: northflank.Bool(false),
+                SystemPool: northflank.Bool(false),
             },
         },
-        ClusterID: "gcp-cluster-1",
-    })
+        Settings: &shared.UpdateClusterRequestSettings{
+            Builds: &shared.UpdateClusterRequestSettingsBuilds{
+                ClusterID: northflank.String("build-cluster"),
+                Mode: shared.UpdateClusterRequestSettingsBuildsModeBuildCluster.ToPointer(),
+                Plan: northflank.String("nf-compute-200"),
+            },
+            Logging: &shared.UpdateClusterRequestSettingsLogging{
+                Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{},
+                Mode: shared.UpdateClusterRequestSettingsLoggingModeLoki.ToPointer(),
+            },
+            Registry: &shared.UpdateClusterRequestSettingsRegistry{
+                Mode: shared.UpdateClusterRequestSettingsRegistryModePaas.ToPointer(),
+                RegistryID: northflank.String("my-registry-credentials"),
+            },
+        },
+    }
+    clusterID := "gcp-cluster-1"
+
+    ctx := context.Background()
+    res, err := s.CloudProviders.UpdateCluster(ctx, updateClusterRequest, clusterID)
     if err != nil {
         log.Fatal(err)
     }
@@ -736,10 +733,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.UpdateClusterRequest](../../models/operations/updateclusterrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |                                                                            |
+| `updateClusterRequest`                                                     | [shared.UpdateClusterRequest](../../models/shared/updateclusterrequest.md) | :heavy_check_mark:                                                         | Request body                                                               |                                                                            |
+| `clusterID`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | gcp-cluster-1                                                              |
 
 
 ### Response
@@ -773,20 +771,19 @@ func main() {
             },
         }),
     )
+    updateIntegrationRequest := shared.UpdateIntegrationRequest{
+        Credentials: shared.UpdateIntegrationRequestCredentials{
+            AccessKey: northflank.String("nam"),
+            APIKey: northflank.String("officia"),
+            KeyfileJSON: northflank.String("occaecati"),
+            SecretKey: northflank.String("fugit"),
+        },
+        Description: northflank.String("This is a new description."),
+    }
+    integrationID := "gcp-integration-1"
 
     ctx := context.Background()
-    res, err := s.CloudProviders.UpdateIntegration(ctx, operations.UpdateIntegrationRequest{
-        UpdateIntegrationRequest: shared.UpdateIntegrationRequest{
-            Credentials: shared.UpdateIntegrationRequestCredentials{
-                AccessKey: northflank.String("nam"),
-                APIKey: northflank.String("officia"),
-                KeyfileJSON: northflank.String("occaecati"),
-                SecretKey: northflank.String("fugit"),
-            },
-            Description: northflank.String("This is a new description."),
-        },
-        IntegrationID: "gcp-integration-1",
-    })
+    res, err := s.CloudProviders.UpdateIntegration(ctx, updateIntegrationRequest, integrationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -799,10 +796,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.UpdateIntegrationRequest](../../models/operations/updateintegrationrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `updateIntegrationRequest`                                                         | [shared.UpdateIntegrationRequest](../../models/shared/updateintegrationrequest.md) | :heavy_check_mark:                                                                 | Request body                                                                       |                                                                                    |
+| `integrationID`                                                                    | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | gcp-integration-1                                                                  |
 
 
 ### Response

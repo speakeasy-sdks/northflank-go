@@ -149,11 +149,10 @@ func main() {
             },
         }),
     )
+    logSinkID := "example-log-sink"
 
     ctx := context.Background()
-    res, err := s.Integrations.Delete(ctx, operations.DeleteLogSinkRequest{
-        LogSinkID: "example-log-sink",
-    })
+    res, err := s.Integrations.Delete(ctx, logSinkID)
     if err != nil {
         log.Fatal(err)
     }
@@ -166,10 +165,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.DeleteLogSinkRequest](../../models/operations/deletelogsinkrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `logSinkID`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example-log-sink                                      |
 
 
 ### Response
@@ -203,11 +202,10 @@ func main() {
             },
         }),
     )
+    credentialID := "example-credentials"
 
     ctx := context.Background()
-    res, err := s.Integrations.DeleteRegistry(ctx, operations.DeleteRegistryRequest{
-        CredentialID: "example-credentials",
-    })
+    res, err := s.Integrations.DeleteRegistry(ctx, credentialID)
     if err != nil {
         log.Fatal(err)
     }
@@ -220,10 +218,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.DeleteRegistryRequest](../../models/operations/deleteregistryrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `credentialID`                                        | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example-credentials                                   |
 
 
 ### Response
@@ -257,12 +255,11 @@ func main() {
             },
         }),
     )
+    customVCSID := "cdb3d41f-0dd8-49ad-92d5-7544c98c490b"
+    vcsLinkID := "63ebb6ce2ccc6c7affdbf253"
 
     ctx := context.Background()
-    res, err := s.Integrations.GenerateVCSToken(ctx, operations.GenerateVCSTokenRequest{
-        CustomVCSID: "cdb3d41f-0dd8-49ad-92d5-7544c98c490b",
-        VcsLinkID: "63ebb6ce2ccc6c7affdbf253",
-    })
+    res, err := s.Integrations.GenerateVCSToken(ctx, customVCSID, vcsLinkID)
     if err != nil {
         log.Fatal(err)
     }
@@ -275,10 +272,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
-| `request`                                                                                | [operations.GenerateVCSTokenRequest](../../models/operations/generatevcstokenrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `customVCSID`                                         | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | cdb3d41f-0dd8-49ad-92d5-7544c98c490b                  |
+| `vcsLinkID`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | 63ebb6ce2ccc6c7affdbf253                              |
 
 
 ### Response
@@ -312,11 +310,10 @@ func main() {
             },
         }),
     )
+    logSinkID := "example-log-sink"
 
     ctx := context.Background()
-    res, err := s.Integrations.Get(ctx, operations.GetLogSinkRequest{
-        LogSinkID: "example-log-sink",
-    })
+    res, err := s.Integrations.Get(ctx, logSinkID)
     if err != nil {
         log.Fatal(err)
     }
@@ -329,10 +326,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `request`                                                                    | [operations.GetLogSinkRequest](../../models/operations/getlogsinkrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `logSinkID`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example-log-sink                                      |
 
 
 ### Response
@@ -424,11 +421,10 @@ func main() {
             },
         }),
     )
+    credentialID := "example-credentials"
 
     ctx := context.Background()
-    res, err := s.Integrations.GetRegistry(ctx, operations.GetRegistryRequest{
-        CredentialID: "example-credentials",
-    })
+    res, err := s.Integrations.GetRegistry(ctx, credentialID)
     if err != nil {
         log.Fatal(err)
     }
@@ -441,10 +437,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [operations.GetRegistryRequest](../../models/operations/getregistryrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `credentialID`                                        | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example-credentials                                   |
 
 
 ### Response
@@ -537,12 +533,11 @@ func main() {
             },
         }),
     )
+    cursor := "commodi"
+    perPage := 50
 
     ctx := context.Background()
-    res, err := s.Integrations.ListLogSinks(ctx, operations.GetLogSinksRequest{
-        Cursor: northflank.String("commodi"),
-        PerPage: northflank.Int64(50),
-    })
+    res, err := s.Integrations.ListLogSinks(ctx, cursor, perPage)
     if err != nil {
         log.Fatal(err)
     }
@@ -555,10 +550,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [operations.GetLogSinksRequest](../../models/operations/getlogsinksrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `cursor`                                              | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   |                                                       |
+| `perPage`                                             | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 50                                                    |
 
 
 ### Response
@@ -592,12 +588,11 @@ func main() {
             },
         }),
     )
+    cursor := "molestiae"
+    perPage := 50
 
     ctx := context.Background()
-    res, err := s.Integrations.ListRegistries(ctx, operations.GetRegistriesRequest{
-        Cursor: northflank.String("molestiae"),
-        PerPage: northflank.Int64(50),
-    })
+    res, err := s.Integrations.ListRegistries(ctx, cursor, perPage)
     if err != nil {
         log.Fatal(err)
     }
@@ -610,10 +605,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.GetRegistriesRequest](../../models/operations/getregistriesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `cursor`                                              | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   |                                                       |
+| `perPage`                                             | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 50                                                    |
 
 
 ### Response
@@ -697,11 +693,10 @@ func main() {
             },
         }),
     )
+    logSinkID := "example-log-sink"
 
     ctx := context.Background()
-    res, err := s.Integrations.Pause(ctx, operations.PauseLogSinkRequest{
-        LogSinkID: "example-log-sink",
-    })
+    res, err := s.Integrations.Pause(ctx, logSinkID)
     if err != nil {
         log.Fatal(err)
     }
@@ -714,10 +709,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.PauseLogSinkRequest](../../models/operations/pauselogsinkrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `logSinkID`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example-log-sink                                      |
 
 
 ### Response
@@ -751,11 +746,10 @@ func main() {
             },
         }),
     )
+    logSinkID := "example-log-sink"
 
     ctx := context.Background()
-    res, err := s.Integrations.Resume(ctx, operations.ResumeLogSinkRequest{
-        LogSinkID: "example-log-sink",
-    })
+    res, err := s.Integrations.Resume(ctx, logSinkID)
     if err != nil {
         log.Fatal(err)
     }
@@ -768,10 +762,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.ResumeLogSinkRequest](../../models/operations/resumelogsinkrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `logSinkID`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example-log-sink                                      |
 
 
 ### Response
@@ -805,21 +799,20 @@ func main() {
             },
         }),
     )
+    logSinkRequest := shared.LogSinkRequest{
+        Projects: []string{
+            "default-project",
+            "default-project",
+        },
+        Restricted: northflank.Bool(true),
+        ResumeLogSink: northflank.Bool(false),
+        SinkData: &shared.LogSinkRequestSinkData{},
+        UseCustomLabels: northflank.Bool(true),
+    }
+    logSinkID := "example-log-sink"
 
     ctx := context.Background()
-    res, err := s.Integrations.Update(ctx, operations.UpdateLogSinkRequest{
-        LogSinkRequest: shared.LogSinkRequest{
-            Projects: []string{
-                "default-project",
-                "default-project",
-            },
-            Restricted: northflank.Bool(true),
-            ResumeLogSink: northflank.Bool(false),
-            SinkData: &shared.LogSinkRequestSinkData{},
-            UseCustomLabels: northflank.Bool(true),
-        },
-        LogSinkID: "example-log-sink",
-    })
+    res, err := s.Integrations.Update(ctx, logSinkRequest, logSinkID)
     if err != nil {
         log.Fatal(err)
     }
@@ -832,10 +825,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.UpdateLogSinkRequest](../../models/operations/updatelogsinkrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |                                                                |
+| `logSinkRequest`                                               | [shared.LogSinkRequest](../../models/shared/logsinkrequest.md) | :heavy_check_mark:                                             | Request body                                                   |                                                                |
+| `logSinkID`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            | example-log-sink                                               |
 
 
 ### Response
@@ -869,12 +863,11 @@ func main() {
             },
         }),
     )
+    requestBody := operations.UpdateRegistryRequestBody{}
+    credentialID := "example-credentials"
 
     ctx := context.Background()
-    res, err := s.Integrations.UpdateRegistry(ctx, operations.UpdateRegistryRequest{
-        RequestBody: operations.UpdateRegistryRequestBody{},
-        CredentialID: "example-credentials",
-    })
+    res, err := s.Integrations.UpdateRegistry(ctx, requestBody, credentialID)
     if err != nil {
         log.Fatal(err)
     }
@@ -887,10 +880,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.UpdateRegistryRequest](../../models/operations/updateregistryrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
+| `requestBody`                                                                                | [operations.UpdateRegistryRequestBody](../../models/operations/updateregistryrequestbody.md) | :heavy_check_mark:                                                                           | Request body                                                                                 |                                                                                              |
+| `credentialID`                                                                               | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | example-credentials                                                                          |
 
 
 ### Response

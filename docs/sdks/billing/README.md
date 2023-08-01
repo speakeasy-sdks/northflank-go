@@ -31,13 +31,12 @@ func main() {
             },
         }),
     )
+    cursor := "24"
+    page := 1
+    perPage := 50
 
     ctx := context.Background()
-    res, err := s.Billing.Get(ctx, operations.GetPastInvoicesRequest{
-        Cursor: northflank.String("24"),
-        Page: northflank.Int64(1),
-        PerPage: northflank.Int64(50),
-    })
+    res, err := s.Billing.Get(ctx, cursor, page, perPage)
     if err != nil {
         log.Fatal(err)
     }
@@ -50,10 +49,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.GetPastInvoicesRequest](../../models/operations/getpastinvoicesrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `cursor`                                              | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   | 24                                                    |
+| `page`                                                | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 1                                                     |
+| `perPage`                                             | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 50                                                    |
 
 
 ### Response

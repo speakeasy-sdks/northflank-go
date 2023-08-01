@@ -27,7 +27,12 @@ func newDomains(sdkConfig sdkConfiguration) *domains {
 
 // Add - Add subdomain
 // Adds a new subdomain to the domain.
-func (s *domains) Add(ctx context.Context, request operations.AddSubDomainRequest) (*operations.AddSubDomainResponse, error) {
+func (s *domains) Add(ctx context.Context, addSubDomainRequest shared.AddSubDomainRequest, domain string) (*operations.AddSubDomainResponse, error) {
+	request := operations.AddSubDomainRequest{
+		AddSubDomainRequest: addSubDomainRequest,
+		Domain:              domain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains", request, nil)
 	if err != nil {
@@ -109,7 +114,13 @@ func (s *domains) Add(ctx context.Context, request operations.AddSubDomainReques
 
 // Assign - Assign service to subdomain
 // Assigns a service port to the given subdomain
-func (s *domains) Assign(ctx context.Context, request operations.AssignSubDomainRequest) (*operations.AssignSubDomainResponse, error) {
+func (s *domains) Assign(ctx context.Context, assignSubDomainRequest shared.AssignSubDomainRequest, domain string, subdomain string) (*operations.AssignSubDomainResponse, error) {
+	request := operations.AssignSubDomainRequest{
+		AssignSubDomainRequest: assignSubDomainRequest,
+		Domain:                 domain,
+		Subdomain:              subdomain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains/{subdomain}/assign", request, nil)
 	if err != nil {
@@ -256,7 +267,11 @@ func (s *domains) Create(ctx context.Context, request shared.CreateDomainRequest
 
 // Delete - Delete domain
 // Deletes a domain and each of its registered subdomains.
-func (s *domains) Delete(ctx context.Context, request operations.DeleteDomainRequest) (*operations.DeleteDomainResponse, error) {
+func (s *domains) Delete(ctx context.Context, domain string) (*operations.DeleteDomainResponse, error) {
+	request := operations.DeleteDomainRequest{
+		Domain: domain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}", request, nil)
 	if err != nil {
@@ -314,7 +329,13 @@ func (s *domains) Delete(ctx context.Context, request operations.DeleteDomainReq
 
 // DeleteCdn - Remove CDN from a subdomain
 // Removes the CDN integration from the given subdomain
-func (s *domains) DeleteCdn(ctx context.Context, request operations.DeleteCDNRequest) (*operations.DeleteCDNResponse, error) {
+func (s *domains) DeleteCdn(ctx context.Context, cdnRequest shared.CDNRequest, domain string, subdomain string) (*operations.DeleteCDNResponse, error) {
+	request := operations.DeleteCDNRequest{
+		CDNRequest: cdnRequest,
+		Domain:     domain,
+		Subdomain:  subdomain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains/{subdomain}/cdn/disable", request, nil)
 	if err != nil {
@@ -382,7 +403,12 @@ func (s *domains) DeleteCdn(ctx context.Context, request operations.DeleteCDNReq
 
 // DeleteSubdomain - Delete subdomain
 // Removes a subdomain from a domain.
-func (s *domains) DeleteSubdomain(ctx context.Context, request operations.DeleteSubDomainRequest) (*operations.DeleteSubDomainResponse, error) {
+func (s *domains) DeleteSubdomain(ctx context.Context, domain string, subdomain string) (*operations.DeleteSubDomainResponse, error) {
+	request := operations.DeleteSubDomainRequest{
+		Domain:    domain,
+		Subdomain: subdomain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains/{subdomain}", request, nil)
 	if err != nil {
@@ -454,7 +480,13 @@ func (s *domains) DeleteSubdomain(ctx context.Context, request operations.Delete
 
 // Enable - Enable CDN on a subdomain
 // Enables a CDN integration on the given subdomain
-func (s *domains) Enable(ctx context.Context, request operations.EnableCDNRequest) (*operations.EnableCDNResponse, error) {
+func (s *domains) Enable(ctx context.Context, cdnRequest shared.CDNRequest, domain string, subdomain string) (*operations.EnableCDNResponse, error) {
+	request := operations.EnableCDNRequest{
+		CDNRequest: cdnRequest,
+		Domain:     domain,
+		Subdomain:  subdomain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains/{subdomain}/cdn/enable", request, nil)
 	if err != nil {
@@ -522,7 +554,11 @@ func (s *domains) Enable(ctx context.Context, request operations.EnableCDNReques
 
 // Get - Get domain
 // Get the details about a domain
-func (s *domains) Get(ctx context.Context, request operations.GetDomainRequest) (*operations.GetDomainResponse, error) {
+func (s *domains) Get(ctx context.Context, domain string) (*operations.GetDomainResponse, error) {
+	request := operations.GetDomainRequest{
+		Domain: domain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}", request, nil)
 	if err != nil {
@@ -580,7 +616,12 @@ func (s *domains) Get(ctx context.Context, request operations.GetDomainRequest) 
 
 // GetSubdomain - Get subdomain
 // Gets details about the given subdomain
-func (s *domains) GetSubdomain(ctx context.Context, request operations.GetSubDomainRequest) (*operations.GetSubDomainResponse, error) {
+func (s *domains) GetSubdomain(ctx context.Context, domain string, subdomain string) (*operations.GetSubDomainResponse, error) {
+	request := operations.GetSubDomainRequest{
+		Domain:    domain,
+		Subdomain: subdomain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains/{subdomain}", request, nil)
 	if err != nil {
@@ -638,7 +679,13 @@ func (s *domains) GetSubdomain(ctx context.Context, request operations.GetSubDom
 
 // ListDomains - List domains
 // Lists available domains
-func (s *domains) ListDomains(ctx context.Context, request operations.ListDomainsRequest) (*operations.ListDomainsResponse, error) {
+func (s *domains) ListDomains(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.ListDomainsResponse, error) {
+	request := operations.ListDomainsRequest{
+		Cursor:  cursor,
+		Page:    page,
+		PerPage: perPage,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/domains"
 
@@ -697,7 +744,12 @@ func (s *domains) ListDomains(ctx context.Context, request operations.ListDomain
 
 // Unassign - Unassign subdomain
 // Removes a subdomain from its assigned service
-func (s *domains) Unassign(ctx context.Context, request operations.UnassignSubDomainRequest) (*operations.UnassignSubDomainResponse, error) {
+func (s *domains) Unassign(ctx context.Context, domain string, subdomain string) (*operations.UnassignSubDomainResponse, error) {
+	request := operations.UnassignSubDomainRequest{
+		Domain:    domain,
+		Subdomain: subdomain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains/{subdomain}/assign", request, nil)
 	if err != nil {
@@ -755,7 +807,12 @@ func (s *domains) Unassign(ctx context.Context, request operations.UnassignSubDo
 
 // Verify - Verify subdomain
 // Gets details about the given subdomain
-func (s *domains) Verify(ctx context.Context, request operations.VerifySubDomainRequest) (*operations.VerifySubDomainResponse, error) {
+func (s *domains) Verify(ctx context.Context, domain string, subdomain string) (*operations.VerifySubDomainResponse, error) {
+	request := operations.VerifySubDomainRequest{
+		Domain:    domain,
+		Subdomain: subdomain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/subdomains/{subdomain}/verify", request, nil)
 	if err != nil {
@@ -825,7 +882,11 @@ func (s *domains) Verify(ctx context.Context, request operations.VerifySubDomain
 
 // VerifyDomain - Verify domain
 // Attempts to verify the domain
-func (s *domains) VerifyDomain(ctx context.Context, request operations.VerifyDomainRequest) (*operations.VerifyDomainResponse, error) {
+func (s *domains) VerifyDomain(ctx context.Context, domain string) (*operations.VerifyDomainResponse, error) {
+	request := operations.VerifyDomainRequest{
+		Domain: domain,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/domains/{domain}/verify", request, nil)
 	if err != nil {

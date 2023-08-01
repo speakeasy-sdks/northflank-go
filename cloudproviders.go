@@ -157,7 +157,11 @@ func (s *cloudProviders) CreateCluster(ctx context.Context, request shared.Creat
 
 // DeleteCluster - Delete cluster
 // Delete the given cluster. Fails if the cluster has associated projects.
-func (s *cloudProviders) DeleteCluster(ctx context.Context, request operations.DeleteClusterRequest) (*operations.DeleteClusterResponse, error) {
+func (s *cloudProviders) DeleteCluster(ctx context.Context, clusterID string) (*operations.DeleteClusterResponse, error) {
+	request := operations.DeleteClusterRequest{
+		ClusterID: clusterID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/cloud-providers/clusters/{clusterId}", request, nil)
 	if err != nil {
@@ -227,7 +231,11 @@ func (s *cloudProviders) DeleteCluster(ctx context.Context, request operations.D
 
 // DeleteIntegration - Delete integration
 // Delete the given integration. Fails if the integration is associated with existing clusters.
-func (s *cloudProviders) DeleteIntegration(ctx context.Context, request operations.DeleteIntegrationRequest) (*operations.DeleteIntegrationResponse, error) {
+func (s *cloudProviders) DeleteIntegration(ctx context.Context, integrationID string) (*operations.DeleteIntegrationResponse, error) {
+	request := operations.DeleteIntegrationRequest{
+		IntegrationID: integrationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/cloud-providers/integrations/{integrationId}", request, nil)
 	if err != nil {
@@ -352,7 +360,11 @@ func (s *cloudProviders) Get(ctx context.Context) (*operations.GetCloudProviders
 
 // GetCluster - Get cluster
 // Get information about the given cluster
-func (s *cloudProviders) GetCluster(ctx context.Context, request operations.GetClusterRequest) (*operations.GetClusterResponse, error) {
+func (s *cloudProviders) GetCluster(ctx context.Context, clusterID string) (*operations.GetClusterResponse, error) {
+	request := operations.GetClusterRequest{
+		ClusterID: clusterID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/cloud-providers/clusters/{clusterId}", request, nil)
 	if err != nil {
@@ -410,7 +422,11 @@ func (s *cloudProviders) GetCluster(ctx context.Context, request operations.GetC
 
 // GetIntegration - Get integration
 // Get information about the given integration
-func (s *cloudProviders) GetIntegration(ctx context.Context, request operations.GetIntegrationRequest) (*operations.GetIntegrationResponse, error) {
+func (s *cloudProviders) GetIntegration(ctx context.Context, integrationID string) (*operations.GetIntegrationResponse, error) {
+	request := operations.GetIntegrationRequest{
+		IntegrationID: integrationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/cloud-providers/integrations/{integrationId}", request, nil)
 	if err != nil {
@@ -468,7 +484,13 @@ func (s *cloudProviders) GetIntegration(ctx context.Context, request operations.
 
 // ListClusters - List clusters
 // Lists clusters for the authenticated user or team.
-func (s *cloudProviders) ListClusters(ctx context.Context, request operations.GetClustersRequest) (*operations.GetClustersResponse, error) {
+func (s *cloudProviders) ListClusters(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetClustersResponse, error) {
+	request := operations.GetClustersRequest{
+		Cursor:  cursor,
+		Page:    page,
+		PerPage: perPage,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/cloud-providers/clusters"
 
@@ -527,7 +549,13 @@ func (s *cloudProviders) ListClusters(ctx context.Context, request operations.Ge
 
 // ListIntegrations - List integrations
 // Lists integrations for the authenticated user or team.
-func (s *cloudProviders) ListIntegrations(ctx context.Context, request operations.GetIntegrationsRequest) (*operations.GetIntegrationsResponse, error) {
+func (s *cloudProviders) ListIntegrations(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetIntegrationsResponse, error) {
+	request := operations.GetIntegrationsRequest{
+		Cursor:  cursor,
+		Page:    page,
+		PerPage: perPage,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/cloud-providers/integrations"
 
@@ -586,7 +614,12 @@ func (s *cloudProviders) ListIntegrations(ctx context.Context, request operation
 
 // UpdateCluster - Update cluster
 // Update an existing cluster.
-func (s *cloudProviders) UpdateCluster(ctx context.Context, request operations.UpdateClusterRequest) (*operations.UpdateClusterResponse, error) {
+func (s *cloudProviders) UpdateCluster(ctx context.Context, updateClusterRequest shared.UpdateClusterRequest, clusterID string) (*operations.UpdateClusterResponse, error) {
+	request := operations.UpdateClusterRequest{
+		UpdateClusterRequest: updateClusterRequest,
+		ClusterID:            clusterID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/cloud-providers/clusters/{clusterId}", request, nil)
 	if err != nil {
@@ -654,7 +687,12 @@ func (s *cloudProviders) UpdateCluster(ctx context.Context, request operations.U
 
 // UpdateIntegration - Update integration
 // Update information about the given integration
-func (s *cloudProviders) UpdateIntegration(ctx context.Context, request operations.UpdateIntegrationRequest) (*operations.UpdateIntegrationResponse, error) {
+func (s *cloudProviders) UpdateIntegration(ctx context.Context, updateIntegrationRequest shared.UpdateIntegrationRequest, integrationID string) (*operations.UpdateIntegrationResponse, error) {
+	request := operations.UpdateIntegrationRequest{
+		UpdateIntegrationRequest: updateIntegrationRequest,
+		IntegrationID:            integrationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/cloud-providers/integrations/{integrationId}", request, nil)
 	if err != nil {

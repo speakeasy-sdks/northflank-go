@@ -157,7 +157,11 @@ func (s *integrations) Create(ctx context.Context, request operations.CreateLogS
 
 // Delete - Delete log sink
 // Deletes a log sink.
-func (s *integrations) Delete(ctx context.Context, request operations.DeleteLogSinkRequest) (*operations.DeleteLogSinkResponse, error) {
+func (s *integrations) Delete(ctx context.Context, logSinkID string) (*operations.DeleteLogSinkResponse, error) {
+	request := operations.DeleteLogSinkRequest{
+		LogSinkID: logSinkID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/log-sinks/{logSinkId}", request, nil)
 	if err != nil {
@@ -215,7 +219,11 @@ func (s *integrations) Delete(ctx context.Context, request operations.DeleteLogS
 
 // DeleteRegistry - Delete registry
 // Deletes a set of registry credential data.
-func (s *integrations) DeleteRegistry(ctx context.Context, request operations.DeleteRegistryRequest) (*operations.DeleteRegistryResponse, error) {
+func (s *integrations) DeleteRegistry(ctx context.Context, credentialID string) (*operations.DeleteRegistryResponse, error) {
+	request := operations.DeleteRegistryRequest{
+		CredentialID: credentialID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/registries/{credentialId}", request, nil)
 	if err != nil {
@@ -273,7 +281,12 @@ func (s *integrations) DeleteRegistry(ctx context.Context, request operations.De
 
 // GenerateVCSToken - Generate VCS token
 // Generate a token for a specific VCS link.
-func (s *integrations) GenerateVCSToken(ctx context.Context, request operations.GenerateVCSTokenRequest) (*operations.GenerateVCSTokenResponse, error) {
+func (s *integrations) GenerateVCSToken(ctx context.Context, customVCSID string, vcsLinkID string) (*operations.GenerateVCSTokenResponse, error) {
+	request := operations.GenerateVCSTokenRequest{
+		CustomVCSID: customVCSID,
+		VcsLinkID:   vcsLinkID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/vcs/custom/{customVCSId}/token/{vcsLinkId}", request, nil)
 	if err != nil {
@@ -331,7 +344,11 @@ func (s *integrations) GenerateVCSToken(ctx context.Context, request operations.
 
 // Get - Get log sink details
 // Gets details about a given log sink.
-func (s *integrations) Get(ctx context.Context, request operations.GetLogSinkRequest) (*operations.GetLogSinkResponse, error) {
+func (s *integrations) Get(ctx context.Context, logSinkID string) (*operations.GetLogSinkResponse, error) {
+	request := operations.GetLogSinkRequest{
+		LogSinkID: logSinkID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/log-sinks/{logSinkId}", request, nil)
 	if err != nil {
@@ -451,7 +468,11 @@ func (s *integrations) GetBranches(ctx context.Context, request operations.GetBr
 
 // GetRegistry - Get registry
 // Views a set of registry credential data.
-func (s *integrations) GetRegistry(ctx context.Context, request operations.GetRegistryRequest) (*operations.GetRegistryResponse, error) {
+func (s *integrations) GetRegistry(ctx context.Context, credentialID string) (*operations.GetRegistryResponse, error) {
+	request := operations.GetRegistryRequest{
+		CredentialID: credentialID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/registries/{credentialId}", request, nil)
 	if err != nil {
@@ -568,7 +589,12 @@ func (s *integrations) GetRepos(ctx context.Context, request operations.GetRepos
 
 // ListLogSinks - List log sinks
 // Gets a list of log sinks added to this account.
-func (s *integrations) ListLogSinks(ctx context.Context, request operations.GetLogSinksRequest) (*operations.GetLogSinksResponse, error) {
+func (s *integrations) ListLogSinks(ctx context.Context, cursor *string, perPage *int64) (*operations.GetLogSinksResponse, error) {
+	request := operations.GetLogSinksRequest{
+		Cursor:  cursor,
+		PerPage: perPage,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/integrations/log-sinks"
 
@@ -627,7 +653,12 @@ func (s *integrations) ListLogSinks(ctx context.Context, request operations.GetL
 
 // ListRegistries - List registries
 // Lists the container registry credentials saved to this account. Does not display secrets.
-func (s *integrations) ListRegistries(ctx context.Context, request operations.GetRegistriesRequest) (*operations.GetRegistriesResponse, error) {
+func (s *integrations) ListRegistries(ctx context.Context, cursor *string, perPage *int64) (*operations.GetRegistriesResponse, error) {
+	request := operations.GetRegistriesRequest{
+		Cursor:  cursor,
+		PerPage: perPage,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/integrations/registries"
 
@@ -741,7 +772,11 @@ func (s *integrations) ListVcsProviders(ctx context.Context) (*operations.GetVCS
 
 // Pause - Pause log sink
 // Pauses a given log sink.
-func (s *integrations) Pause(ctx context.Context, request operations.PauseLogSinkRequest) (*operations.PauseLogSinkResponse, error) {
+func (s *integrations) Pause(ctx context.Context, logSinkID string) (*operations.PauseLogSinkResponse, error) {
+	request := operations.PauseLogSinkRequest{
+		LogSinkID: logSinkID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/log-sinks/{logSinkId}/pause", request, nil)
 	if err != nil {
@@ -799,7 +834,11 @@ func (s *integrations) Pause(ctx context.Context, request operations.PauseLogSin
 
 // Resume - Resume log sink
 // Resumes a paused log sink.
-func (s *integrations) Resume(ctx context.Context, request operations.ResumeLogSinkRequest) (*operations.ResumeLogSinkResponse, error) {
+func (s *integrations) Resume(ctx context.Context, logSinkID string) (*operations.ResumeLogSinkResponse, error) {
+	request := operations.ResumeLogSinkRequest{
+		LogSinkID: logSinkID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/log-sinks/{logSinkId}/resume", request, nil)
 	if err != nil {
@@ -857,7 +896,12 @@ func (s *integrations) Resume(ctx context.Context, request operations.ResumeLogS
 
 // Update - Update log sink
 // Updates the settings for a log sink.
-func (s *integrations) Update(ctx context.Context, request operations.UpdateLogSinkRequest) (*operations.UpdateLogSinkResponse, error) {
+func (s *integrations) Update(ctx context.Context, logSinkRequest shared.LogSinkRequest, logSinkID string) (*operations.UpdateLogSinkResponse, error) {
+	request := operations.UpdateLogSinkRequest{
+		LogSinkRequest: logSinkRequest,
+		LogSinkID:      logSinkID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/log-sinks/{logSinkId}/settings", request, nil)
 	if err != nil {
@@ -925,7 +969,12 @@ func (s *integrations) Update(ctx context.Context, request operations.UpdateLogS
 
 // UpdateRegistry - Update registry
 // Updates a set of registry credential data.
-func (s *integrations) UpdateRegistry(ctx context.Context, request operations.UpdateRegistryRequest) (*operations.UpdateRegistryResponse, error) {
+func (s *integrations) UpdateRegistry(ctx context.Context, requestBody operations.UpdateRegistryRequestBody, credentialID string) (*operations.UpdateRegistryResponse, error) {
+	request := operations.UpdateRegistryRequest{
+		RequestBody:  requestBody,
+		CredentialID: credentialID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/registries/{credentialId}/modify", request, nil)
 	if err != nil {

@@ -42,19 +42,18 @@ func main() {
             },
         }),
     )
+    addSubDomainRequest := shared.AddSubDomainRequest{
+        Cdn: &shared.AddSubDomainRequestCdn{
+            Cloudfront: &shared.AddSubDomainRequestCdnCloudfront{
+                Enabled: false,
+            },
+        },
+        Subdomain: "site",
+    }
+    domain := "example.com"
 
     ctx := context.Background()
-    res, err := s.Domains.Add(ctx, operations.AddSubDomainRequest{
-        AddSubDomainRequest: shared.AddSubDomainRequest{
-            Cdn: &shared.AddSubDomainRequestCdn{
-                Cloudfront: &shared.AddSubDomainRequestCdnCloudfront{
-                    Enabled: false,
-                },
-            },
-            Subdomain: "site",
-        },
-        Domain: "example.com",
-    })
+    res, err := s.Domains.Add(ctx, addSubDomainRequest, domain)
     if err != nil {
         log.Fatal(err)
     }
@@ -67,10 +66,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.AddSubDomainRequest](../../models/operations/addsubdomainrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |                                                                          |
+| `addSubDomainRequest`                                                    | [shared.AddSubDomainRequest](../../models/shared/addsubdomainrequest.md) | :heavy_check_mark:                                                       | Request body                                                             |                                                                          |
+| `domain`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      | example.com                                                              |
 
 
 ### Response
@@ -104,17 +104,16 @@ func main() {
             },
         }),
     )
+    assignSubDomainRequest := shared.AssignSubDomainRequest{
+        PortName: "port-1",
+        ProjectID: "default-project",
+        ServiceID: "example-service",
+    }
+    domain := "example.com"
+    subdomain := "app"
 
     ctx := context.Background()
-    res, err := s.Domains.Assign(ctx, operations.AssignSubDomainRequest{
-        AssignSubDomainRequest: shared.AssignSubDomainRequest{
-            PortName: "port-1",
-            ProjectID: "default-project",
-            ServiceID: "example-service",
-        },
-        Domain: "example.com",
-        Subdomain: "app",
-    })
+    res, err := s.Domains.Assign(ctx, assignSubDomainRequest, domain, subdomain)
     if err != nil {
         log.Fatal(err)
     }
@@ -127,10 +126,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.AssignSubDomainRequest](../../models/operations/assignsubdomainrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
+| `assignSubDomainRequest`                                                       | [shared.AssignSubDomainRequest](../../models/shared/assignsubdomainrequest.md) | :heavy_check_mark:                                                             | Request body                                                                   |                                                                                |
+| `domain`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | example.com                                                                    |
+| `subdomain`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | app                                                                            |
 
 
 ### Response
@@ -217,11 +218,10 @@ func main() {
             },
         }),
     )
+    domain := "example.com"
 
     ctx := context.Background()
-    res, err := s.Domains.Delete(ctx, operations.DeleteDomainRequest{
-        Domain: "example.com",
-    })
+    res, err := s.Domains.Delete(ctx, domain)
     if err != nil {
         log.Fatal(err)
     }
@@ -234,10 +234,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.DeleteDomainRequest](../../models/operations/deletedomainrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `domain`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example.com                                           |
 
 
 ### Response
@@ -271,15 +271,14 @@ func main() {
             },
         }),
     )
+    cdnRequest := shared.CDNRequest{
+        Provider: "cloudfront",
+    }
+    domain := "example.com"
+    subdomain := "app"
 
     ctx := context.Background()
-    res, err := s.Domains.DeleteCdn(ctx, operations.DeleteCDNRequest{
-        CDNRequest: shared.CDNRequest{
-            Provider: "cloudfront",
-        },
-        Domain: "example.com",
-        Subdomain: "app",
-    })
+    res, err := s.Domains.DeleteCdn(ctx, cdnRequest, domain, subdomain)
     if err != nil {
         log.Fatal(err)
     }
@@ -292,10 +291,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [operations.DeleteCDNRequest](../../models/operations/deletecdnrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                              | Type                                                   | Required                                               | Description                                            | Example                                                |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `ctx`                                                  | [context.Context](https://pkg.go.dev/context#Context)  | :heavy_check_mark:                                     | The context to use for the request.                    |                                                        |
+| `cdnRequest`                                           | [shared.CDNRequest](../../models/shared/cdnrequest.md) | :heavy_check_mark:                                     | Request body                                           |                                                        |
+| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | example.com                                            |
+| `subdomain`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | app                                                    |
 
 
 ### Response
@@ -329,12 +330,11 @@ func main() {
             },
         }),
     )
+    domain := "example.com"
+    subdomain := "app"
 
     ctx := context.Background()
-    res, err := s.Domains.DeleteSubdomain(ctx, operations.DeleteSubDomainRequest{
-        Domain: "example.com",
-        Subdomain: "app",
-    })
+    res, err := s.Domains.DeleteSubdomain(ctx, domain, subdomain)
     if err != nil {
         log.Fatal(err)
     }
@@ -347,10 +347,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.DeleteSubDomainRequest](../../models/operations/deletesubdomainrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `domain`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example.com                                           |
+| `subdomain`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | app                                                   |
 
 
 ### Response
@@ -384,15 +385,14 @@ func main() {
             },
         }),
     )
+    cdnRequest := shared.CDNRequest{
+        Provider: "cloudfront",
+    }
+    domain := "example.com"
+    subdomain := "app"
 
     ctx := context.Background()
-    res, err := s.Domains.Enable(ctx, operations.EnableCDNRequest{
-        CDNRequest: shared.CDNRequest{
-            Provider: "cloudfront",
-        },
-        Domain: "example.com",
-        Subdomain: "app",
-    })
+    res, err := s.Domains.Enable(ctx, cdnRequest, domain, subdomain)
     if err != nil {
         log.Fatal(err)
     }
@@ -405,10 +405,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [operations.EnableCDNRequest](../../models/operations/enablecdnrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                              | Type                                                   | Required                                               | Description                                            | Example                                                |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `ctx`                                                  | [context.Context](https://pkg.go.dev/context#Context)  | :heavy_check_mark:                                     | The context to use for the request.                    |                                                        |
+| `cdnRequest`                                           | [shared.CDNRequest](../../models/shared/cdnrequest.md) | :heavy_check_mark:                                     | Request body                                           |                                                        |
+| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | example.com                                            |
+| `subdomain`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | app                                                    |
 
 
 ### Response
@@ -442,11 +444,10 @@ func main() {
             },
         }),
     )
+    domain := "example.com"
 
     ctx := context.Background()
-    res, err := s.Domains.Get(ctx, operations.GetDomainRequest{
-        Domain: "example.com",
-    })
+    res, err := s.Domains.Get(ctx, domain)
     if err != nil {
         log.Fatal(err)
     }
@@ -459,10 +460,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [operations.GetDomainRequest](../../models/operations/getdomainrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `domain`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example.com                                           |
 
 
 ### Response
@@ -496,12 +497,11 @@ func main() {
             },
         }),
     )
+    domain := "example.com"
+    subdomain := "app"
 
     ctx := context.Background()
-    res, err := s.Domains.GetSubdomain(ctx, operations.GetSubDomainRequest{
-        Domain: "example.com",
-        Subdomain: "app",
-    })
+    res, err := s.Domains.GetSubdomain(ctx, domain, subdomain)
     if err != nil {
         log.Fatal(err)
     }
@@ -514,10 +514,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.GetSubDomainRequest](../../models/operations/getsubdomainrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `domain`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example.com                                           |
+| `subdomain`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | app                                                   |
 
 
 ### Response
@@ -551,13 +552,12 @@ func main() {
             },
         }),
     )
+    cursor := "deleniti"
+    page := 1
+    perPage := 50
 
     ctx := context.Background()
-    res, err := s.Domains.ListDomains(ctx, operations.ListDomainsRequest{
-        Cursor: northflank.String("deleniti"),
-        Page: northflank.Int64(1),
-        PerPage: northflank.Int64(50),
-    })
+    res, err := s.Domains.ListDomains(ctx, cursor, page, perPage)
     if err != nil {
         log.Fatal(err)
     }
@@ -570,10 +570,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [operations.ListDomainsRequest](../../models/operations/listdomainsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `cursor`                                              | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   |                                                       |
+| `page`                                                | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 1                                                     |
+| `perPage`                                             | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   | 50                                                    |
 
 
 ### Response
@@ -607,12 +609,11 @@ func main() {
             },
         }),
     )
+    domain := "example.com"
+    subdomain := "app"
 
     ctx := context.Background()
-    res, err := s.Domains.Unassign(ctx, operations.UnassignSubDomainRequest{
-        Domain: "example.com",
-        Subdomain: "app",
-    })
+    res, err := s.Domains.Unassign(ctx, domain, subdomain)
     if err != nil {
         log.Fatal(err)
     }
@@ -625,10 +626,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.UnassignSubDomainRequest](../../models/operations/unassignsubdomainrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `domain`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example.com                                           |
+| `subdomain`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | app                                                   |
 
 
 ### Response
@@ -662,12 +664,11 @@ func main() {
             },
         }),
     )
+    domain := "example.com"
+    subdomain := "app"
 
     ctx := context.Background()
-    res, err := s.Domains.Verify(ctx, operations.VerifySubDomainRequest{
-        Domain: "example.com",
-        Subdomain: "app",
-    })
+    res, err := s.Domains.Verify(ctx, domain, subdomain)
     if err != nil {
         log.Fatal(err)
     }
@@ -680,10 +681,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.VerifySubDomainRequest](../../models/operations/verifysubdomainrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `domain`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example.com                                           |
+| `subdomain`                                           | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | app                                                   |
 
 
 ### Response
@@ -717,11 +719,10 @@ func main() {
             },
         }),
     )
+    domain := "example.com"
 
     ctx := context.Background()
-    res, err := s.Domains.VerifyDomain(ctx, operations.VerifyDomainRequest{
-        Domain: "example.com",
-    })
+    res, err := s.Domains.VerifyDomain(ctx, domain)
     if err != nil {
         log.Fatal(err)
     }
@@ -734,10 +735,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.VerifyDomainRequest](../../models/operations/verifydomainrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `domain`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example.com                                           |
 
 
 ### Response
