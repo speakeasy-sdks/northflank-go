@@ -1,0 +1,13 @@
+# BranchesResultData
+
+Result data.
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `Cursor`                                                                              | **string*                                                                             | :heavy_minus_sign:                                                                    | The cursor returned from the previous page of results, used to request the next page. |                                                                                       |
+| `Page`                                                                                | **int64*                                                                              | :heavy_minus_sign:                                                                    | The page number to access.                                                            | 1                                                                                     |
+| `PerPage`                                                                             | **int64*                                                                              | :heavy_minus_sign:                                                                    | The number of results to display per request. Maximum of 100 results per page.        | 50                                                                                    |
+| `VcsLinkID`                                                                           | **string*                                                                             | :heavy_minus_sign:                                                                    | If provided, uses the given VCS link to access the repository's data.                 |                                                                                       |

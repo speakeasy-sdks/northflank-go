@@ -1,0 +1,12 @@
+# UpdateRegistryType4
+
+Validate with a docker config file.
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `Auths`                                                                                    | [UpdateRegistryType4Auths](../../models/shared/updateregistrytype4auths.md)                | :heavy_check_mark:                                                                         | The `auths` data extracted from your Docker config file.                                   |                                                                                            |
+| `Description`                                                                              | **string*                                                                                  | :heavy_minus_sign:                                                                         | Description of the credentials.                                                            | This is a set of saved credentials.                                                        |
+| `Restrictions`                                                                             | [*UpdateRegistryType4Restrictions](../../models/shared/updateregistrytype4restrictions.md) | :heavy_minus_sign:                                                                         | Data about whether the credentials are restricted to certain projects.                     |                                                                                            |

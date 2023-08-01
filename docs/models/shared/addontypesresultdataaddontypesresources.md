@@ -1,0 +1,11 @@
+# AddonTypesResultDataAddonTypesResources
+
+Details about resource options for the addon type.
+
+
+## Fields
+
+| Field                                                                                                                     | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `Replicas`                                                                                                                | [AddonTypesResultDataAddonTypesResourcesReplicas](../../models/shared/addontypesresultdataaddontypesresourcesreplicas.md) | :heavy_check_mark:                                                                                                        | Details about replica count options for this addon.                                                                       |
+| `Storage`                                                                                                                 | [AddonTypesResultDataAddonTypesResourcesStorage](../../models/shared/addontypesresultdataaddontypesresourcesstorage.md)   | :heavy_check_mark:                                                                                                        | Details about storage size options for this addon.                                                                        |

@@ -1,0 +1,12 @@
+# LokiLogSinkSinkData
+
+Details about the Loki log sink.
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `Auth`                                                                             | [*LokiLogSinkSinkDataAuth](../../models/shared/lokilogsinksinkdataauth.md)         | :heavy_minus_sign:                                                                 | Object containing authentication data for the log sink.                            |                                                                                    |
+| `Encoding`                                                                         | [*LokiLogSinkSinkDataEncoding](../../models/shared/lokilogsinksinkdataencoding.md) | :heavy_minus_sign:                                                                 | Encoding options                                                                   |                                                                                    |
+| `Endpoint`                                                                         | *string*                                                                           | :heavy_check_mark:                                                                 | The endpoint of the Loki log sink.                                                 | https://logs.example.com                                                           |

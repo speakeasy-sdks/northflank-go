@@ -1,0 +1,9 @@
+# UpdateClusterRequest
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `UpdateClusterRequest`                                                     | [shared.UpdateClusterRequest](../../models/shared/updateclusterrequest.md) | :heavy_check_mark:                                                         | Request body                                                               |                                                                            |
+| `ClusterID`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | gcp-cluster-1                                                              |

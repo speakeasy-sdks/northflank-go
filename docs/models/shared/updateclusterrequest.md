@@ -1,0 +1,12 @@
+# UpdateClusterRequest
+
+Request body
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `Description`                                                                           | **string*                                                                               | :heavy_minus_sign:                                                                      | The description of the cluster.                                                         | This is an updated description.                                                         |
+| `NodePools`                                                                             | [][UpdateClusterRequestNodePools](../../models/shared/updateclusterrequestnodepools.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |                                                                                         |
+| `Settings`                                                                              | [*UpdateClusterRequestSettings](../../models/shared/updateclusterrequestsettings.md)    | :heavy_minus_sign:                                                                      | N/A                                                                                     |                                                                                         |

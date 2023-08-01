@@ -1,0 +1,11 @@
+# UpdateIntegrationRequest
+
+Request body
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Credentials`                                                                                     | [UpdateIntegrationRequestCredentials](../../models/shared/updateintegrationrequestcredentials.md) | :heavy_check_mark:                                                                                | Cloud provider credential input, required fields dependent on which provider is chosen.           |                                                                                                   |
+| `Description`                                                                                     | **string*                                                                                         | :heavy_minus_sign:                                                                                | The description of the integration.                                                               | This is a new description.                                                                        |

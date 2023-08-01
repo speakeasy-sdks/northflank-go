@@ -1,0 +1,11 @@
+# LogSinkRequestSinkData2
+
+Datadog Sink Schema.
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `DefaultAPIKey`                                                                        | **string*                                                                              | :heavy_minus_sign:                                                                     | The Datadog API key.                                                                   | abcdef12345678900000000000000000                                                       |
+| `Region`                                                                               | [*LogSinkRequestSinkData2Region](../../models/shared/logsinkrequestsinkdata2region.md) | :heavy_minus_sign:                                                                     | The Datadog region.                                                                    | eu                                                                                     |

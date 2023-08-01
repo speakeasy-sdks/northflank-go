@@ -1,0 +1,10 @@
+# CreateClusterRequestSettings
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Builds`                                                                                             | [*CreateClusterRequestSettingsBuilds](../../models/shared/createclusterrequestsettingsbuilds.md)     | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `Logging`                                                                                            | [*CreateClusterRequestSettingsLogging](../../models/shared/createclusterrequestsettingslogging.md)   | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `Registry`                                                                                           | [*CreateClusterRequestSettingsRegistry](../../models/shared/createclusterrequestsettingsregistry.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

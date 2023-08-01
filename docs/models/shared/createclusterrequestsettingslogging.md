@@ -1,0 +1,9 @@
+# CreateClusterRequestSettingsLogging
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Loki`                                                                                                     | [*CreateClusterRequestSettingsLoggingLoki](../../models/shared/createclusterrequestsettingsloggingloki.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `Mode`                                                                                                     | [*CreateClusterRequestSettingsLoggingMode](../../models/shared/createclusterrequestsettingsloggingmode.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
