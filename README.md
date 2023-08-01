@@ -1,4 +1,12 @@
-# github.com/speakeasy-sdks/northflank-go
+<div align="center">
+    <img src="https://github.com/speakeasy-sdks/northflank-go/assets/6267663/f8f4b777-94b1-4603-93e5-64d48fd2aa54" width="300">
+    <h1>Go SDK</h1>
+   <p>The comprehensive developer platform to build and scale microservices, jobs and managed databases with a powerful UI, API & CLI.</p>
+   <a href="https://northflank.com/docs"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=5444e4&style=for-the-badge" /></a>
+   <a href="https://github.com/speakeasy-sdks/northflank-go/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/northflank-go/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
+  <a href="https://github.com/speakeasy-sdks/northflank-go/releases"><img src="https://img.shields.io/github/v/release/speakeasy-sdks/orb-python?sort=semver&style=for-the-badge" /></a>
+
 
 <!-- Start SDK Installation -->
 ## SDK Installation
