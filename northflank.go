@@ -121,8 +121,8 @@ func New(opts ...SDKOption) *Northflank {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.0.1",
-			GenVersion:        "2.75.2",
+			SDKVersion:        "1.1.0",
+			GenVersion:        "2.89.1",
 		},
 	}
 	for _, opt := range opts {
