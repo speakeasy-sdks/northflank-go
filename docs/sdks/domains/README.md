@@ -552,7 +552,7 @@ func main() {
             },
         }),
     )
-    cursor := "deleniti"
+    cursor := "excepturi"
     page := 1
     perPage := 50
 

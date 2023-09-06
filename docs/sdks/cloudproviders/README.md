@@ -127,47 +127,10 @@ func main() {
                     Min: northflank.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "suscipit",
-                    "iure",
-                    "magnam",
+                    "error",
                 },
                 DiskSize: 100,
-                DiskType: northflank.String("debitis"),
-                Labels: &shared.CreateClusterRequestNodePoolsLabels{},
-                NodeCount: 3,
-                NodeType: "n2-standard-8",
-                Preemptible: northflank.Bool(false),
-                SystemPool: northflank.Bool(false),
-            },
-            shared.CreateClusterRequestNodePools{
-                Autoscaling: &shared.CreateClusterRequestNodePoolsAutoscaling{
-                    Enabled: northflank.Bool(true),
-                    Max: northflank.Int64(10),
-                    Min: northflank.Int64(1),
-                },
-                AvailabilityZones: []string{
-                    "delectus",
-                },
-                DiskSize: 100,
-                DiskType: northflank.String("tempora"),
-                Labels: &shared.CreateClusterRequestNodePoolsLabels{},
-                NodeCount: 3,
-                NodeType: "n2-standard-8",
-                Preemptible: northflank.Bool(false),
-                SystemPool: northflank.Bool(false),
-            },
-            shared.CreateClusterRequestNodePools{
-                Autoscaling: &shared.CreateClusterRequestNodePoolsAutoscaling{
-                    Enabled: northflank.Bool(true),
-                    Max: northflank.Int64(10),
-                    Min: northflank.Int64(1),
-                },
-                AvailabilityZones: []string{
-                    "molestiae",
-                    "minus",
-                },
-                DiskSize: 100,
-                DiskType: northflank.String("placeat"),
+                DiskType: northflank.String("deserunt"),
                 Labels: &shared.CreateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
@@ -188,7 +151,7 @@ func main() {
                 Mode: shared.CreateClusterRequestSettingsLoggingModePaas.ToPointer(),
             },
             Registry: &shared.CreateClusterRequestSettingsRegistry{
-                Mode: shared.CreateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),
+                Mode: shared.CreateClusterRequestSettingsRegistryModePaas.ToPointer(),
                 RegistryID: northflank.String("my-registry-credentials"),
             },
         },
@@ -561,7 +524,7 @@ func main() {
             },
         }),
     )
-    cursor := "nisi"
+    cursor := "debitis"
     page := 1
     perPage := 50
 
@@ -628,71 +591,10 @@ func main() {
                     Min: northflank.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "ab",
-                    "quis",
-                    "veritatis",
-                    "deserunt",
+                    "ipsa",
                 },
                 DiskSize: 100,
-                DiskType: northflank.String("perferendis"),
-                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
-                NodeCount: 3,
-                NodeType: "n2-standard-8",
-                Preemptible: northflank.Bool(false),
-                SystemPool: northflank.Bool(false),
-            },
-            shared.UpdateClusterRequestNodePools{
-                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                    Enabled: northflank.Bool(true),
-                    Max: northflank.Int64(10),
-                    Min: northflank.Int64(1),
-                },
-                AvailabilityZones: []string{
-                    "repellendus",
-                    "sapiente",
-                },
-                DiskSize: 100,
-                DiskType: northflank.String("quo"),
-                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
-                NodeCount: 3,
-                NodeType: "n2-standard-8",
-                Preemptible: northflank.Bool(false),
-                SystemPool: northflank.Bool(false),
-            },
-            shared.UpdateClusterRequestNodePools{
-                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                    Enabled: northflank.Bool(true),
-                    Max: northflank.Int64(10),
-                    Min: northflank.Int64(1),
-                },
-                AvailabilityZones: []string{
-                    "at",
-                },
-                DiskSize: 100,
-                DiskType: northflank.String("at"),
-                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
-                NodeCount: 3,
-                NodeType: "n2-standard-8",
-                Preemptible: northflank.Bool(false),
-                SystemPool: northflank.Bool(false),
-            },
-            shared.UpdateClusterRequestNodePools{
-                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                    Enabled: northflank.Bool(true),
-                    Max: northflank.Int64(10),
-                    Min: northflank.Int64(1),
-                },
-                AvailabilityZones: []string{
-                    "molestiae",
-                    "quod",
-                    "quod",
-                    "esse",
-                },
-                DiskSize: 100,
-                DiskType: northflank.String("totam"),
+                DiskType: northflank.String("delectus"),
                 ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
                 Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
@@ -704,12 +606,12 @@ func main() {
         Settings: &shared.UpdateClusterRequestSettings{
             Builds: &shared.UpdateClusterRequestSettingsBuilds{
                 ClusterID: northflank.String("build-cluster"),
-                Mode: shared.UpdateClusterRequestSettingsBuildsModeBuildCluster.ToPointer(),
+                Mode: shared.UpdateClusterRequestSettingsBuildsModePaas.ToPointer(),
                 Plan: northflank.String("nf-compute-200"),
             },
             Logging: &shared.UpdateClusterRequestSettingsLogging{
                 Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{},
-                Mode: shared.UpdateClusterRequestSettingsLoggingModeLoki.ToPointer(),
+                Mode: shared.UpdateClusterRequestSettingsLoggingModePaas.ToPointer(),
             },
             Registry: &shared.UpdateClusterRequestSettingsRegistry{
                 Mode: shared.UpdateClusterRequestSettingsRegistryModePaas.ToPointer(),
@@ -773,10 +675,10 @@ func main() {
     )
     updateIntegrationRequest := shared.UpdateIntegrationRequest{
         Credentials: shared.UpdateIntegrationRequestCredentials{
-            AccessKey: northflank.String("nam"),
-            APIKey: northflank.String("officia"),
-            KeyfileJSON: northflank.String("occaecati"),
-            SecretKey: northflank.String("fugit"),
+            AccessKey: northflank.String("minus"),
+            APIKey: northflank.String("placeat"),
+            KeyfileJSON: northflank.String("voluptatum"),
+            SecretKey: northflank.String("iusto"),
         },
         Description: northflank.String("This is a new description."),
     }

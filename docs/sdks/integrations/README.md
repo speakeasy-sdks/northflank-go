@@ -366,7 +366,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integrations.GetBranches(ctx, operations.GetBranchesRequest{
-        Cursor: northflank.String("hic"),
+        Cursor: northflank.String("nisi"),
         PerPage: northflank.Int64(50),
         RepositoryName: "next-js-example",
         RepositoryOwner: "northflank-examples",
@@ -478,10 +478,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Integrations.GetRepos(ctx, operations.GetRepositoriesRequest{
         AccountLogin: northflank.String("example-user"),
-        Cursor: northflank.String("optio"),
+        Cursor: northflank.String("recusandae"),
         PerPage: northflank.Int64(50),
-        SelfHostedVcsID: northflank.String("totam"),
-        VcsLinkID: northflank.String("beatae"),
+        SelfHostedVcsID: northflank.String("temporibus"),
+        VcsLinkID: northflank.String("ab"),
         VcsService: operations.GetRepositoriesVcsServiceGithub.ToPointer(),
     })
     if err != nil {
@@ -533,7 +533,7 @@ func main() {
             },
         }),
     )
-    cursor := "commodi"
+    cursor := "quis"
     perPage := 50
 
     ctx := context.Background()
@@ -588,7 +588,7 @@ func main() {
             },
         }),
     )
-    cursor := "molestiae"
+    cursor := "veritatis"
     perPage := 50
 
     ctx := context.Background()
@@ -801,7 +801,6 @@ func main() {
     )
     logSinkRequest := shared.LogSinkRequest{
         Projects: []string{
-            "default-project",
             "default-project",
         },
         Restricted: northflank.Bool(true),
