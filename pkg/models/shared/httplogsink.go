@@ -205,21 +205,21 @@ func (u *HTTPLogSinkSinkDataAuth) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	httpLogSinkSinkDataAuth2 := new(HTTPLogSinkSinkDataAuth2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&httpLogSinkSinkDataAuth2); err == nil {
-		u.HTTPLogSinkSinkDataAuth2 = httpLogSinkSinkDataAuth2
-		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth2
-		return nil
-	}
-
 	httpLogSinkSinkDataAuth3 := new(HTTPLogSinkSinkDataAuth3)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
 	if err := d.Decode(&httpLogSinkSinkDataAuth3); err == nil {
 		u.HTTPLogSinkSinkDataAuth3 = httpLogSinkSinkDataAuth3
 		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth3
+		return nil
+	}
+
+	httpLogSinkSinkDataAuth2 := new(HTTPLogSinkSinkDataAuth2)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&httpLogSinkSinkDataAuth2); err == nil {
+		u.HTTPLogSinkSinkDataAuth2 = httpLogSinkSinkDataAuth2
+		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth2
 		return nil
 	}
 
@@ -231,12 +231,12 @@ func (u HTTPLogSinkSinkDataAuth) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.HTTPLogSinkSinkDataAuth1)
 	}
 
-	if u.HTTPLogSinkSinkDataAuth2 != nil {
-		return json.Marshal(u.HTTPLogSinkSinkDataAuth2)
-	}
-
 	if u.HTTPLogSinkSinkDataAuth3 != nil {
 		return json.Marshal(u.HTTPLogSinkSinkDataAuth3)
+	}
+
+	if u.HTTPLogSinkSinkDataAuth2 != nil {
+		return json.Marshal(u.HTTPLogSinkSinkDataAuth2)
 	}
 
 	return nil, nil

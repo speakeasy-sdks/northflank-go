@@ -76,12 +76,12 @@ func (u *UpdateRegistryRequestBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	updateRegistryType2 := new(shared.UpdateRegistryType2)
+	updateRegistryType4 := new(shared.UpdateRegistryType4)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
-	if err := d.Decode(&updateRegistryType2); err == nil {
-		u.UpdateRegistryType2 = updateRegistryType2
-		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType2
+	if err := d.Decode(&updateRegistryType4); err == nil {
+		u.UpdateRegistryType4 = updateRegistryType4
+		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType4
 		return nil
 	}
 
@@ -94,12 +94,12 @@ func (u *UpdateRegistryRequestBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	updateRegistryType4 := new(shared.UpdateRegistryType4)
+	updateRegistryType2 := new(shared.UpdateRegistryType2)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
-	if err := d.Decode(&updateRegistryType4); err == nil {
-		u.UpdateRegistryType4 = updateRegistryType4
-		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType4
+	if err := d.Decode(&updateRegistryType2); err == nil {
+		u.UpdateRegistryType2 = updateRegistryType2
+		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType2
 		return nil
 	}
 
@@ -111,16 +111,16 @@ func (u UpdateRegistryRequestBody) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.UpdateRegistryType1)
 	}
 
-	if u.UpdateRegistryType2 != nil {
-		return json.Marshal(u.UpdateRegistryType2)
+	if u.UpdateRegistryType4 != nil {
+		return json.Marshal(u.UpdateRegistryType4)
 	}
 
 	if u.UpdateRegistryType3 != nil {
 		return json.Marshal(u.UpdateRegistryType3)
 	}
 
-	if u.UpdateRegistryType4 != nil {
-		return json.Marshal(u.UpdateRegistryType4)
+	if u.UpdateRegistryType2 != nil {
+		return json.Marshal(u.UpdateRegistryType2)
 	}
 
 	return nil, nil

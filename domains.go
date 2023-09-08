@@ -25,7 +25,7 @@ func newDomains(sdkConfig sdkConfiguration) *domains {
 	}
 }
 
-// Add - Add subdomain
+// Add subdomain
 // Adds a new subdomain to the domain.
 func (s *domains) Add(ctx context.Context, addSubDomainRequest shared.AddSubDomainRequest, domain string) (*operations.AddSubDomainResponse, error) {
 	request := operations.AddSubDomainRequest{
@@ -112,7 +112,7 @@ func (s *domains) Add(ctx context.Context, addSubDomainRequest shared.AddSubDoma
 	return res, nil
 }
 
-// Assign - Assign service to subdomain
+// Assign service to subdomain
 // Assigns a service port to the given subdomain
 func (s *domains) Assign(ctx context.Context, assignSubDomainRequest shared.AssignSubDomainRequest, domain string, subdomain string) (*operations.AssignSubDomainResponse, error) {
 	request := operations.AssignSubDomainRequest{
@@ -186,7 +186,7 @@ func (s *domains) Assign(ctx context.Context, assignSubDomainRequest shared.Assi
 	return res, nil
 }
 
-// Create - Create new domain
+// Create new domain
 // Registers a new domain
 func (s *domains) Create(ctx context.Context, request shared.CreateDomainRequest) (*operations.CreateDomainResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
@@ -265,7 +265,7 @@ func (s *domains) Create(ctx context.Context, request shared.CreateDomainRequest
 	return res, nil
 }
 
-// Delete - Delete domain
+// Delete domain
 // Deletes a domain and each of its registered subdomains.
 func (s *domains) Delete(ctx context.Context, domain string) (*operations.DeleteDomainResponse, error) {
 	request := operations.DeleteDomainRequest{
@@ -478,7 +478,7 @@ func (s *domains) DeleteSubdomain(ctx context.Context, domain string, subdomain 
 	return res, nil
 }
 
-// Enable - Enable CDN on a subdomain
+// Enable CDN on a subdomain
 // Enables a CDN integration on the given subdomain
 func (s *domains) Enable(ctx context.Context, cdnRequest shared.CDNRequest, domain string, subdomain string) (*operations.EnableCDNResponse, error) {
 	request := operations.EnableCDNRequest{
@@ -552,7 +552,7 @@ func (s *domains) Enable(ctx context.Context, cdnRequest shared.CDNRequest, doma
 	return res, nil
 }
 
-// Get - Get domain
+// Get domain
 // Get the details about a domain
 func (s *domains) Get(ctx context.Context, domain string) (*operations.GetDomainResponse, error) {
 	request := operations.GetDomainRequest{
@@ -742,7 +742,7 @@ func (s *domains) ListDomains(ctx context.Context, cursor *string, page *int64, 
 	return res, nil
 }
 
-// Unassign - Unassign subdomain
+// Unassign subdomain
 // Removes a subdomain from its assigned service
 func (s *domains) Unassign(ctx context.Context, domain string, subdomain string) (*operations.UnassignSubDomainResponse, error) {
 	request := operations.UnassignSubDomainRequest{
@@ -805,7 +805,7 @@ func (s *domains) Unassign(ctx context.Context, domain string, subdomain string)
 	return res, nil
 }
 
-// Verify - Verify subdomain
+// Verify subdomain
 // Gets details about the given subdomain
 func (s *domains) Verify(ctx context.Context, domain string, subdomain string) (*operations.VerifySubDomainResponse, error) {
 	request := operations.VerifySubDomainRequest{

@@ -72,68 +72,51 @@ func (o *AddRegistryType1Restrictions) GetRestricted() *bool {
 	return o.Restricted
 }
 
-type AddRegistryType1 struct {
+// AddRegistryType3 - Validate with a docker config file.
+type AddRegistryType3 struct {
+	// The `auths` data extracted from your Docker config file.
+	Auths AddRegistryType3Auths `json:"auths"`
 	// Description of the credentials.
 	Description string `json:"description"`
 	// Name of the credentials.
 	Name string `json:"name"`
-	// Password, Personal Access Token, or API key for the container registry.
-	Password string `json:"password"`
 	// The registry provider associated with this set of credentials.
-	Provider AddRegistryType1Provider `json:"provider"`
-	// Custom url for the container registry. Only usable (and required) when `provider` is `custom`.
-	RegistryURL *string `json:"registryUrl,omitempty"`
+	Provider AddRegistryType3Provider `json:"provider"`
 	// Data about whether the credentials are restricted to certain projects.
-	Restrictions *AddRegistryType1Restrictions `json:"restrictions,omitempty"`
-	// Username for the container registry.
-	Username string `json:"username"`
+	Restrictions *AddRegistryType3Restrictions `json:"restrictions,omitempty"`
 }
 
-func (o *AddRegistryType1) GetDescription() string {
+func (o *AddRegistryType3) GetAuths() AddRegistryType3Auths {
+	if o == nil {
+		return AddRegistryType3Auths{}
+	}
+	return o.Auths
+}
+
+func (o *AddRegistryType3) GetDescription() string {
 	if o == nil {
 		return ""
 	}
 	return o.Description
 }
 
-func (o *AddRegistryType1) GetName() string {
+func (o *AddRegistryType3) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *AddRegistryType1) GetPassword() string {
+func (o *AddRegistryType3) GetProvider() AddRegistryType3Provider {
 	if o == nil {
-		return ""
-	}
-	return o.Password
-}
-
-func (o *AddRegistryType1) GetProvider() AddRegistryType1Provider {
-	if o == nil {
-		return AddRegistryType1Provider("")
+		return AddRegistryType3Provider("")
 	}
 	return o.Provider
 }
 
-func (o *AddRegistryType1) GetRegistryURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RegistryURL
-}
-
-func (o *AddRegistryType1) GetRestrictions() *AddRegistryType1Restrictions {
+func (o *AddRegistryType3) GetRestrictions() *AddRegistryType3Restrictions {
 	if o == nil {
 		return nil
 	}
 	return o.Restrictions
-}
-
-func (o *AddRegistryType1) GetUsername() string {
-	if o == nil {
-		return ""
-	}
-	return o.Username
 }

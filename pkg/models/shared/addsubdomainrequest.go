@@ -25,7 +25,6 @@ func (o *AddSubDomainRequestCdn) GetCloudfront() *AddSubDomainRequestCdnCloudfro
 	return o.Cloudfront
 }
 
-// AddSubDomainRequest - Request body
 type AddSubDomainRequest struct {
 	// Optional CDN configuration. Currently only available for select users.
 	Cdn *AddSubDomainRequestCdn `json:"cdn,omitempty"`

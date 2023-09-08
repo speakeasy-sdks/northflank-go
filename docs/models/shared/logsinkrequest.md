@@ -1,7 +1,5 @@
 # LogSinkRequest
 
-Request body
-
 
 ## Fields
 

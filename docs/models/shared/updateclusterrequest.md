@@ -1,7 +1,5 @@
 # UpdateClusterRequest
 
-Request body
-
 
 ## Fields
 

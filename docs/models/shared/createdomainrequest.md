@@ -1,7 +1,5 @@
 # CreateDomainRequest
 
-Request body
-
 
 ## Fields
 

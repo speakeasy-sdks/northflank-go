@@ -94,7 +94,6 @@ func (e *CreateIntegrationRequestProvider) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CreateIntegrationRequest - Request body
 type CreateIntegrationRequest struct {
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
 	Credentials CreateIntegrationRequestCredentials `json:"credentials"`

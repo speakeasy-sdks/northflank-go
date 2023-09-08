@@ -2,7 +2,6 @@
 
 package shared
 
-// AssignSubDomainRequest - Request body
 type AssignSubDomainRequest struct {
 	// The name of the port that will be assigned to the subdomain.
 	PortName string `json:"portName"`

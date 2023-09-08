@@ -25,7 +25,7 @@ func newCloudProviders(sdkConfig sdkConfiguration) *cloudProviders {
 	}
 }
 
-// Create - Create integration
+// Create integration
 // Creates a new integration.
 func (s *cloudProviders) Create(ctx context.Context, request shared.CreateIntegrationRequest) (*operations.CreateIntegrationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())

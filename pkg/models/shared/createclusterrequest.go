@@ -344,15 +344,6 @@ func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLo
 func (u *CreateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
 
-	createClusterRequestSettingsLoggingLoki1 := new(CreateClusterRequestSettingsLoggingLoki1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createClusterRequestSettingsLoggingLoki1); err == nil {
-		u.CreateClusterRequestSettingsLoggingLoki1 = createClusterRequestSettingsLoggingLoki1
-		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
-		return nil
-	}
-
 	createClusterRequestSettingsLoggingLoki2 := new(CreateClusterRequestSettingsLoggingLoki2)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
@@ -362,16 +353,25 @@ func (u *CreateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) err
 		return nil
 	}
 
+	createClusterRequestSettingsLoggingLoki1 := new(CreateClusterRequestSettingsLoggingLoki1)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&createClusterRequestSettingsLoggingLoki1); err == nil {
+		u.CreateClusterRequestSettingsLoggingLoki1 = createClusterRequestSettingsLoggingLoki1
+		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
+		return nil
+	}
+
 	return errors.New("could not unmarshal into supported union types")
 }
 
 func (u CreateClusterRequestSettingsLoggingLoki) MarshalJSON() ([]byte, error) {
-	if u.CreateClusterRequestSettingsLoggingLoki1 != nil {
-		return json.Marshal(u.CreateClusterRequestSettingsLoggingLoki1)
-	}
-
 	if u.CreateClusterRequestSettingsLoggingLoki2 != nil {
 		return json.Marshal(u.CreateClusterRequestSettingsLoggingLoki2)
+	}
+
+	if u.CreateClusterRequestSettingsLoggingLoki1 != nil {
+		return json.Marshal(u.CreateClusterRequestSettingsLoggingLoki1)
 	}
 
 	return nil, nil
@@ -497,7 +497,6 @@ func (o *CreateClusterRequestSettings) GetRegistry() *CreateClusterRequestSettin
 	return o.Registry
 }
 
-// CreateClusterRequest - Request body
 type CreateClusterRequest struct {
 	// The description of the cluster.
 	Description *string `json:"description,omitempty"`

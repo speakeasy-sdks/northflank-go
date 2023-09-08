@@ -1,7 +1,5 @@
 # AssignSubDomainRequest
 
-Request body
-
 
 ## Fields
 

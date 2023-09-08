@@ -266,15 +266,6 @@ func CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLo
 func (u *UpdateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
 
-	updateClusterRequestSettingsLoggingLoki1 := new(UpdateClusterRequestSettingsLoggingLoki1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&updateClusterRequestSettingsLoggingLoki1); err == nil {
-		u.UpdateClusterRequestSettingsLoggingLoki1 = updateClusterRequestSettingsLoggingLoki1
-		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1
-		return nil
-	}
-
 	updateClusterRequestSettingsLoggingLoki2 := new(UpdateClusterRequestSettingsLoggingLoki2)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
@@ -284,16 +275,25 @@ func (u *UpdateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) err
 		return nil
 	}
 
+	updateClusterRequestSettingsLoggingLoki1 := new(UpdateClusterRequestSettingsLoggingLoki1)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&updateClusterRequestSettingsLoggingLoki1); err == nil {
+		u.UpdateClusterRequestSettingsLoggingLoki1 = updateClusterRequestSettingsLoggingLoki1
+		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1
+		return nil
+	}
+
 	return errors.New("could not unmarshal into supported union types")
 }
 
 func (u UpdateClusterRequestSettingsLoggingLoki) MarshalJSON() ([]byte, error) {
-	if u.UpdateClusterRequestSettingsLoggingLoki1 != nil {
-		return json.Marshal(u.UpdateClusterRequestSettingsLoggingLoki1)
-	}
-
 	if u.UpdateClusterRequestSettingsLoggingLoki2 != nil {
 		return json.Marshal(u.UpdateClusterRequestSettingsLoggingLoki2)
+	}
+
+	if u.UpdateClusterRequestSettingsLoggingLoki1 != nil {
+		return json.Marshal(u.UpdateClusterRequestSettingsLoggingLoki1)
 	}
 
 	return nil, nil
@@ -419,7 +419,6 @@ func (o *UpdateClusterRequestSettings) GetRegistry() *UpdateClusterRequestSettin
 	return o.Registry
 }
 
-// UpdateClusterRequest - Request body
 type UpdateClusterRequest struct {
 	// The description of the cluster.
 	Description *string                         `json:"description,omitempty"`

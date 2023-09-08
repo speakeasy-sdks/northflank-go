@@ -42,7 +42,6 @@ func (o *UpdateIntegrationRequestCredentials) GetSecretKey() *string {
 	return o.SecretKey
 }
 
-// UpdateIntegrationRequest - Request body
 type UpdateIntegrationRequest struct {
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
 	Credentials UpdateIntegrationRequestCredentials `json:"credentials"`
