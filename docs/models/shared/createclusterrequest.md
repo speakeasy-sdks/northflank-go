@@ -1,7 +1,5 @@
 # CreateClusterRequest
 
-Request body
-
 
 ## Fields
 

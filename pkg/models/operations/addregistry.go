@@ -56,12 +56,12 @@ func CreateAddRegistryRequestBodyAddRegistryType3(addRegistryType3 shared.AddReg
 func (u *AddRegistryRequestBody) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
 
-	addRegistryType1 := new(shared.AddRegistryType1)
+	addRegistryType3 := new(shared.AddRegistryType3)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
-	if err := d.Decode(&addRegistryType1); err == nil {
-		u.AddRegistryType1 = addRegistryType1
-		u.Type = AddRegistryRequestBodyTypeAddRegistryType1
+	if err := d.Decode(&addRegistryType3); err == nil {
+		u.AddRegistryType3 = addRegistryType3
+		u.Type = AddRegistryRequestBodyTypeAddRegistryType3
 		return nil
 	}
 
@@ -74,12 +74,12 @@ func (u *AddRegistryRequestBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	addRegistryType3 := new(shared.AddRegistryType3)
+	addRegistryType1 := new(shared.AddRegistryType1)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
-	if err := d.Decode(&addRegistryType3); err == nil {
-		u.AddRegistryType3 = addRegistryType3
-		u.Type = AddRegistryRequestBodyTypeAddRegistryType3
+	if err := d.Decode(&addRegistryType1); err == nil {
+		u.AddRegistryType1 = addRegistryType1
+		u.Type = AddRegistryRequestBodyTypeAddRegistryType1
 		return nil
 	}
 
@@ -87,16 +87,16 @@ func (u *AddRegistryRequestBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u AddRegistryRequestBody) MarshalJSON() ([]byte, error) {
-	if u.AddRegistryType1 != nil {
-		return json.Marshal(u.AddRegistryType1)
+	if u.AddRegistryType3 != nil {
+		return json.Marshal(u.AddRegistryType3)
 	}
 
 	if u.AddRegistryType2 != nil {
 		return json.Marshal(u.AddRegistryType2)
 	}
 
-	if u.AddRegistryType3 != nil {
-		return json.Marshal(u.AddRegistryType3)
+	if u.AddRegistryType1 != nil {
+		return json.Marshal(u.AddRegistryType1)
 	}
 
 	return nil, nil

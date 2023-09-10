@@ -1,7 +1,5 @@
 # UpdateIntegrationRequest
 
-Request body
-
 
 ## Fields
 

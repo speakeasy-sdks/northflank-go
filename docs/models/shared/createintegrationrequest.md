@@ -1,7 +1,5 @@
 # CreateIntegrationRequest
 
-Request body
-
 
 ## Fields
 

@@ -48,6 +48,7 @@ type sdkConfiguration struct {
 	OpenAPIDocVersion string
 	SDKVersion        string
 	GenVersion        string
+	RetryConfig       *utils.RetryConfig
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -58,7 +59,7 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], nil
 }
 
-// Northflank - Northflank API: This is the API for northflank.com
+// Northflank API: This is the API for northflank.com
 type Northflank struct {
 	Addons         *addons
 	Billing        *billing
@@ -115,14 +116,20 @@ func WithSecurity(security shared.Security) SDKOption {
 	}
 }
 
+func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+	return func(sdk *Northflank) {
+		sdk.sdkConfiguration.RetryConfig = &retryConfig
+	}
+}
+
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Northflank {
 	sdk := &Northflank{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.2.0",
-			GenVersion:        "2.96.9",
+			SDKVersion:        "1.3.0",
+			GenVersion:        "2.107.3",
 		},
 	}
 	for _, opt := range opts {

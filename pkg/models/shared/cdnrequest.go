@@ -2,7 +2,6 @@
 
 package shared
 
-// CDNRequest - Request body
 type CDNRequest struct {
 	// Provider for which the CDN on the subdomain should be disabled.
 	Provider string `json:"provider"`

@@ -405,21 +405,21 @@ func (u *LogSinkDetailsDataSinkData4Auth) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	logSinkDetailsDataSinkData4Auth2 := new(LogSinkDetailsDataSinkData4Auth2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData4Auth2); err == nil {
-		u.LogSinkDetailsDataSinkData4Auth2 = logSinkDetailsDataSinkData4Auth2
-		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth2
-		return nil
-	}
-
 	logSinkDetailsDataSinkData4Auth3 := new(LogSinkDetailsDataSinkData4Auth3)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
 	if err := d.Decode(&logSinkDetailsDataSinkData4Auth3); err == nil {
 		u.LogSinkDetailsDataSinkData4Auth3 = logSinkDetailsDataSinkData4Auth3
 		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth3
+		return nil
+	}
+
+	logSinkDetailsDataSinkData4Auth2 := new(LogSinkDetailsDataSinkData4Auth2)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkDetailsDataSinkData4Auth2); err == nil {
+		u.LogSinkDetailsDataSinkData4Auth2 = logSinkDetailsDataSinkData4Auth2
+		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth2
 		return nil
 	}
 
@@ -431,12 +431,12 @@ func (u LogSinkDetailsDataSinkData4Auth) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.LogSinkDetailsDataSinkData4Auth1)
 	}
 
-	if u.LogSinkDetailsDataSinkData4Auth2 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData4Auth2)
-	}
-
 	if u.LogSinkDetailsDataSinkData4Auth3 != nil {
 		return json.Marshal(u.LogSinkDetailsDataSinkData4Auth3)
+	}
+
+	if u.LogSinkDetailsDataSinkData4Auth2 != nil {
+		return json.Marshal(u.LogSinkDetailsDataSinkData4Auth2)
 	}
 
 	return nil, nil
@@ -978,48 +978,12 @@ func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData8(logSinkDetailsD
 func (u *LogSinkDetailsDataSinkData) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
 
-	logSinkDetailsDataSinkData1 := new(LogSinkDetailsDataSinkData1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData1); err == nil {
-		u.LogSinkDetailsDataSinkData1 = logSinkDetailsDataSinkData1
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData1
-		return nil
-	}
-
-	logSinkDetailsDataSinkData2 := new(LogSinkDetailsDataSinkData2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData2); err == nil {
-		u.LogSinkDetailsDataSinkData2 = logSinkDetailsDataSinkData2
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData2
-		return nil
-	}
-
 	logSinkDetailsDataSinkData3 := new(LogSinkDetailsDataSinkData3)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
 	if err := d.Decode(&logSinkDetailsDataSinkData3); err == nil {
 		u.LogSinkDetailsDataSinkData3 = logSinkDetailsDataSinkData3
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData3
-		return nil
-	}
-
-	logSinkDetailsDataSinkData4 := new(LogSinkDetailsDataSinkData4)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData4); err == nil {
-		u.LogSinkDetailsDataSinkData4 = logSinkDetailsDataSinkData4
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData4
-		return nil
-	}
-
-	logSinkDetailsDataSinkData5 := new(LogSinkDetailsDataSinkData5)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData5); err == nil {
-		u.LogSinkDetailsDataSinkData5 = logSinkDetailsDataSinkData5
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData5
 		return nil
 	}
 
@@ -1041,6 +1005,15 @@ func (u *LogSinkDetailsDataSinkData) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	logSinkDetailsDataSinkData2 := new(LogSinkDetailsDataSinkData2)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkDetailsDataSinkData2); err == nil {
+		u.LogSinkDetailsDataSinkData2 = logSinkDetailsDataSinkData2
+		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData2
+		return nil
+	}
+
 	logSinkDetailsDataSinkData8 := new(LogSinkDetailsDataSinkData8)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
@@ -1050,28 +1023,39 @@ func (u *LogSinkDetailsDataSinkData) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	logSinkDetailsDataSinkData1 := new(LogSinkDetailsDataSinkData1)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkDetailsDataSinkData1); err == nil {
+		u.LogSinkDetailsDataSinkData1 = logSinkDetailsDataSinkData1
+		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData1
+		return nil
+	}
+
+	logSinkDetailsDataSinkData4 := new(LogSinkDetailsDataSinkData4)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkDetailsDataSinkData4); err == nil {
+		u.LogSinkDetailsDataSinkData4 = logSinkDetailsDataSinkData4
+		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData4
+		return nil
+	}
+
+	logSinkDetailsDataSinkData5 := new(LogSinkDetailsDataSinkData5)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkDetailsDataSinkData5); err == nil {
+		u.LogSinkDetailsDataSinkData5 = logSinkDetailsDataSinkData5
+		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData5
+		return nil
+	}
+
 	return errors.New("could not unmarshal into supported union types")
 }
 
 func (u LogSinkDetailsDataSinkData) MarshalJSON() ([]byte, error) {
-	if u.LogSinkDetailsDataSinkData1 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData1)
-	}
-
-	if u.LogSinkDetailsDataSinkData2 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData2)
-	}
-
 	if u.LogSinkDetailsDataSinkData3 != nil {
 		return json.Marshal(u.LogSinkDetailsDataSinkData3)
-	}
-
-	if u.LogSinkDetailsDataSinkData4 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData4)
-	}
-
-	if u.LogSinkDetailsDataSinkData5 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData5)
 	}
 
 	if u.LogSinkDetailsDataSinkData6 != nil {
@@ -1082,8 +1066,24 @@ func (u LogSinkDetailsDataSinkData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.LogSinkDetailsDataSinkData7)
 	}
 
+	if u.LogSinkDetailsDataSinkData2 != nil {
+		return json.Marshal(u.LogSinkDetailsDataSinkData2)
+	}
+
 	if u.LogSinkDetailsDataSinkData8 != nil {
 		return json.Marshal(u.LogSinkDetailsDataSinkData8)
+	}
+
+	if u.LogSinkDetailsDataSinkData1 != nil {
+		return json.Marshal(u.LogSinkDetailsDataSinkData1)
+	}
+
+	if u.LogSinkDetailsDataSinkData4 != nil {
+		return json.Marshal(u.LogSinkDetailsDataSinkData4)
+	}
+
+	if u.LogSinkDetailsDataSinkData5 != nil {
+		return json.Marshal(u.LogSinkDetailsDataSinkData5)
 	}
 
 	return nil, nil

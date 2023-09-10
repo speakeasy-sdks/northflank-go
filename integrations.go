@@ -25,7 +25,7 @@ func newIntegrations(sdkConfig sdkConfiguration) *integrations {
 	}
 }
 
-// Add - Add registry
+// Add registry
 // Adds a new set of container registry credentials to this account.
 func (s *integrations) Add(ctx context.Context, request operations.AddRegistryRequestBody) (*operations.AddRegistryResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
@@ -90,7 +90,7 @@ func (s *integrations) Add(ctx context.Context, request operations.AddRegistryRe
 	return res, nil
 }
 
-// Create - Create log sink
+// Create log sink
 // Creates a new log sink.
 func (s *integrations) Create(ctx context.Context, request operations.CreateLogSinkRequestBody) (*operations.CreateLogSinkResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
@@ -155,7 +155,7 @@ func (s *integrations) Create(ctx context.Context, request operations.CreateLogS
 	return res, nil
 }
 
-// Delete - Delete log sink
+// Delete log sink
 // Deletes a log sink.
 func (s *integrations) Delete(ctx context.Context, logSinkID string) (*operations.DeleteLogSinkResponse, error) {
 	request := operations.DeleteLogSinkRequest{
@@ -342,7 +342,7 @@ func (s *integrations) GenerateVCSToken(ctx context.Context, customVCSID string,
 	return res, nil
 }
 
-// Get - Get log sink details
+// Get log sink details
 // Gets details about a given log sink.
 func (s *integrations) Get(ctx context.Context, logSinkID string) (*operations.GetLogSinkResponse, error) {
 	request := operations.GetLogSinkRequest{
@@ -770,7 +770,7 @@ func (s *integrations) ListVcsProviders(ctx context.Context) (*operations.GetVCS
 	return res, nil
 }
 
-// Pause - Pause log sink
+// Pause log sink
 // Pauses a given log sink.
 func (s *integrations) Pause(ctx context.Context, logSinkID string) (*operations.PauseLogSinkResponse, error) {
 	request := operations.PauseLogSinkRequest{
@@ -832,7 +832,7 @@ func (s *integrations) Pause(ctx context.Context, logSinkID string) (*operations
 	return res, nil
 }
 
-// Resume - Resume log sink
+// Resume log sink
 // Resumes a paused log sink.
 func (s *integrations) Resume(ctx context.Context, logSinkID string) (*operations.ResumeLogSinkResponse, error) {
 	request := operations.ResumeLogSinkRequest{
@@ -894,7 +894,7 @@ func (s *integrations) Resume(ctx context.Context, logSinkID string) (*operation
 	return res, nil
 }
 
-// Update - Update log sink
+// Update log sink
 // Updates the settings for a log sink.
 func (s *integrations) Update(ctx context.Context, logSinkRequest shared.LogSinkRequest, logSinkID string) (*operations.UpdateLogSinkResponse, error) {
 	request := operations.UpdateLogSinkRequest{

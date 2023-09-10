@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateDomainRequest - Request body
 type CreateDomainRequest struct {
 	// The domain name to register.
 	Domain string `json:"domain"`

@@ -404,21 +404,21 @@ func (u *LogSinkRequestSinkData4Auth) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	logSinkRequestSinkData4Auth2 := new(LogSinkRequestSinkData4Auth2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkRequestSinkData4Auth2); err == nil {
-		u.LogSinkRequestSinkData4Auth2 = logSinkRequestSinkData4Auth2
-		u.Type = LogSinkRequestSinkData4AuthTypeLogSinkRequestSinkData4Auth2
-		return nil
-	}
-
 	logSinkRequestSinkData4Auth3 := new(LogSinkRequestSinkData4Auth3)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
 	if err := d.Decode(&logSinkRequestSinkData4Auth3); err == nil {
 		u.LogSinkRequestSinkData4Auth3 = logSinkRequestSinkData4Auth3
 		u.Type = LogSinkRequestSinkData4AuthTypeLogSinkRequestSinkData4Auth3
+		return nil
+	}
+
+	logSinkRequestSinkData4Auth2 := new(LogSinkRequestSinkData4Auth2)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkRequestSinkData4Auth2); err == nil {
+		u.LogSinkRequestSinkData4Auth2 = logSinkRequestSinkData4Auth2
+		u.Type = LogSinkRequestSinkData4AuthTypeLogSinkRequestSinkData4Auth2
 		return nil
 	}
 
@@ -430,12 +430,12 @@ func (u LogSinkRequestSinkData4Auth) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.LogSinkRequestSinkData4Auth1)
 	}
 
-	if u.LogSinkRequestSinkData4Auth2 != nil {
-		return json.Marshal(u.LogSinkRequestSinkData4Auth2)
-	}
-
 	if u.LogSinkRequestSinkData4Auth3 != nil {
 		return json.Marshal(u.LogSinkRequestSinkData4Auth3)
+	}
+
+	if u.LogSinkRequestSinkData4Auth2 != nil {
+		return json.Marshal(u.LogSinkRequestSinkData4Auth2)
 	}
 
 	return nil, nil
@@ -927,48 +927,12 @@ func CreateLogSinkRequestSinkDataLogSinkRequestSinkData8(logSinkRequestSinkData8
 func (u *LogSinkRequestSinkData) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
 
-	logSinkRequestSinkData1 := new(LogSinkRequestSinkData1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkRequestSinkData1); err == nil {
-		u.LogSinkRequestSinkData1 = logSinkRequestSinkData1
-		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData1
-		return nil
-	}
-
-	logSinkRequestSinkData2 := new(LogSinkRequestSinkData2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkRequestSinkData2); err == nil {
-		u.LogSinkRequestSinkData2 = logSinkRequestSinkData2
-		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData2
-		return nil
-	}
-
 	logSinkRequestSinkData3 := new(LogSinkRequestSinkData3)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
 	if err := d.Decode(&logSinkRequestSinkData3); err == nil {
 		u.LogSinkRequestSinkData3 = logSinkRequestSinkData3
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData3
-		return nil
-	}
-
-	logSinkRequestSinkData4 := new(LogSinkRequestSinkData4)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkRequestSinkData4); err == nil {
-		u.LogSinkRequestSinkData4 = logSinkRequestSinkData4
-		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData4
-		return nil
-	}
-
-	logSinkRequestSinkData5 := new(LogSinkRequestSinkData5)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkRequestSinkData5); err == nil {
-		u.LogSinkRequestSinkData5 = logSinkRequestSinkData5
-		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData5
 		return nil
 	}
 
@@ -990,6 +954,24 @@ func (u *LogSinkRequestSinkData) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	logSinkRequestSinkData1 := new(LogSinkRequestSinkData1)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkRequestSinkData1); err == nil {
+		u.LogSinkRequestSinkData1 = logSinkRequestSinkData1
+		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData1
+		return nil
+	}
+
+	logSinkRequestSinkData2 := new(LogSinkRequestSinkData2)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkRequestSinkData2); err == nil {
+		u.LogSinkRequestSinkData2 = logSinkRequestSinkData2
+		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData2
+		return nil
+	}
+
 	logSinkRequestSinkData8 := new(LogSinkRequestSinkData8)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
@@ -999,28 +981,30 @@ func (u *LogSinkRequestSinkData) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	logSinkRequestSinkData4 := new(LogSinkRequestSinkData4)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkRequestSinkData4); err == nil {
+		u.LogSinkRequestSinkData4 = logSinkRequestSinkData4
+		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData4
+		return nil
+	}
+
+	logSinkRequestSinkData5 := new(LogSinkRequestSinkData5)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&logSinkRequestSinkData5); err == nil {
+		u.LogSinkRequestSinkData5 = logSinkRequestSinkData5
+		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData5
+		return nil
+	}
+
 	return errors.New("could not unmarshal into supported union types")
 }
 
 func (u LogSinkRequestSinkData) MarshalJSON() ([]byte, error) {
-	if u.LogSinkRequestSinkData1 != nil {
-		return json.Marshal(u.LogSinkRequestSinkData1)
-	}
-
-	if u.LogSinkRequestSinkData2 != nil {
-		return json.Marshal(u.LogSinkRequestSinkData2)
-	}
-
 	if u.LogSinkRequestSinkData3 != nil {
 		return json.Marshal(u.LogSinkRequestSinkData3)
-	}
-
-	if u.LogSinkRequestSinkData4 != nil {
-		return json.Marshal(u.LogSinkRequestSinkData4)
-	}
-
-	if u.LogSinkRequestSinkData5 != nil {
-		return json.Marshal(u.LogSinkRequestSinkData5)
 	}
 
 	if u.LogSinkRequestSinkData6 != nil {
@@ -1031,14 +1015,29 @@ func (u LogSinkRequestSinkData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.LogSinkRequestSinkData7)
 	}
 
+	if u.LogSinkRequestSinkData1 != nil {
+		return json.Marshal(u.LogSinkRequestSinkData1)
+	}
+
+	if u.LogSinkRequestSinkData2 != nil {
+		return json.Marshal(u.LogSinkRequestSinkData2)
+	}
+
 	if u.LogSinkRequestSinkData8 != nil {
 		return json.Marshal(u.LogSinkRequestSinkData8)
+	}
+
+	if u.LogSinkRequestSinkData4 != nil {
+		return json.Marshal(u.LogSinkRequestSinkData4)
+	}
+
+	if u.LogSinkRequestSinkData5 != nil {
+		return json.Marshal(u.LogSinkRequestSinkData5)
 	}
 
 	return nil, nil
 }
 
-// LogSinkRequest - Request body
 type LogSinkRequest struct {
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`

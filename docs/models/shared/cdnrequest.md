@@ -1,7 +1,5 @@
 # CDNRequest
 
-Request body
-
 
 ## Fields
 
