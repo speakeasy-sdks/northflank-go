@@ -1,10 +1,10 @@
-# LogSinkDetailsDataSinkData4Auth1
+# LogSinkDetailsDataSinkData3Encoding
 
-No authentication strategy
+Encoding options
 
 
 ## Fields
 
 | Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 | Example                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `Strategy`                                                                                                  | [LogSinkDetailsDataSinkData4Auth1Strategy](../../models/shared/logsinkdetailsdatasinkdata4auth1strategy.md) | :heavy_check_mark:                                                                                          | No authentication strategy                                                                                  | none                                                                                                        |
+| `Codec`                                                                                                     | [LogSinkDetailsDataSinkData3EncodingCodec](../../models/shared/logsinkdetailsdatasinkdata3encodingcodec.md) | :heavy_check_mark:                                                                                          | Codec to encode logs in                                                                                     | json                                                                                                        |

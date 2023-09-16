@@ -3,22 +3,16 @@
 
 ## Supported Types
 
-### LogSinkRequestSinkData3
+### LogSinkRequestSinkData5
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData3(shared.LogSinkRequestSinkData3{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData5(shared.LogSinkRequestSinkData5{/* values here */})
 ```
 
 ### LogSinkRequestSinkData6
 
 ```go
 logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData6(shared.LogSinkRequestSinkData6{/* values here */})
-```
-
-### LogSinkRequestSinkData7
-
-```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData7(shared.LogSinkRequestSinkData7{/* values here */})
 ```
 
 ### LogSinkRequestSinkData1
@@ -33,21 +27,21 @@ logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkD
 logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData2(shared.LogSinkRequestSinkData2{/* values here */})
 ```
 
-### LogSinkRequestSinkData8
+### LogSinkRequestSinkData7
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData8(shared.LogSinkRequestSinkData8{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData7(shared.LogSinkRequestSinkData7{/* values here */})
+```
+
+### LogSinkRequestSinkData3
+
+```go
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData3(shared.LogSinkRequestSinkData3{/* values here */})
 ```
 
 ### LogSinkRequestSinkData4
 
 ```go
 logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData4(shared.LogSinkRequestSinkData4{/* values here */})
-```
-
-### LogSinkRequestSinkData5
-
-```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData5(shared.LogSinkRequestSinkData5{/* values here */})
 ```
 

@@ -1,17 +1,11 @@
 # CreateClusterRequestSettingsLoggingLoki
 
 
-## Supported Types
+## Fields
 
-### CreateClusterRequestSettingsLoggingLoki2
-
-```go
-createClusterRequestSettingsLoggingLoki := shared.CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki2(shared.CreateClusterRequestSettingsLoggingLoki2{/* values here */})
-```
-
-### CreateClusterRequestSettingsLoggingLoki1
-
-```go
-createClusterRequestSettingsLoggingLoki := shared.CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki1(shared.CreateClusterRequestSettingsLoggingLoki1{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `S3AccessKey`      | *string*           | :heavy_check_mark: | N/A                |
+| `S3BucketName`     | *string*           | :heavy_check_mark: | N/A                |
+| `S3Region`         | *string*           | :heavy_check_mark: | N/A                |
+| `S3SecretKey`      | *string*           | :heavy_check_mark: | N/A                |

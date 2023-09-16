@@ -1,4 +1,4 @@
-# LogSinkRequestSinkData4Auth3Strategy
+# LogSinkRequestSinkData3Auth3Strategy
 
 Bearer token authentication strategy.
 
@@ -7,4 +7,4 @@ Bearer token authentication strategy.
 
 | Name                                         | Value                                        |
 | -------------------------------------------- | -------------------------------------------- |
-| `LogSinkRequestSinkData4Auth3StrategyBearer` | bearer                                       |
+| `LogSinkRequestSinkData3Auth3StrategyBearer` | bearer                                       |

@@ -366,7 +366,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integrations.GetBranches(ctx, operations.GetBranchesRequest{
-        Cursor: northflank.String("nisi"),
+        Cursor: northflank.String("ipsam"),
         PerPage: northflank.Int64(50),
         RepositoryName: "next-js-example",
         RepositoryOwner: "northflank-examples",
@@ -478,10 +478,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Integrations.GetRepos(ctx, operations.GetRepositoriesRequest{
         AccountLogin: northflank.String("example-user"),
-        Cursor: northflank.String("recusandae"),
+        Cursor: northflank.String("repellendus"),
         PerPage: northflank.Int64(50),
-        SelfHostedVcsID: northflank.String("temporibus"),
-        VcsLinkID: northflank.String("ab"),
+        SelfHostedVcsID: northflank.String("sapiente"),
+        VcsLinkID: northflank.String("quo"),
         VcsService: operations.GetRepositoriesVcsServiceGithub.ToPointer(),
     })
     if err != nil {
@@ -533,7 +533,7 @@ func main() {
             },
         }),
     )
-    cursor := "quis"
+    cursor := "odit"
     perPage := 50
 
     ctx := context.Background()
@@ -588,7 +588,7 @@ func main() {
             },
         }),
     )
-    cursor := "veritatis"
+    cursor := "at"
     perPage := 50
 
     ctx := context.Background()

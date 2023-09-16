@@ -1,4 +1,4 @@
-# LogSinkRequestSinkData4Auth2Strategy
+# LogSinkRequestSinkData3Auth2Strategy
 
 Basic HTTP authentication strategy.
 
@@ -7,4 +7,4 @@ Basic HTTP authentication strategy.
 
 | Name                                        | Value                                       |
 | ------------------------------------------- | ------------------------------------------- |
-| `LogSinkRequestSinkData4Auth2StrategyBasic` | basic                                       |
+| `LogSinkRequestSinkData3Auth2StrategyBasic` | basic                                       |

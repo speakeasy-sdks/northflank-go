@@ -552,7 +552,7 @@ func main() {
             },
         }),
     )
-    cursor := "excepturi"
+    cursor := "perferendis"
     page := 1
     perPage := 50
 

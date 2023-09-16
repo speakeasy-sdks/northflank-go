@@ -3,9 +3,7 @@
 package shared
 
 import (
-	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 )
 
@@ -271,110 +269,39 @@ func (o *CreateClusterRequestSettingsBuilds) GetPlan() *string {
 	return o.Plan
 }
 
-type CreateClusterRequestSettingsLoggingLoki2 struct {
-}
-
-type CreateClusterRequestSettingsLoggingLoki1 struct {
+type CreateClusterRequestSettingsLoggingLoki struct {
 	S3AccessKey  string `json:"s3AccessKey"`
 	S3BucketName string `json:"s3BucketName"`
 	S3Region     string `json:"s3Region"`
 	S3SecretKey  string `json:"s3SecretKey"`
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3AccessKey() string {
+func (o *CreateClusterRequestSettingsLoggingLoki) GetS3AccessKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3AccessKey
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3BucketName() string {
+func (o *CreateClusterRequestSettingsLoggingLoki) GetS3BucketName() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3BucketName
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3Region() string {
+func (o *CreateClusterRequestSettingsLoggingLoki) GetS3Region() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3Region
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3SecretKey() string {
+func (o *CreateClusterRequestSettingsLoggingLoki) GetS3SecretKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3SecretKey
-}
-
-type CreateClusterRequestSettingsLoggingLokiType string
-
-const (
-	CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1 CreateClusterRequestSettingsLoggingLokiType = "CreateClusterRequest_settings_logging_loki_1"
-	CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2 CreateClusterRequestSettingsLoggingLokiType = "CreateClusterRequest_settings_logging_loki_2"
-)
-
-type CreateClusterRequestSettingsLoggingLoki struct {
-	CreateClusterRequestSettingsLoggingLoki1 *CreateClusterRequestSettingsLoggingLoki1
-	CreateClusterRequestSettingsLoggingLoki2 *CreateClusterRequestSettingsLoggingLoki2
-
-	Type CreateClusterRequestSettingsLoggingLokiType
-}
-
-func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki1(createClusterRequestSettingsLoggingLoki1 CreateClusterRequestSettingsLoggingLoki1) CreateClusterRequestSettingsLoggingLoki {
-	typ := CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
-
-	return CreateClusterRequestSettingsLoggingLoki{
-		CreateClusterRequestSettingsLoggingLoki1: &createClusterRequestSettingsLoggingLoki1,
-		Type:                                     typ,
-	}
-}
-
-func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki2(createClusterRequestSettingsLoggingLoki2 CreateClusterRequestSettingsLoggingLoki2) CreateClusterRequestSettingsLoggingLoki {
-	typ := CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2
-
-	return CreateClusterRequestSettingsLoggingLoki{
-		CreateClusterRequestSettingsLoggingLoki2: &createClusterRequestSettingsLoggingLoki2,
-		Type:                                     typ,
-	}
-}
-
-func (u *CreateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	createClusterRequestSettingsLoggingLoki2 := new(CreateClusterRequestSettingsLoggingLoki2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createClusterRequestSettingsLoggingLoki2); err == nil {
-		u.CreateClusterRequestSettingsLoggingLoki2 = createClusterRequestSettingsLoggingLoki2
-		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2
-		return nil
-	}
-
-	createClusterRequestSettingsLoggingLoki1 := new(CreateClusterRequestSettingsLoggingLoki1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createClusterRequestSettingsLoggingLoki1); err == nil {
-		u.CreateClusterRequestSettingsLoggingLoki1 = createClusterRequestSettingsLoggingLoki1
-		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
-		return nil
-	}
-
-	return errors.New("could not unmarshal into supported union types")
-}
-
-func (u CreateClusterRequestSettingsLoggingLoki) MarshalJSON() ([]byte, error) {
-	if u.CreateClusterRequestSettingsLoggingLoki2 != nil {
-		return json.Marshal(u.CreateClusterRequestSettingsLoggingLoki2)
-	}
-
-	if u.CreateClusterRequestSettingsLoggingLoki1 != nil {
-		return json.Marshal(u.CreateClusterRequestSettingsLoggingLoki1)
-	}
-
-	return nil, nil
 }
 
 type CreateClusterRequestSettingsLoggingMode string

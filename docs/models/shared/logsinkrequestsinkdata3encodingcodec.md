@@ -1,4 +1,4 @@
-# LogSinkRequestSinkData4EncodingCodec
+# LogSinkRequestSinkData3EncodingCodec
 
 Codec to encode logs in
 
@@ -7,5 +7,5 @@ Codec to encode logs in
 
 | Name                                       | Value                                      |
 | ------------------------------------------ | ------------------------------------------ |
-| `LogSinkRequestSinkData4EncodingCodecText` | text                                       |
-| `LogSinkRequestSinkData4EncodingCodecJSON` | json                                       |
+| `LogSinkRequestSinkData3EncodingCodecText` | text                                       |
+| `LogSinkRequestSinkData3EncodingCodecJSON` | json                                       |

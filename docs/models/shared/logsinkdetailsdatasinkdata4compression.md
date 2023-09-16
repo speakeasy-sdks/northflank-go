@@ -1,4 +1,4 @@
-# LogSinkDetailsDataSinkData5Compression
+# LogSinkDetailsDataSinkData4Compression
 
 Log file compression method.
 
@@ -7,5 +7,5 @@ Log file compression method.
 
 | Name                                         | Value                                        |
 | -------------------------------------------- | -------------------------------------------- |
-| `LogSinkDetailsDataSinkData5CompressionGzip` | gzip                                         |
-| `LogSinkDetailsDataSinkData5CompressionNone` | none                                         |
+| `LogSinkDetailsDataSinkData4CompressionGzip` | gzip                                         |
+| `LogSinkDetailsDataSinkData4CompressionNone` | none                                         |

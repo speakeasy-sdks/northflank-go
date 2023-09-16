@@ -1,4 +1,4 @@
-# LogSinkRequestSinkData4Auth1Strategy
+# LogSinkRequestSinkData3Auth1Strategy
 
 No authentication strategy
 
@@ -7,4 +7,4 @@ No authentication strategy
 
 | Name                                       | Value                                      |
 | ------------------------------------------ | ------------------------------------------ |
-| `LogSinkRequestSinkData4Auth1StrategyNone` | none                                       |
+| `LogSinkRequestSinkData3Auth1StrategyNone` | none                                       |

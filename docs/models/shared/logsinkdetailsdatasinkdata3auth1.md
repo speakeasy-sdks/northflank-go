@@ -1,10 +1,10 @@
-# LogSinkDetailsDataSinkData4Encoding
+# LogSinkDetailsDataSinkData3Auth1
 
-Encoding options
+No authentication strategy
 
 
 ## Fields
 
 | Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 | Example                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `Codec`                                                                                                     | [LogSinkDetailsDataSinkData4EncodingCodec](../../models/shared/logsinkdetailsdatasinkdata4encodingcodec.md) | :heavy_check_mark:                                                                                          | Codec to encode logs in                                                                                     | json                                                                                                        |
+| `Strategy`                                                                                                  | [LogSinkDetailsDataSinkData3Auth1Strategy](../../models/shared/logsinkdetailsdatasinkdata3auth1strategy.md) | :heavy_check_mark:                                                                                          | No authentication strategy                                                                                  | none                                                                                                        |

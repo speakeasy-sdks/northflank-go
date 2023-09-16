@@ -1,10 +1,10 @@
-# LogSinkRequestSinkData4Encoding
+# LogSinkRequestSinkData3Auth1
 
-Encoding options
+No authentication strategy
 
 
 ## Fields
 
 | Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `Codec`                                                                                             | [LogSinkRequestSinkData4EncodingCodec](../../models/shared/logsinkrequestsinkdata4encodingcodec.md) | :heavy_check_mark:                                                                                  | Codec to encode logs in                                                                             | json                                                                                                |
+| `Strategy`                                                                                          | [LogSinkRequestSinkData3Auth1Strategy](../../models/shared/logsinkrequestsinkdata3auth1strategy.md) | :heavy_check_mark:                                                                                  | No authentication strategy                                                                          | none                                                                                                |

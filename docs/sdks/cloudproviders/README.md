@@ -147,8 +147,13 @@ func main() {
                 Plan: northflank.String("nf-compute-200"),
             },
             Logging: &shared.CreateClusterRequestSettingsLogging{
-                Loki: &shared.CreateClusterRequestSettingsLoggingLoki{},
-                Mode: shared.CreateClusterRequestSettingsLoggingModePaas.ToPointer(),
+                Loki: &shared.CreateClusterRequestSettingsLoggingLoki{
+                    S3AccessKey: "iure",
+                    S3BucketName: "magnam",
+                    S3Region: "debitis",
+                    S3SecretKey: "ipsa",
+                },
+                Mode: shared.CreateClusterRequestSettingsLoggingModeLoki.ToPointer(),
             },
             Registry: &shared.CreateClusterRequestSettingsRegistry{
                 Mode: shared.CreateClusterRequestSettingsRegistryModePaas.ToPointer(),
@@ -524,7 +529,7 @@ func main() {
             },
         }),
     )
-    cursor := "debitis"
+    cursor := "suscipit"
     page := 1
     perPage := 50
 
@@ -591,10 +596,10 @@ func main() {
                     Min: northflank.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "ipsa",
+                    "molestiae",
                 },
                 DiskSize: 100,
-                DiskType: northflank.String("delectus"),
+                DiskType: northflank.String("minus"),
                 ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
                 Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
@@ -606,15 +611,20 @@ func main() {
         Settings: &shared.UpdateClusterRequestSettings{
             Builds: &shared.UpdateClusterRequestSettingsBuilds{
                 ClusterID: northflank.String("build-cluster"),
-                Mode: shared.UpdateClusterRequestSettingsBuildsModePaas.ToPointer(),
+                Mode: shared.UpdateClusterRequestSettingsBuildsModeBuildCluster.ToPointer(),
                 Plan: northflank.String("nf-compute-200"),
             },
             Logging: &shared.UpdateClusterRequestSettingsLogging{
-                Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{},
-                Mode: shared.UpdateClusterRequestSettingsLoggingModePaas.ToPointer(),
+                Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{
+                    S3AccessKey: "voluptatum",
+                    S3BucketName: "iusto",
+                    S3Region: "excepturi",
+                    S3SecretKey: "nisi",
+                },
+                Mode: shared.UpdateClusterRequestSettingsLoggingModeLoki.ToPointer(),
             },
             Registry: &shared.UpdateClusterRequestSettingsRegistry{
-                Mode: shared.UpdateClusterRequestSettingsRegistryModePaas.ToPointer(),
+                Mode: shared.UpdateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),
                 RegistryID: northflank.String("my-registry-credentials"),
             },
         },
@@ -675,10 +685,10 @@ func main() {
     )
     updateIntegrationRequest := shared.UpdateIntegrationRequest{
         Credentials: shared.UpdateIntegrationRequestCredentials{
-            AccessKey: northflank.String("minus"),
-            APIKey: northflank.String("placeat"),
-            KeyfileJSON: northflank.String("voluptatum"),
-            SecretKey: northflank.String("iusto"),
+            AccessKey: northflank.String("ab"),
+            APIKey: northflank.String("quis"),
+            KeyfileJSON: northflank.String("veritatis"),
+            SecretKey: northflank.String("deserunt"),
         },
         Description: northflank.String("This is a new description."),
     }

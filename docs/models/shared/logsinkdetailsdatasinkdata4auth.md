@@ -1,23 +1,11 @@
 # LogSinkDetailsDataSinkData4Auth
 
+Authentication object.
 
-## Supported Types
 
-### LogSinkDetailsDataSinkData4Auth1
+## Fields
 
-```go
-logSinkDetailsDataSinkData4Auth := shared.CreateLogSinkDetailsDataSinkData4AuthLogSinkDetailsDataSinkData4Auth1(shared.LogSinkDetailsDataSinkData4Auth1{/* values here */})
-```
-
-### LogSinkDetailsDataSinkData4Auth3
-
-```go
-logSinkDetailsDataSinkData4Auth := shared.CreateLogSinkDetailsDataSinkData4AuthLogSinkDetailsDataSinkData4Auth3(shared.LogSinkDetailsDataSinkData4Auth3{/* values here */})
-```
-
-### LogSinkDetailsDataSinkData4Auth2
-
-```go
-logSinkDetailsDataSinkData4Auth := shared.CreateLogSinkDetailsDataSinkData4AuthLogSinkDetailsDataSinkData4Auth2(shared.LogSinkDetailsDataSinkData4Auth2{/* values here */})
-```
-
+| Field                             | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `AccessKeyID`                     | *string*                          | :heavy_check_mark:                | Access key id for the bucket.     | PMSACIHNUIASDBWQDS                |
+| `SecretAccessKey`                 | *string*                          | :heavy_check_mark:                | Secret access key for the bucket. | HA1PLMNOEAEYUHAJQMSDUJQS          |
