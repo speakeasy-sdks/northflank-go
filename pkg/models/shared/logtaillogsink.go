@@ -3,8 +3,7 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // LogtailLogSinkSinkData - Details about the Logtail log sink.
@@ -20,49 +19,35 @@ func (o *LogtailLogSinkSinkData) GetToken() string {
 	return o.Token
 }
 
-// LogtailLogSinkSinkType - The type of the log sink.
-type LogtailLogSinkSinkType string
-
-const (
-	LogtailLogSinkSinkTypeLogtail LogtailLogSinkSinkType = "logtail"
-)
-
-func (e LogtailLogSinkSinkType) ToPointer() *LogtailLogSinkSinkType {
-	return &e
-}
-
-func (e *LogtailLogSinkSinkType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "logtail":
-		*e = LogtailLogSinkSinkType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LogtailLogSinkSinkType: %v", v)
-	}
-}
-
 // LogtailLogSink - Create a log sink using Logtail
 type LogtailLogSink struct {
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
-	ForwardAccessLogs *bool `json:"forwardAccessLogs,omitempty"`
+	ForwardAccessLogs *bool `default:"false" json:"forwardAccessLogs"`
 	// Name of the log sink.
 	Name string `json:"name"`
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
-	Restricted *bool `json:"restricted,omitempty"`
+	Restricted *bool `default:"false" json:"restricted"`
 	// Details about the Logtail log sink.
 	SinkData LogtailLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	SinkType LogtailLogSinkSinkType `json:"sinkType"`
+	sinkType string `const:"logtail" json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (l LogtailLogSink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogtailLogSink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LogtailLogSink) GetDescription() *string {
@@ -107,11 +92,8 @@ func (o *LogtailLogSink) GetSinkData() LogtailLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *LogtailLogSink) GetSinkType() LogtailLogSinkSinkType {
-	if o == nil {
-		return LogtailLogSinkSinkType("")
-	}
-	return o.SinkType
+func (o *LogtailLogSink) GetSinkType() string {
+	return "logtail"
 }
 
 func (o *LogtailLogSink) GetUseCustomLabels() *bool {

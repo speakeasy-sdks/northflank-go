@@ -3,10 +3,11 @@
 package shared
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/types"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"time"
 )
 
@@ -209,44 +210,27 @@ func (o *LogSinkDetailsDataSinkData4) GetRegion() LogSinkDetailsDataSinkData4Reg
 	return o.Region
 }
 
-// LogSinkDetailsDataSinkData3Auth3Strategy - Bearer token authentication strategy.
-type LogSinkDetailsDataSinkData3Auth3Strategy string
-
-const (
-	LogSinkDetailsDataSinkData3Auth3StrategyBearer LogSinkDetailsDataSinkData3Auth3Strategy = "bearer"
-)
-
-func (e LogSinkDetailsDataSinkData3Auth3Strategy) ToPointer() *LogSinkDetailsDataSinkData3Auth3Strategy {
-	return &e
-}
-
-func (e *LogSinkDetailsDataSinkData3Auth3Strategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bearer":
-		*e = LogSinkDetailsDataSinkData3Auth3Strategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData3Auth3Strategy: %v", v)
-	}
-}
-
 // LogSinkDetailsDataSinkData3Auth3 - Authenticate with a bearer token strategy.
 type LogSinkDetailsDataSinkData3Auth3 struct {
 	// Bearer token authentication strategy.
-	Strategy LogSinkDetailsDataSinkData3Auth3Strategy `json:"strategy"`
+	strategy string `const:"bearer" json:"strategy"`
 	// Token for bearer token authentication.
 	Token *string `json:"token,omitempty"`
 }
 
-func (o *LogSinkDetailsDataSinkData3Auth3) GetStrategy() LogSinkDetailsDataSinkData3Auth3Strategy {
-	if o == nil {
-		return LogSinkDetailsDataSinkData3Auth3Strategy("")
+func (l LogSinkDetailsDataSinkData3Auth3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkDetailsDataSinkData3Auth3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
 	}
-	return o.Strategy
+	return nil
+}
+
+func (o *LogSinkDetailsDataSinkData3Auth3) GetStrategy() string {
+	return "bearer"
 }
 
 func (o *LogSinkDetailsDataSinkData3Auth3) GetToken() *string {
@@ -256,39 +240,25 @@ func (o *LogSinkDetailsDataSinkData3Auth3) GetToken() *string {
 	return o.Token
 }
 
-// LogSinkDetailsDataSinkData3Auth2Strategy - Basic HTTP authentication strategy.
-type LogSinkDetailsDataSinkData3Auth2Strategy string
-
-const (
-	LogSinkDetailsDataSinkData3Auth2StrategyBasic LogSinkDetailsDataSinkData3Auth2Strategy = "basic"
-)
-
-func (e LogSinkDetailsDataSinkData3Auth2Strategy) ToPointer() *LogSinkDetailsDataSinkData3Auth2Strategy {
-	return &e
-}
-
-func (e *LogSinkDetailsDataSinkData3Auth2Strategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "basic":
-		*e = LogSinkDetailsDataSinkData3Auth2Strategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData3Auth2Strategy: %v", v)
-	}
-}
-
 // LogSinkDetailsDataSinkData3Auth2 - Authenticate with a basic http strategy.
 type LogSinkDetailsDataSinkData3Auth2 struct {
 	// Password for basic http authentication.
 	Password string `json:"password"`
 	// Basic HTTP authentication strategy.
-	Strategy LogSinkDetailsDataSinkData3Auth2Strategy `json:"strategy"`
+	strategy string `const:"basic" json:"strategy"`
 	// Username for basic http authentication.
 	User *string `json:"user,omitempty"`
+}
+
+func (l LogSinkDetailsDataSinkData3Auth2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkDetailsDataSinkData3Auth2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LogSinkDetailsDataSinkData3Auth2) GetPassword() string {
@@ -298,11 +268,8 @@ func (o *LogSinkDetailsDataSinkData3Auth2) GetPassword() string {
 	return o.Password
 }
 
-func (o *LogSinkDetailsDataSinkData3Auth2) GetStrategy() LogSinkDetailsDataSinkData3Auth2Strategy {
-	if o == nil {
-		return LogSinkDetailsDataSinkData3Auth2Strategy("")
-	}
-	return o.Strategy
+func (o *LogSinkDetailsDataSinkData3Auth2) GetStrategy() string {
+	return "basic"
 }
 
 func (o *LogSinkDetailsDataSinkData3Auth2) GetUser() *string {
@@ -312,42 +279,25 @@ func (o *LogSinkDetailsDataSinkData3Auth2) GetUser() *string {
 	return o.User
 }
 
-// LogSinkDetailsDataSinkData3Auth1Strategy - No authentication strategy
-type LogSinkDetailsDataSinkData3Auth1Strategy string
-
-const (
-	LogSinkDetailsDataSinkData3Auth1StrategyNone LogSinkDetailsDataSinkData3Auth1Strategy = "none"
-)
-
-func (e LogSinkDetailsDataSinkData3Auth1Strategy) ToPointer() *LogSinkDetailsDataSinkData3Auth1Strategy {
-	return &e
-}
-
-func (e *LogSinkDetailsDataSinkData3Auth1Strategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "none":
-		*e = LogSinkDetailsDataSinkData3Auth1Strategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData3Auth1Strategy: %v", v)
-	}
-}
-
 // LogSinkDetailsDataSinkData3Auth1 - No authentication strategy
 type LogSinkDetailsDataSinkData3Auth1 struct {
 	// No authentication strategy
-	Strategy LogSinkDetailsDataSinkData3Auth1Strategy `json:"strategy"`
+	strategy string `const:"none" json:"strategy"`
 }
 
-func (o *LogSinkDetailsDataSinkData3Auth1) GetStrategy() LogSinkDetailsDataSinkData3Auth1Strategy {
-	if o == nil {
-		return LogSinkDetailsDataSinkData3Auth1Strategy("")
+func (l LogSinkDetailsDataSinkData3Auth1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkDetailsDataSinkData3Auth1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
 	}
-	return o.Strategy
+	return nil
+}
+
+func (o *LogSinkDetailsDataSinkData3Auth1) GetStrategy() string {
+	return "none"
 }
 
 type LogSinkDetailsDataSinkData3AuthType string
@@ -394,30 +344,23 @@ func CreateLogSinkDetailsDataSinkData3AuthLogSinkDetailsDataSinkData3Auth3(logSi
 }
 
 func (u *LogSinkDetailsDataSinkData3Auth) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	logSinkDetailsDataSinkData3Auth1 := new(LogSinkDetailsDataSinkData3Auth1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData3Auth1); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData3Auth1, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData3Auth1 = logSinkDetailsDataSinkData3Auth1
 		u.Type = LogSinkDetailsDataSinkData3AuthTypeLogSinkDetailsDataSinkData3Auth1
 		return nil
 	}
 
 	logSinkDetailsDataSinkData3Auth3 := new(LogSinkDetailsDataSinkData3Auth3)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData3Auth3); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData3Auth3, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData3Auth3 = logSinkDetailsDataSinkData3Auth3
 		u.Type = LogSinkDetailsDataSinkData3AuthTypeLogSinkDetailsDataSinkData3Auth3
 		return nil
 	}
 
 	logSinkDetailsDataSinkData3Auth2 := new(LogSinkDetailsDataSinkData3Auth2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData3Auth2); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData3Auth2, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData3Auth2 = logSinkDetailsDataSinkData3Auth2
 		u.Type = LogSinkDetailsDataSinkData3AuthTypeLogSinkDetailsDataSinkData3Auth2
 		return nil
@@ -428,19 +371,18 @@ func (u *LogSinkDetailsDataSinkData3Auth) UnmarshalJSON(data []byte) error {
 
 func (u LogSinkDetailsDataSinkData3Auth) MarshalJSON() ([]byte, error) {
 	if u.LogSinkDetailsDataSinkData3Auth1 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData3Auth1)
-	}
-
-	if u.LogSinkDetailsDataSinkData3Auth3 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData3Auth3)
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData3Auth1, "", true)
 	}
 
 	if u.LogSinkDetailsDataSinkData3Auth2 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData3Auth2)
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData3Auth2, "", true)
+	}
+
+	if u.LogSinkDetailsDataSinkData3Auth3 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData3Auth3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 // LogSinkDetailsDataSinkData3EncodingCodec - Codec to encode logs in
@@ -570,39 +512,25 @@ func (o *LogSinkDetailsDataSinkData2) GetRegion() LogSinkDetailsDataSinkData2Reg
 	return o.Region
 }
 
-// LogSinkDetailsDataSinkData1AuthStrategy - The authentication strategy.
-type LogSinkDetailsDataSinkData1AuthStrategy string
-
-const (
-	LogSinkDetailsDataSinkData1AuthStrategyBasic LogSinkDetailsDataSinkData1AuthStrategy = "basic"
-)
-
-func (e LogSinkDetailsDataSinkData1AuthStrategy) ToPointer() *LogSinkDetailsDataSinkData1AuthStrategy {
-	return &e
-}
-
-func (e *LogSinkDetailsDataSinkData1AuthStrategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "basic":
-		*e = LogSinkDetailsDataSinkData1AuthStrategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData1AuthStrategy: %v", v)
-	}
-}
-
 // LogSinkDetailsDataSinkData1Auth - Object containing authentication data for the log sink.
 type LogSinkDetailsDataSinkData1Auth struct {
 	// The password for the log sink.
 	Password *string `json:"password,omitempty"`
 	// The authentication strategy.
-	Strategy *LogSinkDetailsDataSinkData1AuthStrategy `json:"strategy,omitempty"`
+	strategy *string `const:"basic" json:"strategy,omitempty"`
 	// The username for the log sink.
 	User *string `json:"user,omitempty"`
+}
+
+func (l LogSinkDetailsDataSinkData1Auth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkDetailsDataSinkData1Auth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LogSinkDetailsDataSinkData1Auth) GetPassword() *string {
@@ -612,11 +540,8 @@ func (o *LogSinkDetailsDataSinkData1Auth) GetPassword() *string {
 	return o.Password
 }
 
-func (o *LogSinkDetailsDataSinkData1Auth) GetStrategy() *LogSinkDetailsDataSinkData1AuthStrategy {
-	if o == nil {
-		return nil
-	}
-	return o.Strategy
+func (o *LogSinkDetailsDataSinkData1Auth) GetStrategy() *string {
+	return types.String("basic")
 }
 
 func (o *LogSinkDetailsDataSinkData1Auth) GetUser() *string {
@@ -786,66 +711,51 @@ func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData7(logSinkDetailsD
 }
 
 func (u *LogSinkDetailsDataSinkData) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	logSinkDetailsDataSinkData5 := new(LogSinkDetailsDataSinkData5)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData5); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData5, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData5 = logSinkDetailsDataSinkData5
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData5
 		return nil
 	}
 
 	logSinkDetailsDataSinkData6 := new(LogSinkDetailsDataSinkData6)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData6); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData6, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData6 = logSinkDetailsDataSinkData6
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData6
 		return nil
 	}
 
 	logSinkDetailsDataSinkData2 := new(LogSinkDetailsDataSinkData2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData2); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData2, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData2 = logSinkDetailsDataSinkData2
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData2
 		return nil
 	}
 
 	logSinkDetailsDataSinkData7 := new(LogSinkDetailsDataSinkData7)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData7); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData7, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData7 = logSinkDetailsDataSinkData7
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData7
 		return nil
 	}
 
 	logSinkDetailsDataSinkData1 := new(LogSinkDetailsDataSinkData1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData1); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData1, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData1 = logSinkDetailsDataSinkData1
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData1
 		return nil
 	}
 
 	logSinkDetailsDataSinkData3 := new(LogSinkDetailsDataSinkData3)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData3); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData3, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData3 = logSinkDetailsDataSinkData3
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData3
 		return nil
 	}
 
 	logSinkDetailsDataSinkData4 := new(LogSinkDetailsDataSinkData4)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logSinkDetailsDataSinkData4); err == nil {
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4, "", true, true); err == nil {
 		u.LogSinkDetailsDataSinkData4 = logSinkDetailsDataSinkData4
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData4
 		return nil
@@ -855,36 +765,35 @@ func (u *LogSinkDetailsDataSinkData) UnmarshalJSON(data []byte) error {
 }
 
 func (u LogSinkDetailsDataSinkData) MarshalJSON() ([]byte, error) {
-	if u.LogSinkDetailsDataSinkData5 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData5)
-	}
-
-	if u.LogSinkDetailsDataSinkData6 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData6)
+	if u.LogSinkDetailsDataSinkData1 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData1, "", true)
 	}
 
 	if u.LogSinkDetailsDataSinkData2 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData2)
-	}
-
-	if u.LogSinkDetailsDataSinkData7 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData7)
-	}
-
-	if u.LogSinkDetailsDataSinkData1 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData1)
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData2, "", true)
 	}
 
 	if u.LogSinkDetailsDataSinkData3 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData3)
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData3, "", true)
 	}
 
 	if u.LogSinkDetailsDataSinkData4 != nil {
-		return json.Marshal(u.LogSinkDetailsDataSinkData4)
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData4, "", true)
 	}
 
-	return json.Marshal(nil)
+	if u.LogSinkDetailsDataSinkData5 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData5, "", true)
+	}
 
+	if u.LogSinkDetailsDataSinkData6 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData6, "", true)
+	}
+
+	if u.LogSinkDetailsDataSinkData7 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData7, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // LogSinkDetailsDataSinkType - The type of the log sink.
@@ -960,7 +869,18 @@ type LogSinkDetailsData struct {
 	// Timestamp of when the log sink was last updated.
 	UpdatedAt time.Time `json:"updatedAt"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (l LogSinkDetailsData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkDetailsData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LogSinkDetailsData) GetCreatedAt() time.Time {

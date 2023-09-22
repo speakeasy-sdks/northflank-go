@@ -5,13 +5,25 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // UpdateClusterRequestNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 type UpdateClusterRequestNodePoolsAutoscaling struct {
-	Enabled *bool  `json:"enabled,omitempty"`
+	Enabled *bool  `default:"false" json:"enabled"`
 	Max     *int64 `json:"max,omitempty"`
 	Min     *int64 `json:"min,omitempty"`
+}
+
+func (u UpdateClusterRequestNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateClusterRequestNodePoolsAutoscaling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateClusterRequestNodePoolsAutoscaling) GetEnabled() *bool {
@@ -57,9 +69,20 @@ type UpdateClusterRequestNodePools struct {
 	// Machine type to be used by the node pool.
 	NodeType string `json:"nodeType"`
 	// Configures node pool with preemptible / spot instances if enabled.
-	Preemptible *bool `json:"preemptible,omitempty"`
+	Preemptible *bool `default:"false" json:"preemptible"`
 	// When 'provider' is 'azure', at least one system node pool is required per cluster.
 	SystemPool *bool `json:"systemPool,omitempty"`
+}
+
+func (u UpdateClusterRequestNodePools) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateClusterRequestNodePools) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateClusterRequestNodePools) GetAutoscaling() *UpdateClusterRequestNodePoolsAutoscaling {

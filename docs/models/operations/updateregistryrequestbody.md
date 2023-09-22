@@ -11,10 +11,10 @@ Request body
 updateRegistryRequestBody := operations.CreateUpdateRegistryRequestBodyUpdateRegistryType1(shared.UpdateRegistryType1{/* values here */})
 ```
 
-### UpdateRegistryType4
+### UpdateRegistryType2
 
 ```go
-updateRegistryRequestBody := operations.CreateUpdateRegistryRequestBodyUpdateRegistryType4(shared.UpdateRegistryType4{/* values here */})
+updateRegistryRequestBody := operations.CreateUpdateRegistryRequestBodyUpdateRegistryType2(shared.UpdateRegistryType2{/* values here */})
 ```
 
 ### UpdateRegistryType3
@@ -23,9 +23,9 @@ updateRegistryRequestBody := operations.CreateUpdateRegistryRequestBodyUpdateReg
 updateRegistryRequestBody := operations.CreateUpdateRegistryRequestBodyUpdateRegistryType3(shared.UpdateRegistryType3{/* values here */})
 ```
 
-### UpdateRegistryType2
+### UpdateRegistryType4
 
 ```go
-updateRegistryRequestBody := operations.CreateUpdateRegistryRequestBodyUpdateRegistryType2(shared.UpdateRegistryType2{/* values here */})
+updateRegistryRequestBody := operations.CreateUpdateRegistryRequestBodyUpdateRegistryType4(shared.UpdateRegistryType4{/* values here */})
 ```
 

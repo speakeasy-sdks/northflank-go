@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // CreateClusterRequestGcp - GCP specific data. Required when `provider` is `gcp`.
@@ -62,9 +63,20 @@ func (o *CreateClusterRequestIntegration) GetSecretKey() *string {
 
 // CreateClusterRequestNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 type CreateClusterRequestNodePoolsAutoscaling struct {
-	Enabled *bool  `json:"enabled,omitempty"`
+	Enabled *bool  `default:"false" json:"enabled"`
 	Max     *int64 `json:"max,omitempty"`
 	Min     *int64 `json:"min,omitempty"`
+}
+
+func (c CreateClusterRequestNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateClusterRequestNodePoolsAutoscaling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateClusterRequestNodePoolsAutoscaling) GetEnabled() *bool {
@@ -108,9 +120,20 @@ type CreateClusterRequestNodePools struct {
 	// Machine type to be used by the node pool.
 	NodeType string `json:"nodeType"`
 	// Configures node pool with preemptible / spot instances if enabled.
-	Preemptible *bool `json:"preemptible,omitempty"`
+	Preemptible *bool `default:"false" json:"preemptible"`
 	// When 'provider' is 'azure', at least one system node pool is required per cluster.
 	SystemPool *bool `json:"systemPool,omitempty"`
+}
+
+func (c CreateClusterRequestNodePools) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateClusterRequestNodePools) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateClusterRequestNodePools) GetAutoscaling() *CreateClusterRequestNodePoolsAutoscaling {

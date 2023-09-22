@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"time"
 )
 
@@ -79,7 +80,18 @@ type GetLogSinksResultDataLogSinks struct {
 	// Timestamp of when the log sink was last updated.
 	UpdatedAt time.Time `json:"updatedAt"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (g GetLogSinksResultDataLogSinks) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetLogSinksResultDataLogSinks) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetLogSinksResultDataLogSinks) GetCreatedAt() time.Time {

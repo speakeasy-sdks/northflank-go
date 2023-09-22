@@ -3,10 +3,9 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"net/http"
 )
 
@@ -54,30 +53,23 @@ func CreateAddRegistryRequestBodyAddRegistryType3(addRegistryType3 shared.AddReg
 }
 
 func (u *AddRegistryRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	addRegistryType3 := new(shared.AddRegistryType3)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&addRegistryType3); err == nil {
+	if err := utils.UnmarshalJSON(data, &addRegistryType3, "", true, true); err == nil {
 		u.AddRegistryType3 = addRegistryType3
 		u.Type = AddRegistryRequestBodyTypeAddRegistryType3
 		return nil
 	}
 
 	addRegistryType2 := new(shared.AddRegistryType2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&addRegistryType2); err == nil {
+	if err := utils.UnmarshalJSON(data, &addRegistryType2, "", true, true); err == nil {
 		u.AddRegistryType2 = addRegistryType2
 		u.Type = AddRegistryRequestBodyTypeAddRegistryType2
 		return nil
 	}
 
 	addRegistryType1 := new(shared.AddRegistryType1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&addRegistryType1); err == nil {
+	if err := utils.UnmarshalJSON(data, &addRegistryType1, "", true, true); err == nil {
 		u.AddRegistryType1 = addRegistryType1
 		u.Type = AddRegistryRequestBodyTypeAddRegistryType1
 		return nil
@@ -87,20 +79,19 @@ func (u *AddRegistryRequestBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u AddRegistryRequestBody) MarshalJSON() ([]byte, error) {
-	if u.AddRegistryType3 != nil {
-		return json.Marshal(u.AddRegistryType3)
+	if u.AddRegistryType1 != nil {
+		return utils.MarshalJSON(u.AddRegistryType1, "", true)
 	}
 
 	if u.AddRegistryType2 != nil {
-		return json.Marshal(u.AddRegistryType2)
+		return utils.MarshalJSON(u.AddRegistryType2, "", true)
 	}
 
-	if u.AddRegistryType1 != nil {
-		return json.Marshal(u.AddRegistryType1)
+	if u.AddRegistryType3 != nil {
+		return utils.MarshalJSON(u.AddRegistryType3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 type AddRegistryResponse struct {

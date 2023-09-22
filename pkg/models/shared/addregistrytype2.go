@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // AddRegistryType2Keyfile - Contents of `keyfile.json`, used to authenticate with Google Container Registry.
@@ -59,7 +60,18 @@ type AddRegistryType2Restrictions struct {
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
-	Restricted *bool `json:"restricted,omitempty"`
+	Restricted *bool `default:"false" json:"restricted"`
+}
+
+func (a AddRegistryType2Restrictions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddRegistryType2Restrictions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AddRegistryType2Restrictions) GetProjects() []string {

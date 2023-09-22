@@ -4,13 +4,25 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"net/http"
 )
 
 type ListDomainsRequest struct {
 	Cursor  *string `queryParam:"style=form,explode=true,name=cursor"`
 	Page    *int64  `queryParam:"style=form,explode=true,name=page"`
-	PerPage *int64  `queryParam:"style=form,explode=true,name=per_page"`
+	PerPage *int64  `default:"50" queryParam:"style=form,explode=true,name=per_page"`
+}
+
+func (l ListDomainsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListDomainsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListDomainsRequest) GetCursor() *string {

@@ -17,14 +17,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -74,14 +74,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -91,11 +91,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Billing.GetDetails(ctx, operations.GetInvoiceDetailsRequest{
-        AddonID: northflank.String("default-addon"),
-        JobID: northflank.String("example-JobId"),
-        ProjectID: northflank.String("default-project"),
-        ServiceID: northflank.String("example-service"),
-        Timestamp: northflank.Int64(1657206215),
+        AddonID: northflankgo.String("default-addon"),
+        JobID: northflankgo.String("example-JobId"),
+        ProjectID: northflankgo.String("default-project"),
+        ServiceID: northflankgo.String("example-service"),
+        Timestamp: northflankgo.Int64(1657206215),
     })
     if err != nil {
         log.Fatal(err)

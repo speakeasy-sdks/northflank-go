@@ -2,6 +2,10 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
+
 // BranchesResultData - Result data.
 type BranchesResultData struct {
 	// The cursor returned from the previous page of results, used to request the next page.
@@ -9,9 +13,20 @@ type BranchesResultData struct {
 	// The page number to access.
 	Page *int64 `json:"page,omitempty"`
 	// The number of results to display per request. Maximum of 100 results per page.
-	PerPage *int64 `json:"per_page,omitempty"`
+	PerPage *int64 `default:"50" json:"per_page"`
 	// If provided, uses the given VCS link to access the repository's data.
 	VcsLinkID *string `json:"vcs_link_id,omitempty"`
+}
+
+func (b BranchesResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BranchesResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BranchesResultData) GetCursor() *string {

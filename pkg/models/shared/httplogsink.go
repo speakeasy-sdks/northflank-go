@@ -3,50 +3,33 @@
 package shared
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
-
-// HTTPLogSinkSinkDataAuth3Strategy - Bearer token authentication strategy.
-type HTTPLogSinkSinkDataAuth3Strategy string
-
-const (
-	HTTPLogSinkSinkDataAuth3StrategyBearer HTTPLogSinkSinkDataAuth3Strategy = "bearer"
-)
-
-func (e HTTPLogSinkSinkDataAuth3Strategy) ToPointer() *HTTPLogSinkSinkDataAuth3Strategy {
-	return &e
-}
-
-func (e *HTTPLogSinkSinkDataAuth3Strategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bearer":
-		*e = HTTPLogSinkSinkDataAuth3Strategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HTTPLogSinkSinkDataAuth3Strategy: %v", v)
-	}
-}
 
 // HTTPLogSinkSinkDataAuth3 - Authenticate with a bearer token strategy.
 type HTTPLogSinkSinkDataAuth3 struct {
 	// Bearer token authentication strategy.
-	Strategy HTTPLogSinkSinkDataAuth3Strategy `json:"strategy"`
+	strategy string `const:"bearer" json:"strategy"`
 	// Token for bearer token authentication.
 	Token *string `json:"token,omitempty"`
 }
 
-func (o *HTTPLogSinkSinkDataAuth3) GetStrategy() HTTPLogSinkSinkDataAuth3Strategy {
-	if o == nil {
-		return HTTPLogSinkSinkDataAuth3Strategy("")
+func (h HTTPLogSinkSinkDataAuth3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HTTPLogSinkSinkDataAuth3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
 	}
-	return o.Strategy
+	return nil
+}
+
+func (o *HTTPLogSinkSinkDataAuth3) GetStrategy() string {
+	return "bearer"
 }
 
 func (o *HTTPLogSinkSinkDataAuth3) GetToken() *string {
@@ -56,39 +39,25 @@ func (o *HTTPLogSinkSinkDataAuth3) GetToken() *string {
 	return o.Token
 }
 
-// HTTPLogSinkSinkDataAuth2Strategy - Basic HTTP authentication strategy.
-type HTTPLogSinkSinkDataAuth2Strategy string
-
-const (
-	HTTPLogSinkSinkDataAuth2StrategyBasic HTTPLogSinkSinkDataAuth2Strategy = "basic"
-)
-
-func (e HTTPLogSinkSinkDataAuth2Strategy) ToPointer() *HTTPLogSinkSinkDataAuth2Strategy {
-	return &e
-}
-
-func (e *HTTPLogSinkSinkDataAuth2Strategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "basic":
-		*e = HTTPLogSinkSinkDataAuth2Strategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HTTPLogSinkSinkDataAuth2Strategy: %v", v)
-	}
-}
-
 // HTTPLogSinkSinkDataAuth2 - Authenticate with a basic http strategy.
 type HTTPLogSinkSinkDataAuth2 struct {
 	// Password for basic http authentication.
 	Password string `json:"password"`
 	// Basic HTTP authentication strategy.
-	Strategy HTTPLogSinkSinkDataAuth2Strategy `json:"strategy"`
+	strategy string `const:"basic" json:"strategy"`
 	// Username for basic http authentication.
 	User *string `json:"user,omitempty"`
+}
+
+func (h HTTPLogSinkSinkDataAuth2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HTTPLogSinkSinkDataAuth2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *HTTPLogSinkSinkDataAuth2) GetPassword() string {
@@ -98,11 +67,8 @@ func (o *HTTPLogSinkSinkDataAuth2) GetPassword() string {
 	return o.Password
 }
 
-func (o *HTTPLogSinkSinkDataAuth2) GetStrategy() HTTPLogSinkSinkDataAuth2Strategy {
-	if o == nil {
-		return HTTPLogSinkSinkDataAuth2Strategy("")
-	}
-	return o.Strategy
+func (o *HTTPLogSinkSinkDataAuth2) GetStrategy() string {
+	return "basic"
 }
 
 func (o *HTTPLogSinkSinkDataAuth2) GetUser() *string {
@@ -112,42 +78,25 @@ func (o *HTTPLogSinkSinkDataAuth2) GetUser() *string {
 	return o.User
 }
 
-// HTTPLogSinkSinkDataAuth1Strategy - No authentication strategy
-type HTTPLogSinkSinkDataAuth1Strategy string
-
-const (
-	HTTPLogSinkSinkDataAuth1StrategyNone HTTPLogSinkSinkDataAuth1Strategy = "none"
-)
-
-func (e HTTPLogSinkSinkDataAuth1Strategy) ToPointer() *HTTPLogSinkSinkDataAuth1Strategy {
-	return &e
-}
-
-func (e *HTTPLogSinkSinkDataAuth1Strategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "none":
-		*e = HTTPLogSinkSinkDataAuth1Strategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HTTPLogSinkSinkDataAuth1Strategy: %v", v)
-	}
-}
-
 // HTTPLogSinkSinkDataAuth1 - No authentication strategy
 type HTTPLogSinkSinkDataAuth1 struct {
 	// No authentication strategy
-	Strategy HTTPLogSinkSinkDataAuth1Strategy `json:"strategy"`
+	strategy string `const:"none" json:"strategy"`
 }
 
-func (o *HTTPLogSinkSinkDataAuth1) GetStrategy() HTTPLogSinkSinkDataAuth1Strategy {
-	if o == nil {
-		return HTTPLogSinkSinkDataAuth1Strategy("")
+func (h HTTPLogSinkSinkDataAuth1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HTTPLogSinkSinkDataAuth1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
 	}
-	return o.Strategy
+	return nil
+}
+
+func (o *HTTPLogSinkSinkDataAuth1) GetStrategy() string {
+	return "none"
 }
 
 type HTTPLogSinkSinkDataAuthType string
@@ -194,30 +143,23 @@ func CreateHTTPLogSinkSinkDataAuthHTTPLogSinkSinkDataAuth3(httpLogSinkSinkDataAu
 }
 
 func (u *HTTPLogSinkSinkDataAuth) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	httpLogSinkSinkDataAuth1 := new(HTTPLogSinkSinkDataAuth1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&httpLogSinkSinkDataAuth1); err == nil {
+	if err := utils.UnmarshalJSON(data, &httpLogSinkSinkDataAuth1, "", true, true); err == nil {
 		u.HTTPLogSinkSinkDataAuth1 = httpLogSinkSinkDataAuth1
 		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth1
 		return nil
 	}
 
 	httpLogSinkSinkDataAuth3 := new(HTTPLogSinkSinkDataAuth3)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&httpLogSinkSinkDataAuth3); err == nil {
+	if err := utils.UnmarshalJSON(data, &httpLogSinkSinkDataAuth3, "", true, true); err == nil {
 		u.HTTPLogSinkSinkDataAuth3 = httpLogSinkSinkDataAuth3
 		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth3
 		return nil
 	}
 
 	httpLogSinkSinkDataAuth2 := new(HTTPLogSinkSinkDataAuth2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&httpLogSinkSinkDataAuth2); err == nil {
+	if err := utils.UnmarshalJSON(data, &httpLogSinkSinkDataAuth2, "", true, true); err == nil {
 		u.HTTPLogSinkSinkDataAuth2 = httpLogSinkSinkDataAuth2
 		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth2
 		return nil
@@ -228,19 +170,18 @@ func (u *HTTPLogSinkSinkDataAuth) UnmarshalJSON(data []byte) error {
 
 func (u HTTPLogSinkSinkDataAuth) MarshalJSON() ([]byte, error) {
 	if u.HTTPLogSinkSinkDataAuth1 != nil {
-		return json.Marshal(u.HTTPLogSinkSinkDataAuth1)
-	}
-
-	if u.HTTPLogSinkSinkDataAuth3 != nil {
-		return json.Marshal(u.HTTPLogSinkSinkDataAuth3)
+		return utils.MarshalJSON(u.HTTPLogSinkSinkDataAuth1, "", true)
 	}
 
 	if u.HTTPLogSinkSinkDataAuth2 != nil {
-		return json.Marshal(u.HTTPLogSinkSinkDataAuth2)
+		return utils.MarshalJSON(u.HTTPLogSinkSinkDataAuth2, "", true)
+	}
+
+	if u.HTTPLogSinkSinkDataAuth3 != nil {
+		return utils.MarshalJSON(u.HTTPLogSinkSinkDataAuth3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 // HTTPLogSinkSinkDataEncodingCodec - Codec to encode logs in
@@ -314,49 +255,35 @@ func (o *HTTPLogSinkSinkData) GetURI() string {
 	return o.URI
 }
 
-// HTTPLogSinkSinkType - The type of the log sink.
-type HTTPLogSinkSinkType string
-
-const (
-	HTTPLogSinkSinkTypeHTTP HTTPLogSinkSinkType = "http"
-)
-
-func (e HTTPLogSinkSinkType) ToPointer() *HTTPLogSinkSinkType {
-	return &e
-}
-
-func (e *HTTPLogSinkSinkType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "http":
-		*e = HTTPLogSinkSinkType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HTTPLogSinkSinkType: %v", v)
-	}
-}
-
 // HTTPLogSink - Create a log sink using HTTP
 type HTTPLogSink struct {
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
-	ForwardAccessLogs *bool `json:"forwardAccessLogs,omitempty"`
+	ForwardAccessLogs *bool `default:"false" json:"forwardAccessLogs"`
 	// Name of the log sink.
 	Name string `json:"name"`
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
-	Restricted *bool `json:"restricted,omitempty"`
+	Restricted *bool `default:"false" json:"restricted"`
 	// Details about the HTTP log sink.
 	SinkData HTTPLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	SinkType HTTPLogSinkSinkType `json:"sinkType"`
+	sinkType string `const:"http" json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (h HTTPLogSink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HTTPLogSink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *HTTPLogSink) GetDescription() *string {
@@ -401,11 +328,8 @@ func (o *HTTPLogSink) GetSinkData() HTTPLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *HTTPLogSink) GetSinkType() HTTPLogSinkSinkType {
-	if o == nil {
-		return HTTPLogSinkSinkType("")
-	}
-	return o.SinkType
+func (o *HTTPLogSink) GetSinkType() string {
+	return "http"
 }
 
 func (o *HTTPLogSink) GetUseCustomLabels() *bool {

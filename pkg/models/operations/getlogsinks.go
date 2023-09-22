@@ -4,12 +4,24 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"net/http"
 )
 
 type GetLogSinksRequest struct {
 	Cursor  *string `queryParam:"style=form,explode=true,name=cursor"`
-	PerPage *int64  `queryParam:"style=form,explode=true,name=per_page"`
+	PerPage *int64  `default:"50" queryParam:"style=form,explode=true,name=per_page"`
+}
+
+func (g GetLogSinksRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetLogSinksRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetLogSinksRequest) GetCursor() *string {

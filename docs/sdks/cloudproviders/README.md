@@ -26,13 +26,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -43,12 +43,12 @@ func main() {
     ctx := context.Background()
     res, err := s.CloudProviders.Create(ctx, shared.CreateIntegrationRequest{
         Credentials: shared.CreateIntegrationRequestCredentials{
-            AccessKey: northflank.String("corrupti"),
-            APIKey: northflank.String("provident"),
-            KeyfileJSON: northflank.String("distinctio"),
-            SecretKey: northflank.String("quibusdam"),
+            AccessKey: northflankgo.String("corrupti"),
+            APIKey: northflankgo.String("provident"),
+            KeyfileJSON: northflankgo.String("distinctio"),
+            SecretKey: northflankgo.String("quibusdam"),
         },
-        Description: northflank.String("This is a new cloud provider integration."),
+        Description: northflankgo.String("This is a new cloud provider integration."),
         Gcp: &shared.CreateIntegrationRequestGcp{
             ProjectID: "unde",
         },
@@ -90,13 +90,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -106,45 +106,45 @@ func main() {
 
     ctx := context.Background()
     res, err := s.CloudProviders.CreateCluster(ctx, shared.CreateClusterRequest{
-        Description: northflank.String("This is a new cluster."),
+        Description: northflankgo.String("This is a new cluster."),
         Gcp: &shared.CreateClusterRequestGcp{
             ProjectID: "example-project-id",
         },
         Integration: &shared.CreateClusterRequestIntegration{
-            AccessKey: northflank.String("nulla"),
-            APIKey: northflank.String("corrupti"),
-            KeyfileJSON: northflank.String("illum"),
-            SecretKey: northflank.String("vel"),
+            AccessKey: northflankgo.String("nulla"),
+            APIKey: northflankgo.String("corrupti"),
+            KeyfileJSON: northflankgo.String("illum"),
+            SecretKey: northflankgo.String("vel"),
         },
-        IntegrationID: northflank.String("gcp-integration"),
+        IntegrationID: northflankgo.String("gcp-integration"),
         KubernetesVersion: "1.23.8",
         Name: "GCP Cluster 1",
         NodePools: []shared.CreateClusterRequestNodePools{
             shared.CreateClusterRequestNodePools{
                 Autoscaling: &shared.CreateClusterRequestNodePoolsAutoscaling{
-                    Enabled: northflank.Bool(true),
-                    Max: northflank.Int64(10),
-                    Min: northflank.Int64(1),
+                    Enabled: northflankgo.Bool(true),
+                    Max: northflankgo.Int64(10),
+                    Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
                     "error",
                 },
                 DiskSize: 100,
-                DiskType: northflank.String("deserunt"),
+                DiskType: northflankgo.String("deserunt"),
                 Labels: &shared.CreateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
-                Preemptible: northflank.Bool(false),
-                SystemPool: northflank.Bool(false),
+                Preemptible: northflankgo.Bool(false),
+                SystemPool: northflankgo.Bool(false),
             },
         },
         Provider: shared.CreateClusterRequestProviderGcp,
         Region: "europe-west2",
         Settings: shared.CreateClusterRequestSettings{
             Builds: &shared.CreateClusterRequestSettingsBuilds{
-                ClusterID: northflank.String("build-cluster"),
+                ClusterID: northflankgo.String("build-cluster"),
                 Mode: shared.CreateClusterRequestSettingsBuildsModeInternal.ToPointer(),
-                Plan: northflank.String("nf-compute-200"),
+                Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.CreateClusterRequestSettingsLogging{
                 Loki: &shared.CreateClusterRequestSettingsLoggingLoki{
@@ -157,7 +157,7 @@ func main() {
             },
             Registry: &shared.CreateClusterRequestSettingsRegistry{
                 Mode: shared.CreateClusterRequestSettingsRegistryModePaas.ToPointer(),
-                RegistryID: northflank.String("my-registry-credentials"),
+                RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
     })
@@ -196,14 +196,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -249,14 +249,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -302,13 +302,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -352,14 +352,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -405,14 +405,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -458,14 +458,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -515,14 +515,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -572,14 +572,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -587,32 +587,32 @@ func main() {
         }),
     )
     updateClusterRequest := shared.UpdateClusterRequest{
-        Description: northflank.String("This is an updated description."),
+        Description: northflankgo.String("This is an updated description."),
         NodePools: []shared.UpdateClusterRequestNodePools{
             shared.UpdateClusterRequestNodePools{
                 Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                    Enabled: northflank.Bool(true),
-                    Max: northflank.Int64(10),
-                    Min: northflank.Int64(1),
+                    Enabled: northflankgo.Bool(true),
+                    Max: northflankgo.Int64(10),
+                    Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
                     "molestiae",
                 },
                 DiskSize: 100,
-                DiskType: northflank.String("minus"),
-                ID: northflank.String("6aa96121-0345-43ad-bade-af36d540c222"),
+                DiskType: northflankgo.String("minus"),
+                ID: northflankgo.String("6aa96121-0345-43ad-bade-af36d540c222"),
                 Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
-                Preemptible: northflank.Bool(false),
-                SystemPool: northflank.Bool(false),
+                Preemptible: northflankgo.Bool(false),
+                SystemPool: northflankgo.Bool(false),
             },
         },
         Settings: &shared.UpdateClusterRequestSettings{
             Builds: &shared.UpdateClusterRequestSettingsBuilds{
-                ClusterID: northflank.String("build-cluster"),
+                ClusterID: northflankgo.String("build-cluster"),
                 Mode: shared.UpdateClusterRequestSettingsBuildsModeBuildCluster.ToPointer(),
-                Plan: northflank.String("nf-compute-200"),
+                Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.UpdateClusterRequestSettingsLogging{
                 Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{
@@ -625,7 +625,7 @@ func main() {
             },
             Registry: &shared.UpdateClusterRequestSettingsRegistry{
                 Mode: shared.UpdateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),
-                RegistryID: northflank.String("my-registry-credentials"),
+                RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
     }
@@ -669,14 +669,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -685,12 +685,12 @@ func main() {
     )
     updateIntegrationRequest := shared.UpdateIntegrationRequest{
         Credentials: shared.UpdateIntegrationRequestCredentials{
-            AccessKey: northflank.String("ab"),
-            APIKey: northflank.String("quis"),
-            KeyfileJSON: northflank.String("veritatis"),
-            SecretKey: northflank.String("deserunt"),
+            AccessKey: northflankgo.String("ab"),
+            APIKey: northflankgo.String("quis"),
+            KeyfileJSON: northflankgo.String("veritatis"),
+            SecretKey: northflankgo.String("deserunt"),
         },
-        Description: northflank.String("This is a new description."),
+        Description: northflankgo.String("This is a new description."),
     }
     integrationID := "gcp-integration-1"
 

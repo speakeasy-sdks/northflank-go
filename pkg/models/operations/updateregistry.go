@@ -3,10 +3,9 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"net/http"
 )
 
@@ -65,39 +64,30 @@ func CreateUpdateRegistryRequestBodyUpdateRegistryType4(updateRegistryType4 shar
 }
 
 func (u *UpdateRegistryRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	updateRegistryType1 := new(shared.UpdateRegistryType1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&updateRegistryType1); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateRegistryType1, "", true, true); err == nil {
 		u.UpdateRegistryType1 = updateRegistryType1
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType1
 		return nil
 	}
 
 	updateRegistryType4 := new(shared.UpdateRegistryType4)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&updateRegistryType4); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateRegistryType4, "", true, true); err == nil {
 		u.UpdateRegistryType4 = updateRegistryType4
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType4
 		return nil
 	}
 
 	updateRegistryType3 := new(shared.UpdateRegistryType3)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&updateRegistryType3); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateRegistryType3, "", true, true); err == nil {
 		u.UpdateRegistryType3 = updateRegistryType3
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType3
 		return nil
 	}
 
 	updateRegistryType2 := new(shared.UpdateRegistryType2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&updateRegistryType2); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateRegistryType2, "", true, true); err == nil {
 		u.UpdateRegistryType2 = updateRegistryType2
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType2
 		return nil
@@ -108,23 +98,22 @@ func (u *UpdateRegistryRequestBody) UnmarshalJSON(data []byte) error {
 
 func (u UpdateRegistryRequestBody) MarshalJSON() ([]byte, error) {
 	if u.UpdateRegistryType1 != nil {
-		return json.Marshal(u.UpdateRegistryType1)
-	}
-
-	if u.UpdateRegistryType4 != nil {
-		return json.Marshal(u.UpdateRegistryType4)
-	}
-
-	if u.UpdateRegistryType3 != nil {
-		return json.Marshal(u.UpdateRegistryType3)
+		return utils.MarshalJSON(u.UpdateRegistryType1, "", true)
 	}
 
 	if u.UpdateRegistryType2 != nil {
-		return json.Marshal(u.UpdateRegistryType2)
+		return utils.MarshalJSON(u.UpdateRegistryType2, "", true)
+	}
+
+	if u.UpdateRegistryType3 != nil {
+		return utils.MarshalJSON(u.UpdateRegistryType3, "", true)
+	}
+
+	if u.UpdateRegistryType4 != nil {
+		return utils.MarshalJSON(u.UpdateRegistryType4, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 type UpdateRegistryRequest struct {

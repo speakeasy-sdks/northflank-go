@@ -4,15 +4,27 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"net/http"
 )
 
 type GetBranchesRequest struct {
 	Cursor          *string `queryParam:"style=form,explode=true,name=cursor"`
-	PerPage         *int64  `queryParam:"style=form,explode=true,name=per_page"`
+	PerPage         *int64  `default:"50" queryParam:"style=form,explode=true,name=per_page"`
 	RepositoryName  string  `pathParam:"style=simple,explode=false,name=repositoryName"`
 	RepositoryOwner string  `pathParam:"style=simple,explode=false,name=repositoryOwner"`
 	VcsService      string  `pathParam:"style=simple,explode=false,name=vcsService"`
+}
+
+func (g GetBranchesRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetBranchesRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetBranchesRequest) GetCursor() *string {

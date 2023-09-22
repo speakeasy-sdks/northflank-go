@@ -31,14 +31,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -83,14 +83,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -135,14 +135,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -188,14 +188,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -241,14 +241,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -296,14 +296,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -349,14 +349,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -366,8 +366,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integrations.GetBranches(ctx, operations.GetBranchesRequest{
-        Cursor: northflank.String("ipsam"),
-        PerPage: northflank.Int64(50),
+        Cursor: northflankgo.String("ipsam"),
+        PerPage: northflankgo.Int64(50),
         RepositoryName: "next-js-example",
         RepositoryOwner: "northflank-examples",
         VcsService: "github",
@@ -407,14 +407,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -460,14 +460,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -477,11 +477,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integrations.GetRepos(ctx, operations.GetRepositoriesRequest{
-        AccountLogin: northflank.String("example-user"),
-        Cursor: northflank.String("repellendus"),
-        PerPage: northflank.Int64(50),
-        SelfHostedVcsID: northflank.String("sapiente"),
-        VcsLinkID: northflank.String("quo"),
+        AccountLogin: northflankgo.String("example-user"),
+        Cursor: northflankgo.String("repellendus"),
+        PerPage: northflankgo.Int64(50),
+        SelfHostedVcsID: northflankgo.String("sapiente"),
+        VcsLinkID: northflankgo.String("quo"),
         VcsService: operations.GetRepositoriesVcsServiceGithub.ToPointer(),
     })
     if err != nil {
@@ -519,14 +519,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -574,14 +574,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -629,13 +629,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -679,14 +679,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -732,14 +732,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -785,14 +785,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -803,10 +803,10 @@ func main() {
         Projects: []string{
             "default-project",
         },
-        Restricted: northflank.Bool(true),
-        ResumeLogSink: northflank.Bool(false),
+        Restricted: northflankgo.Bool(true),
+        ResumeLogSink: northflankgo.Bool(false),
         SinkData: &shared.LogSinkRequestSinkData{},
-        UseCustomLabels: northflank.Bool(true),
+        UseCustomLabels: northflankgo.Bool(true),
     }
     logSinkID := "example-log-sink"
 
@@ -848,14 +848,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/northflank-go"
+	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
-    s := northflank.New(
-        northflank.WithSecurity(shared.Security{
+    s := northflankgo.New(
+        northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",

@@ -5,41 +5,29 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/types"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
-
-// LokiLogSinkSinkDataAuthStrategy - The authentication strategy.
-type LokiLogSinkSinkDataAuthStrategy string
-
-const (
-	LokiLogSinkSinkDataAuthStrategyBasic LokiLogSinkSinkDataAuthStrategy = "basic"
-)
-
-func (e LokiLogSinkSinkDataAuthStrategy) ToPointer() *LokiLogSinkSinkDataAuthStrategy {
-	return &e
-}
-
-func (e *LokiLogSinkSinkDataAuthStrategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "basic":
-		*e = LokiLogSinkSinkDataAuthStrategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LokiLogSinkSinkDataAuthStrategy: %v", v)
-	}
-}
 
 // LokiLogSinkSinkDataAuth - Object containing authentication data for the log sink.
 type LokiLogSinkSinkDataAuth struct {
 	// The password for the log sink.
 	Password *string `json:"password,omitempty"`
 	// The authentication strategy.
-	Strategy *LokiLogSinkSinkDataAuthStrategy `json:"strategy,omitempty"`
+	strategy *string `const:"basic" json:"strategy,omitempty"`
 	// The username for the log sink.
 	User *string `json:"user,omitempty"`
+}
+
+func (l LokiLogSinkSinkDataAuth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LokiLogSinkSinkDataAuth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LokiLogSinkSinkDataAuth) GetPassword() *string {
@@ -49,11 +37,8 @@ func (o *LokiLogSinkSinkDataAuth) GetPassword() *string {
 	return o.Password
 }
 
-func (o *LokiLogSinkSinkDataAuth) GetStrategy() *LokiLogSinkSinkDataAuthStrategy {
-	if o == nil {
-		return nil
-	}
-	return o.Strategy
+func (o *LokiLogSinkSinkDataAuth) GetStrategy() *string {
+	return types.String("basic")
 }
 
 func (o *LokiLogSinkSinkDataAuth) GetUser() *string {
@@ -135,49 +120,35 @@ func (o *LokiLogSinkSinkData) GetEndpoint() string {
 	return o.Endpoint
 }
 
-// LokiLogSinkSinkType - The type of the log sink.
-type LokiLogSinkSinkType string
-
-const (
-	LokiLogSinkSinkTypeLoki LokiLogSinkSinkType = "loki"
-)
-
-func (e LokiLogSinkSinkType) ToPointer() *LokiLogSinkSinkType {
-	return &e
-}
-
-func (e *LokiLogSinkSinkType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "loki":
-		*e = LokiLogSinkSinkType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LokiLogSinkSinkType: %v", v)
-	}
-}
-
 // LokiLogSink - Create a log sink using Loki
 type LokiLogSink struct {
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
-	ForwardAccessLogs *bool `json:"forwardAccessLogs,omitempty"`
+	ForwardAccessLogs *bool `default:"false" json:"forwardAccessLogs"`
 	// Name of the log sink.
 	Name string `json:"name"`
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
-	Restricted *bool `json:"restricted,omitempty"`
+	Restricted *bool `default:"false" json:"restricted"`
 	// Details about the Loki log sink.
 	SinkData LokiLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	SinkType LokiLogSinkSinkType `json:"sinkType"`
+	sinkType string `const:"loki" json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (l LokiLogSink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LokiLogSink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LokiLogSink) GetDescription() *string {
@@ -222,11 +193,8 @@ func (o *LokiLogSink) GetSinkData() LokiLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *LokiLogSink) GetSinkType() LokiLogSinkSinkType {
-	if o == nil {
-		return LokiLogSinkSinkType("")
-	}
-	return o.SinkType
+func (o *LokiLogSink) GetSinkType() string {
+	return "loki"
 }
 
 func (o *LokiLogSink) GetUseCustomLabels() *bool {

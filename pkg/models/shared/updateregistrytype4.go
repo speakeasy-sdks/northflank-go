@@ -28,50 +28,33 @@ func (o *UpdateRegistryType4Restrictions) GetRestricted() bool {
 	return o.Restricted
 }
 
-type UpdateRegistryType2 struct {
+// UpdateRegistryType4 - Validate with a docker config file.
+type UpdateRegistryType4 struct {
+	// The `auths` data extracted from your Docker config file.
+	Auths UpdateRegistryType4Auths `json:"auths"`
 	// Description of the credentials.
 	Description *string `json:"description,omitempty"`
-	// Password, Personal Access Token, or API key for the container registry.
-	Password string `json:"password"`
-	// Custom url for the container registry. Only usable (and required) when `provider` is `custom`.
-	RegistryURL *string `json:"registryUrl,omitempty"`
 	// Data about whether the credentials are restricted to certain projects.
-	Restrictions *UpdateRegistryType2Restrictions `json:"restrictions,omitempty"`
-	// Username for the container registry.
-	Username string `json:"username"`
+	Restrictions *UpdateRegistryType4Restrictions `json:"restrictions,omitempty"`
 }
 
-func (o *UpdateRegistryType2) GetDescription() *string {
+func (o *UpdateRegistryType4) GetAuths() UpdateRegistryType4Auths {
+	if o == nil {
+		return UpdateRegistryType4Auths{}
+	}
+	return o.Auths
+}
+
+func (o *UpdateRegistryType4) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *UpdateRegistryType2) GetPassword() string {
-	if o == nil {
-		return ""
-	}
-	return o.Password
-}
-
-func (o *UpdateRegistryType2) GetRegistryURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RegistryURL
-}
-
-func (o *UpdateRegistryType2) GetRestrictions() *UpdateRegistryType2Restrictions {
+func (o *UpdateRegistryType4) GetRestrictions() *UpdateRegistryType4Restrictions {
 	if o == nil {
 		return nil
 	}
 	return o.Restrictions
-}
-
-func (o *UpdateRegistryType2) GetUsername() string {
-	if o == nil {
-		return ""
-	}
-	return o.Username
 }

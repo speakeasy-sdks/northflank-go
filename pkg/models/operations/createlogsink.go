@@ -3,10 +3,9 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"net/http"
 )
 
@@ -120,84 +119,65 @@ func CreateCreateLogSinkRequestBodyLogioLogSink(logioLogSink shared.LogioLogSink
 }
 
 func (u *CreateLogSinkRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	lokiLogSink := new(shared.LokiLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&lokiLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &lokiLogSink, "", true, true); err == nil {
 		u.LokiLogSink = lokiLogSink
 		u.Type = CreateLogSinkRequestBodyTypeLokiLogSink
 		return nil
 	}
 
 	datadogLogSink := new(shared.DatadogLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&datadogLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &datadogLogSink, "", true, true); err == nil {
 		u.DatadogLogSink = datadogLogSink
 		u.Type = CreateLogSinkRequestBodyTypeDatadogLogSink
 		return nil
 	}
 
 	papertrailLogSink := new(shared.PapertrailLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&papertrailLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &papertrailLogSink, "", true, true); err == nil {
 		u.PapertrailLogSink = papertrailLogSink
 		u.Type = CreateLogSinkRequestBodyTypePapertrailLogSink
 		return nil
 	}
 
 	awsLogSink := new(shared.AWSLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&awsLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &awsLogSink, "", true, true); err == nil {
 		u.AWSLogSink = awsLogSink
 		u.Type = CreateLogSinkRequestBodyTypeAWSLogSink
 		return nil
 	}
 
 	httpLogSink := new(shared.HTTPLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&httpLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &httpLogSink, "", true, true); err == nil {
 		u.HTTPLogSink = httpLogSink
 		u.Type = CreateLogSinkRequestBodyTypeHTTPLogSink
 		return nil
 	}
 
 	dnaLogSink := new(shared.DNALogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dnaLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &dnaLogSink, "", true, true); err == nil {
 		u.DNALogSink = dnaLogSink
 		u.Type = CreateLogSinkRequestBodyTypeDNALogSink
 		return nil
 	}
 
 	logtailLogSink := new(shared.LogtailLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logtailLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &logtailLogSink, "", true, true); err == nil {
 		u.LogtailLogSink = logtailLogSink
 		u.Type = CreateLogSinkRequestBodyTypeLogtailLogSink
 		return nil
 	}
 
 	honeycombLogSink := new(shared.HoneycombLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&honeycombLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &honeycombLogSink, "", true, true); err == nil {
 		u.HoneycombLogSink = honeycombLogSink
 		u.Type = CreateLogSinkRequestBodyTypeHoneycombLogSink
 		return nil
 	}
 
 	logioLogSink := new(shared.LogioLogSink)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&logioLogSink); err == nil {
+	if err := utils.UnmarshalJSON(data, &logioLogSink, "", true, true); err == nil {
 		u.LogioLogSink = logioLogSink
 		u.Type = CreateLogSinkRequestBodyTypeLogioLogSink
 		return nil
@@ -208,43 +188,42 @@ func (u *CreateLogSinkRequestBody) UnmarshalJSON(data []byte) error {
 
 func (u CreateLogSinkRequestBody) MarshalJSON() ([]byte, error) {
 	if u.LokiLogSink != nil {
-		return json.Marshal(u.LokiLogSink)
+		return utils.MarshalJSON(u.LokiLogSink, "", true)
 	}
 
 	if u.DatadogLogSink != nil {
-		return json.Marshal(u.DatadogLogSink)
+		return utils.MarshalJSON(u.DatadogLogSink, "", true)
 	}
 
 	if u.PapertrailLogSink != nil {
-		return json.Marshal(u.PapertrailLogSink)
+		return utils.MarshalJSON(u.PapertrailLogSink, "", true)
 	}
 
 	if u.AWSLogSink != nil {
-		return json.Marshal(u.AWSLogSink)
+		return utils.MarshalJSON(u.AWSLogSink, "", true)
 	}
 
 	if u.HTTPLogSink != nil {
-		return json.Marshal(u.HTTPLogSink)
+		return utils.MarshalJSON(u.HTTPLogSink, "", true)
 	}
 
 	if u.DNALogSink != nil {
-		return json.Marshal(u.DNALogSink)
+		return utils.MarshalJSON(u.DNALogSink, "", true)
 	}
 
 	if u.LogtailLogSink != nil {
-		return json.Marshal(u.LogtailLogSink)
+		return utils.MarshalJSON(u.LogtailLogSink, "", true)
 	}
 
 	if u.HoneycombLogSink != nil {
-		return json.Marshal(u.HoneycombLogSink)
+		return utils.MarshalJSON(u.HoneycombLogSink, "", true)
 	}
 
 	if u.LogioLogSink != nil {
-		return json.Marshal(u.LogioLogSink)
+		return utils.MarshalJSON(u.LogioLogSink, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 type CreateLogSinkResponse struct {

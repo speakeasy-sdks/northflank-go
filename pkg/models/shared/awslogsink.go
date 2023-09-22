@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // AWSLogSinkSinkDataAuth - Authentication object.
@@ -158,49 +159,35 @@ func (o *AWSLogSinkSinkData) GetRegion() AWSLogSinkSinkDataRegion {
 	return o.Region
 }
 
-// AWSLogSinkSinkType - The type of the log sink.
-type AWSLogSinkSinkType string
-
-const (
-	AWSLogSinkSinkTypeAwsS3 AWSLogSinkSinkType = "aws_s3"
-)
-
-func (e AWSLogSinkSinkType) ToPointer() *AWSLogSinkSinkType {
-	return &e
-}
-
-func (e *AWSLogSinkSinkType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "aws_s3":
-		*e = AWSLogSinkSinkType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AWSLogSinkSinkType: %v", v)
-	}
-}
-
 // AWSLogSink - Create a log sink using AWS S3
 type AWSLogSink struct {
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
-	ForwardAccessLogs *bool `json:"forwardAccessLogs,omitempty"`
+	ForwardAccessLogs *bool `default:"false" json:"forwardAccessLogs"`
 	// Name of the log sink.
 	Name string `json:"name"`
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
-	Restricted *bool `json:"restricted,omitempty"`
+	Restricted *bool `default:"false" json:"restricted"`
 	// Details about the AWS S3 log sink.
 	SinkData AWSLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	SinkType AWSLogSinkSinkType `json:"sinkType"`
+	sinkType string `const:"aws_s3" json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (a AWSLogSink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AWSLogSink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AWSLogSink) GetDescription() *string {
@@ -245,11 +232,8 @@ func (o *AWSLogSink) GetSinkData() AWSLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *AWSLogSink) GetSinkType() AWSLogSinkSinkType {
-	if o == nil {
-		return AWSLogSinkSinkType("")
-	}
-	return o.SinkType
+func (o *AWSLogSink) GetSinkType() string {
+	return "aws_s3"
 }
 
 func (o *AWSLogSink) GetUseCustomLabels() *bool {

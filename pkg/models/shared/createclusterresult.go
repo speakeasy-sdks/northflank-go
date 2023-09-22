@@ -3,14 +3,26 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"time"
 )
 
 // CreateClusterResultDataNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 type CreateClusterResultDataNodePoolsAutoscaling struct {
-	Enabled *bool  `json:"enabled,omitempty"`
+	Enabled *bool  `default:"false" json:"enabled"`
 	Max     *int64 `json:"max,omitempty"`
 	Min     *int64 `json:"min,omitempty"`
+}
+
+func (c CreateClusterResultDataNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateClusterResultDataNodePoolsAutoscaling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateClusterResultDataNodePoolsAutoscaling) GetEnabled() *bool {
@@ -56,9 +68,20 @@ type CreateClusterResultDataNodePools struct {
 	// Machine type to be used by the node pool.
 	NodeType string `json:"nodeType"`
 	// Configures node pool with preemptible / spot instances if enabled.
-	Preemptible *bool `json:"preemptible,omitempty"`
+	Preemptible *bool `default:"false" json:"preemptible"`
 	// When 'provider' is 'azure', at least one system node pool is required per cluster.
 	SystemPool *bool `json:"systemPool,omitempty"`
+}
+
+func (c CreateClusterResultDataNodePools) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateClusterResultDataNodePools) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateClusterResultDataNodePools) GetAutoscaling() *CreateClusterResultDataNodePoolsAutoscaling {
@@ -136,6 +159,17 @@ type CreateClusterResultDataStatusState struct {
 	TransitionTime *time.Time `json:"transitionTime,omitempty"`
 }
 
+func (c CreateClusterResultDataStatusState) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateClusterResultDataStatusState) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateClusterResultDataStatusState) GetState() *string {
 	if o == nil {
 		return nil
@@ -153,6 +187,17 @@ func (o *CreateClusterResultDataStatusState) GetTransitionTime() *time.Time {
 type CreateClusterResultDataStatus struct {
 	NextUpdateAfter *time.Time                          `json:"nextUpdateAfter,omitempty"`
 	State           *CreateClusterResultDataStatusState `json:"state,omitempty"`
+}
+
+func (c CreateClusterResultDataStatus) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateClusterResultDataStatus) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateClusterResultDataStatus) GetNextUpdateAfter() *time.Time {
@@ -187,6 +232,17 @@ type CreateClusterResultData struct {
 	// The cloud provider to which this cluster belongs to.
 	Provider *string                        `json:"provider,omitempty"`
 	Status   *CreateClusterResultDataStatus `json:"status,omitempty"`
+}
+
+func (c CreateClusterResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateClusterResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateClusterResultData) GetCreatedAt() time.Time {

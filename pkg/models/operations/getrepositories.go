@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"net/http"
 )
 
@@ -46,11 +47,22 @@ func (e *GetRepositoriesVcsService) UnmarshalJSON(data []byte) error {
 type GetRepositoriesRequest struct {
 	AccountLogin    *string `queryParam:"style=form,explode=true,name=account_login"`
 	Cursor          *string `queryParam:"style=form,explode=true,name=cursor"`
-	PerPage         *int64  `queryParam:"style=form,explode=true,name=per_page"`
+	PerPage         *int64  `default:"50" queryParam:"style=form,explode=true,name=per_page"`
 	SelfHostedVcsID *string `queryParam:"style=form,explode=true,name=self_hosted_vcs_id"`
 	VcsLinkID       *string `queryParam:"style=form,explode=true,name=vcs_link_id"`
 	// If provided, only returns repositories belonging to this version control provider.
 	VcsService *GetRepositoriesVcsService `queryParam:"style=form,explode=true,name=vcs_service"`
+}
+
+func (g GetRepositoriesRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetRepositoriesRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetRepositoriesRequest) GetAccountLogin() *string {

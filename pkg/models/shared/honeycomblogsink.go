@@ -3,8 +3,7 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // HoneycombLogSinkSinkData - Details about the Honeycomb log sink.
@@ -29,49 +28,35 @@ func (o *HoneycombLogSinkSinkData) GetDataset() string {
 	return o.Dataset
 }
 
-// HoneycombLogSinkSinkType - The type of the log sink.
-type HoneycombLogSinkSinkType string
-
-const (
-	HoneycombLogSinkSinkTypeHoneycomb HoneycombLogSinkSinkType = "honeycomb"
-)
-
-func (e HoneycombLogSinkSinkType) ToPointer() *HoneycombLogSinkSinkType {
-	return &e
-}
-
-func (e *HoneycombLogSinkSinkType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "honeycomb":
-		*e = HoneycombLogSinkSinkType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HoneycombLogSinkSinkType: %v", v)
-	}
-}
-
 // HoneycombLogSink - Create a log sink using Honeycomb
 type HoneycombLogSink struct {
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
-	ForwardAccessLogs *bool `json:"forwardAccessLogs,omitempty"`
+	ForwardAccessLogs *bool `default:"false" json:"forwardAccessLogs"`
 	// Name of the log sink.
 	Name string `json:"name"`
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
-	Restricted *bool `json:"restricted,omitempty"`
+	Restricted *bool `default:"false" json:"restricted"`
 	// Details about the Honeycomb log sink.
 	SinkData HoneycombLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	SinkType HoneycombLogSinkSinkType `json:"sinkType"`
+	sinkType string `const:"honeycomb" json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (h HoneycombLogSink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HoneycombLogSink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *HoneycombLogSink) GetDescription() *string {
@@ -116,11 +101,8 @@ func (o *HoneycombLogSink) GetSinkData() HoneycombLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *HoneycombLogSink) GetSinkType() HoneycombLogSinkSinkType {
-	if o == nil {
-		return HoneycombLogSinkSinkType("")
-	}
-	return o.SinkType
+func (o *HoneycombLogSink) GetSinkType() string {
+	return "honeycomb"
 }
 
 func (o *HoneycombLogSink) GetUseCustomLabels() *bool {

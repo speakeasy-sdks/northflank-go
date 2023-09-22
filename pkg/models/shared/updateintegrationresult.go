@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"time"
 )
 
@@ -58,6 +59,17 @@ type UpdateIntegrationResultData struct {
 	ID string `json:"id"`
 	// The name of the integration.
 	Name string `json:"name"`
+}
+
+func (u UpdateIntegrationResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateIntegrationResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateIntegrationResultData) GetCreatedAt() time.Time {

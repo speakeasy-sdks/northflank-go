@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"time"
 )
 
@@ -18,6 +19,17 @@ type ListIntegrationsResultDataIntegrations struct {
 	Name string `json:"name"`
 	// The cloud provider to which this integration belongs to.
 	Provider *string `json:"provider,omitempty"`
+}
+
+func (l ListIntegrationsResultDataIntegrations) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListIntegrationsResultDataIntegrations) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListIntegrationsResultDataIntegrations) GetCreatedAt() time.Time {

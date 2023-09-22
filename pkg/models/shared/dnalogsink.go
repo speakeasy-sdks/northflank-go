@@ -3,8 +3,7 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // DNALogSinkSinkData - Details about the LogDNA log sink.
@@ -20,49 +19,35 @@ func (o *DNALogSinkSinkData) GetAPIKey() string {
 	return o.APIKey
 }
 
-// DNALogSinkSinkType - The type of the log sink.
-type DNALogSinkSinkType string
-
-const (
-	DNALogSinkSinkTypeLogdna DNALogSinkSinkType = "logdna"
-)
-
-func (e DNALogSinkSinkType) ToPointer() *DNALogSinkSinkType {
-	return &e
-}
-
-func (e *DNALogSinkSinkType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "logdna":
-		*e = DNALogSinkSinkType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DNALogSinkSinkType: %v", v)
-	}
-}
-
 // DNALogSink - Create a log sink using LogDNA
 type DNALogSink struct {
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
-	ForwardAccessLogs *bool `json:"forwardAccessLogs,omitempty"`
+	ForwardAccessLogs *bool `default:"false" json:"forwardAccessLogs"`
 	// Name of the log sink.
 	Name string `json:"name"`
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
-	Restricted *bool `json:"restricted,omitempty"`
+	Restricted *bool `default:"false" json:"restricted"`
 	// Details about the LogDNA log sink.
 	SinkData DNALogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	SinkType DNALogSinkSinkType `json:"sinkType"`
+	sinkType string `const:"logdna" json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
-	UseCustomLabels *bool `json:"useCustomLabels,omitempty"`
+	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
+}
+
+func (d DNALogSink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DNALogSink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DNALogSink) GetDescription() *string {
@@ -107,11 +92,8 @@ func (o *DNALogSink) GetSinkData() DNALogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *DNALogSink) GetSinkType() DNALogSinkSinkType {
-	if o == nil {
-		return DNALogSinkSinkType("")
-	}
-	return o.SinkType
+func (o *DNALogSink) GetSinkType() string {
+	return "logdna"
 }
 
 func (o *DNALogSink) GetUseCustomLabels() *bool {
