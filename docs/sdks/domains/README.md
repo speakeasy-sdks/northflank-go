@@ -1,4 +1,5 @@
 # Domains
+(*Domains*)
 
 ### Available Operations
 
@@ -552,7 +553,7 @@ func main() {
             },
         }),
     )
-    cursor := "perferendis"
+    cursor := "becquerel"
     page := 1
     perPage := 50
 

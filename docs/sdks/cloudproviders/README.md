@@ -1,4 +1,5 @@
 # CloudProviders
+(*CloudProviders*)
 
 ### Available Operations
 
@@ -43,14 +44,14 @@ func main() {
     ctx := context.Background()
     res, err := s.CloudProviders.Create(ctx, shared.CreateIntegrationRequest{
         Credentials: shared.CreateIntegrationRequestCredentials{
-            AccessKey: northflankgo.String("corrupti"),
-            APIKey: northflankgo.String("provident"),
-            KeyfileJSON: northflankgo.String("distinctio"),
-            SecretKey: northflankgo.String("quibusdam"),
+            AccessKey: northflankgo.String("bluetooth Extended"),
+            APIKey: northflankgo.String("blue"),
+            KeyfileJSON: northflankgo.String("grey technology East"),
+            SecretKey: northflankgo.String("evolve"),
         },
         Description: northflankgo.String("This is a new cloud provider integration."),
         Gcp: &shared.CreateIntegrationRequestGcp{
-            ProjectID: "unde",
+            ProjectID: "fuchsia Gasoline Screen",
         },
         Name: "New Integration",
         Provider: shared.CreateIntegrationRequestProviderGcp,
@@ -111,10 +112,10 @@ func main() {
             ProjectID: "example-project-id",
         },
         Integration: &shared.CreateClusterRequestIntegration{
-            AccessKey: northflankgo.String("nulla"),
-            APIKey: northflankgo.String("corrupti"),
-            KeyfileJSON: northflankgo.String("illum"),
-            SecretKey: northflankgo.String("vel"),
+            AccessKey: northflankgo.String("pish Games payment"),
+            APIKey: northflankgo.String("Oregon Lodi Towels"),
+            KeyfileJSON: northflankgo.String("payment Buckinghamshire"),
+            SecretKey: northflankgo.String("Audi strategize"),
         },
         IntegrationID: northflankgo.String("gcp-integration"),
         KubernetesVersion: "1.23.8",
@@ -127,10 +128,10 @@ func main() {
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "error",
+                    "Ford",
                 },
                 DiskSize: 100,
-                DiskType: northflankgo.String("deserunt"),
+                DiskType: northflankgo.String("Protactinium"),
                 Labels: &shared.CreateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
@@ -143,20 +144,20 @@ func main() {
         Settings: shared.CreateClusterRequestSettings{
             Builds: &shared.CreateClusterRequestSettingsBuilds{
                 ClusterID: northflankgo.String("build-cluster"),
-                Mode: shared.CreateClusterRequestSettingsBuildsModeInternal.ToPointer(),
+                Mode: shared.CreateClusterRequestSettingsBuildsModePaas.ToPointer(),
                 Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.CreateClusterRequestSettingsLogging{
                 Loki: &shared.CreateClusterRequestSettingsLoggingLoki{
-                    S3AccessKey: "iure",
-                    S3BucketName: "magnam",
-                    S3Region: "debitis",
-                    S3SecretKey: "ipsa",
+                    S3AccessKey: "Southeast solutions integrate",
+                    S3BucketName: "bypassing",
+                    S3Region: "um Iceland Pop",
+                    S3SecretKey: "yellow payment Northwest",
                 },
-                Mode: shared.CreateClusterRequestSettingsLoggingModeLoki.ToPointer(),
+                Mode: shared.CreateClusterRequestSettingsLoggingModePaas.ToPointer(),
             },
             Registry: &shared.CreateClusterRequestSettingsRegistry{
-                Mode: shared.CreateClusterRequestSettingsRegistryModePaas.ToPointer(),
+                Mode: shared.CreateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
@@ -529,7 +530,7 @@ func main() {
             },
         }),
     )
-    cursor := "suscipit"
+    cursor := "South"
     page := 1
     perPage := 50
 
@@ -596,10 +597,10 @@ func main() {
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "molestiae",
+                    "Fish",
                 },
                 DiskSize: 100,
-                DiskType: northflankgo.String("minus"),
+                DiskType: northflankgo.String("futon"),
                 ID: northflankgo.String("6aa96121-0345-43ad-bade-af36d540c222"),
                 Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
@@ -616,12 +617,12 @@ func main() {
             },
             Logging: &shared.UpdateClusterRequestSettingsLogging{
                 Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{
-                    S3AccessKey: "voluptatum",
-                    S3BucketName: "iusto",
-                    S3Region: "excepturi",
-                    S3SecretKey: "nisi",
+                    S3AccessKey: "sievert Corporate Southeast",
+                    S3BucketName: "XSS functionalities Communications",
+                    S3Region: "North mole",
+                    S3SecretKey: "Roentgenium Associate actuating",
                 },
-                Mode: shared.UpdateClusterRequestSettingsLoggingModeLoki.ToPointer(),
+                Mode: shared.UpdateClusterRequestSettingsLoggingModePaas.ToPointer(),
             },
             Registry: &shared.UpdateClusterRequestSettingsRegistry{
                 Mode: shared.UpdateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),
@@ -685,10 +686,10 @@ func main() {
     )
     updateIntegrationRequest := shared.UpdateIntegrationRequest{
         Credentials: shared.UpdateIntegrationRequestCredentials{
-            AccessKey: northflankgo.String("ab"),
-            APIKey: northflankgo.String("quis"),
-            KeyfileJSON: northflankgo.String("veritatis"),
-            SecretKey: northflankgo.String("deserunt"),
+            AccessKey: northflankgo.String("Northwest Franc auxiliary"),
+            APIKey: northflankgo.String("interactive hertz"),
+            KeyfileJSON: northflankgo.String("North copying"),
+            SecretKey: northflankgo.String("Designer yowza Tungsten"),
         },
         Description: northflankgo.String("This is a new description."),
     }

@@ -49,9 +49,12 @@ func (o *GetClustersRequest) GetPerPage() *int64 {
 type GetClustersResponse struct {
 	// A list of clusters for the authenticated user
 	ClustersResult *shared.ClustersResult
-	ContentType    string
-	StatusCode     int
-	RawResponse    *http.Response
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GetClustersResponse) GetClustersResult() *shared.ClustersResult {

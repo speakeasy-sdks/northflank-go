@@ -47,11 +47,14 @@ func (o *ListDomainsRequest) GetPerPage() *int64 {
 }
 
 type ListDomainsResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A list of domains registered to this account.
 	ListDomainsResult *shared.ListDomainsResult
-	StatusCode        int
-	RawResponse       *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *ListDomainsResponse) GetContentType() string {

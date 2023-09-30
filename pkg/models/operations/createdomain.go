@@ -10,11 +10,14 @@ import (
 type CreateDomainResponse struct {
 	// The domain is not valid, possibly because it is too long.
 	APIErrorResult *shared.APIErrorResult
-	ContentType    string
+	// HTTP response content type for this operation
+	ContentType string
 	// Details about the newly added domain.
 	CreateDomainResult *shared.CreateDomainResult
-	StatusCode         int
-	RawResponse        *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *CreateDomainResponse) GetAPIErrorResult() *shared.APIErrorResult {

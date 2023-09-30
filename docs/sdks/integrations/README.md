@@ -1,4 +1,5 @@
 # Integrations
+(*Integrations*)
 
 ### Available Operations
 
@@ -366,7 +367,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integrations.GetBranches(ctx, operations.GetBranchesRequest{
-        Cursor: northflankgo.String("ipsam"),
+        Cursor: northflankgo.String("Licensed"),
         PerPage: northflankgo.Int64(50),
         RepositoryName: "next-js-example",
         RepositoryOwner: "northflank-examples",
@@ -478,10 +479,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Integrations.GetRepos(ctx, operations.GetRepositoriesRequest{
         AccountLogin: northflankgo.String("example-user"),
-        Cursor: northflankgo.String("repellendus"),
+        Cursor: northflankgo.String("Small Assurance Administrator"),
         PerPage: northflankgo.Int64(50),
-        SelfHostedVcsID: northflankgo.String("sapiente"),
-        VcsLinkID: northflankgo.String("quo"),
+        SelfHostedVcsID: northflankgo.String("convergence invoice"),
+        VcsLinkID: northflankgo.String("molestiae"),
         VcsService: operations.GetRepositoriesVcsServiceGithub.ToPointer(),
     })
     if err != nil {
@@ -533,7 +534,7 @@ func main() {
             },
         }),
     )
-    cursor := "odit"
+    cursor := "powerfully"
     perPage := 50
 
     ctx := context.Background()
@@ -588,7 +589,7 @@ func main() {
             },
         }),
     )
-    cursor := "at"
+    cursor := "synthesize"
     perPage := 50
 
     ctx := context.Background()

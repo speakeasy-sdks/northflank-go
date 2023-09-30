@@ -32,9 +32,12 @@ type AddSubDomainResponse struct {
 	AddSubDomainResult *shared.AddSubDomainResult
 	// The subdomain is not valid (possibly because it is too long) or the domain has not been verified.
 	APIErrorResult *shared.APIErrorResult
-	ContentType    string
-	StatusCode     int
-	RawResponse    *http.Response
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *AddSubDomainResponse) GetAddSubDomainResult() *shared.AddSubDomainResult {

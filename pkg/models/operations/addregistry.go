@@ -95,11 +95,14 @@ func (u AddRegistryRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 type AddRegistryResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Data about the newly created credentials.
 	RegistriesResult *shared.RegistriesResult
-	StatusCode       int
-	RawResponse      *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *AddRegistryResponse) GetContentType() string {

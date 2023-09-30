@@ -19,11 +19,14 @@ func (o *GetIntegrationRequest) GetIntegrationID() string {
 }
 
 type GetIntegrationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Details about the given integration.
 	GetIntegrationResult *shared.GetIntegrationResult
-	StatusCode           int
-	RawResponse          *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GetIntegrationResponse) GetContentType() string {

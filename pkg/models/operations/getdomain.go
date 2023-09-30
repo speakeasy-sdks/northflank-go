@@ -19,11 +19,14 @@ func (o *GetDomainRequest) GetDomain() string {
 }
 
 type GetDomainResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Details about the given domain.
 	GetDomainResult *shared.GetDomainResult
-	StatusCode      int
-	RawResponse     *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GetDomainResponse) GetContentType() string {
