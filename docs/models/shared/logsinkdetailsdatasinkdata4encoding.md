@@ -1,4 +1,4 @@
-# LogSinkDetailsDataSinkData3Encoding
+# LogSinkDetailsDataSinkData4Encoding
 
 Encoding options
 
@@ -7,4 +7,4 @@ Encoding options
 
 | Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 | Example                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `Codec`                                                                                                     | [LogSinkDetailsDataSinkData3EncodingCodec](../../models/shared/logsinkdetailsdatasinkdata3encodingcodec.md) | :heavy_check_mark:                                                                                          | Codec to encode logs in                                                                                     | json                                                                                                        |
+| `Codec`                                                                                                     | [LogSinkDetailsDataSinkData4EncodingCodec](../../models/shared/logsinkdetailsdatasinkdata4encodingcodec.md) | :heavy_check_mark:                                                                                          | Codec to encode logs in                                                                                     | json                                                                                                        |

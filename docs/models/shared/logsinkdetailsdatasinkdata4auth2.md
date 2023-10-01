@@ -1,4 +1,4 @@
-# LogSinkRequestSinkData3Auth2
+# LogSinkDetailsDataSinkData4Auth2
 
 Authenticate with a basic http strategy.
 

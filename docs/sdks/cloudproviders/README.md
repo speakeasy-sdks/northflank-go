@@ -148,16 +148,11 @@ func main() {
                 Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.CreateClusterRequestSettingsLogging{
-                Loki: &shared.CreateClusterRequestSettingsLoggingLoki{
-                    S3AccessKey: "Southeast solutions integrate",
-                    S3BucketName: "bypassing",
-                    S3Region: "um Iceland Pop",
-                    S3SecretKey: "yellow payment Northwest",
-                },
-                Mode: shared.CreateClusterRequestSettingsLoggingModePaas.ToPointer(),
+                Loki: &shared.CreateClusterRequestSettingsLoggingLoki{},
+                Mode: shared.CreateClusterRequestSettingsLoggingModeLoki.ToPointer(),
             },
             Registry: &shared.CreateClusterRequestSettingsRegistry{
-                Mode: shared.CreateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),
+                Mode: shared.CreateClusterRequestSettingsRegistryModePaas.ToPointer(),
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
@@ -616,13 +611,8 @@ func main() {
                 Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.UpdateClusterRequestSettingsLogging{
-                Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{
-                    S3AccessKey: "sievert Corporate Southeast",
-                    S3BucketName: "XSS functionalities Communications",
-                    S3Region: "North mole",
-                    S3SecretKey: "Roentgenium Associate actuating",
-                },
-                Mode: shared.UpdateClusterRequestSettingsLoggingModePaas.ToPointer(),
+                Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{},
+                Mode: shared.UpdateClusterRequestSettingsLoggingModeLoki.ToPointer(),
             },
             Registry: &shared.UpdateClusterRequestSettingsRegistry{
                 Mode: shared.UpdateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),

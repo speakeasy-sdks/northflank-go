@@ -1,12 +1,17 @@
 # LogSinkDetailsDataSinkData3
 
-HTTP Sink Schema.
 
+## Supported Types
 
-## Fields
+### LogSinkDetailsDataSinkData31
 
-| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `Auth`                                                                                             | [LogSinkDetailsDataSinkData3Auth](../../models/shared/logsinkdetailsdatasinkdata3auth.md)          | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `Encoding`                                                                                         | [*LogSinkDetailsDataSinkData3Encoding](../../models/shared/logsinkdetailsdatasinkdata3encoding.md) | :heavy_minus_sign:                                                                                 | Encoding options                                                                                   |                                                                                                    |
-| `URI`                                                                                              | *string*                                                                                           | :heavy_check_mark:                                                                                 | Uri to send logs to.                                                                               | my.log-collector.com                                                                               |
+```go
+logSinkDetailsDataSinkData3 := shared.CreateLogSinkDetailsDataSinkData3LogSinkDetailsDataSinkData31(shared.LogSinkDetailsDataSinkData31{/* values here */})
+```
+
+### LogSinkDetailsDataSinkData32
+
+```go
+logSinkDetailsDataSinkData3 := shared.CreateLogSinkDetailsDataSinkData3LogSinkDetailsDataSinkData32(shared.LogSinkDetailsDataSinkData32{/* values here */})
+```
+

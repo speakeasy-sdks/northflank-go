@@ -45,3 +45,9 @@ logSinkDetailsDataSinkData := shared.CreateLogSinkDetailsDataSinkDataLogSinkDeta
 logSinkDetailsDataSinkData := shared.CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData7(shared.LogSinkDetailsDataSinkData7{/* values here */})
 ```
 
+### LogSinkDetailsDataSinkData8
+
+```go
+logSinkDetailsDataSinkData := shared.CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData8(shared.LogSinkDetailsDataSinkData8{/* values here */})
+```
+

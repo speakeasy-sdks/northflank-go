@@ -1,4 +1,4 @@
-# LogSinkDetailsDataSinkData3Auth3
+# LogSinkRequestSinkData4Auth3
 
 Authenticate with a bearer token strategy.
 

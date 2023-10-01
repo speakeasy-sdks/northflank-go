@@ -1,4 +1,4 @@
-# LogSinkDetailsDataSinkData3Auth1
+# LogSinkDetailsDataSinkData4Auth1
 
 No authentication strategy
 

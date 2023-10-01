@@ -1,10 +1,10 @@
 # LogSinkDetailsDataSinkData6
 
-LogDNA Sink Schema.
+Logtail Sink Schema.
 
 
 ## Fields
 
-| Field                               | Type                                | Required                            | Description                         | Example                             |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `APIKey`                            | *string*                            | :heavy_check_mark:                  | Ingestion Key                       | b1dd3feb585asd1a3e9edpo9kmn5e590hg9 |
+| Field                    | Type                     | Required                 | Description              | Example                  |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `Token`                  | *string*                 | :heavy_check_mark:       | Logtail Source Token     | vhnqrLygVQ5GnSQUTZamKvAq |

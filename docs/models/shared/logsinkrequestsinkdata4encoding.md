@@ -1,4 +1,4 @@
-# LogSinkRequestSinkData3Encoding
+# LogSinkRequestSinkData4Encoding
 
 Encoding options
 
@@ -7,4 +7,4 @@ Encoding options
 
 | Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `Codec`                                                                                             | [LogSinkRequestSinkData3EncodingCodec](../../models/shared/logsinkrequestsinkdata3encodingcodec.md) | :heavy_check_mark:                                                                                  | Codec to encode logs in                                                                             | json                                                                                                |
+| `Codec`                                                                                             | [LogSinkRequestSinkData4EncodingCodec](../../models/shared/logsinkrequestsinkdata4encodingcodec.md) | :heavy_check_mark:                                                                                  | Codec to encode logs in                                                                             | json                                                                                                |
