@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/types"
 	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 	"time"
 )
@@ -210,27 +209,44 @@ func (o *LogSinkDetailsDataSinkData5) GetRegion() LogSinkDetailsDataSinkData5Reg
 	return o.Region
 }
 
+// LogSinkDetailsDataSinkData4Auth3Strategy - Bearer token authentication strategy.
+type LogSinkDetailsDataSinkData4Auth3Strategy string
+
+const (
+	LogSinkDetailsDataSinkData4Auth3StrategyBearer LogSinkDetailsDataSinkData4Auth3Strategy = "bearer"
+)
+
+func (e LogSinkDetailsDataSinkData4Auth3Strategy) ToPointer() *LogSinkDetailsDataSinkData4Auth3Strategy {
+	return &e
+}
+
+func (e *LogSinkDetailsDataSinkData4Auth3Strategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bearer":
+		*e = LogSinkDetailsDataSinkData4Auth3Strategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData4Auth3Strategy: %v", v)
+	}
+}
+
 // LogSinkDetailsDataSinkData4Auth3 - Authenticate with a bearer token strategy.
 type LogSinkDetailsDataSinkData4Auth3 struct {
 	// Bearer token authentication strategy.
-	strategy string `const:"bearer" json:"strategy"`
+	Strategy LogSinkDetailsDataSinkData4Auth3Strategy `json:"strategy"`
 	// Token for bearer token authentication.
 	Token *string `json:"token,omitempty"`
 }
 
-func (l LogSinkDetailsDataSinkData4Auth3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LogSinkDetailsDataSinkData4Auth3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
-		return err
+func (o *LogSinkDetailsDataSinkData4Auth3) GetStrategy() LogSinkDetailsDataSinkData4Auth3Strategy {
+	if o == nil {
+		return LogSinkDetailsDataSinkData4Auth3Strategy("")
 	}
-	return nil
-}
-
-func (o *LogSinkDetailsDataSinkData4Auth3) GetStrategy() string {
-	return "bearer"
+	return o.Strategy
 }
 
 func (o *LogSinkDetailsDataSinkData4Auth3) GetToken() *string {
@@ -240,25 +256,39 @@ func (o *LogSinkDetailsDataSinkData4Auth3) GetToken() *string {
 	return o.Token
 }
 
+// LogSinkDetailsDataSinkData4Auth2Strategy - Basic HTTP authentication strategy.
+type LogSinkDetailsDataSinkData4Auth2Strategy string
+
+const (
+	LogSinkDetailsDataSinkData4Auth2StrategyBasic LogSinkDetailsDataSinkData4Auth2Strategy = "basic"
+)
+
+func (e LogSinkDetailsDataSinkData4Auth2Strategy) ToPointer() *LogSinkDetailsDataSinkData4Auth2Strategy {
+	return &e
+}
+
+func (e *LogSinkDetailsDataSinkData4Auth2Strategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "basic":
+		*e = LogSinkDetailsDataSinkData4Auth2Strategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData4Auth2Strategy: %v", v)
+	}
+}
+
 // LogSinkDetailsDataSinkData4Auth2 - Authenticate with a basic http strategy.
 type LogSinkDetailsDataSinkData4Auth2 struct {
 	// Password for basic http authentication.
 	Password string `json:"password"`
 	// Basic HTTP authentication strategy.
-	strategy string `const:"basic" json:"strategy"`
+	Strategy LogSinkDetailsDataSinkData4Auth2Strategy `json:"strategy"`
 	// Username for basic http authentication.
 	User *string `json:"user,omitempty"`
-}
-
-func (l LogSinkDetailsDataSinkData4Auth2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LogSinkDetailsDataSinkData4Auth2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *LogSinkDetailsDataSinkData4Auth2) GetPassword() string {
@@ -268,8 +298,11 @@ func (o *LogSinkDetailsDataSinkData4Auth2) GetPassword() string {
 	return o.Password
 }
 
-func (o *LogSinkDetailsDataSinkData4Auth2) GetStrategy() string {
-	return "basic"
+func (o *LogSinkDetailsDataSinkData4Auth2) GetStrategy() LogSinkDetailsDataSinkData4Auth2Strategy {
+	if o == nil {
+		return LogSinkDetailsDataSinkData4Auth2Strategy("")
+	}
+	return o.Strategy
 }
 
 func (o *LogSinkDetailsDataSinkData4Auth2) GetUser() *string {
@@ -279,25 +312,42 @@ func (o *LogSinkDetailsDataSinkData4Auth2) GetUser() *string {
 	return o.User
 }
 
+// LogSinkDetailsDataSinkData4Auth1Strategy - No authentication strategy
+type LogSinkDetailsDataSinkData4Auth1Strategy string
+
+const (
+	LogSinkDetailsDataSinkData4Auth1StrategyNone LogSinkDetailsDataSinkData4Auth1Strategy = "none"
+)
+
+func (e LogSinkDetailsDataSinkData4Auth1Strategy) ToPointer() *LogSinkDetailsDataSinkData4Auth1Strategy {
+	return &e
+}
+
+func (e *LogSinkDetailsDataSinkData4Auth1Strategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "none":
+		*e = LogSinkDetailsDataSinkData4Auth1Strategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData4Auth1Strategy: %v", v)
+	}
+}
+
 // LogSinkDetailsDataSinkData4Auth1 - No authentication strategy
 type LogSinkDetailsDataSinkData4Auth1 struct {
 	// No authentication strategy
-	strategy string `const:"none" json:"strategy"`
+	Strategy LogSinkDetailsDataSinkData4Auth1Strategy `json:"strategy"`
 }
 
-func (l LogSinkDetailsDataSinkData4Auth1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LogSinkDetailsDataSinkData4Auth1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
-		return err
+func (o *LogSinkDetailsDataSinkData4Auth1) GetStrategy() LogSinkDetailsDataSinkData4Auth1Strategy {
+	if o == nil {
+		return LogSinkDetailsDataSinkData4Auth1Strategy("")
 	}
-	return nil
-}
-
-func (o *LogSinkDetailsDataSinkData4Auth1) GetStrategy() string {
-	return "none"
+	return o.Strategy
 }
 
 type LogSinkDetailsDataSinkData4AuthType string
@@ -456,29 +506,46 @@ func (o *LogSinkDetailsDataSinkData4) GetURI() string {
 	return o.URI
 }
 
+// LogSinkDetailsDataSinkData32AuthenticationStrategy - The authentication strategy.
+type LogSinkDetailsDataSinkData32AuthenticationStrategy string
+
+const (
+	LogSinkDetailsDataSinkData32AuthenticationStrategyToken LogSinkDetailsDataSinkData32AuthenticationStrategy = "token"
+)
+
+func (e LogSinkDetailsDataSinkData32AuthenticationStrategy) ToPointer() *LogSinkDetailsDataSinkData32AuthenticationStrategy {
+	return &e
+}
+
+func (e *LogSinkDetailsDataSinkData32AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "token":
+		*e = LogSinkDetailsDataSinkData32AuthenticationStrategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData32AuthenticationStrategy: %v", v)
+	}
+}
+
 // LogSinkDetailsDataSinkData32 - Authenticate with a token.
 type LogSinkDetailsDataSinkData32 struct {
 	// The authentication strategy.
-	authenticationStrategy string `const:"token" json:"authenticationStrategy"`
+	AuthenticationStrategy LogSinkDetailsDataSinkData32AuthenticationStrategy `json:"authenticationStrategy"`
 	// The HTTP Token for the Papertrail log destination.
 	Token string `json:"token"`
 	// The uri for the Papertrail log destination.
 	URI string `json:"uri"`
 }
 
-func (l LogSinkDetailsDataSinkData32) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LogSinkDetailsDataSinkData32) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
-		return err
+func (o *LogSinkDetailsDataSinkData32) GetAuthenticationStrategy() LogSinkDetailsDataSinkData32AuthenticationStrategy {
+	if o == nil {
+		return LogSinkDetailsDataSinkData32AuthenticationStrategy("")
 	}
-	return nil
-}
-
-func (o *LogSinkDetailsDataSinkData32) GetAuthenticationStrategy() string {
-	return "token"
+	return o.AuthenticationStrategy
 }
 
 func (o *LogSinkDetailsDataSinkData32) GetToken() string {
@@ -495,29 +562,46 @@ func (o *LogSinkDetailsDataSinkData32) GetURI() string {
 	return o.URI
 }
 
+// LogSinkDetailsDataSinkData31AuthenticationStrategy - The authentication strategy.
+type LogSinkDetailsDataSinkData31AuthenticationStrategy string
+
+const (
+	LogSinkDetailsDataSinkData31AuthenticationStrategyPort LogSinkDetailsDataSinkData31AuthenticationStrategy = "port"
+)
+
+func (e LogSinkDetailsDataSinkData31AuthenticationStrategy) ToPointer() *LogSinkDetailsDataSinkData31AuthenticationStrategy {
+	return &e
+}
+
+func (e *LogSinkDetailsDataSinkData31AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "port":
+		*e = LogSinkDetailsDataSinkData31AuthenticationStrategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData31AuthenticationStrategy: %v", v)
+	}
+}
+
 // LogSinkDetailsDataSinkData31 - Authenticate with a host/port
 type LogSinkDetailsDataSinkData31 struct {
 	// The authentication strategy.
-	authenticationStrategy string `const:"port" json:"authenticationStrategy"`
+	AuthenticationStrategy LogSinkDetailsDataSinkData31AuthenticationStrategy `json:"authenticationStrategy"`
 	// The host for the Papertrail log destination.
 	Host string `json:"host"`
 	// The port for the Papertrail log destination.
 	Port float32 `json:"port"`
 }
 
-func (l LogSinkDetailsDataSinkData31) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LogSinkDetailsDataSinkData31) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
-		return err
+func (o *LogSinkDetailsDataSinkData31) GetAuthenticationStrategy() LogSinkDetailsDataSinkData31AuthenticationStrategy {
+	if o == nil {
+		return LogSinkDetailsDataSinkData31AuthenticationStrategy("")
 	}
-	return nil
-}
-
-func (o *LogSinkDetailsDataSinkData31) GetAuthenticationStrategy() string {
-	return "port"
+	return o.AuthenticationStrategy
 }
 
 func (o *LogSinkDetailsDataSinkData31) GetHost() string {
@@ -653,25 +737,39 @@ func (o *LogSinkDetailsDataSinkData2) GetRegion() LogSinkDetailsDataSinkData2Reg
 	return o.Region
 }
 
+// LogSinkDetailsDataSinkData1AuthStrategy - The authentication strategy.
+type LogSinkDetailsDataSinkData1AuthStrategy string
+
+const (
+	LogSinkDetailsDataSinkData1AuthStrategyBasic LogSinkDetailsDataSinkData1AuthStrategy = "basic"
+)
+
+func (e LogSinkDetailsDataSinkData1AuthStrategy) ToPointer() *LogSinkDetailsDataSinkData1AuthStrategy {
+	return &e
+}
+
+func (e *LogSinkDetailsDataSinkData1AuthStrategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "basic":
+		*e = LogSinkDetailsDataSinkData1AuthStrategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData1AuthStrategy: %v", v)
+	}
+}
+
 // LogSinkDetailsDataSinkData1Auth - Object containing authentication data for the log sink.
 type LogSinkDetailsDataSinkData1Auth struct {
 	// The password for the log sink.
 	Password *string `json:"password,omitempty"`
 	// The authentication strategy.
-	strategy *string `const:"basic" json:"strategy,omitempty"`
+	Strategy *LogSinkDetailsDataSinkData1AuthStrategy `json:"strategy,omitempty"`
 	// The username for the log sink.
 	User *string `json:"user,omitempty"`
-}
-
-func (l LogSinkDetailsDataSinkData1Auth) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LogSinkDetailsDataSinkData1Auth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *LogSinkDetailsDataSinkData1Auth) GetPassword() *string {
@@ -681,8 +779,11 @@ func (o *LogSinkDetailsDataSinkData1Auth) GetPassword() *string {
 	return o.Password
 }
 
-func (o *LogSinkDetailsDataSinkData1Auth) GetStrategy() *string {
-	return types.String("basic")
+func (o *LogSinkDetailsDataSinkData1Auth) GetStrategy() *LogSinkDetailsDataSinkData1AuthStrategy {
+	if o == nil {
+		return nil
+	}
+	return o.Strategy
 }
 
 func (o *LogSinkDetailsDataSinkData1Auth) GetUser() *string {

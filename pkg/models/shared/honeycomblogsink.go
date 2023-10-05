@@ -3,6 +3,8 @@
 package shared
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
@@ -28,6 +30,31 @@ func (o *HoneycombLogSinkSinkData) GetDataset() string {
 	return o.Dataset
 }
 
+// HoneycombLogSinkSinkType - The type of the log sink.
+type HoneycombLogSinkSinkType string
+
+const (
+	HoneycombLogSinkSinkTypeHoneycomb HoneycombLogSinkSinkType = "honeycomb"
+)
+
+func (e HoneycombLogSinkSinkType) ToPointer() *HoneycombLogSinkSinkType {
+	return &e
+}
+
+func (e *HoneycombLogSinkSinkType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "honeycomb":
+		*e = HoneycombLogSinkSinkType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for HoneycombLogSinkSinkType: %v", v)
+	}
+}
+
 // HoneycombLogSink - Create a log sink using Honeycomb
 type HoneycombLogSink struct {
 	// Description of the log sink.
@@ -43,7 +70,7 @@ type HoneycombLogSink struct {
 	// Details about the Honeycomb log sink.
 	SinkData HoneycombLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	sinkType string `const:"honeycomb" json:"sinkType"`
+	SinkType HoneycombLogSinkSinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -101,8 +128,11 @@ func (o *HoneycombLogSink) GetSinkData() HoneycombLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *HoneycombLogSink) GetSinkType() string {
-	return "honeycomb"
+func (o *HoneycombLogSink) GetSinkType() HoneycombLogSinkSinkType {
+	if o == nil {
+		return HoneycombLogSinkSinkType("")
+	}
+	return o.SinkType
 }
 
 func (o *HoneycombLogSink) GetUseCustomLabels() *bool {

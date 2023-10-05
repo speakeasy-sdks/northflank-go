@@ -159,6 +159,31 @@ func (o *AWSLogSinkSinkData) GetRegion() AWSLogSinkSinkDataRegion {
 	return o.Region
 }
 
+// AWSLogSinkSinkType - The type of the log sink.
+type AWSLogSinkSinkType string
+
+const (
+	AWSLogSinkSinkTypeAwsS3 AWSLogSinkSinkType = "aws_s3"
+)
+
+func (e AWSLogSinkSinkType) ToPointer() *AWSLogSinkSinkType {
+	return &e
+}
+
+func (e *AWSLogSinkSinkType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aws_s3":
+		*e = AWSLogSinkSinkType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AWSLogSinkSinkType: %v", v)
+	}
+}
+
 // AWSLogSink - Create a log sink using AWS S3
 type AWSLogSink struct {
 	// Description of the log sink.
@@ -174,7 +199,7 @@ type AWSLogSink struct {
 	// Details about the AWS S3 log sink.
 	SinkData AWSLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	sinkType string `const:"aws_s3" json:"sinkType"`
+	SinkType AWSLogSinkSinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -232,8 +257,11 @@ func (o *AWSLogSink) GetSinkData() AWSLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *AWSLogSink) GetSinkType() string {
-	return "aws_s3"
+func (o *AWSLogSink) GetSinkType() AWSLogSinkSinkType {
+	if o == nil {
+		return AWSLogSinkSinkType("")
+	}
+	return o.SinkType
 }
 
 func (o *AWSLogSink) GetUseCustomLabels() *bool {

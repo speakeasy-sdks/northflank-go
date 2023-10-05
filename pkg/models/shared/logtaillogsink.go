@@ -3,6 +3,8 @@
 package shared
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
@@ -17,6 +19,31 @@ func (o *LogtailLogSinkSinkData) GetToken() string {
 		return ""
 	}
 	return o.Token
+}
+
+// LogtailLogSinkSinkType - The type of the log sink.
+type LogtailLogSinkSinkType string
+
+const (
+	LogtailLogSinkSinkTypeLogtail LogtailLogSinkSinkType = "logtail"
+)
+
+func (e LogtailLogSinkSinkType) ToPointer() *LogtailLogSinkSinkType {
+	return &e
+}
+
+func (e *LogtailLogSinkSinkType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "logtail":
+		*e = LogtailLogSinkSinkType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogtailLogSinkSinkType: %v", v)
+	}
 }
 
 // LogtailLogSink - Create a log sink using Logtail
@@ -34,7 +61,7 @@ type LogtailLogSink struct {
 	// Details about the Logtail log sink.
 	SinkData LogtailLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	sinkType string `const:"logtail" json:"sinkType"`
+	SinkType LogtailLogSinkSinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -92,8 +119,11 @@ func (o *LogtailLogSink) GetSinkData() LogtailLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *LogtailLogSink) GetSinkType() string {
-	return "logtail"
+func (o *LogtailLogSink) GetSinkType() LogtailLogSinkSinkType {
+	if o == nil {
+		return LogtailLogSinkSinkType("")
+	}
+	return o.SinkType
 }
 
 func (o *LogtailLogSink) GetUseCustomLabels() *bool {

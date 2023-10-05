@@ -3,6 +3,8 @@
 package shared
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
@@ -17,6 +19,31 @@ func (o *DNALogSinkSinkData) GetAPIKey() string {
 		return ""
 	}
 	return o.APIKey
+}
+
+// DNALogSinkSinkType - The type of the log sink.
+type DNALogSinkSinkType string
+
+const (
+	DNALogSinkSinkTypeLogdna DNALogSinkSinkType = "logdna"
+)
+
+func (e DNALogSinkSinkType) ToPointer() *DNALogSinkSinkType {
+	return &e
+}
+
+func (e *DNALogSinkSinkType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "logdna":
+		*e = DNALogSinkSinkType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DNALogSinkSinkType: %v", v)
+	}
 }
 
 // DNALogSink - Create a log sink using LogDNA
@@ -34,7 +61,7 @@ type DNALogSink struct {
 	// Details about the LogDNA log sink.
 	SinkData DNALogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	sinkType string `const:"logdna" json:"sinkType"`
+	SinkType DNALogSinkSinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -92,8 +119,11 @@ func (o *DNALogSink) GetSinkData() DNALogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *DNALogSink) GetSinkType() string {
-	return "logdna"
+func (o *DNALogSink) GetSinkType() DNALogSinkSinkType {
+	if o == nil {
+		return DNALogSinkSinkType("")
+	}
+	return o.SinkType
 }
 
 func (o *DNALogSink) GetUseCustomLabels() *bool {

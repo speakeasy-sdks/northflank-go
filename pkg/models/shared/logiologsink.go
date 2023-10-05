@@ -73,6 +73,31 @@ func (o *LogioLogSinkSinkData) GetToken() string {
 	return o.Token
 }
 
+// LogioLogSinkSinkType - The type of the log sink.
+type LogioLogSinkSinkType string
+
+const (
+	LogioLogSinkSinkTypeLogzio LogioLogSinkSinkType = "logzio"
+)
+
+func (e LogioLogSinkSinkType) ToPointer() *LogioLogSinkSinkType {
+	return &e
+}
+
+func (e *LogioLogSinkSinkType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "logzio":
+		*e = LogioLogSinkSinkType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogioLogSinkSinkType: %v", v)
+	}
+}
+
 // LogioLogSink - Create a log sink using Logz.io
 type LogioLogSink struct {
 	// Description of the log sink.
@@ -88,7 +113,7 @@ type LogioLogSink struct {
 	// Details about the Logz.io log sink.
 	SinkData LogioLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	sinkType string `const:"logzio" json:"sinkType"`
+	SinkType LogioLogSinkSinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -146,8 +171,11 @@ func (o *LogioLogSink) GetSinkData() LogioLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *LogioLogSink) GetSinkType() string {
-	return "logzio"
+func (o *LogioLogSink) GetSinkType() LogioLogSinkSinkType {
+	if o == nil {
+		return LogioLogSinkSinkType("")
+	}
+	return o.SinkType
 }
 
 func (o *LogioLogSink) GetUseCustomLabels() *bool {

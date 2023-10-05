@@ -5,8 +5,6 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/types"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // VCSProvidersResultDataVCSAccountLinksVCSService - The type of version control provider the account is linked to.
@@ -43,6 +41,31 @@ func (e *VCSProvidersResultDataVCSAccountLinksVCSService) UnmarshalJSON(data []b
 	}
 }
 
+// VCSProvidersResultDataVCSAccountLinksVCSType - The type of the self-hosted vcs provider. Only returned for self-hosted links.
+type VCSProvidersResultDataVCSAccountLinksVCSType string
+
+const (
+	VCSProvidersResultDataVCSAccountLinksVCSTypeGitlabEe VCSProvidersResultDataVCSAccountLinksVCSType = "gitlab-ee"
+)
+
+func (e VCSProvidersResultDataVCSAccountLinksVCSType) ToPointer() *VCSProvidersResultDataVCSAccountLinksVCSType {
+	return &e
+}
+
+func (e *VCSProvidersResultDataVCSAccountLinksVCSType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab-ee":
+		*e = VCSProvidersResultDataVCSAccountLinksVCSType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VCSProvidersResultDataVCSAccountLinksVCSType: %v", v)
+	}
+}
+
 // VCSProvidersResultDataVCSAccountLinks - Details about the linked version control account.
 type VCSProvidersResultDataVCSAccountLinks struct {
 	// The email of the account linked with this provider.
@@ -58,20 +81,9 @@ type VCSProvidersResultDataVCSAccountLinks struct {
 	// The type of version control provider the account is linked to.
 	VcsService VCSProvidersResultDataVCSAccountLinksVCSService `json:"vcsService"`
 	// The type of the self-hosted vcs provider. Only returned for self-hosted links.
-	vcsType *string `const:"gitlab-ee" json:"vcsType,omitempty"`
+	VcsType *VCSProvidersResultDataVCSAccountLinksVCSType `json:"vcsType,omitempty"`
 	// The url of the version control provider. Only returned for self-hosted links.
 	VcsURL *string `json:"vcsUrl,omitempty"`
-}
-
-func (v VCSProvidersResultDataVCSAccountLinks) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(v, "", false)
-}
-
-func (v *VCSProvidersResultDataVCSAccountLinks) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *VCSProvidersResultDataVCSAccountLinks) GetEmail() string {
@@ -116,8 +128,11 @@ func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsService() VCSProvidersResu
 	return o.VcsService
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsType() *string {
-	return types.String("gitlab-ee")
+func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsType() *VCSProvidersResultDataVCSAccountLinksVCSType {
+	if o == nil {
+		return nil
+	}
+	return o.VcsType
 }
 
 func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsURL() *string {

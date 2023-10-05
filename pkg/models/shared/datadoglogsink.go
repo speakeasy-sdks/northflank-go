@@ -64,6 +64,31 @@ func (o *DatadogLogSinkSinkData) GetRegion() DatadogLogSinkSinkDataRegion {
 	return o.Region
 }
 
+// DatadogLogSinkSinkType - The type of the log sink.
+type DatadogLogSinkSinkType string
+
+const (
+	DatadogLogSinkSinkTypeDatadogLogs DatadogLogSinkSinkType = "datadog_logs"
+)
+
+func (e DatadogLogSinkSinkType) ToPointer() *DatadogLogSinkSinkType {
+	return &e
+}
+
+func (e *DatadogLogSinkSinkType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "datadog_logs":
+		*e = DatadogLogSinkSinkType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DatadogLogSinkSinkType: %v", v)
+	}
+}
+
 // DatadogLogSink - Create a log sink using Datadog
 type DatadogLogSink struct {
 	// Description of the log sink.
@@ -79,7 +104,7 @@ type DatadogLogSink struct {
 	// Details about the Datadog log sink.
 	SinkData DatadogLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	sinkType string `const:"datadog_logs" json:"sinkType"`
+	SinkType DatadogLogSinkSinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -137,8 +162,11 @@ func (o *DatadogLogSink) GetSinkData() DatadogLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *DatadogLogSink) GetSinkType() string {
-	return "datadog_logs"
+func (o *DatadogLogSink) GetSinkType() DatadogLogSinkSinkType {
+	if o == nil {
+		return DatadogLogSinkSinkType("")
+	}
+	return o.SinkType
 }
 
 func (o *DatadogLogSink) GetUseCustomLabels() *bool {

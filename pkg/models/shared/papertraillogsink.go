@@ -3,33 +3,52 @@
 package shared
 
 import (
+	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
+
+// PapertrailLogSinkSinkData2AuthenticationStrategy - The authentication strategy.
+type PapertrailLogSinkSinkData2AuthenticationStrategy string
+
+const (
+	PapertrailLogSinkSinkData2AuthenticationStrategyToken PapertrailLogSinkSinkData2AuthenticationStrategy = "token"
+)
+
+func (e PapertrailLogSinkSinkData2AuthenticationStrategy) ToPointer() *PapertrailLogSinkSinkData2AuthenticationStrategy {
+	return &e
+}
+
+func (e *PapertrailLogSinkSinkData2AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "token":
+		*e = PapertrailLogSinkSinkData2AuthenticationStrategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PapertrailLogSinkSinkData2AuthenticationStrategy: %v", v)
+	}
+}
 
 // PapertrailLogSinkSinkData2 - Authenticate with a token.
 type PapertrailLogSinkSinkData2 struct {
 	// The authentication strategy.
-	authenticationStrategy string `const:"token" json:"authenticationStrategy"`
+	AuthenticationStrategy PapertrailLogSinkSinkData2AuthenticationStrategy `json:"authenticationStrategy"`
 	// The HTTP Token for the Papertrail log destination.
 	Token string `json:"token"`
 	// The uri for the Papertrail log destination.
 	URI string `json:"uri"`
 }
 
-func (p PapertrailLogSinkSinkData2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PapertrailLogSinkSinkData2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
-		return err
+func (o *PapertrailLogSinkSinkData2) GetAuthenticationStrategy() PapertrailLogSinkSinkData2AuthenticationStrategy {
+	if o == nil {
+		return PapertrailLogSinkSinkData2AuthenticationStrategy("")
 	}
-	return nil
-}
-
-func (o *PapertrailLogSinkSinkData2) GetAuthenticationStrategy() string {
-	return "token"
+	return o.AuthenticationStrategy
 }
 
 func (o *PapertrailLogSinkSinkData2) GetToken() string {
@@ -46,29 +65,46 @@ func (o *PapertrailLogSinkSinkData2) GetURI() string {
 	return o.URI
 }
 
+// PapertrailLogSinkSinkData1AuthenticationStrategy - The authentication strategy.
+type PapertrailLogSinkSinkData1AuthenticationStrategy string
+
+const (
+	PapertrailLogSinkSinkData1AuthenticationStrategyPort PapertrailLogSinkSinkData1AuthenticationStrategy = "port"
+)
+
+func (e PapertrailLogSinkSinkData1AuthenticationStrategy) ToPointer() *PapertrailLogSinkSinkData1AuthenticationStrategy {
+	return &e
+}
+
+func (e *PapertrailLogSinkSinkData1AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "port":
+		*e = PapertrailLogSinkSinkData1AuthenticationStrategy(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PapertrailLogSinkSinkData1AuthenticationStrategy: %v", v)
+	}
+}
+
 // PapertrailLogSinkSinkData1 - Authenticate with a host/port
 type PapertrailLogSinkSinkData1 struct {
 	// The authentication strategy.
-	authenticationStrategy string `const:"port" json:"authenticationStrategy"`
+	AuthenticationStrategy PapertrailLogSinkSinkData1AuthenticationStrategy `json:"authenticationStrategy"`
 	// The host for the Papertrail log destination.
 	Host string `json:"host"`
 	// The port for the Papertrail log destination.
 	Port float32 `json:"port"`
 }
 
-func (p PapertrailLogSinkSinkData1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PapertrailLogSinkSinkData1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
-		return err
+func (o *PapertrailLogSinkSinkData1) GetAuthenticationStrategy() PapertrailLogSinkSinkData1AuthenticationStrategy {
+	if o == nil {
+		return PapertrailLogSinkSinkData1AuthenticationStrategy("")
 	}
-	return nil
-}
-
-func (o *PapertrailLogSinkSinkData1) GetAuthenticationStrategy() string {
-	return "port"
+	return o.AuthenticationStrategy
 }
 
 func (o *PapertrailLogSinkSinkData1) GetHost() string {
@@ -148,6 +184,31 @@ func (u PapertrailLogSinkSinkData) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
+// PapertrailLogSinkSinkType - The type of the log sink.
+type PapertrailLogSinkSinkType string
+
+const (
+	PapertrailLogSinkSinkTypePapertrail PapertrailLogSinkSinkType = "papertrail"
+)
+
+func (e PapertrailLogSinkSinkType) ToPointer() *PapertrailLogSinkSinkType {
+	return &e
+}
+
+func (e *PapertrailLogSinkSinkType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "papertrail":
+		*e = PapertrailLogSinkSinkType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PapertrailLogSinkSinkType: %v", v)
+	}
+}
+
 // PapertrailLogSink - Create a log sink using Papertrail
 type PapertrailLogSink struct {
 	// Description of the log sink.
@@ -163,7 +224,7 @@ type PapertrailLogSink struct {
 	// Papertrail Sink Schema.
 	SinkData PapertrailLogSinkSinkData `json:"sinkData"`
 	// The type of the log sink.
-	sinkType string `const:"papertrail" json:"sinkType"`
+	SinkType PapertrailLogSinkSinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -221,8 +282,11 @@ func (o *PapertrailLogSink) GetSinkData() PapertrailLogSinkSinkData {
 	return o.SinkData
 }
 
-func (o *PapertrailLogSink) GetSinkType() string {
-	return "papertrail"
+func (o *PapertrailLogSink) GetSinkType() PapertrailLogSinkSinkType {
+	if o == nil {
+		return PapertrailLogSinkSinkType("")
+	}
+	return o.SinkType
 }
 
 func (o *PapertrailLogSink) GetUseCustomLabels() *bool {
