@@ -2,13 +2,36 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
+
 type AssignSubDomainRequest struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The name of the port that will be assigned to the subdomain.
 	PortName string `json:"portName"`
 	// The ID of the project the service belongs to.
 	ProjectID string `json:"projectId"`
 	// The ID of the service to assign the subdomain to.
 	ServiceID string `json:"serviceId"`
+}
+
+func (a AssignSubDomainRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AssignSubDomainRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AssignSubDomainRequest) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AssignSubDomainRequest) GetPortName() string {

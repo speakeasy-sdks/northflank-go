@@ -2,8 +2,13 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
+
 // AddonTypesResultDataAddonTypesFeatures - Features supported by this addon type.
 type AddonTypesResultDataAddonTypesFeatures struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Whether this addon supports native (dump) backups
 	BackupsDump bool `json:"backupsDump"`
 	// Whether this addon supports customising the database name.
@@ -20,6 +25,24 @@ type AddonTypesResultDataAddonTypesFeatures struct {
 	ScaleReplicas bool `json:"scaleReplicas"`
 	// Whether this addon supports connection via TLS.
 	TLS bool `json:"tls"`
+}
+
+func (a AddonTypesResultDataAddonTypesFeatures) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddonTypesResultDataAddonTypesFeatures) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddonTypesResultDataAddonTypesFeatures) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddonTypesResultDataAddonTypesFeatures) GetBackupsDump() bool {
@@ -80,10 +103,29 @@ func (o *AddonTypesResultDataAddonTypesFeatures) GetTLS() bool {
 
 // AddonTypesResultDataAddonTypesResourcesReplicas - Details about replica count options for this addon.
 type AddonTypesResultDataAddonTypesResourcesReplicas struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The default replica count for this addon.
 	Default float32 `json:"default"`
 	// Available options for replica counts for this addon.
 	Options []float32 `json:"options"`
+}
+
+func (a AddonTypesResultDataAddonTypesResourcesReplicas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddonTypesResultDataAddonTypesResourcesReplicas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddonTypesResultDataAddonTypesResourcesReplicas) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddonTypesResultDataAddonTypesResourcesReplicas) GetDefault() float32 {
@@ -102,10 +144,29 @@ func (o *AddonTypesResultDataAddonTypesResourcesReplicas) GetOptions() []float32
 
 // AddonTypesResultDataAddonTypesResourcesStorage - Details about storage size options for this addon.
 type AddonTypesResultDataAddonTypesResourcesStorage struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The default storage value for this addon.
 	Default float32 `json:"default"`
 	// Available options for storage size for this addon, in MB.
 	Options []float32 `json:"options"`
+}
+
+func (a AddonTypesResultDataAddonTypesResourcesStorage) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddonTypesResultDataAddonTypesResourcesStorage) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddonTypesResultDataAddonTypesResourcesStorage) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddonTypesResultDataAddonTypesResourcesStorage) GetDefault() float32 {
@@ -124,10 +185,29 @@ func (o *AddonTypesResultDataAddonTypesResourcesStorage) GetOptions() []float32 
 
 // AddonTypesResultDataAddonTypesResources - Details about resource options for the addon type.
 type AddonTypesResultDataAddonTypesResources struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Details about replica count options for this addon.
 	Replicas AddonTypesResultDataAddonTypesResourcesReplicas `json:"replicas"`
 	// Details about storage size options for this addon.
 	Storage AddonTypesResultDataAddonTypesResourcesStorage `json:"storage"`
+}
+
+func (a AddonTypesResultDataAddonTypesResources) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddonTypesResultDataAddonTypesResources) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddonTypesResultDataAddonTypesResources) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddonTypesResultDataAddonTypesResources) GetReplicas() AddonTypesResultDataAddonTypesResourcesReplicas {
@@ -145,6 +225,7 @@ func (o *AddonTypesResultDataAddonTypesResources) GetStorage() AddonTypesResultD
 }
 
 type AddonTypesResultDataAddonTypes struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// A description of the addon.
 	Description string `json:"description"`
 	// Features supported by this addon type.
@@ -159,6 +240,24 @@ type AddonTypesResultDataAddonTypes struct {
 	Type string `json:"type"`
 	// A list of available versions of the addon type.
 	Versions []string `json:"versions"`
+}
+
+func (a AddonTypesResultDataAddonTypes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddonTypesResultDataAddonTypes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddonTypesResultDataAddonTypes) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddonTypesResultDataAddonTypes) GetDescription() string {
@@ -212,8 +311,27 @@ func (o *AddonTypesResultDataAddonTypes) GetVersions() []string {
 
 // AddonTypesResultData - Result data.
 type AddonTypesResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// A list of available addon types.
 	AddonTypes []AddonTypesResultDataAddonTypes `json:"addonTypes"`
+}
+
+func (a AddonTypesResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddonTypesResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddonTypesResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddonTypesResultData) GetAddonTypes() []AddonTypesResultDataAddonTypes {
@@ -225,8 +343,27 @@ func (o *AddonTypesResultData) GetAddonTypes() []AddonTypesResultDataAddonTypes 
 
 // AddonTypesResult - Response object.
 type AddonTypesResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data AddonTypesResultData `json:"data"`
+}
+
+func (a AddonTypesResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddonTypesResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddonTypesResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddonTypesResult) GetData() AddonTypesResultData {

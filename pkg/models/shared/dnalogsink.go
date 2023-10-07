@@ -10,8 +10,27 @@ import (
 
 // DNALogSinkSinkData - Details about the LogDNA log sink.
 type DNALogSinkSinkData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Ingestion Key
 	APIKey string `json:"api_key"`
+}
+
+func (d DNALogSinkSinkData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DNALogSinkSinkData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DNALogSinkSinkData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DNALogSinkSinkData) GetAPIKey() string {
@@ -48,6 +67,7 @@ func (e *DNALogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // DNALogSink - Create a log sink using LogDNA
 type DNALogSink struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -75,6 +95,13 @@ func (d *DNALogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *DNALogSink) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DNALogSink) GetDescription() *string {

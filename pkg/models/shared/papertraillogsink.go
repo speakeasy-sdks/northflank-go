@@ -36,12 +36,31 @@ func (e *PapertrailLogSinkSinkData2AuthenticationStrategy) UnmarshalJSON(data []
 
 // PapertrailLogSinkSinkData2 - Authenticate with a token.
 type PapertrailLogSinkSinkData2 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The authentication strategy.
 	AuthenticationStrategy PapertrailLogSinkSinkData2AuthenticationStrategy `json:"authenticationStrategy"`
 	// The HTTP Token for the Papertrail log destination.
 	Token string `json:"token"`
 	// The uri for the Papertrail log destination.
 	URI string `json:"uri"`
+}
+
+func (p PapertrailLogSinkSinkData2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PapertrailLogSinkSinkData2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PapertrailLogSinkSinkData2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PapertrailLogSinkSinkData2) GetAuthenticationStrategy() PapertrailLogSinkSinkData2AuthenticationStrategy {
@@ -92,12 +111,31 @@ func (e *PapertrailLogSinkSinkData1AuthenticationStrategy) UnmarshalJSON(data []
 
 // PapertrailLogSinkSinkData1 - Authenticate with a host/port
 type PapertrailLogSinkSinkData1 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The authentication strategy.
 	AuthenticationStrategy PapertrailLogSinkSinkData1AuthenticationStrategy `json:"authenticationStrategy"`
 	// The host for the Papertrail log destination.
 	Host string `json:"host"`
 	// The port for the Papertrail log destination.
 	Port float32 `json:"port"`
+}
+
+func (p PapertrailLogSinkSinkData1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PapertrailLogSinkSinkData1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PapertrailLogSinkSinkData1) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PapertrailLogSinkSinkData1) GetAuthenticationStrategy() PapertrailLogSinkSinkData1AuthenticationStrategy {
@@ -211,6 +249,7 @@ func (e *PapertrailLogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // PapertrailLogSink - Create a log sink using Papertrail
 type PapertrailLogSink struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -238,6 +277,13 @@ func (p *PapertrailLogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *PapertrailLogSink) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PapertrailLogSink) GetDescription() *string {

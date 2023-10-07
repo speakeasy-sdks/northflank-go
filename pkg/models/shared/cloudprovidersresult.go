@@ -2,12 +2,35 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
+
 // CloudProvidersResultDataProvidersFlags - An object with feature flags to indicate (un)supported features
 type CloudProvidersResultDataProvidersFlags struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Node pool autoscaling support
 	Autoscaling *bool `json:"autoscaling,omitempty"`
 	// Preemptible/Spot node pool support
 	Preemptible *bool `json:"preemptible,omitempty"`
+}
+
+func (c CloudProvidersResultDataProvidersFlags) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CloudProvidersResultDataProvidersFlags) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CloudProvidersResultDataProvidersFlags) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CloudProvidersResultDataProvidersFlags) GetAutoscaling() *bool {
@@ -26,6 +49,7 @@ func (o *CloudProvidersResultDataProvidersFlags) GetPreemptible() *bool {
 
 // CloudProvidersResultDataProviders - A provider object
 type CloudProvidersResultDataProviders struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of supported node disk sizes
 	DiskSizes []float32 `json:"diskSizes"`
 	// The kubernetes engine used.
@@ -42,6 +66,24 @@ type CloudProvidersResultDataProviders struct {
 	NodeTypes []string `json:"nodeTypes"`
 	// An array of available regions
 	Regions []string `json:"regions"`
+}
+
+func (c CloudProvidersResultDataProviders) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CloudProvidersResultDataProviders) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CloudProvidersResultDataProviders) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CloudProvidersResultDataProviders) GetDiskSizes() []float32 {
@@ -102,8 +144,27 @@ func (o *CloudProvidersResultDataProviders) GetRegions() []string {
 
 // CloudProvidersResultData - Result data.
 type CloudProvidersResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of supported cloud providers
 	Providers []CloudProvidersResultDataProviders `json:"providers"`
+}
+
+func (c CloudProvidersResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CloudProvidersResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CloudProvidersResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CloudProvidersResultData) GetProviders() []CloudProvidersResultDataProviders {
@@ -115,8 +176,27 @@ func (o *CloudProvidersResultData) GetProviders() []CloudProvidersResultDataProv
 
 // CloudProvidersResult - Response object.
 type CloudProvidersResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data CloudProvidersResultData `json:"data"`
+}
+
+func (c CloudProvidersResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CloudProvidersResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CloudProvidersResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CloudProvidersResult) GetData() CloudProvidersResultData {

@@ -7,5 +7,6 @@ An object with feature flags to indicate (un)supported features
 
 | Field                              | Type                               | Required                           | Description                        | Example                            |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `AdditionalProperties`             | map[string]*interface{}*           | :heavy_minus_sign:                 | N/A                                |                                    |
 | `Autoscaling`                      | **bool*                            | :heavy_minus_sign:                 | Node pool autoscaling support      | true                               |
 | `Preemptible`                      | **bool*                            | :heavy_minus_sign:                 | Preemptible/Spot node pool support | true                               |

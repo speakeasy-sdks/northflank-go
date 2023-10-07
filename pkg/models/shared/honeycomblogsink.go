@@ -10,10 +10,29 @@ import (
 
 // HoneycombLogSinkSinkData - Details about the Honeycomb log sink.
 type HoneycombLogSinkSinkData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Honeycomb API Key
 	APIKey string `json:"api_key"`
 	// Name of the dataset
 	Dataset string `json:"dataset"`
+}
+
+func (h HoneycombLogSinkSinkData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HoneycombLogSinkSinkData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *HoneycombLogSinkSinkData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *HoneycombLogSinkSinkData) GetAPIKey() string {
@@ -57,6 +76,7 @@ func (e *HoneycombLogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // HoneycombLogSink - Create a log sink using Honeycomb
 type HoneycombLogSink struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -84,6 +104,13 @@ func (h *HoneycombLogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *HoneycombLogSink) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *HoneycombLogSink) GetDescription() *string {

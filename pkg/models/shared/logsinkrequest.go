@@ -11,10 +11,29 @@ import (
 
 // LogSinkRequestSinkData8 - Honeycomb Sink Schema.
 type LogSinkRequestSinkData8 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Honeycomb API Key
 	APIKey string `json:"api_key"`
 	// Name of the dataset
 	Dataset string `json:"dataset"`
+}
+
+func (l LogSinkRequestSinkData8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData8) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData8) GetAPIKey() string {
@@ -33,8 +52,27 @@ func (o *LogSinkRequestSinkData8) GetDataset() string {
 
 // LogSinkRequestSinkData7 - LogDNA Sink Schema.
 type LogSinkRequestSinkData7 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Ingestion Key
 	APIKey string `json:"api_key"`
+}
+
+func (l LogSinkRequestSinkData7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData7) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData7) GetAPIKey() string {
@@ -46,8 +84,27 @@ func (o *LogSinkRequestSinkData7) GetAPIKey() string {
 
 // LogSinkRequestSinkData6 - Logtail Sink Schema.
 type LogSinkRequestSinkData6 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Logtail Source Token
 	Token string `json:"token"`
+}
+
+func (l LogSinkRequestSinkData6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData6) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData6) GetToken() string {
@@ -59,10 +116,29 @@ func (o *LogSinkRequestSinkData6) GetToken() string {
 
 // LogSinkRequestSinkData5Auth - Authentication object.
 type LogSinkRequestSinkData5Auth struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Access key id for the bucket.
 	AccessKeyID string `json:"accessKeyId"`
 	// Secret access key for the bucket.
 	SecretAccessKey string `json:"secretAccessKey"`
+}
+
+func (l LogSinkRequestSinkData5Auth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData5Auth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData5Auth) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData5Auth) GetAccessKeyID() string {
@@ -161,6 +237,7 @@ func (e *LogSinkRequestSinkData5Region) UnmarshalJSON(data []byte) error {
 
 // LogSinkRequestSinkData5 - AWS S3 or compatible API Sink Schema.
 type LogSinkRequestSinkData5 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Authentication object.
 	Auth *LogSinkRequestSinkData5Auth `json:"auth,omitempty"`
 	// Name of the S3 Bucket.
@@ -171,6 +248,24 @@ type LogSinkRequestSinkData5 struct {
 	Endpoint string `json:"endpoint"`
 	// Region of the S3 bucket.
 	Region LogSinkRequestSinkData5Region `json:"region"`
+}
+
+func (l LogSinkRequestSinkData5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData5) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData5) GetAuth() *LogSinkRequestSinkData5Auth {
@@ -235,10 +330,29 @@ func (e *LogSinkRequestSinkData4Auth3Strategy) UnmarshalJSON(data []byte) error 
 
 // LogSinkRequestSinkData4Auth3 - Authenticate with a bearer token strategy.
 type LogSinkRequestSinkData4Auth3 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Bearer token authentication strategy.
 	Strategy LogSinkRequestSinkData4Auth3Strategy `json:"strategy"`
 	// Token for bearer token authentication.
 	Token *string `json:"token,omitempty"`
+}
+
+func (l LogSinkRequestSinkData4Auth3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData4Auth3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData4Auth3) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData4Auth3) GetStrategy() LogSinkRequestSinkData4Auth3Strategy {
@@ -282,12 +396,31 @@ func (e *LogSinkRequestSinkData4Auth2Strategy) UnmarshalJSON(data []byte) error 
 
 // LogSinkRequestSinkData4Auth2 - Authenticate with a basic http strategy.
 type LogSinkRequestSinkData4Auth2 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Password for basic http authentication.
 	Password string `json:"password"`
 	// Basic HTTP authentication strategy.
 	Strategy LogSinkRequestSinkData4Auth2Strategy `json:"strategy"`
 	// Username for basic http authentication.
 	User *string `json:"user,omitempty"`
+}
+
+func (l LogSinkRequestSinkData4Auth2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData4Auth2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData4Auth2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData4Auth2) GetPassword() string {
@@ -338,8 +471,27 @@ func (e *LogSinkRequestSinkData4Auth1Strategy) UnmarshalJSON(data []byte) error 
 
 // LogSinkRequestSinkData4Auth1 - No authentication strategy
 type LogSinkRequestSinkData4Auth1 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// No authentication strategy
 	Strategy LogSinkRequestSinkData4Auth1Strategy `json:"strategy"`
+}
+
+func (l LogSinkRequestSinkData4Auth1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData4Auth1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData4Auth1) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData4Auth1) GetStrategy() LogSinkRequestSinkData4Auth1Strategy {
@@ -464,8 +616,27 @@ func (e *LogSinkRequestSinkData4EncodingCodec) UnmarshalJSON(data []byte) error 
 
 // LogSinkRequestSinkData4Encoding - Encoding options
 type LogSinkRequestSinkData4Encoding struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Codec to encode logs in
 	Codec LogSinkRequestSinkData4EncodingCodec `json:"codec"`
+}
+
+func (l LogSinkRequestSinkData4Encoding) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData4Encoding) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData4Encoding) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData4Encoding) GetCodec() LogSinkRequestSinkData4EncodingCodec {
@@ -477,11 +648,30 @@ func (o *LogSinkRequestSinkData4Encoding) GetCodec() LogSinkRequestSinkData4Enco
 
 // LogSinkRequestSinkData4 - HTTP Sink Schema.
 type LogSinkRequestSinkData4 struct {
-	Auth LogSinkRequestSinkData4Auth `json:"auth"`
+	AdditionalProperties map[string]interface{}      `additionalProperties:"true" json:"-"`
+	Auth                 LogSinkRequestSinkData4Auth `json:"auth"`
 	// Encoding options
 	Encoding *LogSinkRequestSinkData4Encoding `json:"encoding,omitempty"`
 	// Uri to send logs to.
 	URI string `json:"uri"`
+}
+
+func (l LogSinkRequestSinkData4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData4) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData4) GetAuth() LogSinkRequestSinkData4Auth {
@@ -532,12 +722,31 @@ func (e *LogSinkRequestSinkData32AuthenticationStrategy) UnmarshalJSON(data []by
 
 // LogSinkRequestSinkData32 - Authenticate with a token.
 type LogSinkRequestSinkData32 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The authentication strategy.
 	AuthenticationStrategy LogSinkRequestSinkData32AuthenticationStrategy `json:"authenticationStrategy"`
 	// The HTTP Token for the Papertrail log destination.
 	Token string `json:"token"`
 	// The uri for the Papertrail log destination.
 	URI string `json:"uri"`
+}
+
+func (l LogSinkRequestSinkData32) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData32) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData32) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData32) GetAuthenticationStrategy() LogSinkRequestSinkData32AuthenticationStrategy {
@@ -588,12 +797,31 @@ func (e *LogSinkRequestSinkData31AuthenticationStrategy) UnmarshalJSON(data []by
 
 // LogSinkRequestSinkData31 - Authenticate with a host/port
 type LogSinkRequestSinkData31 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The authentication strategy.
 	AuthenticationStrategy LogSinkRequestSinkData31AuthenticationStrategy `json:"authenticationStrategy"`
 	// The host for the Papertrail log destination.
 	Host string `json:"host"`
 	// The port for the Papertrail log destination.
 	Port float32 `json:"port"`
+}
+
+func (l LogSinkRequestSinkData31) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData31) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData31) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData31) GetAuthenticationStrategy() LogSinkRequestSinkData31AuthenticationStrategy {
@@ -716,10 +944,29 @@ func (e *LogSinkRequestSinkData2Region) UnmarshalJSON(data []byte) error {
 
 // LogSinkRequestSinkData2 - Datadog Sink Schema.
 type LogSinkRequestSinkData2 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The Datadog API key.
 	DefaultAPIKey *string `json:"default_api_key,omitempty"`
 	// The Datadog region.
 	Region *LogSinkRequestSinkData2Region `json:"region,omitempty"`
+}
+
+func (l LogSinkRequestSinkData2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData2) GetDefaultAPIKey() *string {
@@ -763,12 +1010,31 @@ func (e *LogSinkRequestSinkData1AuthStrategy) UnmarshalJSON(data []byte) error {
 
 // LogSinkRequestSinkData1Auth - Object containing authentication data for the log sink.
 type LogSinkRequestSinkData1Auth struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The password for the log sink.
 	Password *string `json:"password,omitempty"`
 	// The authentication method.
 	Strategy *LogSinkRequestSinkData1AuthStrategy `json:"strategy,omitempty"`
 	// The username for the log sink.
 	User *string `json:"user,omitempty"`
+}
+
+func (l LogSinkRequestSinkData1Auth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData1Auth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData1Auth) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData1Auth) GetPassword() *string {
@@ -794,10 +1060,29 @@ func (o *LogSinkRequestSinkData1Auth) GetUser() *string {
 
 // LogSinkRequestSinkData1 - Loki Sink Schema.
 type LogSinkRequestSinkData1 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Object containing authentication data for the log sink.
 	Auth *LogSinkRequestSinkData1Auth `json:"auth,omitempty"`
 	// The endpoint of the Loki log sink.
 	Endpoint *string `json:"endpoint,omitempty"`
+}
+
+func (l LogSinkRequestSinkData1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogSinkRequestSinkData1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogSinkRequestSinkData1) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequestSinkData1) GetAuth() *LogSinkRequestSinkData1Auth {
@@ -1010,6 +1295,7 @@ func (u LogSinkRequestSinkData) MarshalJSON() ([]byte, error) {
 }
 
 type LogSinkRequest struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// If `restricted` is `true`, only logs from these projects will be sent to the log sink.
 	Projects []string `json:"projects,omitempty"`
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
@@ -1031,6 +1317,13 @@ func (l *LogSinkRequest) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *LogSinkRequest) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogSinkRequest) GetProjects() []string {

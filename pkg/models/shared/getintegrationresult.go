@@ -9,6 +9,7 @@ import (
 
 // GetIntegrationResultDataCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
 type GetIntegrationResultDataCredentials struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -17,6 +18,24 @@ type GetIntegrationResultDataCredentials struct {
 	KeyfileJSON *string `json:"keyfileJson,omitempty"`
 	// AWS secret key.
 	SecretKey *string `json:"secretKey,omitempty"`
+}
+
+func (g GetIntegrationResultDataCredentials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIntegrationResultDataCredentials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetIntegrationResultDataCredentials) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *GetIntegrationResultDataCredentials) GetAccessKey() *string {
@@ -49,6 +68,7 @@ func (o *GetIntegrationResultDataCredentials) GetSecretKey() *string {
 
 // GetIntegrationResultData - Result data.
 type GetIntegrationResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The time the integration was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
@@ -70,6 +90,13 @@ func (g *GetIntegrationResultData) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *GetIntegrationResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *GetIntegrationResultData) GetCreatedAt() time.Time {
@@ -109,8 +136,27 @@ func (o *GetIntegrationResultData) GetName() string {
 
 // GetIntegrationResult - Response object.
 type GetIntegrationResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data GetIntegrationResultData `json:"data"`
+}
+
+func (g GetIntegrationResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIntegrationResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetIntegrationResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *GetIntegrationResult) GetData() GetIntegrationResultData {

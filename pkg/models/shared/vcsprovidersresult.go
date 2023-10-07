@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // VCSProvidersResultDataVCSAccountLinksVCSService - The type of version control provider the account is linked to.
@@ -68,6 +69,7 @@ func (e *VCSProvidersResultDataVCSAccountLinksVCSType) UnmarshalJSON(data []byte
 
 // VCSProvidersResultDataVCSAccountLinks - Details about the linked version control account.
 type VCSProvidersResultDataVCSAccountLinks struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The email of the account linked with this provider.
 	Email string `json:"email"`
 	// The name of the team the self-hosted vcs belongs to. Only returned for self-hosted links.
@@ -84,6 +86,24 @@ type VCSProvidersResultDataVCSAccountLinks struct {
 	VcsType *VCSProvidersResultDataVCSAccountLinksVCSType `json:"vcsType,omitempty"`
 	// The url of the version control provider. Only returned for self-hosted links.
 	VcsURL *string `json:"vcsUrl,omitempty"`
+}
+
+func (v VCSProvidersResultDataVCSAccountLinks) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *VCSProvidersResultDataVCSAccountLinks) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *VCSProvidersResultDataVCSAccountLinks) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *VCSProvidersResultDataVCSAccountLinks) GetEmail() string {
@@ -144,8 +164,27 @@ func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsURL() *string {
 
 // VCSProvidersResultData - Result data.
 type VCSProvidersResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The version control accounts linked to this Northflank account.
 	VcsAccountLinks []VCSProvidersResultDataVCSAccountLinks `json:"vcsAccountLinks"`
+}
+
+func (v VCSProvidersResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *VCSProvidersResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *VCSProvidersResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *VCSProvidersResultData) GetVcsAccountLinks() []VCSProvidersResultDataVCSAccountLinks {
@@ -157,8 +196,27 @@ func (o *VCSProvidersResultData) GetVcsAccountLinks() []VCSProvidersResultDataVC
 
 // VCSProvidersResult - Response object.
 type VCSProvidersResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data VCSProvidersResultData `json:"data"`
+}
+
+func (v VCSProvidersResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *VCSProvidersResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *VCSProvidersResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *VCSProvidersResult) GetData() VCSProvidersResultData {

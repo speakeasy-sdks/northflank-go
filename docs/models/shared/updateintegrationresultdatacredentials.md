@@ -7,6 +7,7 @@ Cloud provider credential input, required fields dependent on which provider is 
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `AdditionalProperties`      | map[string]*interface{}*    | :heavy_minus_sign:          | N/A                         |
 | `AccessKey`                 | **string*                   | :heavy_minus_sign:          | AWS access key.             |
 | `APIKey`                    | **string*                   | :heavy_minus_sign:          | DO API key.                 |
 | `KeyfileJSON`               | **string*                   | :heavy_minus_sign:          | Contents of a GCP key file. |

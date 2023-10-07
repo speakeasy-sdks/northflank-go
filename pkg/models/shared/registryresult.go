@@ -5,11 +5,8 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
-
-// RegistryResultDataAuths - The `auths` data extracted from your Docker config file.
-type RegistryResultDataAuths struct {
-}
 
 // RegistryResultDataProvider - The registry provider associated with this set of credentials.
 type RegistryResultDataProvider string
@@ -56,10 +53,29 @@ func (e *RegistryResultDataProvider) UnmarshalJSON(data []byte) error {
 
 // RegistryResultDataRestrictions - Data about whether the credentials are restricted to certain projects.
 type RegistryResultDataRestrictions struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
+}
+
+func (r RegistryResultDataRestrictions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistryResultDataRestrictions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistryResultDataRestrictions) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RegistryResultDataRestrictions) GetProjects() []string {
@@ -78,8 +94,9 @@ func (o *RegistryResultDataRestrictions) GetRestricted() bool {
 
 // RegistryResultData - Result data.
 type RegistryResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The `auths` data extracted from your Docker config file.
-	Auths *RegistryResultDataAuths `json:"auths,omitempty"`
+	Auths map[string]interface{} `json:"auths,omitempty"`
 	// Description of the saved credentials.
 	Description string `json:"description"`
 	// Identifier for the credentials.
@@ -92,7 +109,25 @@ type RegistryResultData struct {
 	Restrictions RegistryResultDataRestrictions `json:"restrictions"`
 }
 
-func (o *RegistryResultData) GetAuths() *RegistryResultDataAuths {
+func (r RegistryResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistryResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistryResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *RegistryResultData) GetAuths() map[string]interface{} {
 	if o == nil {
 		return nil
 	}
@@ -136,8 +171,27 @@ func (o *RegistryResultData) GetRestrictions() RegistryResultDataRestrictions {
 
 // RegistryResult - Response object.
 type RegistryResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data RegistryResultData `json:"data"`
+}
+
+func (r RegistryResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistryResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistryResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RegistryResult) GetData() RegistryResultData {

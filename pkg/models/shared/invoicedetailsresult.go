@@ -5,14 +5,34 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // InvoiceDetailsResultDataPeriod - Information about the billing period of the invoice.
 type InvoiceDetailsResultDataPeriod struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Unix timestamp of the end of the billing period.
 	End float32 `json:"end"`
 	// Unix timestamp of the start of the billing period.
 	Start float32 `json:"start"`
+}
+
+func (i InvoiceDetailsResultDataPeriod) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataPeriod) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataPeriod) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataPeriod) GetEnd() float32 {
@@ -65,6 +85,7 @@ func (e *InvoiceDetailsResultDataProjectsItemsNfObjectType) UnmarshalJSON(data [
 
 // InvoiceDetailsResultDataProjectsItemsPrice - Details about the price of a object, broken down by resource type.
 type InvoiceDetailsResultDataProjectsItemsPrice struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Price of CPU usage for this object, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for this object, in cents.
@@ -73,6 +94,24 @@ type InvoiceDetailsResultDataProjectsItemsPrice struct {
 	Storage float32 `json:"storage"`
 	// Total price for this object, in cents.
 	Total float32 `json:"total"`
+}
+
+func (i InvoiceDetailsResultDataProjectsItemsPrice) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsItemsPrice) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsItemsPrice) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsItemsPrice) GetCPU() float32 {
@@ -105,6 +144,7 @@ func (o *InvoiceDetailsResultDataProjectsItemsPrice) GetTotal() float32 {
 
 // InvoiceDetailsResultDataProjectsItems - Billing details about an object.
 type InvoiceDetailsResultDataProjectsItems struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Duration the object has been running in this billing period, in seconds.
 	Duration string `json:"duration"`
 	// The ID of the object.
@@ -113,6 +153,24 @@ type InvoiceDetailsResultDataProjectsItems struct {
 	NfObjectType InvoiceDetailsResultDataProjectsItemsNfObjectType `json:"nfObjectType"`
 	// Details about the price of a object, broken down by resource type.
 	Price InvoiceDetailsResultDataProjectsItemsPrice `json:"price"`
+}
+
+func (i InvoiceDetailsResultDataProjectsItems) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsItems) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsItems) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsItems) GetDuration() string {
@@ -145,6 +203,7 @@ func (o *InvoiceDetailsResultDataProjectsItems) GetPrice() InvoiceDetailsResultD
 
 // InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice - Details about the price for all addons in this project, broken down by resource type.
 type InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Price of CPU usage for all addons in this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for all addons in this project, in cents.
@@ -153,6 +212,24 @@ type InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice struct {
 	Storage float32 `json:"storage"`
 	// Total price for all addons in this project, in cents.
 	Total float32 `json:"total"`
+}
+
+func (i InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) GetCPU() float32 {
@@ -184,10 +261,29 @@ func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) GetTotal() 
 }
 
 type InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Duration addons have been running in this billing period, in seconds.
 	Duration float32 `json:"duration"`
 	// Details about the price for all addons in this project, broken down by resource type.
 	Price *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice `json:"price,omitempty"`
+}
+
+func (i InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon) GetDuration() float32 {
@@ -206,6 +302,7 @@ func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon) GetPrice() *Invo
 
 // InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice - Details about the price for all jobs in this project, broken down by resource type.
 type InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Price of CPU usage for all jobs in this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for all jobs in this project, in cents.
@@ -214,6 +311,24 @@ type InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice struct {
 	Storage float32 `json:"storage"`
 	// Total price for all jobs in this project, in cents.
 	Total float32 `json:"total"`
+}
+
+func (i InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) GetCPU() float32 {
@@ -245,10 +360,29 @@ func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) GetTotal() fl
 }
 
 type InvoiceDetailsResultDataProjectsObjectTypeTotalsJob struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Duration jobs have been running in this billing period, in seconds.
 	Duration float32 `json:"duration"`
 	// Details about the price for all jobs in this project, broken down by resource type.
 	Price *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice `json:"price,omitempty"`
+}
+
+func (i InvoiceDetailsResultDataProjectsObjectTypeTotalsJob) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob) GetDuration() float32 {
@@ -267,6 +401,7 @@ func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob) GetPrice() *Invoic
 
 // InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice - Details about the price for all services in this project, broken down by resource type.
 type InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Price of CPU usage for all services in this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for all services in this project, in cents.
@@ -275,6 +410,24 @@ type InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice struct {
 	Storage float32 `json:"storage"`
 	// Total price for all services in this project, in cents.
 	Total float32 `json:"total"`
+}
+
+func (i InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) GetCPU() float32 {
@@ -306,10 +459,29 @@ func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) GetTotal(
 }
 
 type InvoiceDetailsResultDataProjectsObjectTypeTotalsService struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Duration services have been running in this billing period, in seconds.
 	Duration float32 `json:"duration"`
 	// Details about the price for all services in this project, broken down by resource type.
 	Price *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice `json:"price,omitempty"`
+}
+
+func (i InvoiceDetailsResultDataProjectsObjectTypeTotalsService) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsObjectTypeTotalsService) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsService) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsService) GetDuration() float32 {
@@ -328,9 +500,28 @@ func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsService) GetPrice() *In
 
 // InvoiceDetailsResultDataProjectsObjectTypeTotals - Details about the price of a project, broken down by object type.
 type InvoiceDetailsResultDataProjectsObjectTypeTotals struct {
-	Addon   *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon   `json:"addon,omitempty"`
-	Job     *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob     `json:"job,omitempty"`
-	Service *InvoiceDetailsResultDataProjectsObjectTypeTotalsService `json:"service,omitempty"`
+	AdditionalProperties map[string]interface{}                                   `additionalProperties:"true" json:"-"`
+	Addon                *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon   `json:"addon,omitempty"`
+	Job                  *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob     `json:"job,omitempty"`
+	Service              *InvoiceDetailsResultDataProjectsObjectTypeTotalsService `json:"service,omitempty"`
+}
+
+func (i InvoiceDetailsResultDataProjectsObjectTypeTotals) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsObjectTypeTotals) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsObjectTypeTotals) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsObjectTypeTotals) GetAddon() *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon {
@@ -356,6 +547,7 @@ func (o *InvoiceDetailsResultDataProjectsObjectTypeTotals) GetService() *Invoice
 
 // InvoiceDetailsResultDataProjectsPrice - Details about the price of a project, broken down by resource type.
 type InvoiceDetailsResultDataProjectsPrice struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Price of CPU usage for this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for this project, in cents.
@@ -364,6 +556,24 @@ type InvoiceDetailsResultDataProjectsPrice struct {
 	Storage float32 `json:"storage"`
 	// Total price for this project, in cents.
 	Total float32 `json:"total"`
+}
+
+func (i InvoiceDetailsResultDataProjectsPrice) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjectsPrice) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjectsPrice) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjectsPrice) GetCPU() float32 {
@@ -396,6 +606,7 @@ func (o *InvoiceDetailsResultDataProjectsPrice) GetTotal() float32 {
 
 // InvoiceDetailsResultDataProjects - Billing details about a project.
 type InvoiceDetailsResultDataProjects struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Duration the project has been running in this billing period, in seconds.
 	Duration string `json:"duration"`
 	// An array of objects belonging to this project that are billed in this invoice. If `addonId`, `serviceId` or `jobId` are passed in, only objects matching that ID will be returned.
@@ -406,6 +617,24 @@ type InvoiceDetailsResultDataProjects struct {
 	Price InvoiceDetailsResultDataProjectsPrice `json:"price"`
 	// ID of the project.
 	ProjectID string `json:"projectId"`
+}
+
+func (i InvoiceDetailsResultDataProjects) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataProjects) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataProjects) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataProjects) GetDuration() string {
@@ -445,10 +674,29 @@ func (o *InvoiceDetailsResultDataProjects) GetProjectID() string {
 
 // InvoiceDetailsResultDataTax - Details about the tax on the invoice.
 type InvoiceDetailsResultDataTax struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Percentage of subtotal to be applied as tax.
 	Percent float32 `json:"percent"`
 	// Value of the tax on the invoice.
 	Value float32 `json:"value"`
+}
+
+func (i InvoiceDetailsResultDataTax) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultDataTax) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultDataTax) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultDataTax) GetPercent() float32 {
@@ -467,6 +715,7 @@ func (o *InvoiceDetailsResultDataTax) GetValue() float32 {
 
 // InvoiceDetailsResultData - Result data.
 type InvoiceDetailsResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Currency code for the currency the invoice is billed in.
 	Currency string `json:"currency"`
 	// If `timestamp` is passed in, whether the invoice has been paid.
@@ -481,6 +730,24 @@ type InvoiceDetailsResultData struct {
 	Tax InvoiceDetailsResultDataTax `json:"tax"`
 	// Total cost of the invoice, in cents, including tax.
 	Total float32 `json:"total"`
+}
+
+func (i InvoiceDetailsResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResultData) GetCurrency() string {
@@ -534,8 +801,27 @@ func (o *InvoiceDetailsResultData) GetTotal() float32 {
 
 // InvoiceDetailsResult - Response object.
 type InvoiceDetailsResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data InvoiceDetailsResultData `json:"data"`
+}
+
+func (i InvoiceDetailsResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvoiceDetailsResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *InvoiceDetailsResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *InvoiceDetailsResult) GetData() InvoiceDetailsResultData {

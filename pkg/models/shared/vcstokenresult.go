@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // VCSTokenResultDataVCSService - VCS provider the token belongs to.
@@ -43,6 +44,7 @@ func (e *VCSTokenResultDataVCSService) UnmarshalJSON(data []byte) error {
 
 // VCSTokenResultData - Result data.
 type VCSTokenResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Installation ID of the GitHub installation the token belongs to (GitHub only)
 	InstallationID *int64 `json:"installationId,omitempty"`
 	// Installation token (GitHub only).
@@ -51,6 +53,24 @@ type VCSTokenResultData struct {
 	Token string `json:"token"`
 	// VCS provider the token belongs to.
 	VcsService VCSTokenResultDataVCSService `json:"vcsService"`
+}
+
+func (v VCSTokenResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *VCSTokenResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *VCSTokenResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *VCSTokenResultData) GetInstallationID() *int64 {
@@ -83,8 +103,27 @@ func (o *VCSTokenResultData) GetVcsService() VCSTokenResultDataVCSService {
 
 // VCSTokenResult - Response object.
 type VCSTokenResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data VCSTokenResultData `json:"data"`
+}
+
+func (v VCSTokenResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *VCSTokenResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *VCSTokenResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *VCSTokenResult) GetData() VCSTokenResultData {

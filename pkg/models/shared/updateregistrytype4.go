@@ -2,16 +2,35 @@
 
 package shared
 
-// UpdateRegistryType4Auths - The `auths` data extracted from your Docker config file.
-type UpdateRegistryType4Auths struct {
-}
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
 
 // UpdateRegistryType4Restrictions - Data about whether the credentials are restricted to certain projects.
 type UpdateRegistryType4Restrictions struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
+}
+
+func (u UpdateRegistryType4Restrictions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRegistryType4Restrictions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateRegistryType4Restrictions) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateRegistryType4Restrictions) GetProjects() []string {
@@ -30,17 +49,36 @@ func (o *UpdateRegistryType4Restrictions) GetRestricted() bool {
 
 // UpdateRegistryType4 - Validate with a docker config file.
 type UpdateRegistryType4 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The `auths` data extracted from your Docker config file.
-	Auths UpdateRegistryType4Auths `json:"auths"`
+	Auths map[string]interface{} `json:"auths"`
 	// Description of the credentials.
 	Description *string `json:"description,omitempty"`
 	// Data about whether the credentials are restricted to certain projects.
 	Restrictions *UpdateRegistryType4Restrictions `json:"restrictions,omitempty"`
 }
 
-func (o *UpdateRegistryType4) GetAuths() UpdateRegistryType4Auths {
+func (u UpdateRegistryType4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRegistryType4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateRegistryType4) GetAdditionalProperties() map[string]interface{} {
 	if o == nil {
-		return UpdateRegistryType4Auths{}
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *UpdateRegistryType4) GetAuths() map[string]interface{} {
+	if o == nil {
+		return map[string]interface{}{}
 	}
 	return o.Auths
 }

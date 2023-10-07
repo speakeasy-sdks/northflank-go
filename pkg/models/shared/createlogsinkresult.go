@@ -2,10 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
+
 // CreateLogSinkResultData - Result data.
 type CreateLogSinkResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The ID of the new log sink.
 	ID string `json:"id"`
+}
+
+func (c CreateLogSinkResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateLogSinkResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateLogSinkResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateLogSinkResultData) GetID() string {
@@ -17,8 +40,27 @@ func (o *CreateLogSinkResultData) GetID() string {
 
 // CreateLogSinkResult - Response object.
 type CreateLogSinkResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data CreateLogSinkResultData `json:"data"`
+}
+
+func (c CreateLogSinkResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateLogSinkResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateLogSinkResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateLogSinkResult) GetData() CreateLogSinkResultData {

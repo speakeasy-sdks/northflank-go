@@ -23,6 +23,7 @@ pkg/utils/requestbody.go
 pkg/utils/retries.go
 pkg/utils/security.go
 pkg/utils/utils.go
+tests/helpers.go
 pkg/models/operations/listaddontypes.go
 pkg/models/operations/getpastinvoices.go
 pkg/models/operations/getinvoicedetails.go
@@ -244,7 +245,6 @@ docs/models/shared/createintegrationrequestgcp.md
 docs/models/shared/createintegrationrequestprovider.md
 docs/models/shared/createintegrationrequest.md
 docs/models/shared/createclusterresultdatanodepoolsautoscaling.md
-docs/models/shared/createclusterresultdatanodepoolslabels.md
 docs/models/shared/createclusterresultdatanodepools.md
 docs/models/shared/createclusterresultdatastatusstate.md
 docs/models/shared/createclusterresultdatastatus.md
@@ -253,12 +253,10 @@ docs/models/shared/createclusterresult.md
 docs/models/shared/createclusterrequestgcp.md
 docs/models/shared/createclusterrequestintegration.md
 docs/models/shared/createclusterrequestnodepoolsautoscaling.md
-docs/models/shared/createclusterrequestnodepoolslabels.md
 docs/models/shared/createclusterrequestnodepools.md
 docs/models/shared/createclusterrequestprovider.md
 docs/models/shared/createclusterrequestsettingsbuildsmode.md
 docs/models/shared/createclusterrequestsettingsbuilds.md
-docs/models/shared/createclusterrequestsettingsloggingloki2.md
 docs/models/shared/createclusterrequestsettingsloggingloki1.md
 docs/models/shared/createclusterrequestsettingsloggingloki.md
 docs/models/shared/createclusterrequestsettingsloggingmode.md
@@ -267,7 +265,6 @@ docs/models/shared/createclusterrequestsettingsregistrymode.md
 docs/models/shared/createclusterrequestsettingsregistry.md
 docs/models/shared/createclusterrequestsettings.md
 docs/models/shared/createclusterrequest.md
-docs/models/shared/successresultdata.md
 docs/models/shared/successresult.md
 docs/models/shared/apierrorresultdata.md
 docs/models/shared/apierrorresult.md
@@ -276,7 +273,6 @@ docs/models/shared/cloudprovidersresultdataproviders.md
 docs/models/shared/cloudprovidersresultdata.md
 docs/models/shared/cloudprovidersresult.md
 docs/models/shared/clusterdetailsresultdatanodepoolsautoscaling.md
-docs/models/shared/clusterdetailsresultdatanodepoolslabels.md
 docs/models/shared/clusterdetailsresultdatanodepools.md
 docs/models/shared/clusterdetailsresultdatastatusstate.md
 docs/models/shared/clusterdetailsresultdatastatus.md
@@ -286,7 +282,6 @@ docs/models/shared/getintegrationresultdatacredentials.md
 docs/models/shared/getintegrationresultdata.md
 docs/models/shared/getintegrationresult.md
 docs/models/shared/clustersresultdataclustersnodepoolsautoscaling.md
-docs/models/shared/clustersresultdataclustersnodepoolslabels.md
 docs/models/shared/clustersresultdataclustersnodepools.md
 docs/models/shared/clustersresultdataclustersstatusstate.md
 docs/models/shared/clustersresultdataclustersstatus.md
@@ -299,18 +294,15 @@ docs/models/shared/listintegrationsresultdata.md
 docs/models/shared/listintegrationsresultpagination.md
 docs/models/shared/listintegrationsresult.md
 docs/models/shared/updateclusterresultdatanodepoolsautoscaling.md
-docs/models/shared/updateclusterresultdatanodepoolslabels.md
 docs/models/shared/updateclusterresultdatanodepools.md
 docs/models/shared/updateclusterresultdatastatusstate.md
 docs/models/shared/updateclusterresultdatastatus.md
 docs/models/shared/updateclusterresultdata.md
 docs/models/shared/updateclusterresult.md
 docs/models/shared/updateclusterrequestnodepoolsautoscaling.md
-docs/models/shared/updateclusterrequestnodepoolslabels.md
 docs/models/shared/updateclusterrequestnodepools.md
 docs/models/shared/updateclusterrequestsettingsbuildsmode.md
 docs/models/shared/updateclusterrequestsettingsbuilds.md
-docs/models/shared/updateclusterrequestsettingsloggingloki2.md
 docs/models/shared/updateclusterrequestsettingsloggingloki1.md
 docs/models/shared/updateclusterrequestsettingsloggingloki.md
 docs/models/shared/updateclusterrequestsettingsloggingmode.md
@@ -359,7 +351,6 @@ docs/models/shared/addregistrytype2keyfile.md
 docs/models/shared/addregistrytype2provider.md
 docs/models/shared/addregistrytype2restrictions.md
 docs/models/shared/addregistrytype2.md
-docs/models/shared/addregistrytype3auths.md
 docs/models/shared/addregistrytype3provider.md
 docs/models/shared/addregistrytype3restrictions.md
 docs/models/shared/addregistrytype3.md
@@ -453,7 +444,6 @@ docs/models/shared/logsinkdetails.md
 docs/models/shared/branchesresultdata.md
 docs/models/shared/branchesresultpagination.md
 docs/models/shared/branchesresult.md
-docs/models/shared/registryresultdataauths.md
 docs/models/shared/registryresultdataprovider.md
 docs/models/shared/registryresultdatarestrictions.md
 docs/models/shared/registryresultdata.md
@@ -510,7 +500,6 @@ docs/models/shared/updateregistrytype2.md
 docs/models/shared/updateregistrytype3keyfile.md
 docs/models/shared/updateregistrytype3restrictions.md
 docs/models/shared/updateregistrytype3.md
-docs/models/shared/updateregistrytype4auths.md
 docs/models/shared/updateregistrytype4restrictions.md
 docs/models/shared/updateregistrytype4.md
 docs/models/shared/dnsidresultdata.md

@@ -31,7 +31,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -44,14 +43,23 @@ func main() {
         }),
     )
     addSubDomainRequest := shared.AddSubDomainRequest{
+        AdditionalProperties: map[string]interface{}{
+            "transmit": "calculate",
+        },
         Cdn: &shared.AddSubDomainRequestCdn{
+            AdditionalProperties: map[string]interface{}{
+                "Toyota": "noon",
+            },
             Cloudfront: &shared.AddSubDomainRequestCdnCloudfront{
+                AdditionalProperties: map[string]interface{}{
+                    "bypass": "Chief",
+                },
                 Enabled: false,
             },
         },
         Subdomain: "site",
     }
-    domain := "example.com"
+    var domain string = "example.com"
 
     ctx := context.Background()
     res, err := s.Domains.Add(ctx, addSubDomainRequest, domain)
@@ -93,7 +101,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -106,12 +113,15 @@ func main() {
         }),
     )
     assignSubDomainRequest := shared.AssignSubDomainRequest{
+        AdditionalProperties: map[string]interface{}{
+            "sun": "Bethlehem",
+        },
         PortName: "port-1",
         ProjectID: "default-project",
         ServiceID: "example-service",
     }
-    domain := "example.com"
-    subdomain := "app"
+    var domain string = "example.com"
+    var subdomain string = "app"
 
     ctx := context.Background()
     res, err := s.Domains.Assign(ctx, assignSubDomainRequest, domain, subdomain)
@@ -168,6 +178,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Domains.Create(ctx, shared.CreateDomainRequest{
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
+        },
         Domain: "example.com",
     })
     if err != nil {
@@ -207,7 +220,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -219,7 +231,7 @@ func main() {
             },
         }),
     )
-    domain := "example.com"
+    var domain string = "example.com"
 
     ctx := context.Background()
     res, err := s.Domains.Delete(ctx, domain)
@@ -260,7 +272,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -273,10 +284,13 @@ func main() {
         }),
     )
     cdnRequest := shared.CDNRequest{
+        AdditionalProperties: map[string]interface{}{
+            "Associate": "consequatur",
+        },
         Provider: "cloudfront",
     }
-    domain := "example.com"
-    subdomain := "app"
+    var domain string = "example.com"
+    var subdomain string = "app"
 
     ctx := context.Background()
     res, err := s.Domains.DeleteCdn(ctx, cdnRequest, domain, subdomain)
@@ -319,7 +333,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -331,8 +344,8 @@ func main() {
             },
         }),
     )
-    domain := "example.com"
-    subdomain := "app"
+    var domain string = "example.com"
+    var subdomain string = "app"
 
     ctx := context.Background()
     res, err := s.Domains.DeleteSubdomain(ctx, domain, subdomain)
@@ -374,7 +387,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -387,10 +399,13 @@ func main() {
         }),
     )
     cdnRequest := shared.CDNRequest{
+        AdditionalProperties: map[string]interface{}{
+            "male": "Visionary",
+        },
         Provider: "cloudfront",
     }
-    domain := "example.com"
-    subdomain := "app"
+    var domain string = "example.com"
+    var subdomain string = "app"
 
     ctx := context.Background()
     res, err := s.Domains.Enable(ctx, cdnRequest, domain, subdomain)
@@ -433,7 +448,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -445,7 +459,7 @@ func main() {
             },
         }),
     )
-    domain := "example.com"
+    var domain string = "example.com"
 
     ctx := context.Background()
     res, err := s.Domains.Get(ctx, domain)
@@ -486,7 +500,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -498,8 +511,8 @@ func main() {
             },
         }),
     )
-    domain := "example.com"
-    subdomain := "app"
+    var domain string = "example.com"
+    var subdomain string = "app"
 
     ctx := context.Background()
     res, err := s.Domains.GetSubdomain(ctx, domain, subdomain)
@@ -541,7 +554,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -553,9 +565,9 @@ func main() {
             },
         }),
     )
-    cursor := "becquerel"
-    page := 1
-    perPage := 50
+    var cursor *string = "becquerel"
+    var page *int64 = 1
+    var perPage *int64 = 50
 
     ctx := context.Background()
     res, err := s.Domains.ListDomains(ctx, cursor, page, perPage)
@@ -598,7 +610,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -610,8 +621,8 @@ func main() {
             },
         }),
     )
-    domain := "example.com"
-    subdomain := "app"
+    var domain string = "example.com"
+    var subdomain string = "app"
 
     ctx := context.Background()
     res, err := s.Domains.Unassign(ctx, domain, subdomain)
@@ -653,7 +664,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -665,8 +675,8 @@ func main() {
             },
         }),
     )
-    domain := "example.com"
-    subdomain := "app"
+    var domain string = "example.com"
+    var subdomain string = "app"
 
     ctx := context.Background()
     res, err := s.Domains.Verify(ctx, domain, subdomain)
@@ -708,7 +718,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -720,7 +729,7 @@ func main() {
             },
         }),
     )
-    domain := "example.com"
+    var domain string = "example.com"
 
     ctx := context.Background()
     res, err := s.Domains.VerifyDomain(ctx, domain)

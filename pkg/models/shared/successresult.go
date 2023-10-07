@@ -2,19 +2,38 @@
 
 package shared
 
-// SuccessResultData - Result data.
-type SuccessResultData struct {
-}
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
 
 // SuccessResult - Response object.
 type SuccessResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
-	Data SuccessResultData `json:"data"`
+	Data map[string]interface{} `json:"data"`
 }
 
-func (o *SuccessResult) GetData() SuccessResultData {
+func (s SuccessResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SuccessResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SuccessResult) GetAdditionalProperties() map[string]interface{} {
 	if o == nil {
-		return SuccessResultData{}
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *SuccessResult) GetData() map[string]interface{} {
+	if o == nil {
+		return map[string]interface{}{}
 	}
 	return o.Data
 }

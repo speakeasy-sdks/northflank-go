@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // RegistriesResultDataCredentialsProvider - The registry provider associated with this set of credentials.
@@ -52,10 +53,29 @@ func (e *RegistriesResultDataCredentialsProvider) UnmarshalJSON(data []byte) err
 
 // RegistriesResultDataCredentialsRestrictions - Data about whether the credentials are restricted to certain projects.
 type RegistriesResultDataCredentialsRestrictions struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
+}
+
+func (r RegistriesResultDataCredentialsRestrictions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistriesResultDataCredentialsRestrictions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistriesResultDataCredentialsRestrictions) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RegistriesResultDataCredentialsRestrictions) GetProjects() []string {
@@ -73,6 +93,7 @@ func (o *RegistriesResultDataCredentialsRestrictions) GetRestricted() bool {
 }
 
 type RegistriesResultDataCredentials struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the saved credentials.
 	Description string `json:"description"`
 	// Identifier for the credentials.
@@ -83,6 +104,24 @@ type RegistriesResultDataCredentials struct {
 	Provider RegistriesResultDataCredentialsProvider `json:"provider"`
 	// Data about whether the credentials are restricted to certain projects.
 	Restrictions RegistriesResultDataCredentialsRestrictions `json:"restrictions"`
+}
+
+func (r RegistriesResultDataCredentials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistriesResultDataCredentials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistriesResultDataCredentials) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RegistriesResultDataCredentials) GetDescription() string {
@@ -122,8 +161,27 @@ func (o *RegistriesResultDataCredentials) GetRestrictions() RegistriesResultData
 
 // RegistriesResultData - Result data.
 type RegistriesResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of credentials saved to this account.
 	Credentials []RegistriesResultDataCredentials `json:"credentials"`
+}
+
+func (r RegistriesResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistriesResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistriesResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RegistriesResultData) GetCredentials() []RegistriesResultDataCredentials {
@@ -135,12 +193,31 @@ func (o *RegistriesResultData) GetCredentials() []RegistriesResultDataCredential
 
 // RegistriesResultPagination - Data about the endpoint pagination.
 type RegistriesResultPagination struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
 	Cursor *string `json:"cursor,omitempty"`
 	// Is there another page of results available?
 	HasNextPage bool `json:"hasNextPage"`
+}
+
+func (r RegistriesResultPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistriesResultPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistriesResultPagination) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RegistriesResultPagination) GetCount() float32 {
@@ -166,10 +243,29 @@ func (o *RegistriesResultPagination) GetHasNextPage() bool {
 
 // RegistriesResult - Response object.
 type RegistriesResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data RegistriesResultData `json:"data"`
 	// Data about the endpoint pagination.
 	Pagination RegistriesResultPagination `json:"pagination"`
+}
+
+func (r RegistriesResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RegistriesResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RegistriesResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RegistriesResult) GetData() RegistriesResultData {

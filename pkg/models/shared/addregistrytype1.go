@@ -53,6 +53,7 @@ func (e *AddRegistryType1Provider) UnmarshalJSON(data []byte) error {
 
 // AddRegistryType1Restrictions - Data about whether the credentials are restricted to certain projects.
 type AddRegistryType1Restrictions struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
@@ -70,6 +71,13 @@ func (a *AddRegistryType1Restrictions) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (o *AddRegistryType1Restrictions) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
 func (o *AddRegistryType1Restrictions) GetProjects() []string {
 	if o == nil {
 		return nil
@@ -85,6 +93,7 @@ func (o *AddRegistryType1Restrictions) GetRestricted() *bool {
 }
 
 type AddRegistryType1 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the credentials.
 	Description string `json:"description"`
 	// Name of the credentials.
@@ -99,6 +108,24 @@ type AddRegistryType1 struct {
 	Restrictions *AddRegistryType1Restrictions `json:"restrictions,omitempty"`
 	// Username for the container registry.
 	Username string `json:"username"`
+}
+
+func (a AddRegistryType1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddRegistryType1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddRegistryType1) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddRegistryType1) GetDescription() string {

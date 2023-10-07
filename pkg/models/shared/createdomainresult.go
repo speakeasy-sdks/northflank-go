@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // CreateDomainResultDataStatus - The status of the domain verification.
@@ -37,6 +38,7 @@ func (e *CreateDomainResultDataStatus) UnmarshalJSON(data []byte) error {
 
 // CreateDomainResultData - Result data.
 type CreateDomainResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The hostname to add to your domain's DNS records as a TXT record to verify the domain.
 	Hostname string `json:"hostname"`
 	// The domain name.
@@ -45,6 +47,24 @@ type CreateDomainResultData struct {
 	Status CreateDomainResultDataStatus `json:"status"`
 	// The token to add as the content of the TXT record to verify the domain.
 	Token string `json:"token"`
+}
+
+func (c CreateDomainResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDomainResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDomainResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateDomainResultData) GetHostname() string {
@@ -77,8 +97,27 @@ func (o *CreateDomainResultData) GetToken() string {
 
 // CreateDomainResult - Response object.
 type CreateDomainResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data CreateDomainResultData `json:"data"`
+}
+
+func (c CreateDomainResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDomainResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDomainResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateDomainResult) GetData() CreateDomainResultData {

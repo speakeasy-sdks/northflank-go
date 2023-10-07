@@ -8,6 +8,7 @@ import (
 
 // BranchesResultData - Result data.
 type BranchesResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The cursor returned from the previous page of results, used to request the next page.
 	Cursor *string `json:"cursor,omitempty"`
 	// The page number to access.
@@ -27,6 +28,13 @@ func (b *BranchesResultData) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *BranchesResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *BranchesResultData) GetCursor() *string {
@@ -59,12 +67,31 @@ func (o *BranchesResultData) GetVcsLinkID() *string {
 
 // BranchesResultPagination - Data about the endpoint pagination.
 type BranchesResultPagination struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
 	Cursor *string `json:"cursor,omitempty"`
 	// Is there another page of results available?
 	HasNextPage bool `json:"hasNextPage"`
+}
+
+func (b BranchesResultPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BranchesResultPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *BranchesResultPagination) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *BranchesResultPagination) GetCount() float32 {
@@ -90,10 +117,29 @@ func (o *BranchesResultPagination) GetHasNextPage() bool {
 
 // BranchesResult - Response object.
 type BranchesResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data BranchesResultData `json:"data"`
 	// Data about the endpoint pagination.
 	Pagination BranchesResultPagination `json:"pagination"`
+}
+
+func (b BranchesResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BranchesResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *BranchesResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *BranchesResult) GetData() BranchesResultData {

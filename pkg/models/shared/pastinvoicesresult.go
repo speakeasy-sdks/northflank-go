@@ -2,12 +2,35 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
+
 // PastInvoicesResultDataInvoicesPeriod - Information about the billing period of the invoice.
 type PastInvoicesResultDataInvoicesPeriod struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Unix timestamp of the end of the billing period.
 	End float32 `json:"end"`
 	// Unix timestamp of the start of the billing period.
 	Start float32 `json:"start"`
+}
+
+func (p PastInvoicesResultDataInvoicesPeriod) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PastInvoicesResultDataInvoicesPeriod) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PastInvoicesResultDataInvoicesPeriod) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PastInvoicesResultDataInvoicesPeriod) GetEnd() float32 {
@@ -25,6 +48,7 @@ func (o *PastInvoicesResultDataInvoicesPeriod) GetStart() float32 {
 }
 
 type PastInvoicesResultDataInvoices struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Currency code for the currency the invoice is billed in.
 	Currency string `json:"currency"`
 	// If `timestamp` is passed in, whether the invoice has been paid.
@@ -35,6 +59,24 @@ type PastInvoicesResultDataInvoices struct {
 	SubTotal float32 `json:"subTotal"`
 	// Total cost of the invoice, in cents, including tax.
 	Total float32 `json:"total"`
+}
+
+func (p PastInvoicesResultDataInvoices) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PastInvoicesResultDataInvoices) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PastInvoicesResultDataInvoices) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PastInvoicesResultDataInvoices) GetCurrency() string {
@@ -74,7 +116,26 @@ func (o *PastInvoicesResultDataInvoices) GetTotal() float32 {
 
 // PastInvoicesResultData - Result data.
 type PastInvoicesResultData struct {
-	Invoices *PastInvoicesResultDataInvoices `json:"invoices,omitempty"`
+	AdditionalProperties map[string]interface{}          `additionalProperties:"true" json:"-"`
+	Invoices             *PastInvoicesResultDataInvoices `json:"invoices,omitempty"`
+}
+
+func (p PastInvoicesResultData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PastInvoicesResultData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PastInvoicesResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PastInvoicesResultData) GetInvoices() *PastInvoicesResultDataInvoices {
@@ -86,12 +147,31 @@ func (o *PastInvoicesResultData) GetInvoices() *PastInvoicesResultDataInvoices {
 
 // PastInvoicesResultPagination - Data about the endpoint pagination.
 type PastInvoicesResultPagination struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
 	Cursor *string `json:"cursor,omitempty"`
 	// Is there another page of results available?
 	HasNextPage bool `json:"hasNextPage"`
+}
+
+func (p PastInvoicesResultPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PastInvoicesResultPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PastInvoicesResultPagination) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PastInvoicesResultPagination) GetCount() float32 {
@@ -117,10 +197,29 @@ func (o *PastInvoicesResultPagination) GetHasNextPage() bool {
 
 // PastInvoicesResult - Response object.
 type PastInvoicesResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data PastInvoicesResultData `json:"data"`
 	// Data about the endpoint pagination.
 	Pagination PastInvoicesResultPagination `json:"pagination"`
+}
+
+func (p PastInvoicesResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PastInvoicesResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PastInvoicesResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *PastInvoicesResult) GetData() PastInvoicesResultData {

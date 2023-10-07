@@ -8,10 +8,6 @@ import (
 	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
-// AddRegistryType3Auths - The `auths` data extracted from your Docker config file.
-type AddRegistryType3Auths struct {
-}
-
 // AddRegistryType3Provider - The registry provider associated with this set of credentials.
 type AddRegistryType3Provider string
 
@@ -57,6 +53,7 @@ func (e *AddRegistryType3Provider) UnmarshalJSON(data []byte) error {
 
 // AddRegistryType3Restrictions - Data about whether the credentials are restricted to certain projects.
 type AddRegistryType3Restrictions struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
@@ -72,6 +69,13 @@ func (a *AddRegistryType3Restrictions) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *AddRegistryType3Restrictions) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddRegistryType3Restrictions) GetProjects() []string {
@@ -90,8 +94,9 @@ func (o *AddRegistryType3Restrictions) GetRestricted() *bool {
 
 // AddRegistryType3 - Validate with a docker config file.
 type AddRegistryType3 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The `auths` data extracted from your Docker config file.
-	Auths AddRegistryType3Auths `json:"auths"`
+	Auths map[string]interface{} `json:"auths"`
 	// Description of the credentials.
 	Description string `json:"description"`
 	// Name of the credentials.
@@ -102,9 +107,27 @@ type AddRegistryType3 struct {
 	Restrictions *AddRegistryType3Restrictions `json:"restrictions,omitempty"`
 }
 
-func (o *AddRegistryType3) GetAuths() AddRegistryType3Auths {
+func (a AddRegistryType3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddRegistryType3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddRegistryType3) GetAdditionalProperties() map[string]interface{} {
 	if o == nil {
-		return AddRegistryType3Auths{}
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *AddRegistryType3) GetAuths() map[string]interface{} {
+	if o == nil {
+		return map[string]interface{}{}
 	}
 	return o.Auths
 }

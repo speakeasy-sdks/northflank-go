@@ -43,15 +43,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.CloudProviders.Create(ctx, shared.CreateIntegrationRequest{
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
+        },
         Credentials: shared.CreateIntegrationRequestCredentials{
-            AccessKey: northflankgo.String("bluetooth Extended"),
-            APIKey: northflankgo.String("blue"),
-            KeyfileJSON: northflankgo.String("grey technology East"),
-            SecretKey: northflankgo.String("evolve"),
+            AdditionalProperties: map[string]interface{}{
+                "Money": "blue",
+            },
         },
         Description: northflankgo.String("This is a new cloud provider integration."),
         Gcp: &shared.CreateIntegrationRequestGcp{
-            ProjectID: "fuchsia Gasoline Screen",
+            AdditionalProperties: map[string]interface{}{
+                "shred": "abnormally",
+            },
+            ProjectID: "orange Northwest",
         },
         Name: "New Integration",
         Provider: shared.CreateIntegrationRequestProviderGcp,
@@ -107,52 +112,82 @@ func main() {
 
     ctx := context.Background()
     res, err := s.CloudProviders.CreateCluster(ctx, shared.CreateClusterRequest{
+        AdditionalProperties: map[string]interface{}{
+            "Darmstadtium": "enormously",
+        },
         Description: northflankgo.String("This is a new cluster."),
         Gcp: &shared.CreateClusterRequestGcp{
+            AdditionalProperties: map[string]interface{}{
+                "Minnesota": "male",
+            },
             ProjectID: "example-project-id",
         },
         Integration: &shared.CreateClusterRequestIntegration{
-            AccessKey: northflankgo.String("pish Games payment"),
-            APIKey: northflankgo.String("Oregon Lodi Towels"),
-            KeyfileJSON: northflankgo.String("payment Buckinghamshire"),
-            SecretKey: northflankgo.String("Audi strategize"),
+            AdditionalProperties: map[string]interface{}{
+                "Oregon": "Lodi",
+            },
         },
         IntegrationID: northflankgo.String("gcp-integration"),
         KubernetesVersion: "1.23.8",
         Name: "GCP Cluster 1",
         NodePools: []shared.CreateClusterRequestNodePools{
             shared.CreateClusterRequestNodePools{
+                AdditionalProperties: map[string]interface{}{
+                    "Towels": "JBOD",
+                },
                 Autoscaling: &shared.CreateClusterRequestNodePoolsAutoscaling{
+                    AdditionalProperties: map[string]interface{}{
+                        "male": "US",
+                    },
                     Enabled: northflankgo.Bool(true),
                     Max: northflankgo.Int64(10),
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "Ford",
+                    "strategize",
                 },
                 DiskSize: 100,
-                DiskType: northflankgo.String("Protactinium"),
-                Labels: &shared.CreateClusterRequestNodePoolsLabels{},
+                Labels: map[string]interface{}{
+                    "Ford": "Estate",
+                },
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
                 Preemptible: northflankgo.Bool(false),
-                SystemPool: northflankgo.Bool(false),
             },
         },
         Provider: shared.CreateClusterRequestProviderGcp,
         Region: "europe-west2",
         Settings: shared.CreateClusterRequestSettings{
+            AdditionalProperties: map[string]interface{}{
+                "Southeast": "solutions",
+            },
             Builds: &shared.CreateClusterRequestSettingsBuilds{
+                AdditionalProperties: map[string]interface{}{
+                    "integrate": "Montana",
+                },
                 ClusterID: northflankgo.String("build-cluster"),
-                Mode: shared.CreateClusterRequestSettingsBuildsModePaas.ToPointer(),
                 Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.CreateClusterRequestSettingsLogging{
-                Loki: &shared.CreateClusterRequestSettingsLoggingLoki{},
-                Mode: shared.CreateClusterRequestSettingsLoggingModeLoki.ToPointer(),
+                AdditionalProperties: map[string]interface{}{
+                    "Cambridgeshire": "um",
+                },
+                Loki: shared.CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki1(
+                        shared.CreateClusterRequestSettingsLoggingLoki1{
+                            AdditionalProperties: map[string]interface{}{
+                                "matrices": "Carolina",
+                            },
+                            S3AccessKey: "payment",
+                            S3BucketName: "capacity",
+                            S3Region: "protocol paragraph",
+                            S3SecretKey: "blah",
+                        },
+                ),
             },
             Registry: &shared.CreateClusterRequestSettingsRegistry{
-                Mode: shared.CreateClusterRequestSettingsRegistryModePaas.ToPointer(),
+                AdditionalProperties: map[string]interface{}{
+                    "invoice": "gloomy",
+                },
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
@@ -194,7 +229,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -206,7 +240,7 @@ func main() {
             },
         }),
     )
-    clusterID := "gcp-cluster-1"
+    var clusterID string = "gcp-cluster-1"
 
     ctx := context.Background()
     res, err := s.CloudProviders.DeleteCluster(ctx, clusterID)
@@ -247,7 +281,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -259,7 +292,7 @@ func main() {
             },
         }),
     )
-    integrationID := "gcp-integration-1"
+    var integrationID string = "gcp-integration-1"
 
     ctx := context.Background()
     res, err := s.CloudProviders.DeleteIntegration(ctx, integrationID)
@@ -350,7 +383,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -362,7 +394,7 @@ func main() {
             },
         }),
     )
-    clusterID := "gcp-cluster-1"
+    var clusterID string = "gcp-cluster-1"
 
     ctx := context.Background()
     res, err := s.CloudProviders.GetCluster(ctx, clusterID)
@@ -403,7 +435,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -415,7 +446,7 @@ func main() {
             },
         }),
     )
-    integrationID := "gcp-integration-1"
+    var integrationID string = "gcp-integration-1"
 
     ctx := context.Background()
     res, err := s.CloudProviders.GetIntegration(ctx, integrationID)
@@ -456,7 +487,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -468,9 +498,9 @@ func main() {
             },
         }),
     )
-    cursor := "24"
-    page := 1
-    perPage := 50
+    var cursor *string = "24"
+    var page *int64 = 1
+    var perPage *int64 = 50
 
     ctx := context.Background()
     res, err := s.CloudProviders.ListClusters(ctx, cursor, page, perPage)
@@ -513,7 +543,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -525,9 +554,9 @@ func main() {
             },
         }),
     )
-    cursor := "South"
-    page := 1
-    perPage := 50
+    var cursor *string = "South"
+    var page *int64 = 1
+    var perPage *int64 = 50
 
     ctx := context.Background()
     res, err := s.CloudProviders.ListIntegrations(ctx, cursor, page, perPage)
@@ -570,7 +599,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -583,44 +611,72 @@ func main() {
         }),
     )
     updateClusterRequest := shared.UpdateClusterRequest{
+        AdditionalProperties: map[string]interface{}{
+            "Fish": "Sausages",
+        },
         Description: northflankgo.String("This is an updated description."),
         NodePools: []shared.UpdateClusterRequestNodePools{
             shared.UpdateClusterRequestNodePools{
+                AdditionalProperties: map[string]interface{}{
+                    "defect": "sievert",
+                },
                 Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
+                    AdditionalProperties: map[string]interface{}{
+                        "Corporate": "Southeast",
+                    },
                     Enabled: northflankgo.Bool(true),
                     Max: northflankgo.Int64(10),
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "Fish",
+                    "Metrics",
                 },
                 DiskSize: 100,
-                DiskType: northflankgo.String("futon"),
                 ID: northflankgo.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
+                Labels: map[string]interface{}{
+                    "Communications": "Solutions",
+                },
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
                 Preemptible: northflankgo.Bool(false),
-                SystemPool: northflankgo.Bool(false),
             },
         },
         Settings: &shared.UpdateClusterRequestSettings{
+            AdditionalProperties: map[string]interface{}{
+                "Southeast": "Cambridgeshire",
+            },
             Builds: &shared.UpdateClusterRequestSettingsBuilds{
+                AdditionalProperties: map[string]interface{}{
+                    "Roentgenium": "Associate",
+                },
                 ClusterID: northflankgo.String("build-cluster"),
-                Mode: shared.UpdateClusterRequestSettingsBuildsModeBuildCluster.ToPointer(),
                 Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.UpdateClusterRequestSettingsLogging{
-                Loki: &shared.UpdateClusterRequestSettingsLoggingLoki{},
-                Mode: shared.UpdateClusterRequestSettingsLoggingModeLoki.ToPointer(),
+                AdditionalProperties: map[string]interface{}{
+                    "actuating": "Frozen",
+                },
+                Loki: shared.CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki1(
+                        shared.UpdateClusterRequestSettingsLoggingLoki1{
+                            AdditionalProperties: map[string]interface{}{
+                                "Senior": "exactly",
+                            },
+                            S3AccessKey: "Gabon Croatian Brand",
+                            S3BucketName: "Minivan Fresh Neon",
+                            S3Region: "South Polestar monitor",
+                            S3SecretKey: "bypass Outdoors invoice",
+                        },
+                ),
             },
             Registry: &shared.UpdateClusterRequestSettingsRegistry{
-                Mode: shared.UpdateClusterRequestSettingsRegistryModeSelfHosted.ToPointer(),
+                AdditionalProperties: map[string]interface{}{
+                    "Chino": "Bedfordshire",
+                },
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
     }
-    clusterID := "gcp-cluster-1"
+    var clusterID string = "gcp-cluster-1"
 
     ctx := context.Background()
     res, err := s.CloudProviders.UpdateCluster(ctx, updateClusterRequest, clusterID)
@@ -662,7 +718,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -675,15 +730,17 @@ func main() {
         }),
     )
     updateIntegrationRequest := shared.UpdateIntegrationRequest{
+        AdditionalProperties: map[string]interface{}{
+            "before": "Bronze",
+        },
         Credentials: shared.UpdateIntegrationRequestCredentials{
-            AccessKey: northflankgo.String("Northwest Franc auxiliary"),
-            APIKey: northflankgo.String("interactive hertz"),
-            KeyfileJSON: northflankgo.String("North copying"),
-            SecretKey: northflankgo.String("Designer yowza Tungsten"),
+            AdditionalProperties: map[string]interface{}{
+                "Hendersonville": "interactive",
+            },
         },
         Description: northflankgo.String("This is a new description."),
     }
-    integrationID := "gcp-integration-1"
+    var integrationID string = "gcp-integration-1"
 
     ctx := context.Background()
     res, err := s.CloudProviders.UpdateIntegration(ctx, updateIntegrationRequest, integrationID)

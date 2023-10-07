@@ -48,7 +48,41 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integrations.Add(ctx, operations.AddRegistryRequestBody{})
+    res, err := s.Integrations.Add(ctx, operations.CreateAddRegistryRequestBodyAddRegistryType2(
+            shared.AddRegistryType2{
+                AdditionalProperties: map[string]interface{}{
+                    "Lamborghini": "Creative",
+                },
+                Description: "This is a set of saved credentials.",
+                Keyfile: shared.AddRegistryType2Keyfile{},
+                Name: "Example Credentials",
+                Provider: shared.AddRegistryType2ProviderDockerhub,
+                RegistryURL: northflankgo.String("https://example.com"),
+                Restrictions: &shared.AddRegistryType2Restrictions{
+                    AdditionalProperties: map[string]interface{}{
+                        "ick": "Soul",
+                    },
+                    Projects: []string{
+                        "d",
+                        "e",
+                        "f",
+                        "a",
+                        "u",
+                        "l",
+                        "t",
+                        "-",
+                        "p",
+                        "r",
+                        "o",
+                        "j",
+                        "e",
+                        "c",
+                        "t",
+                    },
+                    Restricted: northflankgo.Bool(true),
+                },
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -100,7 +134,58 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integrations.Create(ctx, operations.CreateLogSinkRequestBody{})
+    res, err := s.Integrations.Create(ctx, operations.CreateCreateLogSinkRequestBodyHTTPLogSink(
+            shared.HTTPLogSink{
+                AdditionalProperties: map[string]interface{}{
+                    "bluetooth": "Extended",
+                },
+                Description: northflankgo.String("This is an example log sink."),
+                ForwardAccessLogs: northflankgo.Bool(true),
+                Name: "example-log-sink",
+                Projects: []string{
+                    "d",
+                    "e",
+                    "f",
+                    "a",
+                    "u",
+                    "l",
+                    "t",
+                    "-",
+                    "p",
+                    "r",
+                    "o",
+                    "j",
+                    "e",
+                    "c",
+                    "t",
+                },
+                Restricted: northflankgo.Bool(true),
+                SinkData: shared.HTTPLogSinkSinkData{
+                    AdditionalProperties: map[string]interface{}{
+                        "South": "shred",
+                    },
+                    Auth: shared.CreateHTTPLogSinkSinkDataAuthHTTPLogSinkSinkDataAuth2(
+                            shared.HTTPLogSinkSinkDataAuth2{
+                                AdditionalProperties: map[string]interface{}{
+                                    "technology": "East",
+                                },
+                                Password: "secret-password",
+                                Strategy: shared.HTTPLogSinkSinkDataAuth2StrategyBasic,
+                                User: northflankgo.String("my-user"),
+                            },
+                    ),
+                    Encoding: &shared.HTTPLogSinkSinkDataEncoding{
+                        AdditionalProperties: map[string]interface{}{
+                            "orange": "Northwest",
+                        },
+                        Codec: shared.HTTPLogSinkSinkDataEncodingCodecJSON,
+                    },
+                    URI: "my.log-collector.com",
+                },
+                SinkType: shared.HTTPLogSinkSinkTypeHTTP,
+                UseCustomLabels: northflankgo.Bool(true),
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -138,7 +223,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -150,7 +234,7 @@ func main() {
             },
         }),
     )
-    logSinkID := "example-log-sink"
+    var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
     res, err := s.Integrations.Delete(ctx, logSinkID)
@@ -191,7 +275,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -203,7 +286,7 @@ func main() {
             },
         }),
     )
-    credentialID := "example-credentials"
+    var credentialID string = "example-credentials"
 
     ctx := context.Background()
     res, err := s.Integrations.DeleteRegistry(ctx, credentialID)
@@ -244,7 +327,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -256,8 +338,8 @@ func main() {
             },
         }),
     )
-    customVCSID := "cdb3d41f-0dd8-49ad-92d5-7544c98c490b"
-    vcsLinkID := "63ebb6ce2ccc6c7affdbf253"
+    var customVCSID string = "cdb3d41f-0dd8-49ad-92d5-7544c98c490b"
+    var vcsLinkID string = "63ebb6ce2ccc6c7affdbf253"
 
     ctx := context.Background()
     res, err := s.Integrations.GenerateVCSToken(ctx, customVCSID, vcsLinkID)
@@ -299,7 +381,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -311,7 +392,7 @@ func main() {
             },
         }),
     )
-    logSinkID := "example-log-sink"
+    var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
     res, err := s.Integrations.Get(ctx, logSinkID)
@@ -367,7 +448,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integrations.GetBranches(ctx, operations.GetBranchesRequest{
-        Cursor: northflankgo.String("Licensed"),
         PerPage: northflankgo.Int64(50),
         RepositoryName: "next-js-example",
         RepositoryOwner: "northflank-examples",
@@ -410,7 +490,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -422,7 +501,7 @@ func main() {
             },
         }),
     )
-    credentialID := "example-credentials"
+    var credentialID string = "example-credentials"
 
     ctx := context.Background()
     res, err := s.Integrations.GetRegistry(ctx, credentialID)
@@ -479,10 +558,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Integrations.GetRepos(ctx, operations.GetRepositoriesRequest{
         AccountLogin: northflankgo.String("example-user"),
-        Cursor: northflankgo.String("Small Assurance Administrator"),
         PerPage: northflankgo.Int64(50),
-        SelfHostedVcsID: northflankgo.String("convergence invoice"),
-        VcsLinkID: northflankgo.String("molestiae"),
         VcsService: operations.GetRepositoriesVcsServiceGithub.ToPointer(),
     })
     if err != nil {
@@ -522,7 +598,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -534,8 +609,8 @@ func main() {
             },
         }),
     )
-    cursor := "powerfully"
-    perPage := 50
+    var cursor *string = "powerfully"
+    var perPage *int64 = 50
 
     ctx := context.Background()
     res, err := s.Integrations.ListLogSinks(ctx, cursor, perPage)
@@ -577,7 +652,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -589,8 +663,8 @@ func main() {
             },
         }),
     )
-    cursor := "synthesize"
-    perPage := 50
+    var cursor *string = "synthesize"
+    var perPage *int64 = 50
 
     ctx := context.Background()
     res, err := s.Integrations.ListRegistries(ctx, cursor, perPage)
@@ -682,7 +756,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -694,7 +767,7 @@ func main() {
             },
         }),
     )
-    logSinkID := "example-log-sink"
+    var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
     res, err := s.Integrations.Pause(ctx, logSinkID)
@@ -735,7 +808,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -747,7 +819,7 @@ func main() {
             },
         }),
     )
-    logSinkID := "example-log-sink"
+    var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
     res, err := s.Integrations.Resume(ctx, logSinkID)
@@ -788,7 +860,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -801,15 +872,39 @@ func main() {
         }),
     )
     logSinkRequest := shared.LogSinkRequest{
+        AdditionalProperties: map[string]interface{}{
+            "Van": "East",
+        },
         Projects: []string{
-            "default-project",
+            "d",
+            "e",
+            "f",
+            "a",
+            "u",
+            "l",
+            "t",
+            "-",
+            "p",
+            "r",
+            "o",
+            "j",
+            "e",
+            "c",
+            "t",
         },
         Restricted: northflankgo.Bool(true),
         ResumeLogSink: northflankgo.Bool(false),
-        SinkData: &shared.LogSinkRequestSinkData{},
+        SinkData: shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData6(
+                shared.LogSinkRequestSinkData6{
+                    AdditionalProperties: map[string]interface{}{
+                        "dock": "Quality",
+                    },
+                    Token: "vhnqrLygVQ5GnSQUTZamKvAq",
+                },
+        ),
         UseCustomLabels: northflankgo.Bool(true),
     }
-    logSinkID := "example-log-sink"
+    var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
     res, err := s.Integrations.Update(ctx, logSinkRequest, logSinkID)
@@ -863,8 +958,41 @@ func main() {
             },
         }),
     )
-    requestBody := operations.UpdateRegistryRequestBody{}
-    credentialID := "example-credentials"
+    var requestBody operations.UpdateRegistryRequestBody = operations.CreateUpdateRegistryRequestBodyUpdateRegistryType2(
+            shared.UpdateRegistryType2{
+                AdditionalProperties: map[string]interface{}{
+                    "painfully": "copy",
+                },
+                Description: northflankgo.String("This is a set of saved credentials."),
+                Password: "password1234",
+                RegistryURL: northflankgo.String("https://example.com"),
+                Restrictions: &shared.UpdateRegistryType2Restrictions{
+                    AdditionalProperties: map[string]interface{}{
+                        "Intelligent": "methodology",
+                    },
+                    Projects: []string{
+                        "d",
+                        "e",
+                        "f",
+                        "a",
+                        "u",
+                        "l",
+                        "t",
+                        "-",
+                        "p",
+                        "r",
+                        "o",
+                        "j",
+                        "e",
+                        "c",
+                        "t",
+                    },
+                    Restricted: true,
+                },
+                Username: "test-user",
+            },
+    )
+    var credentialID string = "example-credentials"
 
     ctx := context.Background()
     res, err := s.Integrations.UpdateRegistry(ctx, requestBody, credentialID)

@@ -2,12 +2,35 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+)
+
 // UpdateRegistryType2Restrictions - Data about whether the credentials are restricted to certain projects.
 type UpdateRegistryType2Restrictions struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
+}
+
+func (u UpdateRegistryType2Restrictions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRegistryType2Restrictions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateRegistryType2Restrictions) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateRegistryType2Restrictions) GetProjects() []string {
@@ -25,6 +48,7 @@ func (o *UpdateRegistryType2Restrictions) GetRestricted() bool {
 }
 
 type UpdateRegistryType2 struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the credentials.
 	Description *string `json:"description,omitempty"`
 	// Password, Personal Access Token, or API key for the container registry.
@@ -35,6 +59,24 @@ type UpdateRegistryType2 struct {
 	Restrictions *UpdateRegistryType2Restrictions `json:"restrictions,omitempty"`
 	// Username for the container registry.
 	Username string `json:"username"`
+}
+
+func (u UpdateRegistryType2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRegistryType2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateRegistryType2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateRegistryType2) GetDescription() *string {

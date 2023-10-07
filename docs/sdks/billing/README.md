@@ -20,7 +20,6 @@ import(
 	"log"
 	northflankgo "github.com/speakeasy-sdks/northflank-go"
 	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
 )
 
 func main() {
@@ -32,9 +31,9 @@ func main() {
             },
         }),
     )
-    cursor := "24"
-    page := 1
-    perPage := 50
+    var cursor *string = "24"
+    var page *int64 = 1
+    var perPage *int64 = 50
 
     ctx := context.Background()
     res, err := s.Billing.Get(ctx, cursor, page, perPage)

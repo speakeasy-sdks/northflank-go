@@ -10,8 +10,27 @@ import (
 
 // LogtailLogSinkSinkData - Details about the Logtail log sink.
 type LogtailLogSinkSinkData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Logtail Source Token
 	Token string `json:"token"`
+}
+
+func (l LogtailLogSinkSinkData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogtailLogSinkSinkData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *LogtailLogSinkSinkData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogtailLogSinkSinkData) GetToken() string {
@@ -48,6 +67,7 @@ func (e *LogtailLogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // LogtailLogSink - Create a log sink using Logtail
 type LogtailLogSink struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -75,6 +95,13 @@ func (l *LogtailLogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *LogtailLogSink) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *LogtailLogSink) GetDescription() *string {

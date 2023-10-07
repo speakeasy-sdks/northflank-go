@@ -9,9 +9,10 @@ import (
 
 // UpdateClusterResultDataNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 type UpdateClusterResultDataNodePoolsAutoscaling struct {
-	Enabled *bool  `default:"false" json:"enabled"`
-	Max     *int64 `json:"max,omitempty"`
-	Min     *int64 `json:"min,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Enabled              *bool                  `default:"false" json:"enabled"`
+	Max                  *int64                 `json:"max,omitempty"`
+	Min                  *int64                 `json:"min,omitempty"`
 }
 
 func (u UpdateClusterResultDataNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
@@ -23,6 +24,13 @@ func (u *UpdateClusterResultDataNodePoolsAutoscaling) UnmarshalJSON(data []byte)
 		return err
 	}
 	return nil
+}
+
+func (o *UpdateClusterResultDataNodePoolsAutoscaling) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterResultDataNodePoolsAutoscaling) GetEnabled() *bool {
@@ -46,11 +54,8 @@ func (o *UpdateClusterResultDataNodePoolsAutoscaling) GetMin() *int64 {
 	return o.Min
 }
 
-// UpdateClusterResultDataNodePoolsLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
-type UpdateClusterResultDataNodePoolsLabels struct {
-}
-
 type UpdateClusterResultDataNodePools struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 	Autoscaling *UpdateClusterResultDataNodePoolsAutoscaling `json:"autoscaling,omitempty"`
 	// Zones in which the node pool should be provisioned.
@@ -62,7 +67,7 @@ type UpdateClusterResultDataNodePools struct {
 	// ID of existing node pool. Must be passed when modifying existing node pools. Not relevant for new node pools
 	ID *string `json:"id,omitempty"`
 	// Set of label keys and values that can be used to determine scheduling via resource tags.
-	Labels *UpdateClusterResultDataNodePoolsLabels `json:"labels,omitempty"`
+	Labels map[string]interface{} `json:"labels,omitempty"`
 	// Number of nodes to the node pool should be provisioned with.
 	NodeCount int64 `json:"nodeCount"`
 	// Machine type to be used by the node pool.
@@ -82,6 +87,13 @@ func (u *UpdateClusterResultDataNodePools) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *UpdateClusterResultDataNodePools) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterResultDataNodePools) GetAutoscaling() *UpdateClusterResultDataNodePoolsAutoscaling {
@@ -119,7 +131,7 @@ func (o *UpdateClusterResultDataNodePools) GetID() *string {
 	return o.ID
 }
 
-func (o *UpdateClusterResultDataNodePools) GetLabels() *UpdateClusterResultDataNodePoolsLabels {
+func (o *UpdateClusterResultDataNodePools) GetLabels() map[string]interface{} {
 	if o == nil {
 		return nil
 	}
@@ -155,8 +167,9 @@ func (o *UpdateClusterResultDataNodePools) GetSystemPool() *bool {
 }
 
 type UpdateClusterResultDataStatusState struct {
-	State          *string    `json:"state,omitempty"`
-	TransitionTime *time.Time `json:"transitionTime,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	State                *string                `json:"state,omitempty"`
+	TransitionTime       *time.Time             `json:"transitionTime,omitempty"`
 }
 
 func (u UpdateClusterResultDataStatusState) MarshalJSON() ([]byte, error) {
@@ -168,6 +181,13 @@ func (u *UpdateClusterResultDataStatusState) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *UpdateClusterResultDataStatusState) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterResultDataStatusState) GetState() *string {
@@ -185,8 +205,9 @@ func (o *UpdateClusterResultDataStatusState) GetTransitionTime() *time.Time {
 }
 
 type UpdateClusterResultDataStatus struct {
-	NextUpdateAfter *time.Time                          `json:"nextUpdateAfter,omitempty"`
-	State           *UpdateClusterResultDataStatusState `json:"state,omitempty"`
+	AdditionalProperties map[string]interface{}              `additionalProperties:"true" json:"-"`
+	NextUpdateAfter      *time.Time                          `json:"nextUpdateAfter,omitempty"`
+	State                *UpdateClusterResultDataStatusState `json:"state,omitempty"`
 }
 
 func (u UpdateClusterResultDataStatus) MarshalJSON() ([]byte, error) {
@@ -198,6 +219,13 @@ func (u *UpdateClusterResultDataStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *UpdateClusterResultDataStatus) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterResultDataStatus) GetNextUpdateAfter() *time.Time {
@@ -216,6 +244,7 @@ func (o *UpdateClusterResultDataStatus) GetState() *UpdateClusterResultDataStatu
 
 // UpdateClusterResultData - Result data.
 type UpdateClusterResultData struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The time the cluster was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Indicates if provider resource deletion has been requested by the user.
@@ -243,6 +272,13 @@ func (u *UpdateClusterResultData) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *UpdateClusterResultData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterResultData) GetCreatedAt() time.Time {
@@ -310,8 +346,27 @@ func (o *UpdateClusterResultData) GetStatus() *UpdateClusterResultDataStatus {
 
 // UpdateClusterResult - Response object.
 type UpdateClusterResult struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data UpdateClusterResultData `json:"data"`
+}
+
+func (u UpdateClusterResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateClusterResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateClusterResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterResult) GetData() UpdateClusterResultData {
