@@ -50,18 +50,12 @@ func main() {
     ctx := context.Background()
     res, err := s.Integrations.Add(ctx, operations.CreateAddRegistryRequestBodyAddRegistryType2(
             shared.AddRegistryType2{
-                AdditionalProperties: map[string]interface{}{
-                    "Lamborghini": "Creative",
-                },
                 Description: "This is a set of saved credentials.",
                 Keyfile: shared.AddRegistryType2Keyfile{},
                 Name: "Example Credentials",
                 Provider: shared.AddRegistryType2ProviderDockerhub,
                 RegistryURL: northflankgo.String("https://example.com"),
                 Restrictions: &shared.AddRegistryType2Restrictions{
-                    AdditionalProperties: map[string]interface{}{
-                        "ick": "Soul",
-                    },
                     Projects: []string{
                         "d",
                         "e",
@@ -136,9 +130,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Integrations.Create(ctx, operations.CreateCreateLogSinkRequestBodyHTTPLogSink(
             shared.HTTPLogSink{
-                AdditionalProperties: map[string]interface{}{
-                    "bluetooth": "Extended",
-                },
                 Description: northflankgo.String("This is an example log sink."),
                 ForwardAccessLogs: northflankgo.Bool(true),
                 Name: "example-log-sink",
@@ -161,23 +152,14 @@ func main() {
                 },
                 Restricted: northflankgo.Bool(true),
                 SinkData: shared.HTTPLogSinkSinkData{
-                    AdditionalProperties: map[string]interface{}{
-                        "South": "shred",
-                    },
                     Auth: shared.CreateHTTPLogSinkSinkDataAuthHTTPLogSinkSinkDataAuth2(
                             shared.HTTPLogSinkSinkDataAuth2{
-                                AdditionalProperties: map[string]interface{}{
-                                    "technology": "East",
-                                },
                                 Password: "secret-password",
                                 Strategy: shared.HTTPLogSinkSinkDataAuth2StrategyBasic,
                                 User: northflankgo.String("my-user"),
                             },
                     ),
                     Encoding: &shared.HTTPLogSinkSinkDataEncoding{
-                        AdditionalProperties: map[string]interface{}{
-                            "orange": "Northwest",
-                        },
                         Codec: shared.HTTPLogSinkSinkDataEncodingCodecJSON,
                     },
                     URI: "my.log-collector.com",
@@ -234,6 +216,8 @@ func main() {
             },
         }),
     )
+
+
     var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
@@ -286,6 +270,8 @@ func main() {
             },
         }),
     )
+
+
     var credentialID string = "example-credentials"
 
     ctx := context.Background()
@@ -338,7 +324,10 @@ func main() {
             },
         }),
     )
+
+
     var customVCSID string = "cdb3d41f-0dd8-49ad-92d5-7544c98c490b"
+
     var vcsLinkID string = "63ebb6ce2ccc6c7affdbf253"
 
     ctx := context.Background()
@@ -392,6 +381,8 @@ func main() {
             },
         }),
     )
+
+
     var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
@@ -501,6 +492,8 @@ func main() {
             },
         }),
     )
+
+
     var credentialID string = "example-credentials"
 
     ctx := context.Background()
@@ -609,7 +602,10 @@ func main() {
             },
         }),
     )
+
+
     var cursor *string = "powerfully"
+
     var perPage *int64 = 50
 
     ctx := context.Background()
@@ -663,7 +659,10 @@ func main() {
             },
         }),
     )
+
+
     var cursor *string = "synthesize"
+
     var perPage *int64 = 50
 
     ctx := context.Background()
@@ -767,6 +766,8 @@ func main() {
             },
         }),
     )
+
+
     var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
@@ -819,6 +820,8 @@ func main() {
             },
         }),
     )
+
+
     var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
@@ -871,10 +874,9 @@ func main() {
             },
         }),
     )
+
+
     logSinkRequest := shared.LogSinkRequest{
-        AdditionalProperties: map[string]interface{}{
-            "Van": "East",
-        },
         Projects: []string{
             "d",
             "e",
@@ -894,16 +896,14 @@ func main() {
         },
         Restricted: northflankgo.Bool(true),
         ResumeLogSink: northflankgo.Bool(false),
-        SinkData: shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData6(
-                shared.LogSinkRequestSinkData6{
-                    AdditionalProperties: map[string]interface{}{
-                        "dock": "Quality",
-                    },
-                    Token: "vhnqrLygVQ5GnSQUTZamKvAq",
+        SinkData: shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData7(
+                shared.LogSinkRequestSinkData7{
+                    APIKey: "b1dd3feb585asd1a3e9edpo9kmn5e590hg9",
                 },
         ),
         UseCustomLabels: northflankgo.Bool(true),
     }
+
     var logSinkID string = "example-log-sink"
 
     ctx := context.Background()
@@ -958,18 +958,14 @@ func main() {
             },
         }),
     )
+
+
     var requestBody operations.UpdateRegistryRequestBody = operations.CreateUpdateRegistryRequestBodyUpdateRegistryType2(
             shared.UpdateRegistryType2{
-                AdditionalProperties: map[string]interface{}{
-                    "painfully": "copy",
-                },
                 Description: northflankgo.String("This is a set of saved credentials."),
                 Password: "password1234",
                 RegistryURL: northflankgo.String("https://example.com"),
                 Restrictions: &shared.UpdateRegistryType2Restrictions{
-                    AdditionalProperties: map[string]interface{}{
-                        "Intelligent": "methodology",
-                    },
                     Projects: []string{
                         "d",
                         "e",
@@ -992,6 +988,7 @@ func main() {
                 Username: "test-user",
             },
     )
+
     var credentialID string = "example-credentials"
 
     ctx := context.Background()

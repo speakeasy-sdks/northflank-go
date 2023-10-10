@@ -42,23 +42,17 @@ func main() {
             },
         }),
     )
+
+
     addSubDomainRequest := shared.AddSubDomainRequest{
-        AdditionalProperties: map[string]interface{}{
-            "transmit": "calculate",
-        },
         Cdn: &shared.AddSubDomainRequestCdn{
-            AdditionalProperties: map[string]interface{}{
-                "Toyota": "noon",
-            },
             Cloudfront: &shared.AddSubDomainRequestCdnCloudfront{
-                AdditionalProperties: map[string]interface{}{
-                    "bypass": "Chief",
-                },
                 Enabled: false,
             },
         },
         Subdomain: "site",
     }
+
     var domain string = "example.com"
 
     ctx := context.Background()
@@ -112,15 +106,16 @@ func main() {
             },
         }),
     )
+
+
     assignSubDomainRequest := shared.AssignSubDomainRequest{
-        AdditionalProperties: map[string]interface{}{
-            "sun": "Bethlehem",
-        },
         PortName: "port-1",
         ProjectID: "default-project",
         ServiceID: "example-service",
     }
+
     var domain string = "example.com"
+
     var subdomain string = "app"
 
     ctx := context.Background()
@@ -178,9 +173,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Domains.Create(ctx, shared.CreateDomainRequest{
-        AdditionalProperties: map[string]interface{}{
-            "online": "Configuration",
-        },
         Domain: "example.com",
     })
     if err != nil {
@@ -231,6 +223,8 @@ func main() {
             },
         }),
     )
+
+
     var domain string = "example.com"
 
     ctx := context.Background()
@@ -283,13 +277,14 @@ func main() {
             },
         }),
     )
+
+
     cdnRequest := shared.CDNRequest{
-        AdditionalProperties: map[string]interface{}{
-            "Associate": "consequatur",
-        },
         Provider: "cloudfront",
     }
+
     var domain string = "example.com"
+
     var subdomain string = "app"
 
     ctx := context.Background()
@@ -344,7 +339,10 @@ func main() {
             },
         }),
     )
+
+
     var domain string = "example.com"
+
     var subdomain string = "app"
 
     ctx := context.Background()
@@ -398,13 +396,14 @@ func main() {
             },
         }),
     )
+
+
     cdnRequest := shared.CDNRequest{
-        AdditionalProperties: map[string]interface{}{
-            "male": "Visionary",
-        },
         Provider: "cloudfront",
     }
+
     var domain string = "example.com"
+
     var subdomain string = "app"
 
     ctx := context.Background()
@@ -459,6 +458,8 @@ func main() {
             },
         }),
     )
+
+
     var domain string = "example.com"
 
     ctx := context.Background()
@@ -511,7 +512,10 @@ func main() {
             },
         }),
     )
+
+
     var domain string = "example.com"
+
     var subdomain string = "app"
 
     ctx := context.Background()
@@ -565,8 +569,12 @@ func main() {
             },
         }),
     )
+
+
     var cursor *string = "becquerel"
+
     var page *int64 = 1
+
     var perPage *int64 = 50
 
     ctx := context.Background()
@@ -621,7 +629,10 @@ func main() {
             },
         }),
     )
+
+
     var domain string = "example.com"
+
     var subdomain string = "app"
 
     ctx := context.Background()
@@ -675,7 +686,10 @@ func main() {
             },
         }),
     )
+
+
     var domain string = "example.com"
+
     var subdomain string = "app"
 
     ctx := context.Background()
@@ -729,6 +743,8 @@ func main() {
             },
         }),
     )
+
+
     var domain string = "example.com"
 
     ctx := context.Background()

@@ -11,27 +11,8 @@ import (
 
 // CreateClusterRequestGcp - GCP specific data. Required when `provider` is `gcp`.
 type CreateClusterRequestGcp struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// ID of the GCP project the cluster will be provisioned in.
 	ProjectID string `json:"projectId"`
-}
-
-func (c CreateClusterRequestGcp) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequestGcp) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequestGcp) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateClusterRequestGcp) GetProjectID() string {
@@ -43,7 +24,6 @@ func (o *CreateClusterRequestGcp) GetProjectID() string {
 
 // CreateClusterRequestIntegration - Cloud provider credential input, required fields dependent on which provider is chosen.
 type CreateClusterRequestIntegration struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -52,24 +32,6 @@ type CreateClusterRequestIntegration struct {
 	KeyfileJSON *string `json:"keyfileJson,omitempty"`
 	// AWS secret key.
 	SecretKey *string `json:"secretKey,omitempty"`
-}
-
-func (c CreateClusterRequestIntegration) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequestIntegration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequestIntegration) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateClusterRequestIntegration) GetAccessKey() *string {
@@ -102,10 +64,9 @@ func (o *CreateClusterRequestIntegration) GetSecretKey() *string {
 
 // CreateClusterRequestNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 type CreateClusterRequestNodePoolsAutoscaling struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
-	Enabled              *bool                  `default:"false" json:"enabled"`
-	Max                  *int64                 `json:"max,omitempty"`
-	Min                  *int64                 `json:"min,omitempty"`
+	Enabled *bool  `default:"false" json:"enabled"`
+	Max     *int64 `json:"max,omitempty"`
+	Min     *int64 `json:"min,omitempty"`
 }
 
 func (c CreateClusterRequestNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
@@ -117,13 +78,6 @@ func (c *CreateClusterRequestNodePoolsAutoscaling) UnmarshalJSON(data []byte) er
 		return err
 	}
 	return nil
-}
-
-func (o *CreateClusterRequestNodePoolsAutoscaling) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateClusterRequestNodePoolsAutoscaling) GetEnabled() *bool {
@@ -147,8 +101,11 @@ func (o *CreateClusterRequestNodePoolsAutoscaling) GetMin() *int64 {
 	return o.Min
 }
 
+// CreateClusterRequestNodePoolsLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
+type CreateClusterRequestNodePoolsLabels struct {
+}
+
 type CreateClusterRequestNodePools struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 	Autoscaling *CreateClusterRequestNodePoolsAutoscaling `json:"autoscaling,omitempty"`
 	// Zones in which the node pool should be provisioned.
@@ -158,7 +115,7 @@ type CreateClusterRequestNodePools struct {
 	// The disk type to use.
 	DiskType *string `json:"diskType,omitempty"`
 	// Set of label keys and values that can be used to determine scheduling via resource tags.
-	Labels map[string]interface{} `json:"labels,omitempty"`
+	Labels *CreateClusterRequestNodePoolsLabels `json:"labels,omitempty"`
 	// Number of nodes to the node pool should be provisioned with.
 	NodeCount int64 `json:"nodeCount"`
 	// Machine type to be used by the node pool.
@@ -178,13 +135,6 @@ func (c *CreateClusterRequestNodePools) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *CreateClusterRequestNodePools) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateClusterRequestNodePools) GetAutoscaling() *CreateClusterRequestNodePoolsAutoscaling {
@@ -215,7 +165,7 @@ func (o *CreateClusterRequestNodePools) GetDiskType() *string {
 	return o.DiskType
 }
 
-func (o *CreateClusterRequestNodePools) GetLabels() map[string]interface{} {
+func (o *CreateClusterRequestNodePools) GetLabels() *CreateClusterRequestNodePoolsLabels {
 	if o == nil {
 		return nil
 	}
@@ -315,30 +265,11 @@ func (e *CreateClusterRequestSettingsBuildsMode) UnmarshalJSON(data []byte) erro
 }
 
 type CreateClusterRequestSettingsBuilds struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Cluster to use for scheduling builds
 	ClusterID *string                                 `json:"clusterId,omitempty"`
 	Mode      *CreateClusterRequestSettingsBuildsMode `json:"mode,omitempty"`
 	// Plan to use for builds if they are run on the cluster
 	Plan *string `json:"plan,omitempty"`
-}
-
-func (c CreateClusterRequestSettingsBuilds) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequestSettingsBuilds) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequestSettingsBuilds) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateClusterRequestSettingsBuilds) GetClusterID() *string {
@@ -362,30 +293,14 @@ func (o *CreateClusterRequestSettingsBuilds) GetPlan() *string {
 	return o.Plan
 }
 
+type CreateClusterRequestSettingsLoggingLoki2 struct {
+}
+
 type CreateClusterRequestSettingsLoggingLoki1 struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
-	S3AccessKey          string                 `json:"s3AccessKey"`
-	S3BucketName         string                 `json:"s3BucketName"`
-	S3Region             string                 `json:"s3Region"`
-	S3SecretKey          string                 `json:"s3SecretKey"`
-}
-
-func (c CreateClusterRequestSettingsLoggingLoki1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequestSettingsLoggingLoki1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	S3AccessKey  string `json:"s3AccessKey"`
+	S3BucketName string `json:"s3BucketName"`
+	S3Region     string `json:"s3Region"`
+	S3SecretKey  string `json:"s3SecretKey"`
 }
 
 func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3AccessKey() string {
@@ -420,12 +335,12 @@ type CreateClusterRequestSettingsLoggingLokiType string
 
 const (
 	CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1 CreateClusterRequestSettingsLoggingLokiType = "CreateClusterRequest_settings_logging_loki_1"
-	CreateClusterRequestSettingsLoggingLokiTypeMapOfany                                 CreateClusterRequestSettingsLoggingLokiType = "mapOfany"
+	CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2 CreateClusterRequestSettingsLoggingLokiType = "CreateClusterRequest_settings_logging_loki_2"
 )
 
 type CreateClusterRequestSettingsLoggingLoki struct {
 	CreateClusterRequestSettingsLoggingLoki1 *CreateClusterRequestSettingsLoggingLoki1
-	MapOfany                                 map[string]interface{}
+	CreateClusterRequestSettingsLoggingLoki2 *CreateClusterRequestSettingsLoggingLoki2
 
 	Type CreateClusterRequestSettingsLoggingLokiType
 }
@@ -439,28 +354,28 @@ func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLo
 	}
 }
 
-func CreateCreateClusterRequestSettingsLoggingLokiMapOfany(mapOfany map[string]interface{}) CreateClusterRequestSettingsLoggingLoki {
-	typ := CreateClusterRequestSettingsLoggingLokiTypeMapOfany
+func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki2(createClusterRequestSettingsLoggingLoki2 CreateClusterRequestSettingsLoggingLoki2) CreateClusterRequestSettingsLoggingLoki {
+	typ := CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2
 
 	return CreateClusterRequestSettingsLoggingLoki{
-		MapOfany: mapOfany,
-		Type:     typ,
+		CreateClusterRequestSettingsLoggingLoki2: &createClusterRequestSettingsLoggingLoki2,
+		Type:                                     typ,
 	}
 }
 
 func (u *CreateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
 
+	createClusterRequestSettingsLoggingLoki2 := new(CreateClusterRequestSettingsLoggingLoki2)
+	if err := utils.UnmarshalJSON(data, &createClusterRequestSettingsLoggingLoki2, "", true, true); err == nil {
+		u.CreateClusterRequestSettingsLoggingLoki2 = createClusterRequestSettingsLoggingLoki2
+		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2
+		return nil
+	}
+
 	createClusterRequestSettingsLoggingLoki1 := new(CreateClusterRequestSettingsLoggingLoki1)
 	if err := utils.UnmarshalJSON(data, &createClusterRequestSettingsLoggingLoki1, "", true, true); err == nil {
 		u.CreateClusterRequestSettingsLoggingLoki1 = createClusterRequestSettingsLoggingLoki1
 		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
-		return nil
-	}
-
-	mapOfany := map[string]interface{}{}
-	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
-		u.MapOfany = mapOfany
-		u.Type = CreateClusterRequestSettingsLoggingLokiTypeMapOfany
 		return nil
 	}
 
@@ -472,8 +387,8 @@ func (u CreateClusterRequestSettingsLoggingLoki) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateClusterRequestSettingsLoggingLoki1, "", true)
 	}
 
-	if u.MapOfany != nil {
-		return utils.MarshalJSON(u.MapOfany, "", true)
+	if u.CreateClusterRequestSettingsLoggingLoki2 != nil {
+		return utils.MarshalJSON(u.CreateClusterRequestSettingsLoggingLoki2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
@@ -507,27 +422,8 @@ func (e *CreateClusterRequestSettingsLoggingMode) UnmarshalJSON(data []byte) err
 }
 
 type CreateClusterRequestSettingsLogging struct {
-	AdditionalProperties map[string]interface{}                   `additionalProperties:"true" json:"-"`
-	Loki                 *CreateClusterRequestSettingsLoggingLoki `json:"loki,omitempty"`
-	Mode                 *CreateClusterRequestSettingsLoggingMode `json:"mode,omitempty"`
-}
-
-func (c CreateClusterRequestSettingsLogging) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequestSettingsLogging) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequestSettingsLogging) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	Loki *CreateClusterRequestSettingsLoggingLoki `json:"loki,omitempty"`
+	Mode *CreateClusterRequestSettingsLoggingMode `json:"mode,omitempty"`
 }
 
 func (o *CreateClusterRequestSettingsLogging) GetLoki() *CreateClusterRequestSettingsLoggingLoki {
@@ -572,28 +468,9 @@ func (e *CreateClusterRequestSettingsRegistryMode) UnmarshalJSON(data []byte) er
 }
 
 type CreateClusterRequestSettingsRegistry struct {
-	AdditionalProperties map[string]interface{}                    `additionalProperties:"true" json:"-"`
-	Mode                 *CreateClusterRequestSettingsRegistryMode `json:"mode,omitempty"`
+	Mode *CreateClusterRequestSettingsRegistryMode `json:"mode,omitempty"`
 	// Credentials to use for storing of images.
 	RegistryID *string `json:"registryId,omitempty"`
-}
-
-func (c CreateClusterRequestSettingsRegistry) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequestSettingsRegistry) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequestSettingsRegistry) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateClusterRequestSettingsRegistry) GetMode() *CreateClusterRequestSettingsRegistryMode {
@@ -611,28 +488,9 @@ func (o *CreateClusterRequestSettingsRegistry) GetRegistryID() *string {
 }
 
 type CreateClusterRequestSettings struct {
-	AdditionalProperties map[string]interface{}                `additionalProperties:"true" json:"-"`
-	Builds               *CreateClusterRequestSettingsBuilds   `json:"builds,omitempty"`
-	Logging              *CreateClusterRequestSettingsLogging  `json:"logging,omitempty"`
-	Registry             *CreateClusterRequestSettingsRegistry `json:"registry,omitempty"`
-}
-
-func (c CreateClusterRequestSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequestSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequestSettings) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	Builds   *CreateClusterRequestSettingsBuilds   `json:"builds,omitempty"`
+	Logging  *CreateClusterRequestSettingsLogging  `json:"logging,omitempty"`
+	Registry *CreateClusterRequestSettingsRegistry `json:"registry,omitempty"`
 }
 
 func (o *CreateClusterRequestSettings) GetBuilds() *CreateClusterRequestSettingsBuilds {
@@ -657,7 +515,6 @@ func (o *CreateClusterRequestSettings) GetRegistry() *CreateClusterRequestSettin
 }
 
 type CreateClusterRequest struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The description of the cluster.
 	Description *string `json:"description,omitempty"`
 	// GCP specific data. Required when `provider` is `gcp`.
@@ -677,24 +534,6 @@ type CreateClusterRequest struct {
 	// Region of the cluster.
 	Region   string                       `json:"region"`
 	Settings CreateClusterRequestSettings `json:"settings"`
-}
-
-func (c CreateClusterRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateClusterRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateClusterRequest) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateClusterRequest) GetDescription() *string {

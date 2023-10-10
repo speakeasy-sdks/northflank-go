@@ -2,13 +2,8 @@
 
 package shared
 
-import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
-)
-
 // UpdateIntegrationRequestCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
 type UpdateIntegrationRequestCredentials struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -17,24 +12,6 @@ type UpdateIntegrationRequestCredentials struct {
 	KeyfileJSON *string `json:"keyfileJson,omitempty"`
 	// AWS secret key.
 	SecretKey *string `json:"secretKey,omitempty"`
-}
-
-func (u UpdateIntegrationRequestCredentials) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateIntegrationRequestCredentials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateIntegrationRequestCredentials) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateIntegrationRequestCredentials) GetAccessKey() *string {
@@ -66,29 +43,10 @@ func (o *UpdateIntegrationRequestCredentials) GetSecretKey() *string {
 }
 
 type UpdateIntegrationRequest struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
 	Credentials UpdateIntegrationRequestCredentials `json:"credentials"`
 	// The description of the integration.
 	Description *string `json:"description,omitempty"`
-}
-
-func (u UpdateIntegrationRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateIntegrationRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateIntegrationRequest) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateIntegrationRequest) GetCredentials() UpdateIntegrationRequestCredentials {

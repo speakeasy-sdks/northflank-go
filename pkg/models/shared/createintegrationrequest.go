@@ -5,12 +5,10 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // CreateIntegrationRequestCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
 type CreateIntegrationRequestCredentials struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -19,24 +17,6 @@ type CreateIntegrationRequestCredentials struct {
 	KeyfileJSON *string `json:"keyfileJson,omitempty"`
 	// AWS secret key.
 	SecretKey *string `json:"secretKey,omitempty"`
-}
-
-func (c CreateIntegrationRequestCredentials) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateIntegrationRequestCredentials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateIntegrationRequestCredentials) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateIntegrationRequestCredentials) GetAccessKey() *string {
@@ -69,27 +49,8 @@ func (o *CreateIntegrationRequestCredentials) GetSecretKey() *string {
 
 // CreateIntegrationRequestGcp - GCP specific data. Required when `provider` is `gcp`.
 type CreateIntegrationRequestGcp struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Project ID
 	ProjectID string `json:"projectId"`
-}
-
-func (c CreateIntegrationRequestGcp) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateIntegrationRequestGcp) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateIntegrationRequestGcp) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateIntegrationRequestGcp) GetProjectID() string {
@@ -134,7 +95,6 @@ func (e *CreateIntegrationRequestProvider) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationRequest struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
 	Credentials CreateIntegrationRequestCredentials `json:"credentials"`
 	// The description of the integration.
@@ -145,24 +105,6 @@ type CreateIntegrationRequest struct {
 	Name string `json:"name"`
 	// Cloud provider to be used for the selected resource
 	Provider CreateIntegrationRequestProvider `json:"provider"`
-}
-
-func (c CreateIntegrationRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateIntegrationRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateIntegrationRequest) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *CreateIntegrationRequest) GetCredentials() CreateIntegrationRequestCredentials {

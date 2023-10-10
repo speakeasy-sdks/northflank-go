@@ -57,7 +57,6 @@ func (e *AddRegistryType2Provider) UnmarshalJSON(data []byte) error {
 
 // AddRegistryType2Restrictions - Data about whether the credentials are restricted to certain projects.
 type AddRegistryType2Restrictions struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
@@ -73,13 +72,6 @@ func (a *AddRegistryType2Restrictions) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *AddRegistryType2Restrictions) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *AddRegistryType2Restrictions) GetProjects() []string {
@@ -98,7 +90,6 @@ func (o *AddRegistryType2Restrictions) GetRestricted() *bool {
 
 // AddRegistryType2 - Authenticate with a `keyfile.json`. Used for authenticating with Google Container Registry.
 type AddRegistryType2 struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the credentials.
 	Description string `json:"description"`
 	// Contents of `keyfile.json`, used to authenticate with Google Container Registry.
@@ -111,24 +102,6 @@ type AddRegistryType2 struct {
 	RegistryURL *string `json:"registryUrl,omitempty"`
 	// Data about whether the credentials are restricted to certain projects.
 	Restrictions *AddRegistryType2Restrictions `json:"restrictions,omitempty"`
-}
-
-func (a AddRegistryType2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AddRegistryType2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AddRegistryType2) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *AddRegistryType2) GetDescription() string {

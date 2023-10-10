@@ -2,16 +2,11 @@
 
 package shared
 
-import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
-)
-
 type APIErrorResultData struct {
 }
 
 // APIErrorResult - API Error response model
 type APIErrorResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Error code
 	Code string              `json:"code"`
 	Data *APIErrorResultData `json:"data,omitempty"`
@@ -19,24 +14,6 @@ type APIErrorResult struct {
 	Message string `json:"message"`
 	// Status code
 	Status float32 `json:"status"`
-}
-
-func (a APIErrorResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *APIErrorResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *APIErrorResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *APIErrorResult) GetCode() string {

@@ -53,29 +53,10 @@ func (e *LogioLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
 
 // LogioLogSinkSinkData - Details about the Logz.io log sink.
 type LogioLogSinkSinkData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Your Logzio region code
 	Region LogioLogSinkSinkDataRegion `json:"region"`
 	// The Log Shipping Token of the account you want to ship to
 	Token string `json:"token"`
-}
-
-func (l LogioLogSinkSinkData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LogioLogSinkSinkData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *LogioLogSinkSinkData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *LogioLogSinkSinkData) GetRegion() LogioLogSinkSinkDataRegion {
@@ -119,7 +100,6 @@ func (e *LogioLogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // LogioLogSink - Create a log sink using Logz.io
 type LogioLogSink struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -147,13 +127,6 @@ func (l *LogioLogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *LogioLogSink) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *LogioLogSink) GetDescription() *string {

@@ -10,29 +10,10 @@ import (
 
 // AWSLogSinkSinkDataAuth - Authentication object.
 type AWSLogSinkSinkDataAuth struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Access key id for the bucket.
 	AccessKeyID string `json:"accessKeyId"`
 	// Secret access key for the bucket.
 	SecretAccessKey string `json:"secretAccessKey"`
-}
-
-func (a AWSLogSinkSinkDataAuth) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AWSLogSinkSinkDataAuth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AWSLogSinkSinkDataAuth) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *AWSLogSinkSinkDataAuth) GetAccessKeyID() string {
@@ -131,7 +112,6 @@ func (e *AWSLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
 
 // AWSLogSinkSinkData - Details about the AWS S3 log sink.
 type AWSLogSinkSinkData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Authentication object.
 	Auth *AWSLogSinkSinkDataAuth `json:"auth,omitempty"`
 	// Name of the S3 Bucket.
@@ -142,24 +122,6 @@ type AWSLogSinkSinkData struct {
 	Endpoint string `json:"endpoint"`
 	// Region of the S3 bucket.
 	Region AWSLogSinkSinkDataRegion `json:"region"`
-}
-
-func (a AWSLogSinkSinkData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AWSLogSinkSinkData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AWSLogSinkSinkData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *AWSLogSinkSinkData) GetAuth() *AWSLogSinkSinkDataAuth {
@@ -224,7 +186,6 @@ func (e *AWSLogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // AWSLogSink - Create a log sink using AWS S3
 type AWSLogSink struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -252,13 +213,6 @@ func (a *AWSLogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *AWSLogSink) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *AWSLogSink) GetDescription() *string {

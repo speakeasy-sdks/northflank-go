@@ -9,9 +9,9 @@
 updateClusterRequestSettingsLoggingLoki := shared.CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki1(shared.UpdateClusterRequestSettingsLoggingLoki1{/* values here */})
 ```
 
-### 
+### UpdateClusterRequestSettingsLoggingLoki2
 
 ```go
-updateClusterRequestSettingsLoggingLoki := shared.CreateUpdateClusterRequestSettingsLoggingLokiMapOfany(map[string]interface{}{/* values here */})
+updateClusterRequestSettingsLoggingLoki := shared.CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki2(shared.UpdateClusterRequestSettingsLoggingLoki2{/* values here */})
 ```
 

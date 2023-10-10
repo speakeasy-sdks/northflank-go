@@ -31,8 +31,12 @@ func main() {
             },
         }),
     )
+
+
     var cursor *string = "24"
+
     var page *int64 = 1
+
     var perPage *int64 = 50
 
     ctx := context.Background()

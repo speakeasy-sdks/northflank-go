@@ -5,7 +5,6 @@ Response object.
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              | Example                  |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `AdditionalProperties`   | map[string]*interface{}* | :heavy_minus_sign:       | N/A                      |                          |
-| `Data`                   | map[string]*interface{}* | :heavy_check_mark:       | Result data.             | [object Object]          |
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `Data`                                                        | [SuccessResultData](../../models/shared/successresultdata.md) | :heavy_check_mark:                                            | Result data.                                                  |

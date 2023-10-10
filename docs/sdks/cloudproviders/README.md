@@ -43,20 +43,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.CloudProviders.Create(ctx, shared.CreateIntegrationRequest{
-        AdditionalProperties: map[string]interface{}{
-            "online": "Configuration",
-        },
-        Credentials: shared.CreateIntegrationRequestCredentials{
-            AdditionalProperties: map[string]interface{}{
-                "Money": "blue",
-            },
-        },
+        Credentials: shared.CreateIntegrationRequestCredentials{},
         Description: northflankgo.String("This is a new cloud provider integration."),
         Gcp: &shared.CreateIntegrationRequestGcp{
-            AdditionalProperties: map[string]interface{}{
-                "shred": "abnormally",
-            },
-            ProjectID: "orange Northwest",
+            ProjectID: "bluetooth Extended",
         },
         Name: "New Integration",
         Provider: shared.CreateIntegrationRequestProviderGcp,
@@ -112,44 +102,26 @@ func main() {
 
     ctx := context.Background()
     res, err := s.CloudProviders.CreateCluster(ctx, shared.CreateClusterRequest{
-        AdditionalProperties: map[string]interface{}{
-            "Darmstadtium": "enormously",
-        },
         Description: northflankgo.String("This is a new cluster."),
         Gcp: &shared.CreateClusterRequestGcp{
-            AdditionalProperties: map[string]interface{}{
-                "Minnesota": "male",
-            },
             ProjectID: "example-project-id",
         },
-        Integration: &shared.CreateClusterRequestIntegration{
-            AdditionalProperties: map[string]interface{}{
-                "Oregon": "Lodi",
-            },
-        },
+        Integration: &shared.CreateClusterRequestIntegration{},
         IntegrationID: northflankgo.String("gcp-integration"),
         KubernetesVersion: "1.23.8",
         Name: "GCP Cluster 1",
         NodePools: []shared.CreateClusterRequestNodePools{
             shared.CreateClusterRequestNodePools{
-                AdditionalProperties: map[string]interface{}{
-                    "Towels": "JBOD",
-                },
                 Autoscaling: &shared.CreateClusterRequestNodePoolsAutoscaling{
-                    AdditionalProperties: map[string]interface{}{
-                        "male": "US",
-                    },
                     Enabled: northflankgo.Bool(true),
                     Max: northflankgo.Int64(10),
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "strategize",
+                    "Darmstadtium",
                 },
                 DiskSize: 100,
-                Labels: map[string]interface{}{
-                    "Ford": "Estate",
-                },
+                Labels: &shared.CreateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
                 Preemptible: northflankgo.Bool(false),
@@ -158,36 +130,16 @@ func main() {
         Provider: shared.CreateClusterRequestProviderGcp,
         Region: "europe-west2",
         Settings: shared.CreateClusterRequestSettings{
-            AdditionalProperties: map[string]interface{}{
-                "Southeast": "solutions",
-            },
             Builds: &shared.CreateClusterRequestSettingsBuilds{
-                AdditionalProperties: map[string]interface{}{
-                    "integrate": "Montana",
-                },
                 ClusterID: northflankgo.String("build-cluster"),
                 Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.CreateClusterRequestSettingsLogging{
-                AdditionalProperties: map[string]interface{}{
-                    "Cambridgeshire": "um",
-                },
-                Loki: shared.CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki1(
-                        shared.CreateClusterRequestSettingsLoggingLoki1{
-                            AdditionalProperties: map[string]interface{}{
-                                "matrices": "Carolina",
-                            },
-                            S3AccessKey: "payment",
-                            S3BucketName: "capacity",
-                            S3Region: "protocol paragraph",
-                            S3SecretKey: "blah",
-                        },
+                Loki: shared.CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki2(
+                        shared.CreateClusterRequestSettingsLoggingLoki2{},
                 ),
             },
             Registry: &shared.CreateClusterRequestSettingsRegistry{
-                AdditionalProperties: map[string]interface{}{
-                    "invoice": "gloomy",
-                },
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
@@ -240,6 +192,8 @@ func main() {
             },
         }),
     )
+
+
     var clusterID string = "gcp-cluster-1"
 
     ctx := context.Background()
@@ -292,6 +246,8 @@ func main() {
             },
         }),
     )
+
+
     var integrationID string = "gcp-integration-1"
 
     ctx := context.Background()
@@ -394,6 +350,8 @@ func main() {
             },
         }),
     )
+
+
     var clusterID string = "gcp-cluster-1"
 
     ctx := context.Background()
@@ -446,6 +404,8 @@ func main() {
             },
         }),
     )
+
+
     var integrationID string = "gcp-integration-1"
 
     ctx := context.Background()
@@ -498,8 +458,12 @@ func main() {
             },
         }),
     )
+
+
     var cursor *string = "24"
+
     var page *int64 = 1
+
     var perPage *int64 = 50
 
     ctx := context.Background()
@@ -554,8 +518,12 @@ func main() {
             },
         }),
     )
+
+
     var cursor *string = "South"
+
     var page *int64 = 1
+
     var perPage *int64 = 50
 
     ctx := context.Background()
@@ -610,72 +578,49 @@ func main() {
             },
         }),
     )
+
+
     updateClusterRequest := shared.UpdateClusterRequest{
-        AdditionalProperties: map[string]interface{}{
-            "Fish": "Sausages",
-        },
         Description: northflankgo.String("This is an updated description."),
         NodePools: []shared.UpdateClusterRequestNodePools{
             shared.UpdateClusterRequestNodePools{
-                AdditionalProperties: map[string]interface{}{
-                    "defect": "sievert",
-                },
                 Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
-                    AdditionalProperties: map[string]interface{}{
-                        "Corporate": "Southeast",
-                    },
                     Enabled: northflankgo.Bool(true),
                     Max: northflankgo.Int64(10),
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "Metrics",
+                    "Fish",
                 },
                 DiskSize: 100,
                 ID: northflankgo.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                Labels: map[string]interface{}{
-                    "Communications": "Solutions",
-                },
+                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
                 Preemptible: northflankgo.Bool(false),
             },
         },
         Settings: &shared.UpdateClusterRequestSettings{
-            AdditionalProperties: map[string]interface{}{
-                "Southeast": "Cambridgeshire",
-            },
             Builds: &shared.UpdateClusterRequestSettingsBuilds{
-                AdditionalProperties: map[string]interface{}{
-                    "Roentgenium": "Associate",
-                },
                 ClusterID: northflankgo.String("build-cluster"),
                 Plan: northflankgo.String("nf-compute-200"),
             },
             Logging: &shared.UpdateClusterRequestSettingsLogging{
-                AdditionalProperties: map[string]interface{}{
-                    "actuating": "Frozen",
-                },
                 Loki: shared.CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki1(
                         shared.UpdateClusterRequestSettingsLoggingLoki1{
-                            AdditionalProperties: map[string]interface{}{
-                                "Senior": "exactly",
-                            },
-                            S3AccessKey: "Gabon Croatian Brand",
-                            S3BucketName: "Minivan Fresh Neon",
-                            S3Region: "South Polestar monitor",
-                            S3SecretKey: "bypass Outdoors invoice",
+                            S3AccessKey: "defect sievert Corporate",
+                            S3BucketName: "International",
+                            S3Region: "despite Kids",
+                            S3SecretKey: "bluetooth",
                         },
                 ),
             },
             Registry: &shared.UpdateClusterRequestSettingsRegistry{
-                AdditionalProperties: map[string]interface{}{
-                    "Chino": "Bedfordshire",
-                },
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
     }
+
     var clusterID string = "gcp-cluster-1"
 
     ctx := context.Background()
@@ -729,17 +674,13 @@ func main() {
             },
         }),
     )
+
+
     updateIntegrationRequest := shared.UpdateIntegrationRequest{
-        AdditionalProperties: map[string]interface{}{
-            "before": "Bronze",
-        },
-        Credentials: shared.UpdateIntegrationRequestCredentials{
-            AdditionalProperties: map[string]interface{}{
-                "Hendersonville": "interactive",
-            },
-        },
+        Credentials: shared.UpdateIntegrationRequestCredentials{},
         Description: northflankgo.String("This is a new description."),
     }
+
     var integrationID string = "gcp-integration-1"
 
     ctx := context.Background()

@@ -2,39 +2,16 @@
 
 package shared
 
-import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
-)
-
 // UpdateRegistryType3Keyfile - Contents of `keyfile.json`, used to authenticate with Google Container Registry.
 type UpdateRegistryType3Keyfile struct {
 }
 
 // UpdateRegistryType3Restrictions - Data about whether the credentials are restricted to certain projects.
 type UpdateRegistryType3Restrictions struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
-}
-
-func (u UpdateRegistryType3Restrictions) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateRegistryType3Restrictions) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateRegistryType3Restrictions) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateRegistryType3Restrictions) GetProjects() []string {
@@ -53,7 +30,6 @@ func (o *UpdateRegistryType3Restrictions) GetRestricted() bool {
 
 // UpdateRegistryType3 - Authenticate with a `keyfile.json`. Used for authenticating with Google Container Registry.
 type UpdateRegistryType3 struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the credentials.
 	Description *string `json:"description,omitempty"`
 	// Contents of `keyfile.json`, used to authenticate with Google Container Registry.
@@ -62,24 +38,6 @@ type UpdateRegistryType3 struct {
 	RegistryURL *string `json:"registryUrl,omitempty"`
 	// Data about whether the credentials are restricted to certain projects.
 	Restrictions *UpdateRegistryType3Restrictions `json:"restrictions,omitempty"`
-}
-
-func (u UpdateRegistryType3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateRegistryType3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateRegistryType3) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateRegistryType3) GetDescription() *string {

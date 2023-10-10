@@ -9,7 +9,6 @@ import (
 
 // ListIntegrationsResultDataIntegrations - An integration object.
 type ListIntegrationsResultDataIntegrations struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The time the integration was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// A short description of the integration.
@@ -31,13 +30,6 @@ func (l *ListIntegrationsResultDataIntegrations) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	return nil
-}
-
-func (o *ListIntegrationsResultDataIntegrations) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ListIntegrationsResultDataIntegrations) GetCreatedAt() time.Time {
@@ -77,27 +69,8 @@ func (o *ListIntegrationsResultDataIntegrations) GetProvider() *string {
 
 // ListIntegrationsResultData - Result data.
 type ListIntegrationsResultData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of integrations.
 	Integrations []ListIntegrationsResultDataIntegrations `json:"integrations"`
-}
-
-func (l ListIntegrationsResultData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListIntegrationsResultData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ListIntegrationsResultData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ListIntegrationsResultData) GetIntegrations() []ListIntegrationsResultDataIntegrations {
@@ -109,31 +82,12 @@ func (o *ListIntegrationsResultData) GetIntegrations() []ListIntegrationsResultD
 
 // ListIntegrationsResultPagination - Data about the endpoint pagination.
 type ListIntegrationsResultPagination struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
 	Cursor *string `json:"cursor,omitempty"`
 	// Is there another page of results available?
 	HasNextPage bool `json:"hasNextPage"`
-}
-
-func (l ListIntegrationsResultPagination) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListIntegrationsResultPagination) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ListIntegrationsResultPagination) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ListIntegrationsResultPagination) GetCount() float32 {
@@ -159,29 +113,10 @@ func (o *ListIntegrationsResultPagination) GetHasNextPage() bool {
 
 // ListIntegrationsResult - Response object.
 type ListIntegrationsResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data ListIntegrationsResultData `json:"data"`
 	// Data about the endpoint pagination.
 	Pagination ListIntegrationsResultPagination `json:"pagination"`
-}
-
-func (l ListIntegrationsResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListIntegrationsResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ListIntegrationsResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ListIntegrationsResult) GetData() ListIntegrationsResultData {

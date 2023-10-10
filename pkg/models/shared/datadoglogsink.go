@@ -44,29 +44,10 @@ func (e *DatadogLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
 
 // DatadogLogSinkSinkData - Details about the Datadog log sink.
 type DatadogLogSinkSinkData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The Datadog API key.
 	DefaultAPIKey string `json:"default_api_key"`
 	// The Datadog region.
 	Region DatadogLogSinkSinkDataRegion `json:"region"`
-}
-
-func (d DatadogLogSinkSinkData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *DatadogLogSinkSinkData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *DatadogLogSinkSinkData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *DatadogLogSinkSinkData) GetDefaultAPIKey() string {
@@ -110,7 +91,6 @@ func (e *DatadogLogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // DatadogLogSink - Create a log sink using Datadog
 type DatadogLogSink struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -138,13 +118,6 @@ func (d *DatadogLogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *DatadogLogSink) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *DatadogLogSink) GetDescription() *string {

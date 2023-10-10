@@ -2,31 +2,8 @@
 
 package shared
 
-import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
-)
-
 type AddSubDomainRequestCdnCloudfront struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
-	Enabled              bool                   `json:"enabled"`
-}
-
-func (a AddSubDomainRequestCdnCloudfront) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AddSubDomainRequestCdnCloudfront) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AddSubDomainRequestCdnCloudfront) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	Enabled bool `json:"enabled"`
 }
 
 func (o *AddSubDomainRequestCdnCloudfront) GetEnabled() bool {
@@ -38,26 +15,7 @@ func (o *AddSubDomainRequestCdnCloudfront) GetEnabled() bool {
 
 // AddSubDomainRequestCdn - Optional CDN configuration. Currently only available for select users.
 type AddSubDomainRequestCdn struct {
-	AdditionalProperties map[string]interface{}            `additionalProperties:"true" json:"-"`
-	Cloudfront           *AddSubDomainRequestCdnCloudfront `json:"cloudfront,omitempty"`
-}
-
-func (a AddSubDomainRequestCdn) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AddSubDomainRequestCdn) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AddSubDomainRequestCdn) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	Cloudfront *AddSubDomainRequestCdnCloudfront `json:"cloudfront,omitempty"`
 }
 
 func (o *AddSubDomainRequestCdn) GetCloudfront() *AddSubDomainRequestCdnCloudfront {
@@ -68,29 +26,10 @@ func (o *AddSubDomainRequestCdn) GetCloudfront() *AddSubDomainRequestCdnCloudfro
 }
 
 type AddSubDomainRequest struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Optional CDN configuration. Currently only available for select users.
 	Cdn *AddSubDomainRequestCdn `json:"cdn,omitempty"`
 	// A subdomain to be added.
 	Subdomain string `json:"subdomain"`
-}
-
-func (a AddSubDomainRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AddSubDomainRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AddSubDomainRequest) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *AddSubDomainRequest) GetCdn() *AddSubDomainRequestCdn {

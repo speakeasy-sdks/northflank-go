@@ -5,7 +5,6 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // GetDomainResultDataStatus - The status of the domain verification.
@@ -38,29 +37,10 @@ func (e *GetDomainResultDataStatus) UnmarshalJSON(data []byte) error {
 
 // GetDomainResultDataSubdomains - Details about a subdomain.
 type GetDomainResultDataSubdomains struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The full domain including the subdomain.
 	FullName string `json:"fullName"`
 	// The subdomain added, or -default for the empty subdomain.
 	Name string `json:"name"`
-}
-
-func (g GetDomainResultDataSubdomains) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetDomainResultDataSubdomains) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetDomainResultDataSubdomains) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetDomainResultDataSubdomains) GetFullName() string {
@@ -79,7 +59,6 @@ func (o *GetDomainResultDataSubdomains) GetName() string {
 
 // GetDomainResultData - Result data.
 type GetDomainResultData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The hostname to add to your domain's DNS records as a TXT record to verify the domain.
 	Hostname string `json:"hostname"`
 	// The domain name.
@@ -90,24 +69,6 @@ type GetDomainResultData struct {
 	Subdomains []GetDomainResultDataSubdomains `json:"subdomains"`
 	// The token to add as the content of the TXT record to verify the domain.
 	Token string `json:"token"`
-}
-
-func (g GetDomainResultData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetDomainResultData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetDomainResultData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetDomainResultData) GetHostname() string {
@@ -147,27 +108,8 @@ func (o *GetDomainResultData) GetToken() string {
 
 // GetDomainResult - Response object.
 type GetDomainResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data GetDomainResultData `json:"data"`
-}
-
-func (g GetDomainResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetDomainResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetDomainResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetDomainResult) GetData() GetDomainResultData {

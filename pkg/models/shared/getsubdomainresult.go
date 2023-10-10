@@ -2,13 +2,8 @@
 
 package shared
 
-import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
-)
-
 // GetSubDomainResultData - Result data.
 type GetSubDomainResultData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The content to set the DNS record to
 	Content string `json:"content"`
 	// The full domain name with subdomain
@@ -19,24 +14,6 @@ type GetSubDomainResultData struct {
 	RecordType string `json:"recordType"`
 	// Whether the subdomain has been verified successfully and can be used.
 	Verified bool `json:"verified"`
-}
-
-func (g GetSubDomainResultData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetSubDomainResultData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetSubDomainResultData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetSubDomainResultData) GetContent() string {
@@ -76,27 +53,8 @@ func (o *GetSubDomainResultData) GetVerified() bool {
 
 // GetSubDomainResult - Response object.
 type GetSubDomainResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data GetSubDomainResultData `json:"data"`
-}
-
-func (g GetSubDomainResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetSubDomainResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetSubDomainResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetSubDomainResult) GetData() GetSubDomainResultData {

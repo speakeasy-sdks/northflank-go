@@ -2,33 +2,10 @@
 
 package shared
 
-import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
-)
-
 // DNSIDResultData - Result data.
 type DNSIDResultData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The partially random string associated with the authenticated account, used for generating DNS entries.
 	DNS string `json:"dns"`
-}
-
-func (d DNSIDResultData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *DNSIDResultData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *DNSIDResultData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *DNSIDResultData) GetDNS() string {
@@ -40,27 +17,8 @@ func (o *DNSIDResultData) GetDNS() string {
 
 // DNSIDResult - Response object.
 type DNSIDResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data DNSIDResultData `json:"data"`
-}
-
-func (d DNSIDResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *DNSIDResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *DNSIDResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *DNSIDResult) GetData() DNSIDResultData {

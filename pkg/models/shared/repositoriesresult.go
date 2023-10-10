@@ -5,32 +5,12 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
 )
 
 // RepositoriesResultDataReposOwner - Details about the repository owner.
 type RepositoriesResultDataReposOwner struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The login of the repository owner.
 	Login string `json:"login"`
-}
-
-func (r RepositoriesResultDataReposOwner) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RepositoriesResultDataReposOwner) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *RepositoriesResultDataReposOwner) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *RepositoriesResultDataReposOwner) GetLogin() string {
@@ -76,7 +56,6 @@ func (e *RepositoriesResultDataReposVcsService) UnmarshalJSON(data []byte) error
 
 // RepositoriesResultDataRepos - Details about an accessible repository.
 type RepositoriesResultDataRepos struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The login of the linked version control account that can access this repository.
 	AccountLogin string `json:"accountLogin"`
 	// The full name of the repository.
@@ -93,24 +72,6 @@ type RepositoriesResultDataRepos struct {
 	URL string `json:"url"`
 	// Version control provider of the repository.
 	VcsService RepositoriesResultDataReposVcsService `json:"vcsService"`
-}
-
-func (r RepositoriesResultDataRepos) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RepositoriesResultDataRepos) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *RepositoriesResultDataRepos) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *RepositoriesResultDataRepos) GetAccountLogin() string {
@@ -171,27 +132,8 @@ func (o *RepositoriesResultDataRepos) GetVcsService() RepositoriesResultDataRepo
 
 // RepositoriesResultData - Result data.
 type RepositoriesResultData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// A list of accessible repositories.
 	Repos []RepositoriesResultDataRepos `json:"repos,omitempty"`
-}
-
-func (r RepositoriesResultData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RepositoriesResultData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *RepositoriesResultData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *RepositoriesResultData) GetRepos() []RepositoriesResultDataRepos {
@@ -203,31 +145,12 @@ func (o *RepositoriesResultData) GetRepos() []RepositoriesResultDataRepos {
 
 // RepositoriesResultPagination - Data about the endpoint pagination.
 type RepositoriesResultPagination struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
 	Cursor *string `json:"cursor,omitempty"`
 	// Is there another page of results available?
 	HasNextPage bool `json:"hasNextPage"`
-}
-
-func (r RepositoriesResultPagination) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RepositoriesResultPagination) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *RepositoriesResultPagination) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *RepositoriesResultPagination) GetCount() float32 {
@@ -253,29 +176,10 @@ func (o *RepositoriesResultPagination) GetHasNextPage() bool {
 
 // RepositoriesResult - Response object.
 type RepositoriesResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data RepositoriesResultData `json:"data"`
 	// Data about the endpoint pagination.
 	Pagination RepositoriesResultPagination `json:"pagination"`
-}
-
-func (r RepositoriesResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RepositoriesResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *RepositoriesResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *RepositoriesResult) GetData() RepositoriesResultData {

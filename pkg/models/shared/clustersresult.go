@@ -9,10 +9,9 @@ import (
 
 // ClustersResultDataClustersNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 type ClustersResultDataClustersNodePoolsAutoscaling struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
-	Enabled              *bool                  `default:"false" json:"enabled"`
-	Max                  *int64                 `json:"max,omitempty"`
-	Min                  *int64                 `json:"min,omitempty"`
+	Enabled *bool  `default:"false" json:"enabled"`
+	Max     *int64 `json:"max,omitempty"`
+	Min     *int64 `json:"min,omitempty"`
 }
 
 func (c ClustersResultDataClustersNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
@@ -24,13 +23,6 @@ func (c *ClustersResultDataClustersNodePoolsAutoscaling) UnmarshalJSON(data []by
 		return err
 	}
 	return nil
-}
-
-func (o *ClustersResultDataClustersNodePoolsAutoscaling) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResultDataClustersNodePoolsAutoscaling) GetEnabled() *bool {
@@ -54,8 +46,11 @@ func (o *ClustersResultDataClustersNodePoolsAutoscaling) GetMin() *int64 {
 	return o.Min
 }
 
+// ClustersResultDataClustersNodePoolsLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
+type ClustersResultDataClustersNodePoolsLabels struct {
+}
+
 type ClustersResultDataClustersNodePools struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 	Autoscaling *ClustersResultDataClustersNodePoolsAutoscaling `json:"autoscaling,omitempty"`
 	// Zones in which the node pool should be provisioned.
@@ -67,7 +62,7 @@ type ClustersResultDataClustersNodePools struct {
 	// ID of existing node pool. Must be passed when modifying existing node pools. Not relevant for new node pools
 	ID *string `json:"id,omitempty"`
 	// Set of label keys and values that can be used to determine scheduling via resource tags.
-	Labels map[string]interface{} `json:"labels,omitempty"`
+	Labels *ClustersResultDataClustersNodePoolsLabels `json:"labels,omitempty"`
 	// Number of nodes to the node pool should be provisioned with.
 	NodeCount int64 `json:"nodeCount"`
 	// Machine type to be used by the node pool.
@@ -87,13 +82,6 @@ func (c *ClustersResultDataClustersNodePools) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *ClustersResultDataClustersNodePools) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResultDataClustersNodePools) GetAutoscaling() *ClustersResultDataClustersNodePoolsAutoscaling {
@@ -131,7 +119,7 @@ func (o *ClustersResultDataClustersNodePools) GetID() *string {
 	return o.ID
 }
 
-func (o *ClustersResultDataClustersNodePools) GetLabels() map[string]interface{} {
+func (o *ClustersResultDataClustersNodePools) GetLabels() *ClustersResultDataClustersNodePoolsLabels {
 	if o == nil {
 		return nil
 	}
@@ -167,9 +155,8 @@ func (o *ClustersResultDataClustersNodePools) GetSystemPool() *bool {
 }
 
 type ClustersResultDataClustersStatusState struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
-	State                *string                `json:"state,omitempty"`
-	TransitionTime       *time.Time             `json:"transitionTime,omitempty"`
+	State          *string    `json:"state,omitempty"`
+	TransitionTime *time.Time `json:"transitionTime,omitempty"`
 }
 
 func (c ClustersResultDataClustersStatusState) MarshalJSON() ([]byte, error) {
@@ -181,13 +168,6 @@ func (c *ClustersResultDataClustersStatusState) UnmarshalJSON(data []byte) error
 		return err
 	}
 	return nil
-}
-
-func (o *ClustersResultDataClustersStatusState) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResultDataClustersStatusState) GetState() *string {
@@ -205,9 +185,8 @@ func (o *ClustersResultDataClustersStatusState) GetTransitionTime() *time.Time {
 }
 
 type ClustersResultDataClustersStatus struct {
-	AdditionalProperties map[string]interface{}                 `additionalProperties:"true" json:"-"`
-	NextUpdateAfter      *time.Time                             `json:"nextUpdateAfter,omitempty"`
-	State                *ClustersResultDataClustersStatusState `json:"state,omitempty"`
+	NextUpdateAfter *time.Time                             `json:"nextUpdateAfter,omitempty"`
+	State           *ClustersResultDataClustersStatusState `json:"state,omitempty"`
 }
 
 func (c ClustersResultDataClustersStatus) MarshalJSON() ([]byte, error) {
@@ -219,13 +198,6 @@ func (c *ClustersResultDataClustersStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *ClustersResultDataClustersStatus) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResultDataClustersStatus) GetNextUpdateAfter() *time.Time {
@@ -244,7 +216,6 @@ func (o *ClustersResultDataClustersStatus) GetState() *ClustersResultDataCluster
 
 // ClustersResultDataClusters - A cluster object.
 type ClustersResultDataClusters struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The time the cluster was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Indicates if provider resource deletion has been requested by the user.
@@ -272,13 +243,6 @@ func (c *ClustersResultDataClusters) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *ClustersResultDataClusters) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResultDataClusters) GetCreatedAt() time.Time {
@@ -346,27 +310,8 @@ func (o *ClustersResultDataClusters) GetStatus() *ClustersResultDataClustersStat
 
 // ClustersResultData - Result data.
 type ClustersResultData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of clusters.
 	Clusters []ClustersResultDataClusters `json:"clusters"`
-}
-
-func (c ClustersResultData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *ClustersResultData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ClustersResultData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResultData) GetClusters() []ClustersResultDataClusters {
@@ -378,31 +323,12 @@ func (o *ClustersResultData) GetClusters() []ClustersResultDataClusters {
 
 // ClustersResultPagination - Data about the endpoint pagination.
 type ClustersResultPagination struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
 	Cursor *string `json:"cursor,omitempty"`
 	// Is there another page of results available?
 	HasNextPage bool `json:"hasNextPage"`
-}
-
-func (c ClustersResultPagination) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *ClustersResultPagination) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ClustersResultPagination) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResultPagination) GetCount() float32 {
@@ -428,29 +354,10 @@ func (o *ClustersResultPagination) GetHasNextPage() bool {
 
 // ClustersResult - Response object.
 type ClustersResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data ClustersResultData `json:"data"`
 	// Data about the endpoint pagination.
 	Pagination ClustersResultPagination `json:"pagination"`
-}
-
-func (c ClustersResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *ClustersResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ClustersResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *ClustersResult) GetData() ClustersResultData {

@@ -11,10 +11,9 @@ import (
 
 // UpdateClusterRequestNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 type UpdateClusterRequestNodePoolsAutoscaling struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
-	Enabled              *bool                  `default:"false" json:"enabled"`
-	Max                  *int64                 `json:"max,omitempty"`
-	Min                  *int64                 `json:"min,omitempty"`
+	Enabled *bool  `default:"false" json:"enabled"`
+	Max     *int64 `json:"max,omitempty"`
+	Min     *int64 `json:"min,omitempty"`
 }
 
 func (u UpdateClusterRequestNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
@@ -26,13 +25,6 @@ func (u *UpdateClusterRequestNodePoolsAutoscaling) UnmarshalJSON(data []byte) er
 		return err
 	}
 	return nil
-}
-
-func (o *UpdateClusterRequestNodePoolsAutoscaling) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterRequestNodePoolsAutoscaling) GetEnabled() *bool {
@@ -56,8 +48,11 @@ func (o *UpdateClusterRequestNodePoolsAutoscaling) GetMin() *int64 {
 	return o.Min
 }
 
+// UpdateClusterRequestNodePoolsLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
+type UpdateClusterRequestNodePoolsLabels struct {
+}
+
 type UpdateClusterRequestNodePools struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
 	Autoscaling *UpdateClusterRequestNodePoolsAutoscaling `json:"autoscaling,omitempty"`
 	// Zones in which the node pool should be provisioned.
@@ -69,7 +64,7 @@ type UpdateClusterRequestNodePools struct {
 	// ID of existing node pool. Must be passed when modifying existing node pools. Not relevant for new node pools
 	ID *string `json:"id,omitempty"`
 	// Set of label keys and values that can be used to determine scheduling via resource tags.
-	Labels map[string]interface{} `json:"labels,omitempty"`
+	Labels *UpdateClusterRequestNodePoolsLabels `json:"labels,omitempty"`
 	// Number of nodes to the node pool should be provisioned with.
 	NodeCount int64 `json:"nodeCount"`
 	// Machine type to be used by the node pool.
@@ -89,13 +84,6 @@ func (u *UpdateClusterRequestNodePools) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *UpdateClusterRequestNodePools) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterRequestNodePools) GetAutoscaling() *UpdateClusterRequestNodePoolsAutoscaling {
@@ -133,7 +121,7 @@ func (o *UpdateClusterRequestNodePools) GetID() *string {
 	return o.ID
 }
 
-func (o *UpdateClusterRequestNodePools) GetLabels() map[string]interface{} {
+func (o *UpdateClusterRequestNodePools) GetLabels() *UpdateClusterRequestNodePoolsLabels {
 	if o == nil {
 		return nil
 	}
@@ -199,30 +187,11 @@ func (e *UpdateClusterRequestSettingsBuildsMode) UnmarshalJSON(data []byte) erro
 }
 
 type UpdateClusterRequestSettingsBuilds struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Cluster to use for scheduling builds
 	ClusterID *string                                 `json:"clusterId,omitempty"`
 	Mode      *UpdateClusterRequestSettingsBuildsMode `json:"mode,omitempty"`
 	// Plan to use for builds if they are run on the cluster
 	Plan *string `json:"plan,omitempty"`
-}
-
-func (u UpdateClusterRequestSettingsBuilds) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateClusterRequestSettingsBuilds) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateClusterRequestSettingsBuilds) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterRequestSettingsBuilds) GetClusterID() *string {
@@ -246,30 +215,14 @@ func (o *UpdateClusterRequestSettingsBuilds) GetPlan() *string {
 	return o.Plan
 }
 
+type UpdateClusterRequestSettingsLoggingLoki2 struct {
+}
+
 type UpdateClusterRequestSettingsLoggingLoki1 struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
-	S3AccessKey          string                 `json:"s3AccessKey"`
-	S3BucketName         string                 `json:"s3BucketName"`
-	S3Region             string                 `json:"s3Region"`
-	S3SecretKey          string                 `json:"s3SecretKey"`
-}
-
-func (u UpdateClusterRequestSettingsLoggingLoki1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateClusterRequestSettingsLoggingLoki1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateClusterRequestSettingsLoggingLoki1) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	S3AccessKey  string `json:"s3AccessKey"`
+	S3BucketName string `json:"s3BucketName"`
+	S3Region     string `json:"s3Region"`
+	S3SecretKey  string `json:"s3SecretKey"`
 }
 
 func (o *UpdateClusterRequestSettingsLoggingLoki1) GetS3AccessKey() string {
@@ -304,12 +257,12 @@ type UpdateClusterRequestSettingsLoggingLokiType string
 
 const (
 	UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1 UpdateClusterRequestSettingsLoggingLokiType = "UpdateClusterRequest_settings_logging_loki_1"
-	UpdateClusterRequestSettingsLoggingLokiTypeMapOfany                                 UpdateClusterRequestSettingsLoggingLokiType = "mapOfany"
+	UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki2 UpdateClusterRequestSettingsLoggingLokiType = "UpdateClusterRequest_settings_logging_loki_2"
 )
 
 type UpdateClusterRequestSettingsLoggingLoki struct {
 	UpdateClusterRequestSettingsLoggingLoki1 *UpdateClusterRequestSettingsLoggingLoki1
-	MapOfany                                 map[string]interface{}
+	UpdateClusterRequestSettingsLoggingLoki2 *UpdateClusterRequestSettingsLoggingLoki2
 
 	Type UpdateClusterRequestSettingsLoggingLokiType
 }
@@ -323,28 +276,28 @@ func CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLo
 	}
 }
 
-func CreateUpdateClusterRequestSettingsLoggingLokiMapOfany(mapOfany map[string]interface{}) UpdateClusterRequestSettingsLoggingLoki {
-	typ := UpdateClusterRequestSettingsLoggingLokiTypeMapOfany
+func CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki2(updateClusterRequestSettingsLoggingLoki2 UpdateClusterRequestSettingsLoggingLoki2) UpdateClusterRequestSettingsLoggingLoki {
+	typ := UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki2
 
 	return UpdateClusterRequestSettingsLoggingLoki{
-		MapOfany: mapOfany,
-		Type:     typ,
+		UpdateClusterRequestSettingsLoggingLoki2: &updateClusterRequestSettingsLoggingLoki2,
+		Type:                                     typ,
 	}
 }
 
 func (u *UpdateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
 
+	updateClusterRequestSettingsLoggingLoki2 := new(UpdateClusterRequestSettingsLoggingLoki2)
+	if err := utils.UnmarshalJSON(data, &updateClusterRequestSettingsLoggingLoki2, "", true, true); err == nil {
+		u.UpdateClusterRequestSettingsLoggingLoki2 = updateClusterRequestSettingsLoggingLoki2
+		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki2
+		return nil
+	}
+
 	updateClusterRequestSettingsLoggingLoki1 := new(UpdateClusterRequestSettingsLoggingLoki1)
 	if err := utils.UnmarshalJSON(data, &updateClusterRequestSettingsLoggingLoki1, "", true, true); err == nil {
 		u.UpdateClusterRequestSettingsLoggingLoki1 = updateClusterRequestSettingsLoggingLoki1
 		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1
-		return nil
-	}
-
-	mapOfany := map[string]interface{}{}
-	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
-		u.MapOfany = mapOfany
-		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeMapOfany
 		return nil
 	}
 
@@ -356,8 +309,8 @@ func (u UpdateClusterRequestSettingsLoggingLoki) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.UpdateClusterRequestSettingsLoggingLoki1, "", true)
 	}
 
-	if u.MapOfany != nil {
-		return utils.MarshalJSON(u.MapOfany, "", true)
+	if u.UpdateClusterRequestSettingsLoggingLoki2 != nil {
+		return utils.MarshalJSON(u.UpdateClusterRequestSettingsLoggingLoki2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
@@ -391,27 +344,8 @@ func (e *UpdateClusterRequestSettingsLoggingMode) UnmarshalJSON(data []byte) err
 }
 
 type UpdateClusterRequestSettingsLogging struct {
-	AdditionalProperties map[string]interface{}                   `additionalProperties:"true" json:"-"`
-	Loki                 *UpdateClusterRequestSettingsLoggingLoki `json:"loki,omitempty"`
-	Mode                 *UpdateClusterRequestSettingsLoggingMode `json:"mode,omitempty"`
-}
-
-func (u UpdateClusterRequestSettingsLogging) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateClusterRequestSettingsLogging) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateClusterRequestSettingsLogging) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	Loki *UpdateClusterRequestSettingsLoggingLoki `json:"loki,omitempty"`
+	Mode *UpdateClusterRequestSettingsLoggingMode `json:"mode,omitempty"`
 }
 
 func (o *UpdateClusterRequestSettingsLogging) GetLoki() *UpdateClusterRequestSettingsLoggingLoki {
@@ -456,28 +390,9 @@ func (e *UpdateClusterRequestSettingsRegistryMode) UnmarshalJSON(data []byte) er
 }
 
 type UpdateClusterRequestSettingsRegistry struct {
-	AdditionalProperties map[string]interface{}                    `additionalProperties:"true" json:"-"`
-	Mode                 *UpdateClusterRequestSettingsRegistryMode `json:"mode,omitempty"`
+	Mode *UpdateClusterRequestSettingsRegistryMode `json:"mode,omitempty"`
 	// Credentials to use for storing of images.
 	RegistryID *string `json:"registryId,omitempty"`
-}
-
-func (u UpdateClusterRequestSettingsRegistry) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateClusterRequestSettingsRegistry) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateClusterRequestSettingsRegistry) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterRequestSettingsRegistry) GetMode() *UpdateClusterRequestSettingsRegistryMode {
@@ -495,28 +410,9 @@ func (o *UpdateClusterRequestSettingsRegistry) GetRegistryID() *string {
 }
 
 type UpdateClusterRequestSettings struct {
-	AdditionalProperties map[string]interface{}                `additionalProperties:"true" json:"-"`
-	Builds               *UpdateClusterRequestSettingsBuilds   `json:"builds,omitempty"`
-	Logging              *UpdateClusterRequestSettingsLogging  `json:"logging,omitempty"`
-	Registry             *UpdateClusterRequestSettingsRegistry `json:"registry,omitempty"`
-}
-
-func (u UpdateClusterRequestSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateClusterRequestSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateClusterRequestSettings) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
+	Builds   *UpdateClusterRequestSettingsBuilds   `json:"builds,omitempty"`
+	Logging  *UpdateClusterRequestSettingsLogging  `json:"logging,omitempty"`
+	Registry *UpdateClusterRequestSettingsRegistry `json:"registry,omitempty"`
 }
 
 func (o *UpdateClusterRequestSettings) GetBuilds() *UpdateClusterRequestSettingsBuilds {
@@ -541,29 +437,10 @@ func (o *UpdateClusterRequestSettings) GetRegistry() *UpdateClusterRequestSettin
 }
 
 type UpdateClusterRequest struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The description of the cluster.
 	Description *string                         `json:"description,omitempty"`
 	NodePools   []UpdateClusterRequestNodePools `json:"nodePools,omitempty"`
 	Settings    *UpdateClusterRequestSettings   `json:"settings,omitempty"`
-}
-
-func (u UpdateClusterRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateClusterRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateClusterRequest) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateClusterRequest) GetDescription() *string {

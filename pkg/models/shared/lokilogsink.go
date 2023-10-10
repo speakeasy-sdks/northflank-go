@@ -35,31 +35,12 @@ func (e *LokiLogSinkSinkDataAuthStrategy) UnmarshalJSON(data []byte) error {
 
 // LokiLogSinkSinkDataAuth - Object containing authentication data for the log sink.
 type LokiLogSinkSinkDataAuth struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The password for the log sink.
 	Password *string `json:"password,omitempty"`
 	// The authentication strategy.
 	Strategy *LokiLogSinkSinkDataAuthStrategy `json:"strategy,omitempty"`
 	// The username for the log sink.
 	User *string `json:"user,omitempty"`
-}
-
-func (l LokiLogSinkSinkDataAuth) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LokiLogSinkSinkDataAuth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *LokiLogSinkSinkDataAuth) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *LokiLogSinkSinkDataAuth) GetPassword() *string {
@@ -113,27 +94,8 @@ func (e *LokiLogSinkSinkDataEncodingCodec) UnmarshalJSON(data []byte) error {
 
 // LokiLogSinkSinkDataEncoding - Encoding options
 type LokiLogSinkSinkDataEncoding struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Codec to encode logs in
 	Codec LokiLogSinkSinkDataEncodingCodec `json:"codec"`
-}
-
-func (l LokiLogSinkSinkDataEncoding) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LokiLogSinkSinkDataEncoding) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *LokiLogSinkSinkDataEncoding) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *LokiLogSinkSinkDataEncoding) GetCodec() LokiLogSinkSinkDataEncodingCodec {
@@ -145,31 +107,12 @@ func (o *LokiLogSinkSinkDataEncoding) GetCodec() LokiLogSinkSinkDataEncodingCode
 
 // LokiLogSinkSinkData - Details about the Loki log sink.
 type LokiLogSinkSinkData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Object containing authentication data for the log sink.
 	Auth *LokiLogSinkSinkDataAuth `json:"auth,omitempty"`
 	// Encoding options
 	Encoding *LokiLogSinkSinkDataEncoding `json:"encoding,omitempty"`
 	// The endpoint of the Loki log sink.
 	Endpoint string `json:"endpoint"`
-}
-
-func (l LokiLogSinkSinkData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *LokiLogSinkSinkData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *LokiLogSinkSinkData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *LokiLogSinkSinkData) GetAuth() *LokiLogSinkSinkDataAuth {
@@ -220,7 +163,6 @@ func (e *LokiLogSinkSinkType) UnmarshalJSON(data []byte) error {
 
 // LokiLogSink - Create a log sink using Loki
 type LokiLogSink struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the log sink.
 	Description *string `json:"description,omitempty"`
 	// If `true` your network access logs will be forwarded with your workload logs
@@ -248,13 +190,6 @@ func (l *LokiLogSink) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *LokiLogSink) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *LokiLogSink) GetDescription() *string {

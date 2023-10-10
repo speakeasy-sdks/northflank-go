@@ -63,7 +63,6 @@ func (e *GetLogSinksResultDataLogSinksSinkType) UnmarshalJSON(data []byte) error
 
 // GetLogSinksResultDataLogSinks - A log sink object.
 type GetLogSinksResultDataLogSinks struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Timestamp of when the log sink was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Description of the log sink.
@@ -93,13 +92,6 @@ func (g *GetLogSinksResultDataLogSinks) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (o *GetLogSinksResultDataLogSinks) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetLogSinksResultDataLogSinks) GetCreatedAt() time.Time {
@@ -167,27 +159,8 @@ func (o *GetLogSinksResultDataLogSinks) GetUseCustomLabels() *bool {
 
 // GetLogSinksResultData - Result data.
 type GetLogSinksResultData struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of log sinks added to this account.
 	LogSinks []GetLogSinksResultDataLogSinks `json:"logSinks"`
-}
-
-func (g GetLogSinksResultData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetLogSinksResultData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetLogSinksResultData) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetLogSinksResultData) GetLogSinks() []GetLogSinksResultDataLogSinks {
@@ -199,31 +172,12 @@ func (o *GetLogSinksResultData) GetLogSinks() []GetLogSinksResultDataLogSinks {
 
 // GetLogSinksResultPagination - Data about the endpoint pagination.
 type GetLogSinksResultPagination struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
 	Cursor *string `json:"cursor,omitempty"`
 	// Is there another page of results available?
 	HasNextPage bool `json:"hasNextPage"`
-}
-
-func (g GetLogSinksResultPagination) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetLogSinksResultPagination) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetLogSinksResultPagination) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetLogSinksResultPagination) GetCount() float32 {
@@ -249,29 +203,10 @@ func (o *GetLogSinksResultPagination) GetHasNextPage() bool {
 
 // GetLogSinksResult - Response object.
 type GetLogSinksResult struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Result data.
 	Data GetLogSinksResultData `json:"data"`
 	// Data about the endpoint pagination.
 	Pagination GetLogSinksResultPagination `json:"pagination"`
-}
-
-func (g GetLogSinksResult) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetLogSinksResult) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetLogSinksResult) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *GetLogSinksResult) GetData() GetLogSinksResultData {

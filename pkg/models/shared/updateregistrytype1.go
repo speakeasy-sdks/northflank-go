@@ -2,35 +2,12 @@
 
 package shared
 
-import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
-)
-
 // UpdateRegistryType1Restrictions - Data about whether the credentials are restricted to certain projects.
 type UpdateRegistryType1Restrictions struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
-}
-
-func (u UpdateRegistryType1Restrictions) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateRegistryType1Restrictions) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateRegistryType1Restrictions) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateRegistryType1Restrictions) GetProjects() []string {
@@ -49,29 +26,10 @@ func (o *UpdateRegistryType1Restrictions) GetRestricted() bool {
 
 // UpdateRegistryType1 - Don't update the credentials.
 type UpdateRegistryType1 struct {
-	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Description of the credentials.
 	Description *string `json:"description,omitempty"`
 	// Data about whether the credentials are restricted to certain projects.
 	Restrictions *UpdateRegistryType1Restrictions `json:"restrictions,omitempty"`
-}
-
-func (u UpdateRegistryType1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateRegistryType1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateRegistryType1) GetAdditionalProperties() map[string]interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.AdditionalProperties
 }
 
 func (o *UpdateRegistryType1) GetDescription() *string {
