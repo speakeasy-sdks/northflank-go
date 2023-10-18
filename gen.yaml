@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 9ab4ae9ee20626ac9759af48d9f35d90
   docVersion: 1.0.0
-  speakeasyVersion: 1.97.0
-  generationVersion: 2.151.2
+  speakeasyVersion: 1.101.0
+  generationVersion: 2.161.0
 generation:
   comments:
     disableComments: false
@@ -15,14 +15,14 @@ generation:
 features:
   go:
     constsAndDefaults: 0.1.1
-    core: 2.91.4
+    core: 2.91.5
     flattening: 2.81.1
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.0
     nameOverrides: 2.81.1
     unions: 2.83.1
 go:
-  version: 1.6.3
+  version: 1.6.4
   flattenGlobalSecurity: true
   maxMethodParams: 4
   packageName: github.com/speakeasy-sdks/northflank-go

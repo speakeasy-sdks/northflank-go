@@ -46,7 +46,7 @@ func main() {
         Credentials: shared.CreateIntegrationRequestCredentials{},
         Description: northflankgo.String("This is a new cloud provider integration."),
         Gcp: &shared.CreateIntegrationRequestGcp{
-            ProjectID: "bluetooth Extended",
+            ProjectID: "online",
         },
         Name: "New Integration",
         Provider: shared.CreateIntegrationRequestProviderGcp,
@@ -608,10 +608,10 @@ func main() {
             Logging: &shared.UpdateClusterRequestSettingsLogging{
                 Loki: shared.CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki1(
                         shared.UpdateClusterRequestSettingsLoggingLoki1{
-                            S3AccessKey: "defect sievert Corporate",
-                            S3BucketName: "International",
-                            S3Region: "despite Kids",
-                            S3SecretKey: "bluetooth",
+                            S3AccessKey: "futon",
+                            S3BucketName: "swindle",
+                            S3Region: "sievert",
+                            S3SecretKey: "Corporate",
                         },
                 ),
             },
