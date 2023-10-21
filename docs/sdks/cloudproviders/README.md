@@ -46,7 +46,7 @@ func main() {
         Credentials: shared.CreateIntegrationRequestCredentials{},
         Description: northflankgo.String("This is a new cloud provider integration."),
         Gcp: &shared.CreateIntegrationRequestGcp{
-            ProjectID: "online",
+            ProjectID: "string",
         },
         Name: "New Integration",
         Provider: shared.CreateIntegrationRequestProviderGcp,
@@ -118,7 +118,7 @@ func main() {
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "Darmstadtium",
+                    "string",
                 },
                 DiskSize: 100,
                 Labels: &shared.CreateClusterRequestNodePoolsLabels{},
@@ -520,7 +520,7 @@ func main() {
     )
 
 
-    var cursor *string = "South"
+    var cursor *string = "string"
 
     var page *int64 = 1
 
@@ -590,7 +590,7 @@ func main() {
                     Min: northflankgo.Int64(1),
                 },
                 AvailabilityZones: []string{
-                    "Fish",
+                    "string",
                 },
                 DiskSize: 100,
                 ID: northflankgo.String("6aa96121-0345-43ad-bade-af36d540c222"),
@@ -608,10 +608,10 @@ func main() {
             Logging: &shared.UpdateClusterRequestSettingsLogging{
                 Loki: shared.CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki1(
                         shared.UpdateClusterRequestSettingsLoggingLoki1{
-                            S3AccessKey: "futon",
-                            S3BucketName: "swindle",
-                            S3Region: "sievert",
-                            S3SecretKey: "Corporate",
+                            S3AccessKey: "string",
+                            S3BucketName: "string",
+                            S3Region: "string",
+                            S3SecretKey: "string",
                         },
                 ),
             },

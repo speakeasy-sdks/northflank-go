@@ -604,7 +604,7 @@ func main() {
     )
 
 
-    var cursor *string = "powerfully"
+    var cursor *string = "string"
 
     var perPage *int64 = 50
 
@@ -661,7 +661,7 @@ func main() {
     )
 
 
-    var cursor *string = "synthesize"
+    var cursor *string = "string"
 
     var perPage *int64 = 50
 

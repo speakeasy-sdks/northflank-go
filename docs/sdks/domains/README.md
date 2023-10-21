@@ -571,7 +571,7 @@ func main() {
     )
 
 
-    var cursor *string = "becquerel"
+    var cursor *string = "string"
 
     var page *int64 = 1
 
