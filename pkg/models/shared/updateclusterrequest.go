@@ -287,16 +287,16 @@ func CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLo
 
 func (u *UpdateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
 
-	updateClusterRequestSettingsLoggingLoki2 := new(UpdateClusterRequestSettingsLoggingLoki2)
+	updateClusterRequestSettingsLoggingLoki2 := UpdateClusterRequestSettingsLoggingLoki2{}
 	if err := utils.UnmarshalJSON(data, &updateClusterRequestSettingsLoggingLoki2, "", true, true); err == nil {
-		u.UpdateClusterRequestSettingsLoggingLoki2 = updateClusterRequestSettingsLoggingLoki2
+		u.UpdateClusterRequestSettingsLoggingLoki2 = &updateClusterRequestSettingsLoggingLoki2
 		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki2
 		return nil
 	}
 
-	updateClusterRequestSettingsLoggingLoki1 := new(UpdateClusterRequestSettingsLoggingLoki1)
+	updateClusterRequestSettingsLoggingLoki1 := UpdateClusterRequestSettingsLoggingLoki1{}
 	if err := utils.UnmarshalJSON(data, &updateClusterRequestSettingsLoggingLoki1, "", true, true); err == nil {
-		u.UpdateClusterRequestSettingsLoggingLoki1 = updateClusterRequestSettingsLoggingLoki1
+		u.UpdateClusterRequestSettingsLoggingLoki1 = &updateClusterRequestSettingsLoggingLoki1
 		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1
 		return nil
 	}

@@ -155,16 +155,16 @@ func CreatePapertrailLogSinkSinkDataPapertrailLogSinkSinkData2(papertrailLogSink
 
 func (u *PapertrailLogSinkSinkData) UnmarshalJSON(data []byte) error {
 
-	papertrailLogSinkSinkData1 := new(PapertrailLogSinkSinkData1)
+	papertrailLogSinkSinkData1 := PapertrailLogSinkSinkData1{}
 	if err := utils.UnmarshalJSON(data, &papertrailLogSinkSinkData1, "", true, true); err == nil {
-		u.PapertrailLogSinkSinkData1 = papertrailLogSinkSinkData1
+		u.PapertrailLogSinkSinkData1 = &papertrailLogSinkSinkData1
 		u.Type = PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData1
 		return nil
 	}
 
-	papertrailLogSinkSinkData2 := new(PapertrailLogSinkSinkData2)
+	papertrailLogSinkSinkData2 := PapertrailLogSinkSinkData2{}
 	if err := utils.UnmarshalJSON(data, &papertrailLogSinkSinkData2, "", true, true); err == nil {
-		u.PapertrailLogSinkSinkData2 = papertrailLogSinkSinkData2
+		u.PapertrailLogSinkSinkData2 = &papertrailLogSinkSinkData2
 		u.Type = PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData2
 		return nil
 	}

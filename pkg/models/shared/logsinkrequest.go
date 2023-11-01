@@ -394,23 +394,23 @@ func CreateLogSinkRequestSinkData4AuthLogSinkRequestSinkData4Auth3(logSinkReques
 
 func (u *LogSinkRequestSinkData4Auth) UnmarshalJSON(data []byte) error {
 
-	logSinkRequestSinkData4Auth1 := new(LogSinkRequestSinkData4Auth1)
+	logSinkRequestSinkData4Auth1 := LogSinkRequestSinkData4Auth1{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData4Auth1, "", true, true); err == nil {
-		u.LogSinkRequestSinkData4Auth1 = logSinkRequestSinkData4Auth1
+		u.LogSinkRequestSinkData4Auth1 = &logSinkRequestSinkData4Auth1
 		u.Type = LogSinkRequestSinkData4AuthTypeLogSinkRequestSinkData4Auth1
 		return nil
 	}
 
-	logSinkRequestSinkData4Auth3 := new(LogSinkRequestSinkData4Auth3)
+	logSinkRequestSinkData4Auth3 := LogSinkRequestSinkData4Auth3{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData4Auth3, "", true, true); err == nil {
-		u.LogSinkRequestSinkData4Auth3 = logSinkRequestSinkData4Auth3
+		u.LogSinkRequestSinkData4Auth3 = &logSinkRequestSinkData4Auth3
 		u.Type = LogSinkRequestSinkData4AuthTypeLogSinkRequestSinkData4Auth3
 		return nil
 	}
 
-	logSinkRequestSinkData4Auth2 := new(LogSinkRequestSinkData4Auth2)
+	logSinkRequestSinkData4Auth2 := LogSinkRequestSinkData4Auth2{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData4Auth2, "", true, true); err == nil {
-		u.LogSinkRequestSinkData4Auth2 = logSinkRequestSinkData4Auth2
+		u.LogSinkRequestSinkData4Auth2 = &logSinkRequestSinkData4Auth2
 		u.Type = LogSinkRequestSinkData4AuthTypeLogSinkRequestSinkData4Auth2
 		return nil
 	}
@@ -651,16 +651,16 @@ func CreateLogSinkRequestSinkData3LogSinkRequestSinkData32(logSinkRequestSinkDat
 
 func (u *LogSinkRequestSinkData3) UnmarshalJSON(data []byte) error {
 
-	logSinkRequestSinkData31 := new(LogSinkRequestSinkData31)
+	logSinkRequestSinkData31 := LogSinkRequestSinkData31{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData31, "", true, true); err == nil {
-		u.LogSinkRequestSinkData31 = logSinkRequestSinkData31
+		u.LogSinkRequestSinkData31 = &logSinkRequestSinkData31
 		u.Type = LogSinkRequestSinkData3TypeLogSinkRequestSinkData31
 		return nil
 	}
 
-	logSinkRequestSinkData32 := new(LogSinkRequestSinkData32)
+	logSinkRequestSinkData32 := LogSinkRequestSinkData32{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData32, "", true, true); err == nil {
-		u.LogSinkRequestSinkData32 = logSinkRequestSinkData32
+		u.LogSinkRequestSinkData32 = &logSinkRequestSinkData32
 		u.Type = LogSinkRequestSinkData3TypeLogSinkRequestSinkData32
 		return nil
 	}
@@ -914,58 +914,58 @@ func CreateLogSinkRequestSinkDataLogSinkRequestSinkData8(logSinkRequestSinkData8
 
 func (u *LogSinkRequestSinkData) UnmarshalJSON(data []byte) error {
 
-	logSinkRequestSinkData6 := new(LogSinkRequestSinkData6)
+	logSinkRequestSinkData6 := LogSinkRequestSinkData6{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData6, "", true, true); err == nil {
-		u.LogSinkRequestSinkData6 = logSinkRequestSinkData6
+		u.LogSinkRequestSinkData6 = &logSinkRequestSinkData6
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData6
 		return nil
 	}
 
-	logSinkRequestSinkData7 := new(LogSinkRequestSinkData7)
+	logSinkRequestSinkData7 := LogSinkRequestSinkData7{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData7, "", true, true); err == nil {
-		u.LogSinkRequestSinkData7 = logSinkRequestSinkData7
+		u.LogSinkRequestSinkData7 = &logSinkRequestSinkData7
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData7
 		return nil
 	}
 
-	logSinkRequestSinkData1 := new(LogSinkRequestSinkData1)
+	logSinkRequestSinkData1 := LogSinkRequestSinkData1{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData1, "", true, true); err == nil {
-		u.LogSinkRequestSinkData1 = logSinkRequestSinkData1
+		u.LogSinkRequestSinkData1 = &logSinkRequestSinkData1
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData1
 		return nil
 	}
 
-	logSinkRequestSinkData2 := new(LogSinkRequestSinkData2)
+	logSinkRequestSinkData2 := LogSinkRequestSinkData2{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData2, "", true, true); err == nil {
-		u.LogSinkRequestSinkData2 = logSinkRequestSinkData2
+		u.LogSinkRequestSinkData2 = &logSinkRequestSinkData2
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData2
 		return nil
 	}
 
-	logSinkRequestSinkData8 := new(LogSinkRequestSinkData8)
+	logSinkRequestSinkData8 := LogSinkRequestSinkData8{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData8, "", true, true); err == nil {
-		u.LogSinkRequestSinkData8 = logSinkRequestSinkData8
+		u.LogSinkRequestSinkData8 = &logSinkRequestSinkData8
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData8
 		return nil
 	}
 
-	logSinkRequestSinkData4 := new(LogSinkRequestSinkData4)
+	logSinkRequestSinkData4 := LogSinkRequestSinkData4{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData4, "", true, true); err == nil {
-		u.LogSinkRequestSinkData4 = logSinkRequestSinkData4
+		u.LogSinkRequestSinkData4 = &logSinkRequestSinkData4
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData4
 		return nil
 	}
 
-	logSinkRequestSinkData5 := new(LogSinkRequestSinkData5)
+	logSinkRequestSinkData5 := LogSinkRequestSinkData5{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData5, "", true, true); err == nil {
-		u.LogSinkRequestSinkData5 = logSinkRequestSinkData5
+		u.LogSinkRequestSinkData5 = &logSinkRequestSinkData5
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData5
 		return nil
 	}
 
-	logSinkRequestSinkData3 := new(LogSinkRequestSinkData3)
+	logSinkRequestSinkData3 := LogSinkRequestSinkData3{}
 	if err := utils.UnmarshalJSON(data, &logSinkRequestSinkData3, "", true, true); err == nil {
-		u.LogSinkRequestSinkData3 = logSinkRequestSinkData3
+		u.LogSinkRequestSinkData3 = &logSinkRequestSinkData3
 		u.Type = LogSinkRequestSinkDataTypeLogSinkRequestSinkData3
 		return nil
 	}

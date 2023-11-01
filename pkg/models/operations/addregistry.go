@@ -54,23 +54,23 @@ func CreateAddRegistryRequestBodyAddRegistryType3(addRegistryType3 shared.AddReg
 
 func (u *AddRegistryRequestBody) UnmarshalJSON(data []byte) error {
 
-	addRegistryType3 := new(shared.AddRegistryType3)
+	addRegistryType3 := shared.AddRegistryType3{}
 	if err := utils.UnmarshalJSON(data, &addRegistryType3, "", true, true); err == nil {
-		u.AddRegistryType3 = addRegistryType3
+		u.AddRegistryType3 = &addRegistryType3
 		u.Type = AddRegistryRequestBodyTypeAddRegistryType3
 		return nil
 	}
 
-	addRegistryType2 := new(shared.AddRegistryType2)
+	addRegistryType2 := shared.AddRegistryType2{}
 	if err := utils.UnmarshalJSON(data, &addRegistryType2, "", true, true); err == nil {
-		u.AddRegistryType2 = addRegistryType2
+		u.AddRegistryType2 = &addRegistryType2
 		u.Type = AddRegistryRequestBodyTypeAddRegistryType2
 		return nil
 	}
 
-	addRegistryType1 := new(shared.AddRegistryType1)
+	addRegistryType1 := shared.AddRegistryType1{}
 	if err := utils.UnmarshalJSON(data, &addRegistryType1, "", true, true); err == nil {
-		u.AddRegistryType1 = addRegistryType1
+		u.AddRegistryType1 = &addRegistryType1
 		u.Type = AddRegistryRequestBodyTypeAddRegistryType1
 		return nil
 	}

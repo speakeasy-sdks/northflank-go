@@ -65,30 +65,30 @@ func CreateUpdateRegistryRequestBodyUpdateRegistryType4(updateRegistryType4 shar
 
 func (u *UpdateRegistryRequestBody) UnmarshalJSON(data []byte) error {
 
-	updateRegistryType1 := new(shared.UpdateRegistryType1)
+	updateRegistryType1 := shared.UpdateRegistryType1{}
 	if err := utils.UnmarshalJSON(data, &updateRegistryType1, "", true, true); err == nil {
-		u.UpdateRegistryType1 = updateRegistryType1
+		u.UpdateRegistryType1 = &updateRegistryType1
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType1
 		return nil
 	}
 
-	updateRegistryType4 := new(shared.UpdateRegistryType4)
+	updateRegistryType4 := shared.UpdateRegistryType4{}
 	if err := utils.UnmarshalJSON(data, &updateRegistryType4, "", true, true); err == nil {
-		u.UpdateRegistryType4 = updateRegistryType4
+		u.UpdateRegistryType4 = &updateRegistryType4
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType4
 		return nil
 	}
 
-	updateRegistryType3 := new(shared.UpdateRegistryType3)
+	updateRegistryType3 := shared.UpdateRegistryType3{}
 	if err := utils.UnmarshalJSON(data, &updateRegistryType3, "", true, true); err == nil {
-		u.UpdateRegistryType3 = updateRegistryType3
+		u.UpdateRegistryType3 = &updateRegistryType3
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType3
 		return nil
 	}
 
-	updateRegistryType2 := new(shared.UpdateRegistryType2)
+	updateRegistryType2 := shared.UpdateRegistryType2{}
 	if err := utils.UnmarshalJSON(data, &updateRegistryType2, "", true, true); err == nil {
-		u.UpdateRegistryType2 = updateRegistryType2
+		u.UpdateRegistryType2 = &updateRegistryType2
 		u.Type = UpdateRegistryRequestBodyTypeUpdateRegistryType2
 		return nil
 	}

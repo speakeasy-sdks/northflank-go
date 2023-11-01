@@ -120,65 +120,65 @@ func CreateCreateLogSinkRequestBodyLogioLogSink(logioLogSink shared.LogioLogSink
 
 func (u *CreateLogSinkRequestBody) UnmarshalJSON(data []byte) error {
 
-	lokiLogSink := new(shared.LokiLogSink)
+	lokiLogSink := shared.LokiLogSink{}
 	if err := utils.UnmarshalJSON(data, &lokiLogSink, "", true, true); err == nil {
-		u.LokiLogSink = lokiLogSink
+		u.LokiLogSink = &lokiLogSink
 		u.Type = CreateLogSinkRequestBodyTypeLokiLogSink
 		return nil
 	}
 
-	datadogLogSink := new(shared.DatadogLogSink)
+	datadogLogSink := shared.DatadogLogSink{}
 	if err := utils.UnmarshalJSON(data, &datadogLogSink, "", true, true); err == nil {
-		u.DatadogLogSink = datadogLogSink
+		u.DatadogLogSink = &datadogLogSink
 		u.Type = CreateLogSinkRequestBodyTypeDatadogLogSink
 		return nil
 	}
 
-	papertrailLogSink := new(shared.PapertrailLogSink)
+	papertrailLogSink := shared.PapertrailLogSink{}
 	if err := utils.UnmarshalJSON(data, &papertrailLogSink, "", true, true); err == nil {
-		u.PapertrailLogSink = papertrailLogSink
+		u.PapertrailLogSink = &papertrailLogSink
 		u.Type = CreateLogSinkRequestBodyTypePapertrailLogSink
 		return nil
 	}
 
-	awsLogSink := new(shared.AWSLogSink)
+	awsLogSink := shared.AWSLogSink{}
 	if err := utils.UnmarshalJSON(data, &awsLogSink, "", true, true); err == nil {
-		u.AWSLogSink = awsLogSink
+		u.AWSLogSink = &awsLogSink
 		u.Type = CreateLogSinkRequestBodyTypeAWSLogSink
 		return nil
 	}
 
-	httpLogSink := new(shared.HTTPLogSink)
+	httpLogSink := shared.HTTPLogSink{}
 	if err := utils.UnmarshalJSON(data, &httpLogSink, "", true, true); err == nil {
-		u.HTTPLogSink = httpLogSink
+		u.HTTPLogSink = &httpLogSink
 		u.Type = CreateLogSinkRequestBodyTypeHTTPLogSink
 		return nil
 	}
 
-	dnaLogSink := new(shared.DNALogSink)
+	dnaLogSink := shared.DNALogSink{}
 	if err := utils.UnmarshalJSON(data, &dnaLogSink, "", true, true); err == nil {
-		u.DNALogSink = dnaLogSink
+		u.DNALogSink = &dnaLogSink
 		u.Type = CreateLogSinkRequestBodyTypeDNALogSink
 		return nil
 	}
 
-	logtailLogSink := new(shared.LogtailLogSink)
+	logtailLogSink := shared.LogtailLogSink{}
 	if err := utils.UnmarshalJSON(data, &logtailLogSink, "", true, true); err == nil {
-		u.LogtailLogSink = logtailLogSink
+		u.LogtailLogSink = &logtailLogSink
 		u.Type = CreateLogSinkRequestBodyTypeLogtailLogSink
 		return nil
 	}
 
-	honeycombLogSink := new(shared.HoneycombLogSink)
+	honeycombLogSink := shared.HoneycombLogSink{}
 	if err := utils.UnmarshalJSON(data, &honeycombLogSink, "", true, true); err == nil {
-		u.HoneycombLogSink = honeycombLogSink
+		u.HoneycombLogSink = &honeycombLogSink
 		u.Type = CreateLogSinkRequestBodyTypeHoneycombLogSink
 		return nil
 	}
 
-	logioLogSink := new(shared.LogioLogSink)
+	logioLogSink := shared.LogioLogSink{}
 	if err := utils.UnmarshalJSON(data, &logioLogSink, "", true, true); err == nil {
-		u.LogioLogSink = logioLogSink
+		u.LogioLogSink = &logioLogSink
 		u.Type = CreateLogSinkRequestBodyTypeLogioLogSink
 		return nil
 	}

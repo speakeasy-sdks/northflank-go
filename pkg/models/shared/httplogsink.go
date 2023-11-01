@@ -195,23 +195,23 @@ func CreateHTTPLogSinkSinkDataAuthHTTPLogSinkSinkDataAuth3(httpLogSinkSinkDataAu
 
 func (u *HTTPLogSinkSinkDataAuth) UnmarshalJSON(data []byte) error {
 
-	httpLogSinkSinkDataAuth1 := new(HTTPLogSinkSinkDataAuth1)
+	httpLogSinkSinkDataAuth1 := HTTPLogSinkSinkDataAuth1{}
 	if err := utils.UnmarshalJSON(data, &httpLogSinkSinkDataAuth1, "", true, true); err == nil {
-		u.HTTPLogSinkSinkDataAuth1 = httpLogSinkSinkDataAuth1
+		u.HTTPLogSinkSinkDataAuth1 = &httpLogSinkSinkDataAuth1
 		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth1
 		return nil
 	}
 
-	httpLogSinkSinkDataAuth3 := new(HTTPLogSinkSinkDataAuth3)
+	httpLogSinkSinkDataAuth3 := HTTPLogSinkSinkDataAuth3{}
 	if err := utils.UnmarshalJSON(data, &httpLogSinkSinkDataAuth3, "", true, true); err == nil {
-		u.HTTPLogSinkSinkDataAuth3 = httpLogSinkSinkDataAuth3
+		u.HTTPLogSinkSinkDataAuth3 = &httpLogSinkSinkDataAuth3
 		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth3
 		return nil
 	}
 
-	httpLogSinkSinkDataAuth2 := new(HTTPLogSinkSinkDataAuth2)
+	httpLogSinkSinkDataAuth2 := HTTPLogSinkSinkDataAuth2{}
 	if err := utils.UnmarshalJSON(data, &httpLogSinkSinkDataAuth2, "", true, true); err == nil {
-		u.HTTPLogSinkSinkDataAuth2 = httpLogSinkSinkDataAuth2
+		u.HTTPLogSinkSinkDataAuth2 = &httpLogSinkSinkDataAuth2
 		u.Type = HTTPLogSinkSinkDataAuthTypeHTTPLogSinkSinkDataAuth2
 		return nil
 	}

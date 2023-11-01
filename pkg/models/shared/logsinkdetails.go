@@ -395,23 +395,23 @@ func CreateLogSinkDetailsDataSinkData4AuthLogSinkDetailsDataSinkData4Auth3(logSi
 
 func (u *LogSinkDetailsDataSinkData4Auth) UnmarshalJSON(data []byte) error {
 
-	logSinkDetailsDataSinkData4Auth1 := new(LogSinkDetailsDataSinkData4Auth1)
+	logSinkDetailsDataSinkData4Auth1 := LogSinkDetailsDataSinkData4Auth1{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4Auth1, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4Auth1 = logSinkDetailsDataSinkData4Auth1
+		u.LogSinkDetailsDataSinkData4Auth1 = &logSinkDetailsDataSinkData4Auth1
 		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth1
 		return nil
 	}
 
-	logSinkDetailsDataSinkData4Auth3 := new(LogSinkDetailsDataSinkData4Auth3)
+	logSinkDetailsDataSinkData4Auth3 := LogSinkDetailsDataSinkData4Auth3{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4Auth3, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4Auth3 = logSinkDetailsDataSinkData4Auth3
+		u.LogSinkDetailsDataSinkData4Auth3 = &logSinkDetailsDataSinkData4Auth3
 		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth3
 		return nil
 	}
 
-	logSinkDetailsDataSinkData4Auth2 := new(LogSinkDetailsDataSinkData4Auth2)
+	logSinkDetailsDataSinkData4Auth2 := LogSinkDetailsDataSinkData4Auth2{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4Auth2, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4Auth2 = logSinkDetailsDataSinkData4Auth2
+		u.LogSinkDetailsDataSinkData4Auth2 = &logSinkDetailsDataSinkData4Auth2
 		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth2
 		return nil
 	}
@@ -652,16 +652,16 @@ func CreateLogSinkDetailsDataSinkData3LogSinkDetailsDataSinkData32(logSinkDetail
 
 func (u *LogSinkDetailsDataSinkData3) UnmarshalJSON(data []byte) error {
 
-	logSinkDetailsDataSinkData31 := new(LogSinkDetailsDataSinkData31)
+	logSinkDetailsDataSinkData31 := LogSinkDetailsDataSinkData31{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData31, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData31 = logSinkDetailsDataSinkData31
+		u.LogSinkDetailsDataSinkData31 = &logSinkDetailsDataSinkData31
 		u.Type = LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData31
 		return nil
 	}
 
-	logSinkDetailsDataSinkData32 := new(LogSinkDetailsDataSinkData32)
+	logSinkDetailsDataSinkData32 := LogSinkDetailsDataSinkData32{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData32, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData32 = logSinkDetailsDataSinkData32
+		u.LogSinkDetailsDataSinkData32 = &logSinkDetailsDataSinkData32
 		u.Type = LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData32
 		return nil
 	}
@@ -965,58 +965,58 @@ func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData8(logSinkDetailsD
 
 func (u *LogSinkDetailsDataSinkData) UnmarshalJSON(data []byte) error {
 
-	logSinkDetailsDataSinkData6 := new(LogSinkDetailsDataSinkData6)
+	logSinkDetailsDataSinkData6 := LogSinkDetailsDataSinkData6{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData6, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData6 = logSinkDetailsDataSinkData6
+		u.LogSinkDetailsDataSinkData6 = &logSinkDetailsDataSinkData6
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData6
 		return nil
 	}
 
-	logSinkDetailsDataSinkData7 := new(LogSinkDetailsDataSinkData7)
+	logSinkDetailsDataSinkData7 := LogSinkDetailsDataSinkData7{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData7, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData7 = logSinkDetailsDataSinkData7
+		u.LogSinkDetailsDataSinkData7 = &logSinkDetailsDataSinkData7
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData7
 		return nil
 	}
 
-	logSinkDetailsDataSinkData2 := new(LogSinkDetailsDataSinkData2)
+	logSinkDetailsDataSinkData2 := LogSinkDetailsDataSinkData2{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData2, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData2 = logSinkDetailsDataSinkData2
+		u.LogSinkDetailsDataSinkData2 = &logSinkDetailsDataSinkData2
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData2
 		return nil
 	}
 
-	logSinkDetailsDataSinkData8 := new(LogSinkDetailsDataSinkData8)
+	logSinkDetailsDataSinkData8 := LogSinkDetailsDataSinkData8{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData8, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData8 = logSinkDetailsDataSinkData8
+		u.LogSinkDetailsDataSinkData8 = &logSinkDetailsDataSinkData8
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData8
 		return nil
 	}
 
-	logSinkDetailsDataSinkData1 := new(LogSinkDetailsDataSinkData1)
+	logSinkDetailsDataSinkData1 := LogSinkDetailsDataSinkData1{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData1, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData1 = logSinkDetailsDataSinkData1
+		u.LogSinkDetailsDataSinkData1 = &logSinkDetailsDataSinkData1
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData1
 		return nil
 	}
 
-	logSinkDetailsDataSinkData4 := new(LogSinkDetailsDataSinkData4)
+	logSinkDetailsDataSinkData4 := LogSinkDetailsDataSinkData4{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4 = logSinkDetailsDataSinkData4
+		u.LogSinkDetailsDataSinkData4 = &logSinkDetailsDataSinkData4
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData4
 		return nil
 	}
 
-	logSinkDetailsDataSinkData5 := new(LogSinkDetailsDataSinkData5)
+	logSinkDetailsDataSinkData5 := LogSinkDetailsDataSinkData5{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData5, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData5 = logSinkDetailsDataSinkData5
+		u.LogSinkDetailsDataSinkData5 = &logSinkDetailsDataSinkData5
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData5
 		return nil
 	}
 
-	logSinkDetailsDataSinkData3 := new(LogSinkDetailsDataSinkData3)
+	logSinkDetailsDataSinkData3 := LogSinkDetailsDataSinkData3{}
 	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData3, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData3 = logSinkDetailsDataSinkData3
+		u.LogSinkDetailsDataSinkData3 = &logSinkDetailsDataSinkData3
 		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData3
 		return nil
 	}

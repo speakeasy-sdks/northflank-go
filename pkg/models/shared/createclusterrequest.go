@@ -365,16 +365,16 @@ func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLo
 
 func (u *CreateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
 
-	createClusterRequestSettingsLoggingLoki2 := new(CreateClusterRequestSettingsLoggingLoki2)
+	createClusterRequestSettingsLoggingLoki2 := CreateClusterRequestSettingsLoggingLoki2{}
 	if err := utils.UnmarshalJSON(data, &createClusterRequestSettingsLoggingLoki2, "", true, true); err == nil {
-		u.CreateClusterRequestSettingsLoggingLoki2 = createClusterRequestSettingsLoggingLoki2
+		u.CreateClusterRequestSettingsLoggingLoki2 = &createClusterRequestSettingsLoggingLoki2
 		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2
 		return nil
 	}
 
-	createClusterRequestSettingsLoggingLoki1 := new(CreateClusterRequestSettingsLoggingLoki1)
+	createClusterRequestSettingsLoggingLoki1 := CreateClusterRequestSettingsLoggingLoki1{}
 	if err := utils.UnmarshalJSON(data, &createClusterRequestSettingsLoggingLoki1, "", true, true); err == nil {
-		u.CreateClusterRequestSettingsLoggingLoki1 = createClusterRequestSettingsLoggingLoki1
+		u.CreateClusterRequestSettingsLoggingLoki1 = &createClusterRequestSettingsLoggingLoki1
 		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
 		return nil
 	}
