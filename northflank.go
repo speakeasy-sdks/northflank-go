@@ -5,8 +5,8 @@ package northflankgo
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -63,12 +63,12 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 
 // Northflank API: This is the API for northflank.com
 type Northflank struct {
-	Addons         *addons
-	Billing        *billing
-	CloudProviders *cloudProviders
-	Domains        *domains
-	Integrations   *integrations
-	Miscellaneous  *miscellaneous
+	Miscellaneous  *Miscellaneous
+	Addons         *Addons
+	Billing        *Billing
+	CloudProviders *CloudProviders
+	Domains        *Domains
+	Integrations   *Integrations
 
 	sdkConfiguration sdkConfiguration
 }
@@ -146,9 +146,9 @@ func New(opts ...SDKOption) *Northflank {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.7.1",
-			GenVersion:        "2.173.0",
-			UserAgent:         "speakeasy-sdk/go 1.7.1 2.173.0 1.0.0 github.com/speakeasy-sdks/northflank-go",
+			SDKVersion:        "2.0.0",
+			GenVersion:        "2.181.1",
+			UserAgent:         "speakeasy-sdk/go 2.0.0 2.181.1 1.0.0 github.com/speakeasy-sdks/northflank-go",
 		},
 	}
 	for _, opt := range opts {
@@ -167,6 +167,8 @@ func New(opts ...SDKOption) *Northflank {
 		}
 	}
 
+	sdk.Miscellaneous = newMiscellaneous(sdk.sdkConfiguration)
+
 	sdk.Addons = newAddons(sdk.sdkConfiguration)
 
 	sdk.Billing = newBilling(sdk.sdkConfiguration)
@@ -176,8 +178,6 @@ func New(opts ...SDKOption) *Northflank {
 	sdk.Domains = newDomains(sdk.sdkConfiguration)
 
 	sdk.Integrations = newIntegrations(sdk.sdkConfiguration)
-
-	sdk.Miscellaneous = newMiscellaneous(sdk.sdkConfiguration)
 
 	return sdk
 }

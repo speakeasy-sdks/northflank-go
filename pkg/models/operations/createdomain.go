@@ -3,13 +3,11 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"net/http"
 )
 
 type CreateDomainResponse struct {
-	// The domain is not valid, possibly because it is too long.
-	APIErrorResult *shared.APIErrorResult
 	// HTTP response content type for this operation
 	ContentType string
 	// Details about the newly added domain.
@@ -18,13 +16,6 @@ type CreateDomainResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *CreateDomainResponse) GetAPIErrorResult() *shared.APIErrorResult {
-	if o == nil {
-		return nil
-	}
-	return o.APIErrorResult
 }
 
 func (o *CreateDomainResponse) GetContentType() string {

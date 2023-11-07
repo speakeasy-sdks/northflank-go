@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"net/http"
 )
 
@@ -27,8 +27,6 @@ func (o *VerifySubDomainRequest) GetSubdomain() string {
 }
 
 type VerifySubDomainResponse struct {
-	// Failed to verify the subdomain.
-	APIErrorResult *shared.APIErrorResult
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
@@ -37,13 +35,6 @@ type VerifySubDomainResponse struct {
 	RawResponse *http.Response
 	// The operation was performed successfully.
 	SuccessResult *shared.SuccessResult
-}
-
-func (o *VerifySubDomainResponse) GetAPIErrorResult() *shared.APIErrorResult {
-	if o == nil {
-		return nil
-	}
-	return o.APIErrorResult
 }
 
 func (o *VerifySubDomainResponse) GetContentType() string {

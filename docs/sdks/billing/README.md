@@ -1,5 +1,5 @@
 # Billing
-(*Billing*)
+(*.Billing*)
 
 ### Available Operations
 
@@ -18,8 +18,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -78,9 +78,9 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
 )
 
 func main() {

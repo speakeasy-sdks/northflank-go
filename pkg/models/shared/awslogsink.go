@@ -5,44 +5,44 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// AWSLogSinkSinkDataAuth - Authentication object.
-type AWSLogSinkSinkDataAuth struct {
+// Auth - Authentication object.
+type Auth struct {
 	// Access key id for the bucket.
 	AccessKeyID string `json:"accessKeyId"`
 	// Secret access key for the bucket.
 	SecretAccessKey string `json:"secretAccessKey"`
 }
 
-func (o *AWSLogSinkSinkDataAuth) GetAccessKeyID() string {
+func (o *Auth) GetAccessKeyID() string {
 	if o == nil {
 		return ""
 	}
 	return o.AccessKeyID
 }
 
-func (o *AWSLogSinkSinkDataAuth) GetSecretAccessKey() string {
+func (o *Auth) GetSecretAccessKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.SecretAccessKey
 }
 
-// AWSLogSinkSinkDataCompression - Log file compression method.
-type AWSLogSinkSinkDataCompression string
+// Compression - Log file compression method.
+type Compression string
 
 const (
-	AWSLogSinkSinkDataCompressionGzip AWSLogSinkSinkDataCompression = "gzip"
-	AWSLogSinkSinkDataCompressionNone AWSLogSinkSinkDataCompression = "none"
+	CompressionGzip Compression = "gzip"
+	CompressionNone Compression = "none"
 )
 
-func (e AWSLogSinkSinkDataCompression) ToPointer() *AWSLogSinkSinkDataCompression {
+func (e Compression) ToPointer() *Compression {
 	return &e
 }
 
-func (e *AWSLogSinkSinkDataCompression) UnmarshalJSON(data []byte) error {
+func (e *Compression) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -51,34 +51,34 @@ func (e *AWSLogSinkSinkDataCompression) UnmarshalJSON(data []byte) error {
 	case "gzip":
 		fallthrough
 	case "none":
-		*e = AWSLogSinkSinkDataCompression(v)
+		*e = Compression(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AWSLogSinkSinkDataCompression: %v", v)
+		return fmt.Errorf("invalid value for Compression: %v", v)
 	}
 }
 
-// AWSLogSinkSinkDataRegion - Region of the S3 bucket.
-type AWSLogSinkSinkDataRegion string
+// Region of the S3 bucket.
+type Region string
 
 const (
-	AWSLogSinkSinkDataRegionEuWest1    AWSLogSinkSinkDataRegion = "eu-west-1"
-	AWSLogSinkSinkDataRegionEuWest2    AWSLogSinkSinkDataRegion = "eu-west-2"
-	AWSLogSinkSinkDataRegionEuWest3    AWSLogSinkSinkDataRegion = "eu-west-3"
-	AWSLogSinkSinkDataRegionEuCentral1 AWSLogSinkSinkDataRegion = "eu-central-1"
-	AWSLogSinkSinkDataRegionEuSouth1   AWSLogSinkSinkDataRegion = "eu-south-1"
-	AWSLogSinkSinkDataRegionEuNorth1   AWSLogSinkSinkDataRegion = "eu-north-1"
-	AWSLogSinkSinkDataRegionUsWest1    AWSLogSinkSinkDataRegion = "us-west-1"
-	AWSLogSinkSinkDataRegionUsWest2    AWSLogSinkSinkDataRegion = "us-west-2"
-	AWSLogSinkSinkDataRegionUsEast1    AWSLogSinkSinkDataRegion = "us-east-1"
-	AWSLogSinkSinkDataRegionUsEast2    AWSLogSinkSinkDataRegion = "us-east2"
+	RegionEuWest1    Region = "eu-west-1"
+	RegionEuWest2    Region = "eu-west-2"
+	RegionEuWest3    Region = "eu-west-3"
+	RegionEuCentral1 Region = "eu-central-1"
+	RegionEuSouth1   Region = "eu-south-1"
+	RegionEuNorth1   Region = "eu-north-1"
+	RegionUsWest1    Region = "us-west-1"
+	RegionUsWest2    Region = "us-west-2"
+	RegionUsEast1    Region = "us-east-1"
+	RegionUsEast2    Region = "us-east2"
 )
 
-func (e AWSLogSinkSinkDataRegion) ToPointer() *AWSLogSinkSinkDataRegion {
+func (e Region) ToPointer() *Region {
 	return &e
 }
 
-func (e *AWSLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
+func (e *Region) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -103,84 +103,84 @@ func (e *AWSLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
 	case "us-east-1":
 		fallthrough
 	case "us-east2":
-		*e = AWSLogSinkSinkDataRegion(v)
+		*e = Region(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AWSLogSinkSinkDataRegion: %v", v)
+		return fmt.Errorf("invalid value for Region: %v", v)
 	}
 }
 
-// AWSLogSinkSinkData - Details about the AWS S3 log sink.
-type AWSLogSinkSinkData struct {
+// SinkData - Details about the AWS S3 log sink.
+type SinkData struct {
 	// Authentication object.
-	Auth *AWSLogSinkSinkDataAuth `json:"auth,omitempty"`
+	Auth *Auth `json:"auth,omitempty"`
 	// Name of the S3 Bucket.
 	Bucket string `json:"bucket"`
 	// Log file compression method.
-	Compression AWSLogSinkSinkDataCompression `json:"compression"`
+	Compression Compression `json:"compression"`
 	// Endpoint for the AWS S3 or compatible API bucket.
 	Endpoint string `json:"endpoint"`
 	// Region of the S3 bucket.
-	Region AWSLogSinkSinkDataRegion `json:"region"`
+	Region Region `json:"region"`
 }
 
-func (o *AWSLogSinkSinkData) GetAuth() *AWSLogSinkSinkDataAuth {
+func (o *SinkData) GetAuth() *Auth {
 	if o == nil {
 		return nil
 	}
 	return o.Auth
 }
 
-func (o *AWSLogSinkSinkData) GetBucket() string {
+func (o *SinkData) GetBucket() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bucket
 }
 
-func (o *AWSLogSinkSinkData) GetCompression() AWSLogSinkSinkDataCompression {
+func (o *SinkData) GetCompression() Compression {
 	if o == nil {
-		return AWSLogSinkSinkDataCompression("")
+		return Compression("")
 	}
 	return o.Compression
 }
 
-func (o *AWSLogSinkSinkData) GetEndpoint() string {
+func (o *SinkData) GetEndpoint() string {
 	if o == nil {
 		return ""
 	}
 	return o.Endpoint
 }
 
-func (o *AWSLogSinkSinkData) GetRegion() AWSLogSinkSinkDataRegion {
+func (o *SinkData) GetRegion() Region {
 	if o == nil {
-		return AWSLogSinkSinkDataRegion("")
+		return Region("")
 	}
 	return o.Region
 }
 
-// AWSLogSinkSinkType - The type of the log sink.
-type AWSLogSinkSinkType string
+// SinkType - The type of the log sink.
+type SinkType string
 
 const (
-	AWSLogSinkSinkTypeAwsS3 AWSLogSinkSinkType = "aws_s3"
+	SinkTypeAwsS3 SinkType = "aws_s3"
 )
 
-func (e AWSLogSinkSinkType) ToPointer() *AWSLogSinkSinkType {
+func (e SinkType) ToPointer() *SinkType {
 	return &e
 }
 
-func (e *AWSLogSinkSinkType) UnmarshalJSON(data []byte) error {
+func (e *SinkType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "aws_s3":
-		*e = AWSLogSinkSinkType(v)
+		*e = SinkType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AWSLogSinkSinkType: %v", v)
+		return fmt.Errorf("invalid value for SinkType: %v", v)
 	}
 }
 
@@ -197,9 +197,9 @@ type AWSLogSink struct {
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
 	Restricted *bool `default:"false" json:"restricted"`
 	// Details about the AWS S3 log sink.
-	SinkData AWSLogSinkSinkData `json:"sinkData"`
+	SinkData SinkData `json:"sinkData"`
 	// The type of the log sink.
-	SinkType AWSLogSinkSinkType `json:"sinkType"`
+	SinkType SinkType `json:"sinkType"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
@@ -250,16 +250,16 @@ func (o *AWSLogSink) GetRestricted() *bool {
 	return o.Restricted
 }
 
-func (o *AWSLogSink) GetSinkData() AWSLogSinkSinkData {
+func (o *AWSLogSink) GetSinkData() SinkData {
 	if o == nil {
-		return AWSLogSinkSinkData{}
+		return SinkData{}
 	}
 	return o.SinkData
 }
 
-func (o *AWSLogSink) GetSinkType() AWSLogSinkSinkType {
+func (o *AWSLogSink) GetSinkType() SinkType {
 	if o == nil {
-		return AWSLogSinkSinkType("")
+		return SinkType("")
 	}
 	return o.SinkType
 }

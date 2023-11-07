@@ -7,28 +7,28 @@ import (
 	"fmt"
 )
 
-// RegistryResultDataAuths - The `auths` data extracted from your Docker config file.
-type RegistryResultDataAuths struct {
+// RegistryResultAuths - The `auths` data extracted from your Docker config file.
+type RegistryResultAuths struct {
 }
 
-// RegistryResultDataProvider - The registry provider associated with this set of credentials.
-type RegistryResultDataProvider string
+// RegistryResultProvider - The registry provider associated with this set of credentials.
+type RegistryResultProvider string
 
 const (
-	RegistryResultDataProviderDockerhub RegistryResultDataProvider = "dockerhub"
-	RegistryResultDataProviderGcr       RegistryResultDataProvider = "gcr"
-	RegistryResultDataProviderGcrEu     RegistryResultDataProvider = "gcr-eu"
-	RegistryResultDataProviderGcrUs     RegistryResultDataProvider = "gcr-us"
-	RegistryResultDataProviderGitlab    RegistryResultDataProvider = "gitlab"
-	RegistryResultDataProviderGithub    RegistryResultDataProvider = "github"
-	RegistryResultDataProviderCustom    RegistryResultDataProvider = "custom"
+	RegistryResultProviderDockerhub RegistryResultProvider = "dockerhub"
+	RegistryResultProviderGcr       RegistryResultProvider = "gcr"
+	RegistryResultProviderGcrEu     RegistryResultProvider = "gcr-eu"
+	RegistryResultProviderGcrUs     RegistryResultProvider = "gcr-us"
+	RegistryResultProviderGitlab    RegistryResultProvider = "gitlab"
+	RegistryResultProviderGithub    RegistryResultProvider = "github"
+	RegistryResultProviderCustom    RegistryResultProvider = "custom"
 )
 
-func (e RegistryResultDataProvider) ToPointer() *RegistryResultDataProvider {
+func (e RegistryResultProvider) ToPointer() *RegistryResultProvider {
 	return &e
 }
 
-func (e *RegistryResultDataProvider) UnmarshalJSON(data []byte) error {
+func (e *RegistryResultProvider) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -47,29 +47,29 @@ func (e *RegistryResultDataProvider) UnmarshalJSON(data []byte) error {
 	case "github":
 		fallthrough
 	case "custom":
-		*e = RegistryResultDataProvider(v)
+		*e = RegistryResultProvider(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RegistryResultDataProvider: %v", v)
+		return fmt.Errorf("invalid value for RegistryResultProvider: %v", v)
 	}
 }
 
-// RegistryResultDataRestrictions - Data about whether the credentials are restricted to certain projects.
-type RegistryResultDataRestrictions struct {
+// RegistryResultRestrictions - Data about whether the credentials are restricted to certain projects.
+type RegistryResultRestrictions struct {
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
 }
 
-func (o *RegistryResultDataRestrictions) GetProjects() []string {
+func (o *RegistryResultRestrictions) GetProjects() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Projects
 }
 
-func (o *RegistryResultDataRestrictions) GetRestricted() bool {
+func (o *RegistryResultRestrictions) GetRestricted() bool {
 	if o == nil {
 		return false
 	}
@@ -79,7 +79,7 @@ func (o *RegistryResultDataRestrictions) GetRestricted() bool {
 // RegistryResultData - Result data.
 type RegistryResultData struct {
 	// The `auths` data extracted from your Docker config file.
-	Auths *RegistryResultDataAuths `json:"auths,omitempty"`
+	Auths *RegistryResultAuths `json:"auths,omitempty"`
 	// Description of the saved credentials.
 	Description string `json:"description"`
 	// Identifier for the credentials.
@@ -87,12 +87,12 @@ type RegistryResultData struct {
 	// Name of the saved credentials.
 	Name string `json:"name"`
 	// The registry provider associated with this set of credentials.
-	Provider RegistryResultDataProvider `json:"provider"`
+	Provider RegistryResultProvider `json:"provider"`
 	// Data about whether the credentials are restricted to certain projects.
-	Restrictions RegistryResultDataRestrictions `json:"restrictions"`
+	Restrictions RegistryResultRestrictions `json:"restrictions"`
 }
 
-func (o *RegistryResultData) GetAuths() *RegistryResultDataAuths {
+func (o *RegistryResultData) GetAuths() *RegistryResultAuths {
 	if o == nil {
 		return nil
 	}
@@ -120,16 +120,16 @@ func (o *RegistryResultData) GetName() string {
 	return o.Name
 }
 
-func (o *RegistryResultData) GetProvider() RegistryResultDataProvider {
+func (o *RegistryResultData) GetProvider() RegistryResultProvider {
 	if o == nil {
-		return RegistryResultDataProvider("")
+		return RegistryResultProvider("")
 	}
 	return o.Provider
 }
 
-func (o *RegistryResultData) GetRestrictions() RegistryResultDataRestrictions {
+func (o *RegistryResultData) GetRestrictions() RegistryResultRestrictions {
 	if o == nil {
-		return RegistryResultDataRestrictions{}
+		return RegistryResultRestrictions{}
 	}
 	return o.Restrictions
 }

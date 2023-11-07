@@ -6,24 +6,24 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// CreateClusterRequestGcp - GCP specific data. Required when `provider` is `gcp`.
-type CreateClusterRequestGcp struct {
+// Gcp - GCP specific data. Required when `provider` is `gcp`.
+type Gcp struct {
 	// ID of the GCP project the cluster will be provisioned in.
 	ProjectID string `json:"projectId"`
 }
 
-func (o *CreateClusterRequestGcp) GetProjectID() string {
+func (o *Gcp) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-// CreateClusterRequestIntegration - Cloud provider credential input, required fields dependent on which provider is chosen.
-type CreateClusterRequestIntegration struct {
+// Integration - Cloud provider credential input, required fields dependent on which provider is chosen.
+type Integration struct {
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -34,80 +34,80 @@ type CreateClusterRequestIntegration struct {
 	SecretKey *string `json:"secretKey,omitempty"`
 }
 
-func (o *CreateClusterRequestIntegration) GetAccessKey() *string {
+func (o *Integration) GetAccessKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AccessKey
 }
 
-func (o *CreateClusterRequestIntegration) GetAPIKey() *string {
+func (o *Integration) GetAPIKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.APIKey
 }
 
-func (o *CreateClusterRequestIntegration) GetKeyfileJSON() *string {
+func (o *Integration) GetKeyfileJSON() *string {
 	if o == nil {
 		return nil
 	}
 	return o.KeyfileJSON
 }
 
-func (o *CreateClusterRequestIntegration) GetSecretKey() *string {
+func (o *Integration) GetSecretKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SecretKey
 }
 
-// CreateClusterRequestNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
-type CreateClusterRequestNodePoolsAutoscaling struct {
+// Autoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
+type Autoscaling struct {
 	Enabled *bool  `default:"false" json:"enabled"`
 	Max     *int64 `json:"max,omitempty"`
 	Min     *int64 `json:"min,omitempty"`
 }
 
-func (c CreateClusterRequestNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (a Autoscaling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func (c *CreateClusterRequestNodePoolsAutoscaling) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+func (a *Autoscaling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateClusterRequestNodePoolsAutoscaling) GetEnabled() *bool {
+func (o *Autoscaling) GetEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Enabled
 }
 
-func (o *CreateClusterRequestNodePoolsAutoscaling) GetMax() *int64 {
+func (o *Autoscaling) GetMax() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Max
 }
 
-func (o *CreateClusterRequestNodePoolsAutoscaling) GetMin() *int64 {
+func (o *Autoscaling) GetMin() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Min
 }
 
-// CreateClusterRequestNodePoolsLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
-type CreateClusterRequestNodePoolsLabels struct {
+// Labels - Set of label keys and values that can be used to determine scheduling via resource tags.
+type Labels struct {
 }
 
-type CreateClusterRequestNodePools struct {
+type NodePools struct {
 	// Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
-	Autoscaling *CreateClusterRequestNodePoolsAutoscaling `json:"autoscaling,omitempty"`
+	Autoscaling *Autoscaling `json:"autoscaling,omitempty"`
 	// Zones in which the node pool should be provisioned.
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	// Disk size in GB
@@ -115,7 +115,7 @@ type CreateClusterRequestNodePools struct {
 	// The disk type to use.
 	DiskType *string `json:"diskType,omitempty"`
 	// Set of label keys and values that can be used to determine scheduling via resource tags.
-	Labels *CreateClusterRequestNodePoolsLabels `json:"labels,omitempty"`
+	Labels *Labels `json:"labels,omitempty"`
 	// Number of nodes to the node pool should be provisioned with.
 	NodeCount int64 `json:"nodeCount"`
 	// Machine type to be used by the node pool.
@@ -126,74 +126,74 @@ type CreateClusterRequestNodePools struct {
 	SystemPool *bool `json:"systemPool,omitempty"`
 }
 
-func (c CreateClusterRequestNodePools) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (n NodePools) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
 }
 
-func (c *CreateClusterRequestNodePools) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+func (n *NodePools) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateClusterRequestNodePools) GetAutoscaling() *CreateClusterRequestNodePoolsAutoscaling {
+func (o *NodePools) GetAutoscaling() *Autoscaling {
 	if o == nil {
 		return nil
 	}
 	return o.Autoscaling
 }
 
-func (o *CreateClusterRequestNodePools) GetAvailabilityZones() []string {
+func (o *NodePools) GetAvailabilityZones() []string {
 	if o == nil {
 		return nil
 	}
 	return o.AvailabilityZones
 }
 
-func (o *CreateClusterRequestNodePools) GetDiskSize() int64 {
+func (o *NodePools) GetDiskSize() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.DiskSize
 }
 
-func (o *CreateClusterRequestNodePools) GetDiskType() *string {
+func (o *NodePools) GetDiskType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DiskType
 }
 
-func (o *CreateClusterRequestNodePools) GetLabels() *CreateClusterRequestNodePoolsLabels {
+func (o *NodePools) GetLabels() *Labels {
 	if o == nil {
 		return nil
 	}
 	return o.Labels
 }
 
-func (o *CreateClusterRequestNodePools) GetNodeCount() int64 {
+func (o *NodePools) GetNodeCount() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.NodeCount
 }
 
-func (o *CreateClusterRequestNodePools) GetNodeType() string {
+func (o *NodePools) GetNodeType() string {
 	if o == nil {
 		return ""
 	}
 	return o.NodeType
 }
 
-func (o *CreateClusterRequestNodePools) GetPreemptible() *bool {
+func (o *NodePools) GetPreemptible() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Preemptible
 }
 
-func (o *CreateClusterRequestNodePools) GetSystemPool() *bool {
+func (o *NodePools) GetSystemPool() *bool {
 	if o == nil {
 		return nil
 	}
@@ -234,19 +234,19 @@ func (e *CreateClusterRequestProvider) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateClusterRequestSettingsBuildsMode string
+type Mode string
 
 const (
-	CreateClusterRequestSettingsBuildsModePaas         CreateClusterRequestSettingsBuildsMode = "paas"
-	CreateClusterRequestSettingsBuildsModeInternal     CreateClusterRequestSettingsBuildsMode = "internal"
-	CreateClusterRequestSettingsBuildsModeBuildCluster CreateClusterRequestSettingsBuildsMode = "build-cluster"
+	ModePaas         Mode = "paas"
+	ModeInternal     Mode = "internal"
+	ModeBuildCluster Mode = "build-cluster"
 )
 
-func (e CreateClusterRequestSettingsBuildsMode) ToPointer() *CreateClusterRequestSettingsBuildsMode {
+func (e Mode) ToPointer() *Mode {
 	return &e
 }
 
-func (e *CreateClusterRequestSettingsBuildsMode) UnmarshalJSON(data []byte) error {
+func (e *Mode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -257,155 +257,155 @@ func (e *CreateClusterRequestSettingsBuildsMode) UnmarshalJSON(data []byte) erro
 	case "internal":
 		fallthrough
 	case "build-cluster":
-		*e = CreateClusterRequestSettingsBuildsMode(v)
+		*e = Mode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateClusterRequestSettingsBuildsMode: %v", v)
+		return fmt.Errorf("invalid value for Mode: %v", v)
 	}
 }
 
-type CreateClusterRequestSettingsBuilds struct {
+type Builds struct {
 	// Cluster to use for scheduling builds
-	ClusterID *string                                 `json:"clusterId,omitempty"`
-	Mode      *CreateClusterRequestSettingsBuildsMode `json:"mode,omitempty"`
+	ClusterID *string `json:"clusterId,omitempty"`
+	Mode      *Mode   `json:"mode,omitempty"`
 	// Plan to use for builds if they are run on the cluster
 	Plan *string `json:"plan,omitempty"`
 }
 
-func (o *CreateClusterRequestSettingsBuilds) GetClusterID() *string {
+func (o *Builds) GetClusterID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ClusterID
 }
 
-func (o *CreateClusterRequestSettingsBuilds) GetMode() *CreateClusterRequestSettingsBuildsMode {
+func (o *Builds) GetMode() *Mode {
 	if o == nil {
 		return nil
 	}
 	return o.Mode
 }
 
-func (o *CreateClusterRequestSettingsBuilds) GetPlan() *string {
+func (o *Builds) GetPlan() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Plan
 }
 
-type CreateClusterRequestSettingsLoggingLoki2 struct {
+type CreateClusterRequest2 struct {
 }
 
-type CreateClusterRequestSettingsLoggingLoki1 struct {
+type CreateClusterRequest1 struct {
 	S3AccessKey  string `json:"s3AccessKey"`
 	S3BucketName string `json:"s3BucketName"`
 	S3Region     string `json:"s3Region"`
 	S3SecretKey  string `json:"s3SecretKey"`
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3AccessKey() string {
+func (o *CreateClusterRequest1) GetS3AccessKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3AccessKey
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3BucketName() string {
+func (o *CreateClusterRequest1) GetS3BucketName() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3BucketName
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3Region() string {
+func (o *CreateClusterRequest1) GetS3Region() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3Region
 }
 
-func (o *CreateClusterRequestSettingsLoggingLoki1) GetS3SecretKey() string {
+func (o *CreateClusterRequest1) GetS3SecretKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3SecretKey
 }
 
-type CreateClusterRequestSettingsLoggingLokiType string
+type LokiType string
 
 const (
-	CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1 CreateClusterRequestSettingsLoggingLokiType = "CreateClusterRequest_settings_logging_loki_1"
-	CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2 CreateClusterRequestSettingsLoggingLokiType = "CreateClusterRequest_settings_logging_loki_2"
+	LokiTypeCreateClusterRequest1 LokiType = "CreateClusterRequest_1"
+	LokiTypeCreateClusterRequest2 LokiType = "CreateClusterRequest_2"
 )
 
-type CreateClusterRequestSettingsLoggingLoki struct {
-	CreateClusterRequestSettingsLoggingLoki1 *CreateClusterRequestSettingsLoggingLoki1
-	CreateClusterRequestSettingsLoggingLoki2 *CreateClusterRequestSettingsLoggingLoki2
+type Loki struct {
+	CreateClusterRequest1 *CreateClusterRequest1
+	CreateClusterRequest2 *CreateClusterRequest2
 
-	Type CreateClusterRequestSettingsLoggingLokiType
+	Type LokiType
 }
 
-func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki1(createClusterRequestSettingsLoggingLoki1 CreateClusterRequestSettingsLoggingLoki1) CreateClusterRequestSettingsLoggingLoki {
-	typ := CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
+func CreateLokiCreateClusterRequest1(createClusterRequest1 CreateClusterRequest1) Loki {
+	typ := LokiTypeCreateClusterRequest1
 
-	return CreateClusterRequestSettingsLoggingLoki{
-		CreateClusterRequestSettingsLoggingLoki1: &createClusterRequestSettingsLoggingLoki1,
-		Type:                                     typ,
+	return Loki{
+		CreateClusterRequest1: &createClusterRequest1,
+		Type:                  typ,
 	}
 }
 
-func CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki2(createClusterRequestSettingsLoggingLoki2 CreateClusterRequestSettingsLoggingLoki2) CreateClusterRequestSettingsLoggingLoki {
-	typ := CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2
+func CreateLokiCreateClusterRequest2(createClusterRequest2 CreateClusterRequest2) Loki {
+	typ := LokiTypeCreateClusterRequest2
 
-	return CreateClusterRequestSettingsLoggingLoki{
-		CreateClusterRequestSettingsLoggingLoki2: &createClusterRequestSettingsLoggingLoki2,
-		Type:                                     typ,
+	return Loki{
+		CreateClusterRequest2: &createClusterRequest2,
+		Type:                  typ,
 	}
 }
 
-func (u *CreateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
+func (u *Loki) UnmarshalJSON(data []byte) error {
 
-	createClusterRequestSettingsLoggingLoki2 := CreateClusterRequestSettingsLoggingLoki2{}
-	if err := utils.UnmarshalJSON(data, &createClusterRequestSettingsLoggingLoki2, "", true, true); err == nil {
-		u.CreateClusterRequestSettingsLoggingLoki2 = &createClusterRequestSettingsLoggingLoki2
-		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki2
+	createClusterRequest2 := CreateClusterRequest2{}
+	if err := utils.UnmarshalJSON(data, &createClusterRequest2, "", true, true); err == nil {
+		u.CreateClusterRequest2 = &createClusterRequest2
+		u.Type = LokiTypeCreateClusterRequest2
 		return nil
 	}
 
-	createClusterRequestSettingsLoggingLoki1 := CreateClusterRequestSettingsLoggingLoki1{}
-	if err := utils.UnmarshalJSON(data, &createClusterRequestSettingsLoggingLoki1, "", true, true); err == nil {
-		u.CreateClusterRequestSettingsLoggingLoki1 = &createClusterRequestSettingsLoggingLoki1
-		u.Type = CreateClusterRequestSettingsLoggingLokiTypeCreateClusterRequestSettingsLoggingLoki1
+	createClusterRequest1 := CreateClusterRequest1{}
+	if err := utils.UnmarshalJSON(data, &createClusterRequest1, "", true, true); err == nil {
+		u.CreateClusterRequest1 = &createClusterRequest1
+		u.Type = LokiTypeCreateClusterRequest1
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u CreateClusterRequestSettingsLoggingLoki) MarshalJSON() ([]byte, error) {
-	if u.CreateClusterRequestSettingsLoggingLoki1 != nil {
-		return utils.MarshalJSON(u.CreateClusterRequestSettingsLoggingLoki1, "", true)
+func (u Loki) MarshalJSON() ([]byte, error) {
+	if u.CreateClusterRequest1 != nil {
+		return utils.MarshalJSON(u.CreateClusterRequest1, "", true)
 	}
 
-	if u.CreateClusterRequestSettingsLoggingLoki2 != nil {
-		return utils.MarshalJSON(u.CreateClusterRequestSettingsLoggingLoki2, "", true)
+	if u.CreateClusterRequest2 != nil {
+		return utils.MarshalJSON(u.CreateClusterRequest2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type CreateClusterRequestSettingsLoggingMode string
+type CreateClusterRequestMode string
 
 const (
-	CreateClusterRequestSettingsLoggingModePaas CreateClusterRequestSettingsLoggingMode = "paas"
-	CreateClusterRequestSettingsLoggingModeLoki CreateClusterRequestSettingsLoggingMode = "loki"
+	CreateClusterRequestModePaas CreateClusterRequestMode = "paas"
+	CreateClusterRequestModeLoki CreateClusterRequestMode = "loki"
 )
 
-func (e CreateClusterRequestSettingsLoggingMode) ToPointer() *CreateClusterRequestSettingsLoggingMode {
+func (e CreateClusterRequestMode) ToPointer() *CreateClusterRequestMode {
 	return &e
 }
 
-func (e *CreateClusterRequestSettingsLoggingMode) UnmarshalJSON(data []byte) error {
+func (e *CreateClusterRequestMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -414,44 +414,44 @@ func (e *CreateClusterRequestSettingsLoggingMode) UnmarshalJSON(data []byte) err
 	case "paas":
 		fallthrough
 	case "loki":
-		*e = CreateClusterRequestSettingsLoggingMode(v)
+		*e = CreateClusterRequestMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateClusterRequestSettingsLoggingMode: %v", v)
+		return fmt.Errorf("invalid value for CreateClusterRequestMode: %v", v)
 	}
 }
 
-type CreateClusterRequestSettingsLogging struct {
-	Loki *CreateClusterRequestSettingsLoggingLoki `json:"loki,omitempty"`
-	Mode *CreateClusterRequestSettingsLoggingMode `json:"mode,omitempty"`
+type Logging struct {
+	Loki *Loki                     `json:"loki,omitempty"`
+	Mode *CreateClusterRequestMode `json:"mode,omitempty"`
 }
 
-func (o *CreateClusterRequestSettingsLogging) GetLoki() *CreateClusterRequestSettingsLoggingLoki {
+func (o *Logging) GetLoki() *Loki {
 	if o == nil {
 		return nil
 	}
 	return o.Loki
 }
 
-func (o *CreateClusterRequestSettingsLogging) GetMode() *CreateClusterRequestSettingsLoggingMode {
+func (o *Logging) GetMode() *CreateClusterRequestMode {
 	if o == nil {
 		return nil
 	}
 	return o.Mode
 }
 
-type CreateClusterRequestSettingsRegistryMode string
+type CreateClusterRequestSchemasMode string
 
 const (
-	CreateClusterRequestSettingsRegistryModePaas       CreateClusterRequestSettingsRegistryMode = "paas"
-	CreateClusterRequestSettingsRegistryModeSelfHosted CreateClusterRequestSettingsRegistryMode = "self-hosted"
+	CreateClusterRequestSchemasModePaas       CreateClusterRequestSchemasMode = "paas"
+	CreateClusterRequestSchemasModeSelfHosted CreateClusterRequestSchemasMode = "self-hosted"
 )
 
-func (e CreateClusterRequestSettingsRegistryMode) ToPointer() *CreateClusterRequestSettingsRegistryMode {
+func (e CreateClusterRequestSchemasMode) ToPointer() *CreateClusterRequestSchemasMode {
 	return &e
 }
 
-func (e *CreateClusterRequestSettingsRegistryMode) UnmarshalJSON(data []byte) error {
+func (e *CreateClusterRequestSchemasMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -460,54 +460,54 @@ func (e *CreateClusterRequestSettingsRegistryMode) UnmarshalJSON(data []byte) er
 	case "paas":
 		fallthrough
 	case "self-hosted":
-		*e = CreateClusterRequestSettingsRegistryMode(v)
+		*e = CreateClusterRequestSchemasMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateClusterRequestSettingsRegistryMode: %v", v)
+		return fmt.Errorf("invalid value for CreateClusterRequestSchemasMode: %v", v)
 	}
 }
 
-type CreateClusterRequestSettingsRegistry struct {
-	Mode *CreateClusterRequestSettingsRegistryMode `json:"mode,omitempty"`
+type Registry struct {
+	Mode *CreateClusterRequestSchemasMode `json:"mode,omitempty"`
 	// Credentials to use for storing of images.
 	RegistryID *string `json:"registryId,omitempty"`
 }
 
-func (o *CreateClusterRequestSettingsRegistry) GetMode() *CreateClusterRequestSettingsRegistryMode {
+func (o *Registry) GetMode() *CreateClusterRequestSchemasMode {
 	if o == nil {
 		return nil
 	}
 	return o.Mode
 }
 
-func (o *CreateClusterRequestSettingsRegistry) GetRegistryID() *string {
+func (o *Registry) GetRegistryID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RegistryID
 }
 
-type CreateClusterRequestSettings struct {
-	Builds   *CreateClusterRequestSettingsBuilds   `json:"builds,omitempty"`
-	Logging  *CreateClusterRequestSettingsLogging  `json:"logging,omitempty"`
-	Registry *CreateClusterRequestSettingsRegistry `json:"registry,omitempty"`
+type Settings struct {
+	Builds   *Builds   `json:"builds,omitempty"`
+	Logging  *Logging  `json:"logging,omitempty"`
+	Registry *Registry `json:"registry,omitempty"`
 }
 
-func (o *CreateClusterRequestSettings) GetBuilds() *CreateClusterRequestSettingsBuilds {
+func (o *Settings) GetBuilds() *Builds {
 	if o == nil {
 		return nil
 	}
 	return o.Builds
 }
 
-func (o *CreateClusterRequestSettings) GetLogging() *CreateClusterRequestSettingsLogging {
+func (o *Settings) GetLogging() *Logging {
 	if o == nil {
 		return nil
 	}
 	return o.Logging
 }
 
-func (o *CreateClusterRequestSettings) GetRegistry() *CreateClusterRequestSettingsRegistry {
+func (o *Settings) GetRegistry() *Registry {
 	if o == nil {
 		return nil
 	}
@@ -518,9 +518,9 @@ type CreateClusterRequest struct {
 	// The description of the cluster.
 	Description *string `json:"description,omitempty"`
 	// GCP specific data. Required when `provider` is `gcp`.
-	Gcp *CreateClusterRequestGcp `json:"gcp,omitempty"`
+	Gcp *Gcp `json:"gcp,omitempty"`
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
-	Integration *CreateClusterRequestIntegration `json:"integration,omitempty"`
+	Integration *Integration `json:"integration,omitempty"`
 	// Existing integration to use for this cluster.
 	IntegrationID *string `json:"integrationId,omitempty"`
 	// Kubernetes version of the cluster.
@@ -528,12 +528,12 @@ type CreateClusterRequest struct {
 	// The name of the cluster.
 	Name string `json:"name"`
 	// An array of node pools.
-	NodePools []CreateClusterRequestNodePools `json:"nodePools"`
+	NodePools []NodePools `json:"nodePools"`
 	// Cloud provider to be used for the selected resource
 	Provider CreateClusterRequestProvider `json:"provider"`
 	// Region of the cluster.
-	Region   string                       `json:"region"`
-	Settings CreateClusterRequestSettings `json:"settings"`
+	Region   string   `json:"region"`
+	Settings Settings `json:"settings"`
 }
 
 func (o *CreateClusterRequest) GetDescription() *string {
@@ -543,14 +543,14 @@ func (o *CreateClusterRequest) GetDescription() *string {
 	return o.Description
 }
 
-func (o *CreateClusterRequest) GetGcp() *CreateClusterRequestGcp {
+func (o *CreateClusterRequest) GetGcp() *Gcp {
 	if o == nil {
 		return nil
 	}
 	return o.Gcp
 }
 
-func (o *CreateClusterRequest) GetIntegration() *CreateClusterRequestIntegration {
+func (o *CreateClusterRequest) GetIntegration() *Integration {
 	if o == nil {
 		return nil
 	}
@@ -578,9 +578,9 @@ func (o *CreateClusterRequest) GetName() string {
 	return o.Name
 }
 
-func (o *CreateClusterRequest) GetNodePools() []CreateClusterRequestNodePools {
+func (o *CreateClusterRequest) GetNodePools() []NodePools {
 	if o == nil {
-		return []CreateClusterRequestNodePools{}
+		return []NodePools{}
 	}
 	return o.NodePools
 }
@@ -599,9 +599,9 @@ func (o *CreateClusterRequest) GetRegion() string {
 	return o.Region
 }
 
-func (o *CreateClusterRequest) GetSettings() CreateClusterRequestSettings {
+func (o *CreateClusterRequest) GetSettings() Settings {
 	if o == nil {
-		return CreateClusterRequestSettings{}
+		return Settings{}
 	}
 	return o.Settings
 }

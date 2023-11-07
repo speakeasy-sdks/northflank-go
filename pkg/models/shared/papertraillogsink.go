@@ -6,115 +6,115 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// PapertrailLogSinkSinkData2AuthenticationStrategy - The authentication strategy.
-type PapertrailLogSinkSinkData2AuthenticationStrategy string
+// PapertrailLogSinkAuthenticationStrategy - The authentication strategy.
+type PapertrailLogSinkAuthenticationStrategy string
 
 const (
-	PapertrailLogSinkSinkData2AuthenticationStrategyToken PapertrailLogSinkSinkData2AuthenticationStrategy = "token"
+	PapertrailLogSinkAuthenticationStrategyToken PapertrailLogSinkAuthenticationStrategy = "token"
 )
 
-func (e PapertrailLogSinkSinkData2AuthenticationStrategy) ToPointer() *PapertrailLogSinkSinkData2AuthenticationStrategy {
+func (e PapertrailLogSinkAuthenticationStrategy) ToPointer() *PapertrailLogSinkAuthenticationStrategy {
 	return &e
 }
 
-func (e *PapertrailLogSinkSinkData2AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+func (e *PapertrailLogSinkAuthenticationStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "token":
-		*e = PapertrailLogSinkSinkData2AuthenticationStrategy(v)
+		*e = PapertrailLogSinkAuthenticationStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PapertrailLogSinkSinkData2AuthenticationStrategy: %v", v)
+		return fmt.Errorf("invalid value for PapertrailLogSinkAuthenticationStrategy: %v", v)
 	}
 }
 
-// PapertrailLogSinkSinkData2 - Authenticate with a token.
-type PapertrailLogSinkSinkData2 struct {
+// PapertrailLogSink2 - Authenticate with a token.
+type PapertrailLogSink2 struct {
 	// The authentication strategy.
-	AuthenticationStrategy PapertrailLogSinkSinkData2AuthenticationStrategy `json:"authenticationStrategy"`
+	AuthenticationStrategy PapertrailLogSinkAuthenticationStrategy `json:"authenticationStrategy"`
 	// The HTTP Token for the Papertrail log destination.
 	Token string `json:"token"`
 	// The uri for the Papertrail log destination.
 	URI string `json:"uri"`
 }
 
-func (o *PapertrailLogSinkSinkData2) GetAuthenticationStrategy() PapertrailLogSinkSinkData2AuthenticationStrategy {
+func (o *PapertrailLogSink2) GetAuthenticationStrategy() PapertrailLogSinkAuthenticationStrategy {
 	if o == nil {
-		return PapertrailLogSinkSinkData2AuthenticationStrategy("")
+		return PapertrailLogSinkAuthenticationStrategy("")
 	}
 	return o.AuthenticationStrategy
 }
 
-func (o *PapertrailLogSinkSinkData2) GetToken() string {
+func (o *PapertrailLogSink2) GetToken() string {
 	if o == nil {
 		return ""
 	}
 	return o.Token
 }
 
-func (o *PapertrailLogSinkSinkData2) GetURI() string {
+func (o *PapertrailLogSink2) GetURI() string {
 	if o == nil {
 		return ""
 	}
 	return o.URI
 }
 
-// PapertrailLogSinkSinkData1AuthenticationStrategy - The authentication strategy.
-type PapertrailLogSinkSinkData1AuthenticationStrategy string
+// AuthenticationStrategy - The authentication strategy.
+type AuthenticationStrategy string
 
 const (
-	PapertrailLogSinkSinkData1AuthenticationStrategyPort PapertrailLogSinkSinkData1AuthenticationStrategy = "port"
+	AuthenticationStrategyPort AuthenticationStrategy = "port"
 )
 
-func (e PapertrailLogSinkSinkData1AuthenticationStrategy) ToPointer() *PapertrailLogSinkSinkData1AuthenticationStrategy {
+func (e AuthenticationStrategy) ToPointer() *AuthenticationStrategy {
 	return &e
 }
 
-func (e *PapertrailLogSinkSinkData1AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+func (e *AuthenticationStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "port":
-		*e = PapertrailLogSinkSinkData1AuthenticationStrategy(v)
+		*e = AuthenticationStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PapertrailLogSinkSinkData1AuthenticationStrategy: %v", v)
+		return fmt.Errorf("invalid value for AuthenticationStrategy: %v", v)
 	}
 }
 
-// PapertrailLogSinkSinkData1 - Authenticate with a host/port
-type PapertrailLogSinkSinkData1 struct {
+// PapertrailLogSink1 - Authenticate with a host/port
+type PapertrailLogSink1 struct {
 	// The authentication strategy.
-	AuthenticationStrategy PapertrailLogSinkSinkData1AuthenticationStrategy `json:"authenticationStrategy"`
+	AuthenticationStrategy AuthenticationStrategy `json:"authenticationStrategy"`
 	// The host for the Papertrail log destination.
 	Host string `json:"host"`
 	// The port for the Papertrail log destination.
 	Port float32 `json:"port"`
 }
 
-func (o *PapertrailLogSinkSinkData1) GetAuthenticationStrategy() PapertrailLogSinkSinkData1AuthenticationStrategy {
+func (o *PapertrailLogSink1) GetAuthenticationStrategy() AuthenticationStrategy {
 	if o == nil {
-		return PapertrailLogSinkSinkData1AuthenticationStrategy("")
+		return AuthenticationStrategy("")
 	}
 	return o.AuthenticationStrategy
 }
 
-func (o *PapertrailLogSinkSinkData1) GetHost() string {
+func (o *PapertrailLogSink1) GetHost() string {
 	if o == nil {
 		return ""
 	}
 	return o.Host
 }
 
-func (o *PapertrailLogSinkSinkData1) GetPort() float32 {
+func (o *PapertrailLogSink1) GetPort() float32 {
 	if o == nil {
 		return 0.0
 	}
@@ -124,48 +124,48 @@ func (o *PapertrailLogSinkSinkData1) GetPort() float32 {
 type PapertrailLogSinkSinkDataType string
 
 const (
-	PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData1 PapertrailLogSinkSinkDataType = "PapertrailLogSink_sinkData_1"
-	PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData2 PapertrailLogSinkSinkDataType = "PapertrailLogSink_sinkData_2"
+	PapertrailLogSinkSinkDataTypePapertrailLogSink1 PapertrailLogSinkSinkDataType = "PapertrailLogSink_1"
+	PapertrailLogSinkSinkDataTypePapertrailLogSink2 PapertrailLogSinkSinkDataType = "PapertrailLogSink_2"
 )
 
 type PapertrailLogSinkSinkData struct {
-	PapertrailLogSinkSinkData1 *PapertrailLogSinkSinkData1
-	PapertrailLogSinkSinkData2 *PapertrailLogSinkSinkData2
+	PapertrailLogSink1 *PapertrailLogSink1
+	PapertrailLogSink2 *PapertrailLogSink2
 
 	Type PapertrailLogSinkSinkDataType
 }
 
-func CreatePapertrailLogSinkSinkDataPapertrailLogSinkSinkData1(papertrailLogSinkSinkData1 PapertrailLogSinkSinkData1) PapertrailLogSinkSinkData {
-	typ := PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData1
+func CreatePapertrailLogSinkSinkDataPapertrailLogSink1(papertrailLogSink1 PapertrailLogSink1) PapertrailLogSinkSinkData {
+	typ := PapertrailLogSinkSinkDataTypePapertrailLogSink1
 
 	return PapertrailLogSinkSinkData{
-		PapertrailLogSinkSinkData1: &papertrailLogSinkSinkData1,
-		Type:                       typ,
+		PapertrailLogSink1: &papertrailLogSink1,
+		Type:               typ,
 	}
 }
 
-func CreatePapertrailLogSinkSinkDataPapertrailLogSinkSinkData2(papertrailLogSinkSinkData2 PapertrailLogSinkSinkData2) PapertrailLogSinkSinkData {
-	typ := PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData2
+func CreatePapertrailLogSinkSinkDataPapertrailLogSink2(papertrailLogSink2 PapertrailLogSink2) PapertrailLogSinkSinkData {
+	typ := PapertrailLogSinkSinkDataTypePapertrailLogSink2
 
 	return PapertrailLogSinkSinkData{
-		PapertrailLogSinkSinkData2: &papertrailLogSinkSinkData2,
-		Type:                       typ,
+		PapertrailLogSink2: &papertrailLogSink2,
+		Type:               typ,
 	}
 }
 
 func (u *PapertrailLogSinkSinkData) UnmarshalJSON(data []byte) error {
 
-	papertrailLogSinkSinkData1 := PapertrailLogSinkSinkData1{}
-	if err := utils.UnmarshalJSON(data, &papertrailLogSinkSinkData1, "", true, true); err == nil {
-		u.PapertrailLogSinkSinkData1 = &papertrailLogSinkSinkData1
-		u.Type = PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData1
+	papertrailLogSink1 := PapertrailLogSink1{}
+	if err := utils.UnmarshalJSON(data, &papertrailLogSink1, "", true, true); err == nil {
+		u.PapertrailLogSink1 = &papertrailLogSink1
+		u.Type = PapertrailLogSinkSinkDataTypePapertrailLogSink1
 		return nil
 	}
 
-	papertrailLogSinkSinkData2 := PapertrailLogSinkSinkData2{}
-	if err := utils.UnmarshalJSON(data, &papertrailLogSinkSinkData2, "", true, true); err == nil {
-		u.PapertrailLogSinkSinkData2 = &papertrailLogSinkSinkData2
-		u.Type = PapertrailLogSinkSinkDataTypePapertrailLogSinkSinkData2
+	papertrailLogSink2 := PapertrailLogSink2{}
+	if err := utils.UnmarshalJSON(data, &papertrailLogSink2, "", true, true); err == nil {
+		u.PapertrailLogSink2 = &papertrailLogSink2
+		u.Type = PapertrailLogSinkSinkDataTypePapertrailLogSink2
 		return nil
 	}
 
@@ -173,12 +173,12 @@ func (u *PapertrailLogSinkSinkData) UnmarshalJSON(data []byte) error {
 }
 
 func (u PapertrailLogSinkSinkData) MarshalJSON() ([]byte, error) {
-	if u.PapertrailLogSinkSinkData1 != nil {
-		return utils.MarshalJSON(u.PapertrailLogSinkSinkData1, "", true)
+	if u.PapertrailLogSink1 != nil {
+		return utils.MarshalJSON(u.PapertrailLogSink1, "", true)
 	}
 
-	if u.PapertrailLogSinkSinkData2 != nil {
-		return utils.MarshalJSON(u.PapertrailLogSinkSinkData2, "", true)
+	if u.PapertrailLogSink2 != nil {
+		return utils.MarshalJSON(u.PapertrailLogSink2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")

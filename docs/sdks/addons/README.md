@@ -1,5 +1,5 @@
 # Addons
-(*Addons*)
+(*.Addons*)
 
 ### Available Operations
 
@@ -17,8 +17,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {

@@ -3,12 +3,12 @@
 package shared
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"time"
 )
 
-// CreateIntegrationResultDataCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
-type CreateIntegrationResultDataCredentials struct {
+// CreateIntegrationResultCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
+type CreateIntegrationResultCredentials struct {
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -19,28 +19,28 @@ type CreateIntegrationResultDataCredentials struct {
 	SecretKey *string `json:"secretKey,omitempty"`
 }
 
-func (o *CreateIntegrationResultDataCredentials) GetAccessKey() *string {
+func (o *CreateIntegrationResultCredentials) GetAccessKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AccessKey
 }
 
-func (o *CreateIntegrationResultDataCredentials) GetAPIKey() *string {
+func (o *CreateIntegrationResultCredentials) GetAPIKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.APIKey
 }
 
-func (o *CreateIntegrationResultDataCredentials) GetKeyfileJSON() *string {
+func (o *CreateIntegrationResultCredentials) GetKeyfileJSON() *string {
 	if o == nil {
 		return nil
 	}
 	return o.KeyfileJSON
 }
 
-func (o *CreateIntegrationResultDataCredentials) GetSecretKey() *string {
+func (o *CreateIntegrationResultCredentials) GetSecretKey() *string {
 	if o == nil {
 		return nil
 	}
@@ -52,7 +52,7 @@ type CreateIntegrationResultData struct {
 	// The time the integration was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
-	Credentials CreateIntegrationResultDataCredentials `json:"credentials"`
+	Credentials CreateIntegrationResultCredentials `json:"credentials"`
 	// A short description of the integration.
 	Description *string `json:"description,omitempty"`
 	// Identifier for the integration.
@@ -79,9 +79,9 @@ func (o *CreateIntegrationResultData) GetCreatedAt() time.Time {
 	return o.CreatedAt
 }
 
-func (o *CreateIntegrationResultData) GetCredentials() CreateIntegrationResultDataCredentials {
+func (o *CreateIntegrationResultData) GetCredentials() CreateIntegrationResultCredentials {
 	if o == nil {
-		return CreateIntegrationResultDataCredentials{}
+		return CreateIntegrationResultCredentials{}
 	}
 	return o.Credentials
 }

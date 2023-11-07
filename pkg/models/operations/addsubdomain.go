@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"net/http"
 )
 
@@ -30,8 +30,6 @@ func (o *AddSubDomainRequest) GetDomain() string {
 type AddSubDomainResponse struct {
 	// Details about the newly added subdomain.
 	AddSubDomainResult *shared.AddSubDomainResult
-	// The subdomain is not valid (possibly because it is too long) or the domain has not been verified.
-	APIErrorResult *shared.APIErrorResult
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
@@ -45,13 +43,6 @@ func (o *AddSubDomainResponse) GetAddSubDomainResult() *shared.AddSubDomainResul
 		return nil
 	}
 	return o.AddSubDomainResult
-}
-
-func (o *AddSubDomainResponse) GetAPIErrorResult() *shared.APIErrorResult {
-	if o == nil {
-		return nil
-	}
-	return o.APIErrorResult
 }
 
 func (o *AddSubDomainResponse) GetContentType() string {

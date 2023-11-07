@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"net/http"
 )
 

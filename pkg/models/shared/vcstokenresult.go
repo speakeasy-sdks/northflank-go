@@ -7,21 +7,21 @@ import (
 	"fmt"
 )
 
-// VCSTokenResultDataVCSService - VCS provider the token belongs to.
-type VCSTokenResultDataVCSService string
+// VcsService - VCS provider the token belongs to.
+type VcsService string
 
 const (
-	VCSTokenResultDataVCSServiceBitbucket  VCSTokenResultDataVCSService = "bitbucket"
-	VCSTokenResultDataVCSServiceGitlab     VCSTokenResultDataVCSService = "gitlab"
-	VCSTokenResultDataVCSServiceGithub     VCSTokenResultDataVCSService = "github"
-	VCSTokenResultDataVCSServiceSelfHosted VCSTokenResultDataVCSService = "self-hosted"
+	VcsServiceBitbucket  VcsService = "bitbucket"
+	VcsServiceGitlab     VcsService = "gitlab"
+	VcsServiceGithub     VcsService = "github"
+	VcsServiceSelfHosted VcsService = "self-hosted"
 )
 
-func (e VCSTokenResultDataVCSService) ToPointer() *VCSTokenResultDataVCSService {
+func (e VcsService) ToPointer() *VcsService {
 	return &e
 }
 
-func (e *VCSTokenResultDataVCSService) UnmarshalJSON(data []byte) error {
+func (e *VcsService) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -34,10 +34,10 @@ func (e *VCSTokenResultDataVCSService) UnmarshalJSON(data []byte) error {
 	case "github":
 		fallthrough
 	case "self-hosted":
-		*e = VCSTokenResultDataVCSService(v)
+		*e = VcsService(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for VCSTokenResultDataVCSService: %v", v)
+		return fmt.Errorf("invalid value for VcsService: %v", v)
 	}
 }
 
@@ -50,7 +50,7 @@ type VCSTokenResultData struct {
 	// OAuth token.
 	Token string `json:"token"`
 	// VCS provider the token belongs to.
-	VcsService VCSTokenResultDataVCSService `json:"vcsService"`
+	VcsService VcsService `json:"vcsService"`
 }
 
 func (o *VCSTokenResultData) GetInstallationID() *int64 {
@@ -74,9 +74,9 @@ func (o *VCSTokenResultData) GetToken() string {
 	return o.Token
 }
 
-func (o *VCSTokenResultData) GetVcsService() VCSTokenResultDataVCSService {
+func (o *VCSTokenResultData) GetVcsService() VcsService {
 	if o == nil {
-		return VCSTokenResultDataVCSService("")
+		return VcsService("")
 	}
 	return o.VcsService
 }

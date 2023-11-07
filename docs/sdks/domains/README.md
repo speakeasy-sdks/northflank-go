@@ -1,5 +1,5 @@
 # Domains
-(*Domains*)
+(*.Domains*)
 
 ### Available Operations
 
@@ -29,8 +29,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -45,8 +45,8 @@ func main() {
 
 
     addSubDomainRequest := shared.AddSubDomainRequest{
-        Cdn: &shared.AddSubDomainRequestCdn{
-            Cloudfront: &shared.AddSubDomainRequestCdnCloudfront{
+        Cdn: &shared.Cdn{
+            Cloudfront: &shared.Cloudfront{
                 Enabled: false,
             },
         },
@@ -93,8 +93,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -157,8 +157,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -210,8 +210,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -264,8 +264,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -326,8 +326,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -383,8 +383,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -445,8 +445,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -499,8 +499,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -556,8 +556,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -616,8 +616,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -673,8 +673,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -730,8 +730,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {

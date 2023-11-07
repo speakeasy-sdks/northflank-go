@@ -5,78 +5,78 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// LokiLogSinkSinkDataAuthStrategy - The authentication strategy.
-type LokiLogSinkSinkDataAuthStrategy string
+// Strategy - The authentication strategy.
+type Strategy string
 
 const (
-	LokiLogSinkSinkDataAuthStrategyBasic LokiLogSinkSinkDataAuthStrategy = "basic"
+	StrategyBasic Strategy = "basic"
 )
 
-func (e LokiLogSinkSinkDataAuthStrategy) ToPointer() *LokiLogSinkSinkDataAuthStrategy {
+func (e Strategy) ToPointer() *Strategy {
 	return &e
 }
 
-func (e *LokiLogSinkSinkDataAuthStrategy) UnmarshalJSON(data []byte) error {
+func (e *Strategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "basic":
-		*e = LokiLogSinkSinkDataAuthStrategy(v)
+		*e = Strategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LokiLogSinkSinkDataAuthStrategy: %v", v)
+		return fmt.Errorf("invalid value for Strategy: %v", v)
 	}
 }
 
-// LokiLogSinkSinkDataAuth - Object containing authentication data for the log sink.
-type LokiLogSinkSinkDataAuth struct {
+// LokiLogSinkAuth - Object containing authentication data for the log sink.
+type LokiLogSinkAuth struct {
 	// The password for the log sink.
 	Password *string `json:"password,omitempty"`
 	// The authentication strategy.
-	Strategy *LokiLogSinkSinkDataAuthStrategy `json:"strategy,omitempty"`
+	Strategy *Strategy `json:"strategy,omitempty"`
 	// The username for the log sink.
 	User *string `json:"user,omitempty"`
 }
 
-func (o *LokiLogSinkSinkDataAuth) GetPassword() *string {
+func (o *LokiLogSinkAuth) GetPassword() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Password
 }
 
-func (o *LokiLogSinkSinkDataAuth) GetStrategy() *LokiLogSinkSinkDataAuthStrategy {
+func (o *LokiLogSinkAuth) GetStrategy() *Strategy {
 	if o == nil {
 		return nil
 	}
 	return o.Strategy
 }
 
-func (o *LokiLogSinkSinkDataAuth) GetUser() *string {
+func (o *LokiLogSinkAuth) GetUser() *string {
 	if o == nil {
 		return nil
 	}
 	return o.User
 }
 
-// LokiLogSinkSinkDataEncodingCodec - Codec to encode logs in
-type LokiLogSinkSinkDataEncodingCodec string
+// LokiLogSinkCodec - Codec to encode logs in
+type LokiLogSinkCodec string
 
 const (
-	LokiLogSinkSinkDataEncodingCodecText LokiLogSinkSinkDataEncodingCodec = "text"
-	LokiLogSinkSinkDataEncodingCodecJSON LokiLogSinkSinkDataEncodingCodec = "json"
+	LokiLogSinkCodecText LokiLogSinkCodec = "text"
+	LokiLogSinkCodecJSON LokiLogSinkCodec = "json"
 )
 
-func (e LokiLogSinkSinkDataEncodingCodec) ToPointer() *LokiLogSinkSinkDataEncodingCodec {
+func (e LokiLogSinkCodec) ToPointer() *LokiLogSinkCodec {
 	return &e
 }
 
-func (e *LokiLogSinkSinkDataEncodingCodec) UnmarshalJSON(data []byte) error {
+func (e *LokiLogSinkCodec) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -85,22 +85,22 @@ func (e *LokiLogSinkSinkDataEncodingCodec) UnmarshalJSON(data []byte) error {
 	case "text":
 		fallthrough
 	case "json":
-		*e = LokiLogSinkSinkDataEncodingCodec(v)
+		*e = LokiLogSinkCodec(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LokiLogSinkSinkDataEncodingCodec: %v", v)
+		return fmt.Errorf("invalid value for LokiLogSinkCodec: %v", v)
 	}
 }
 
-// LokiLogSinkSinkDataEncoding - Encoding options
-type LokiLogSinkSinkDataEncoding struct {
+// LokiLogSinkEncoding - Encoding options
+type LokiLogSinkEncoding struct {
 	// Codec to encode logs in
-	Codec LokiLogSinkSinkDataEncodingCodec `json:"codec"`
+	Codec LokiLogSinkCodec `json:"codec"`
 }
 
-func (o *LokiLogSinkSinkDataEncoding) GetCodec() LokiLogSinkSinkDataEncodingCodec {
+func (o *LokiLogSinkEncoding) GetCodec() LokiLogSinkCodec {
 	if o == nil {
-		return LokiLogSinkSinkDataEncodingCodec("")
+		return LokiLogSinkCodec("")
 	}
 	return o.Codec
 }
@@ -108,21 +108,21 @@ func (o *LokiLogSinkSinkDataEncoding) GetCodec() LokiLogSinkSinkDataEncodingCode
 // LokiLogSinkSinkData - Details about the Loki log sink.
 type LokiLogSinkSinkData struct {
 	// Object containing authentication data for the log sink.
-	Auth *LokiLogSinkSinkDataAuth `json:"auth,omitempty"`
+	Auth *LokiLogSinkAuth `json:"auth,omitempty"`
 	// Encoding options
-	Encoding *LokiLogSinkSinkDataEncoding `json:"encoding,omitempty"`
+	Encoding *LokiLogSinkEncoding `json:"encoding,omitempty"`
 	// The endpoint of the Loki log sink.
 	Endpoint string `json:"endpoint"`
 }
 
-func (o *LokiLogSinkSinkData) GetAuth() *LokiLogSinkSinkDataAuth {
+func (o *LokiLogSinkSinkData) GetAuth() *LokiLogSinkAuth {
 	if o == nil {
 		return nil
 	}
 	return o.Auth
 }
 
-func (o *LokiLogSinkSinkData) GetEncoding() *LokiLogSinkSinkDataEncoding {
+func (o *LokiLogSinkSinkData) GetEncoding() *LokiLogSinkEncoding {
 	if o == nil {
 		return nil
 	}

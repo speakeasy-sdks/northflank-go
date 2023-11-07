@@ -1,0 +1,13 @@
+# Items
+
+Billing details about an object.
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `Duration`                                                                           | *string*                                                                             | :heavy_check_mark:                                                                   | Duration the object has been running in this billing period, in seconds.             | 172800                                                                               |
+| `NfObjectID`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | The ID of the object.                                                                | example-service                                                                      |
+| `NfObjectType`                                                                       | [shared.NfObjectType](../../models/shared/nfobjecttype.md)                           | :heavy_check_mark:                                                                   | The type of the object.                                                              | service                                                                              |
+| `Price`                                                                              | [shared.InvoiceDetailsResultPrice](../../models/shared/invoicedetailsresultprice.md) | :heavy_check_mark:                                                                   | Details about the price of a object, broken down by resource type.                   |                                                                                      |

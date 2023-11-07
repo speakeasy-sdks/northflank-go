@@ -6,28 +6,28 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-type domains struct {
+type Domains struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDomains(sdkConfig sdkConfiguration) *domains {
-	return &domains{
+func newDomains(sdkConfig sdkConfiguration) *Domains {
+	return &Domains{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Add subdomain
 // Adds a new subdomain to the domain.
-func (s *domains) Add(ctx context.Context, addSubDomainRequest shared.AddSubDomainRequest, domain string) (*operations.AddSubDomainResponse, error) {
+func (s *Domains) Add(ctx context.Context, addSubDomainRequest shared.AddSubDomainRequest, domain string) (*operations.AddSubDomainResponse, error) {
 	request := operations.AddSubDomainRequest{
 		AddSubDomainRequest: addSubDomainRequest,
 		Domain:              domain,
@@ -98,15 +98,18 @@ func (s *domains) Add(ctx context.Context, addSubDomainRequest shared.AddSubDoma
 	case httpRes.StatusCode == 409:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.APIErrorResult
+			var out sdkerrors.APIErrorResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
-
-			res.APIErrorResult = &out
+			return nil, &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -114,7 +117,7 @@ func (s *domains) Add(ctx context.Context, addSubDomainRequest shared.AddSubDoma
 
 // Assign service to subdomain
 // Assigns a service port to the given subdomain
-func (s *domains) Assign(ctx context.Context, assignSubDomainRequest shared.AssignSubDomainRequest, domain string, subdomain string) (*operations.AssignSubDomainResponse, error) {
+func (s *Domains) Assign(ctx context.Context, assignSubDomainRequest shared.AssignSubDomainRequest, domain string, subdomain string) (*operations.AssignSubDomainResponse, error) {
 	request := operations.AssignSubDomainRequest{
 		AssignSubDomainRequest: assignSubDomainRequest,
 		Domain:                 domain,
@@ -181,6 +184,10 @@ func (s *domains) Assign(ctx context.Context, assignSubDomainRequest shared.Assi
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -188,7 +195,7 @@ func (s *domains) Assign(ctx context.Context, assignSubDomainRequest shared.Assi
 
 // Create new domain
 // Registers a new domain
-func (s *domains) Create(ctx context.Context, request shared.CreateDomainRequest) (*operations.CreateDomainResponse, error) {
+func (s *Domains) Create(ctx context.Context, request shared.CreateDomainRequest) (*operations.CreateDomainResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/domains"
 
@@ -251,15 +258,18 @@ func (s *domains) Create(ctx context.Context, request shared.CreateDomainRequest
 	case httpRes.StatusCode == 409:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.APIErrorResult
+			var out sdkerrors.APIErrorResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
-
-			res.APIErrorResult = &out
+			return nil, &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -267,7 +277,7 @@ func (s *domains) Create(ctx context.Context, request shared.CreateDomainRequest
 
 // Delete domain
 // Deletes a domain and each of its registered subdomains.
-func (s *domains) Delete(ctx context.Context, domain string) (*operations.DeleteDomainResponse, error) {
+func (s *Domains) Delete(ctx context.Context, domain string) (*operations.DeleteDomainResponse, error) {
 	request := operations.DeleteDomainRequest{
 		Domain: domain,
 	}
@@ -322,6 +332,10 @@ func (s *domains) Delete(ctx context.Context, domain string) (*operations.Delete
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -329,7 +343,7 @@ func (s *domains) Delete(ctx context.Context, domain string) (*operations.Delete
 
 // DeleteCdn - Remove CDN from a subdomain
 // Removes the CDN integration from the given subdomain
-func (s *domains) DeleteCdn(ctx context.Context, cdnRequest shared.CDNRequest, domain string, subdomain string) (*operations.DeleteCDNResponse, error) {
+func (s *Domains) DeleteCdn(ctx context.Context, cdnRequest shared.CDNRequest, domain string, subdomain string) (*operations.DeleteCDNResponse, error) {
 	request := operations.DeleteCDNRequest{
 		CDNRequest: cdnRequest,
 		Domain:     domain,
@@ -396,6 +410,10 @@ func (s *domains) DeleteCdn(ctx context.Context, cdnRequest shared.CDNRequest, d
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -403,7 +421,7 @@ func (s *domains) DeleteCdn(ctx context.Context, cdnRequest shared.CDNRequest, d
 
 // DeleteSubdomain - Delete subdomain
 // Removes a subdomain from a domain.
-func (s *domains) DeleteSubdomain(ctx context.Context, domain string, subdomain string) (*operations.DeleteSubDomainResponse, error) {
+func (s *Domains) DeleteSubdomain(ctx context.Context, domain string, subdomain string) (*operations.DeleteSubDomainResponse, error) {
 	request := operations.DeleteSubDomainRequest{
 		Domain:    domain,
 		Subdomain: subdomain,
@@ -464,15 +482,18 @@ func (s *domains) DeleteSubdomain(ctx context.Context, domain string, subdomain 
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.APIErrorResult
+			var out sdkerrors.APIErrorResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
-
-			res.APIErrorResult = &out
+			return nil, &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -480,7 +501,7 @@ func (s *domains) DeleteSubdomain(ctx context.Context, domain string, subdomain 
 
 // Enable CDN on a subdomain
 // Enables a CDN integration on the given subdomain
-func (s *domains) Enable(ctx context.Context, cdnRequest shared.CDNRequest, domain string, subdomain string) (*operations.EnableCDNResponse, error) {
+func (s *Domains) Enable(ctx context.Context, cdnRequest shared.CDNRequest, domain string, subdomain string) (*operations.EnableCDNResponse, error) {
 	request := operations.EnableCDNRequest{
 		CDNRequest: cdnRequest,
 		Domain:     domain,
@@ -547,6 +568,10 @@ func (s *domains) Enable(ctx context.Context, cdnRequest shared.CDNRequest, doma
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -554,7 +579,7 @@ func (s *domains) Enable(ctx context.Context, cdnRequest shared.CDNRequest, doma
 
 // Get domain
 // Get the details about a domain
-func (s *domains) Get(ctx context.Context, domain string) (*operations.GetDomainResponse, error) {
+func (s *Domains) Get(ctx context.Context, domain string) (*operations.GetDomainResponse, error) {
 	request := operations.GetDomainRequest{
 		Domain: domain,
 	}
@@ -609,6 +634,10 @@ func (s *domains) Get(ctx context.Context, domain string) (*operations.GetDomain
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -616,7 +645,7 @@ func (s *domains) Get(ctx context.Context, domain string) (*operations.GetDomain
 
 // GetSubdomain - Get subdomain
 // Gets details about the given subdomain
-func (s *domains) GetSubdomain(ctx context.Context, domain string, subdomain string) (*operations.GetSubDomainResponse, error) {
+func (s *Domains) GetSubdomain(ctx context.Context, domain string, subdomain string) (*operations.GetSubDomainResponse, error) {
 	request := operations.GetSubDomainRequest{
 		Domain:    domain,
 		Subdomain: subdomain,
@@ -672,6 +701,10 @@ func (s *domains) GetSubdomain(ctx context.Context, domain string, subdomain str
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -679,7 +712,7 @@ func (s *domains) GetSubdomain(ctx context.Context, domain string, subdomain str
 
 // ListDomains - List domains
 // Lists available domains
-func (s *domains) ListDomains(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.ListDomainsResponse, error) {
+func (s *Domains) ListDomains(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.ListDomainsResponse, error) {
 	request := operations.ListDomainsRequest{
 		Cursor:  cursor,
 		Page:    page,
@@ -737,6 +770,10 @@ func (s *domains) ListDomains(ctx context.Context, cursor *string, page *int64, 
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -744,7 +781,7 @@ func (s *domains) ListDomains(ctx context.Context, cursor *string, page *int64, 
 
 // Unassign subdomain
 // Removes a subdomain from its assigned service
-func (s *domains) Unassign(ctx context.Context, domain string, subdomain string) (*operations.UnassignSubDomainResponse, error) {
+func (s *Domains) Unassign(ctx context.Context, domain string, subdomain string) (*operations.UnassignSubDomainResponse, error) {
 	request := operations.UnassignSubDomainRequest{
 		Domain:    domain,
 		Subdomain: subdomain,
@@ -800,6 +837,10 @@ func (s *domains) Unassign(ctx context.Context, domain string, subdomain string)
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -807,7 +848,7 @@ func (s *domains) Unassign(ctx context.Context, domain string, subdomain string)
 
 // Verify subdomain
 // Gets details about the given subdomain
-func (s *domains) Verify(ctx context.Context, domain string, subdomain string) (*operations.VerifySubDomainResponse, error) {
+func (s *Domains) Verify(ctx context.Context, domain string, subdomain string) (*operations.VerifySubDomainResponse, error) {
 	request := operations.VerifySubDomainRequest{
 		Domain:    domain,
 		Subdomain: subdomain,
@@ -866,15 +907,18 @@ func (s *domains) Verify(ctx context.Context, domain string, subdomain string) (
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.APIErrorResult
+			var out sdkerrors.APIErrorResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
-
-			res.APIErrorResult = &out
+			return nil, &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -882,7 +926,7 @@ func (s *domains) Verify(ctx context.Context, domain string, subdomain string) (
 
 // VerifyDomain - Verify domain
 // Attempts to verify the domain
-func (s *domains) VerifyDomain(ctx context.Context, domain string) (*operations.VerifyDomainResponse, error) {
+func (s *Domains) VerifyDomain(ctx context.Context, domain string) (*operations.VerifyDomainResponse, error) {
 	request := operations.VerifyDomainRequest{
 		Domain: domain,
 	}
@@ -940,15 +984,18 @@ func (s *domains) VerifyDomain(ctx context.Context, domain string) (*operations.
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.APIErrorResult
+			var out sdkerrors.APIErrorResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
-
-			res.APIErrorResult = &out
+			return nil, &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

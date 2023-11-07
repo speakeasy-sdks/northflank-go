@@ -6,28 +6,28 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-type cloudProviders struct {
+type CloudProviders struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newCloudProviders(sdkConfig sdkConfiguration) *cloudProviders {
-	return &cloudProviders{
+func newCloudProviders(sdkConfig sdkConfiguration) *CloudProviders {
+	return &CloudProviders{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Create integration
 // Creates a new integration.
-func (s *cloudProviders) Create(ctx context.Context, request shared.CreateIntegrationRequest) (*operations.CreateIntegrationResponse, error) {
+func (s *CloudProviders) Create(ctx context.Context, request shared.CreateIntegrationRequest) (*operations.CreateIntegrationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/cloud-providers/integrations"
 
@@ -85,6 +85,10 @@ func (s *cloudProviders) Create(ctx context.Context, request shared.CreateIntegr
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -92,7 +96,7 @@ func (s *cloudProviders) Create(ctx context.Context, request shared.CreateIntegr
 
 // CreateCluster - Create cluster
 // Creates a new cluster.
-func (s *cloudProviders) CreateCluster(ctx context.Context, request shared.CreateClusterRequest) (*operations.CreateClusterResponse, error) {
+func (s *CloudProviders) CreateCluster(ctx context.Context, request shared.CreateClusterRequest) (*operations.CreateClusterResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/cloud-providers/clusters"
 
@@ -150,6 +154,10 @@ func (s *cloudProviders) CreateCluster(ctx context.Context, request shared.Creat
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -157,7 +165,7 @@ func (s *cloudProviders) CreateCluster(ctx context.Context, request shared.Creat
 
 // DeleteCluster - Delete cluster
 // Delete the given cluster. Fails if the cluster has associated projects.
-func (s *cloudProviders) DeleteCluster(ctx context.Context, clusterID string) (*operations.DeleteClusterResponse, error) {
+func (s *CloudProviders) DeleteCluster(ctx context.Context, clusterID string) (*operations.DeleteClusterResponse, error) {
 	request := operations.DeleteClusterRequest{
 		ClusterID: clusterID,
 	}
@@ -215,15 +223,18 @@ func (s *cloudProviders) DeleteCluster(ctx context.Context, clusterID string) (*
 	case httpRes.StatusCode == 409:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.APIErrorResult
+			var out sdkerrors.APIErrorResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
-
-			res.APIErrorResult = &out
+			return nil, &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -231,7 +242,7 @@ func (s *cloudProviders) DeleteCluster(ctx context.Context, clusterID string) (*
 
 // DeleteIntegration - Delete integration
 // Delete the given integration. Fails if the integration is associated with existing clusters.
-func (s *cloudProviders) DeleteIntegration(ctx context.Context, integrationID string) (*operations.DeleteIntegrationResponse, error) {
+func (s *CloudProviders) DeleteIntegration(ctx context.Context, integrationID string) (*operations.DeleteIntegrationResponse, error) {
 	request := operations.DeleteIntegrationRequest{
 		IntegrationID: integrationID,
 	}
@@ -289,15 +300,18 @@ func (s *cloudProviders) DeleteIntegration(ctx context.Context, integrationID st
 	case httpRes.StatusCode == 409:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.APIErrorResult
+			var out sdkerrors.APIErrorResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
-
-			res.APIErrorResult = &out
+			return nil, &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -305,7 +319,7 @@ func (s *cloudProviders) DeleteIntegration(ctx context.Context, integrationID st
 
 // Get - List providers
 // Lists supported cloud providers
-func (s *cloudProviders) Get(ctx context.Context) (*operations.GetCloudProvidersResponse, error) {
+func (s *CloudProviders) Get(ctx context.Context) (*operations.GetCloudProvidersResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/cloud-providers"
 
@@ -353,6 +367,10 @@ func (s *cloudProviders) Get(ctx context.Context) (*operations.GetCloudProviders
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -360,7 +378,7 @@ func (s *cloudProviders) Get(ctx context.Context) (*operations.GetCloudProviders
 
 // GetCluster - Get cluster
 // Get information about the given cluster
-func (s *cloudProviders) GetCluster(ctx context.Context, clusterID string) (*operations.GetClusterResponse, error) {
+func (s *CloudProviders) GetCluster(ctx context.Context, clusterID string) (*operations.GetClusterResponse, error) {
 	request := operations.GetClusterRequest{
 		ClusterID: clusterID,
 	}
@@ -415,6 +433,10 @@ func (s *cloudProviders) GetCluster(ctx context.Context, clusterID string) (*ope
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -422,7 +444,7 @@ func (s *cloudProviders) GetCluster(ctx context.Context, clusterID string) (*ope
 
 // GetIntegration - Get integration
 // Get information about the given integration
-func (s *cloudProviders) GetIntegration(ctx context.Context, integrationID string) (*operations.GetIntegrationResponse, error) {
+func (s *CloudProviders) GetIntegration(ctx context.Context, integrationID string) (*operations.GetIntegrationResponse, error) {
 	request := operations.GetIntegrationRequest{
 		IntegrationID: integrationID,
 	}
@@ -477,6 +499,10 @@ func (s *cloudProviders) GetIntegration(ctx context.Context, integrationID strin
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -484,7 +510,7 @@ func (s *cloudProviders) GetIntegration(ctx context.Context, integrationID strin
 
 // ListClusters - List clusters
 // Lists clusters for the authenticated user or team.
-func (s *cloudProviders) ListClusters(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetClustersResponse, error) {
+func (s *CloudProviders) ListClusters(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetClustersResponse, error) {
 	request := operations.GetClustersRequest{
 		Cursor:  cursor,
 		Page:    page,
@@ -542,6 +568,10 @@ func (s *cloudProviders) ListClusters(ctx context.Context, cursor *string, page 
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -549,7 +579,7 @@ func (s *cloudProviders) ListClusters(ctx context.Context, cursor *string, page 
 
 // ListIntegrations - List integrations
 // Lists integrations for the authenticated user or team.
-func (s *cloudProviders) ListIntegrations(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetIntegrationsResponse, error) {
+func (s *CloudProviders) ListIntegrations(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetIntegrationsResponse, error) {
 	request := operations.GetIntegrationsRequest{
 		Cursor:  cursor,
 		Page:    page,
@@ -607,6 +637,10 @@ func (s *cloudProviders) ListIntegrations(ctx context.Context, cursor *string, p
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -614,7 +648,7 @@ func (s *cloudProviders) ListIntegrations(ctx context.Context, cursor *string, p
 
 // UpdateCluster - Update cluster
 // Update an existing cluster.
-func (s *cloudProviders) UpdateCluster(ctx context.Context, updateClusterRequest shared.UpdateClusterRequest, clusterID string) (*operations.UpdateClusterResponse, error) {
+func (s *CloudProviders) UpdateCluster(ctx context.Context, updateClusterRequest shared.UpdateClusterRequest, clusterID string) (*operations.UpdateClusterResponse, error) {
 	request := operations.UpdateClusterRequest{
 		UpdateClusterRequest: updateClusterRequest,
 		ClusterID:            clusterID,
@@ -680,6 +714,10 @@ func (s *cloudProviders) UpdateCluster(ctx context.Context, updateClusterRequest
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -687,7 +725,7 @@ func (s *cloudProviders) UpdateCluster(ctx context.Context, updateClusterRequest
 
 // UpdateIntegration - Update integration
 // Update information about the given integration
-func (s *cloudProviders) UpdateIntegration(ctx context.Context, updateIntegrationRequest shared.UpdateIntegrationRequest, integrationID string) (*operations.UpdateIntegrationResponse, error) {
+func (s *CloudProviders) UpdateIntegration(ctx context.Context, updateIntegrationRequest shared.UpdateIntegrationRequest, integrationID string) (*operations.UpdateIntegrationResponse, error) {
 	request := operations.UpdateIntegrationRequest{
 		UpdateIntegrationRequest: updateIntegrationRequest,
 		IntegrationID:            integrationID,
@@ -753,6 +791,10 @@ func (s *cloudProviders) UpdateIntegration(ctx context.Context, updateIntegratio
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

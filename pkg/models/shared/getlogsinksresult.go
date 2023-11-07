@@ -5,31 +5,31 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"time"
 )
 
-// GetLogSinksResultDataLogSinksSinkType - The type of the log sink.
-type GetLogSinksResultDataLogSinksSinkType string
+// GetLogSinksResultSinkType - The type of the log sink.
+type GetLogSinksResultSinkType string
 
 const (
-	GetLogSinksResultDataLogSinksSinkTypeLoki        GetLogSinksResultDataLogSinksSinkType = "loki"
-	GetLogSinksResultDataLogSinksSinkTypeDatadogLogs GetLogSinksResultDataLogSinksSinkType = "datadog_logs"
-	GetLogSinksResultDataLogSinksSinkTypePapertrail  GetLogSinksResultDataLogSinksSinkType = "papertrail"
-	GetLogSinksResultDataLogSinksSinkTypeHTTP        GetLogSinksResultDataLogSinksSinkType = "http"
-	GetLogSinksResultDataLogSinksSinkTypeAwsS3       GetLogSinksResultDataLogSinksSinkType = "aws_s3"
-	GetLogSinksResultDataLogSinksSinkTypeLogdna      GetLogSinksResultDataLogSinksSinkType = "logdna"
-	GetLogSinksResultDataLogSinksSinkTypeCoralogix   GetLogSinksResultDataLogSinksSinkType = "coralogix"
-	GetLogSinksResultDataLogSinksSinkTypeLogtail     GetLogSinksResultDataLogSinksSinkType = "logtail"
-	GetLogSinksResultDataLogSinksSinkTypeHoneycomb   GetLogSinksResultDataLogSinksSinkType = "honeycomb"
-	GetLogSinksResultDataLogSinksSinkTypeLogzio      GetLogSinksResultDataLogSinksSinkType = "logzio"
+	GetLogSinksResultSinkTypeLoki        GetLogSinksResultSinkType = "loki"
+	GetLogSinksResultSinkTypeDatadogLogs GetLogSinksResultSinkType = "datadog_logs"
+	GetLogSinksResultSinkTypePapertrail  GetLogSinksResultSinkType = "papertrail"
+	GetLogSinksResultSinkTypeHTTP        GetLogSinksResultSinkType = "http"
+	GetLogSinksResultSinkTypeAwsS3       GetLogSinksResultSinkType = "aws_s3"
+	GetLogSinksResultSinkTypeLogdna      GetLogSinksResultSinkType = "logdna"
+	GetLogSinksResultSinkTypeCoralogix   GetLogSinksResultSinkType = "coralogix"
+	GetLogSinksResultSinkTypeLogtail     GetLogSinksResultSinkType = "logtail"
+	GetLogSinksResultSinkTypeHoneycomb   GetLogSinksResultSinkType = "honeycomb"
+	GetLogSinksResultSinkTypeLogzio      GetLogSinksResultSinkType = "logzio"
 )
 
-func (e GetLogSinksResultDataLogSinksSinkType) ToPointer() *GetLogSinksResultDataLogSinksSinkType {
+func (e GetLogSinksResultSinkType) ToPointer() *GetLogSinksResultSinkType {
 	return &e
 }
 
-func (e *GetLogSinksResultDataLogSinksSinkType) UnmarshalJSON(data []byte) error {
+func (e *GetLogSinksResultSinkType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -54,15 +54,15 @@ func (e *GetLogSinksResultDataLogSinksSinkType) UnmarshalJSON(data []byte) error
 	case "honeycomb":
 		fallthrough
 	case "logzio":
-		*e = GetLogSinksResultDataLogSinksSinkType(v)
+		*e = GetLogSinksResultSinkType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetLogSinksResultDataLogSinksSinkType: %v", v)
+		return fmt.Errorf("invalid value for GetLogSinksResultSinkType: %v", v)
 	}
 }
 
-// GetLogSinksResultDataLogSinks - A log sink object.
-type GetLogSinksResultDataLogSinks struct {
+// LogSinks - A log sink object.
+type LogSinks struct {
 	// Timestamp of when the log sink was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Description of the log sink.
@@ -76,81 +76,81 @@ type GetLogSinksResultDataLogSinks struct {
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
 	Restricted bool `json:"restricted"`
 	// The type of the log sink.
-	SinkType GetLogSinksResultDataLogSinksSinkType `json:"sinkType"`
+	SinkType GetLogSinksResultSinkType `json:"sinkType"`
 	// Timestamp of when the log sink was last updated.
 	UpdatedAt time.Time `json:"updatedAt"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
 	UseCustomLabels *bool `default:"false" json:"useCustomLabels"`
 }
 
-func (g GetLogSinksResultDataLogSinks) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
+func (l LogSinks) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
 }
 
-func (g *GetLogSinksResultDataLogSinks) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+func (l *LogSinks) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetCreatedAt() time.Time {
+func (o *LogSinks) GetCreatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.CreatedAt
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetDescription() *string {
+func (o *LogSinks) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetID() string {
+func (o *LogSinks) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetName() string {
+func (o *LogSinks) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetProjects() []string {
+func (o *LogSinks) GetProjects() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Projects
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetRestricted() bool {
+func (o *LogSinks) GetRestricted() bool {
 	if o == nil {
 		return false
 	}
 	return o.Restricted
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetSinkType() GetLogSinksResultDataLogSinksSinkType {
+func (o *LogSinks) GetSinkType() GetLogSinksResultSinkType {
 	if o == nil {
-		return GetLogSinksResultDataLogSinksSinkType("")
+		return GetLogSinksResultSinkType("")
 	}
 	return o.SinkType
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetUpdatedAt() time.Time {
+func (o *LogSinks) GetUpdatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetLogSinksResultDataLogSinks) GetUseCustomLabels() *bool {
+func (o *LogSinks) GetUseCustomLabels() *bool {
 	if o == nil {
 		return nil
 	}
@@ -160,12 +160,12 @@ func (o *GetLogSinksResultDataLogSinks) GetUseCustomLabels() *bool {
 // GetLogSinksResultData - Result data.
 type GetLogSinksResultData struct {
 	// An array of log sinks added to this account.
-	LogSinks []GetLogSinksResultDataLogSinks `json:"logSinks"`
+	LogSinks []LogSinks `json:"logSinks"`
 }
 
-func (o *GetLogSinksResultData) GetLogSinks() []GetLogSinksResultDataLogSinks {
+func (o *GetLogSinksResultData) GetLogSinks() []LogSinks {
 	if o == nil {
-		return []GetLogSinksResultDataLogSinks{}
+		return []LogSinks{}
 	}
 	return o.LogSinks
 }

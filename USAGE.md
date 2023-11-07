@@ -6,8 +6,8 @@ package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"log"
 )
 
@@ -22,12 +22,12 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Addons.ListAddonTypes(ctx)
+	res, err := s.Miscellaneous.GetDNSID(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.AddonTypesResult != nil {
+	if res.DNSIDResult != nil {
 		// handle response
 	}
 }

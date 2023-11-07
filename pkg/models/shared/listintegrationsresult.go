@@ -3,12 +3,12 @@
 package shared
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"time"
 )
 
-// ListIntegrationsResultDataIntegrations - An integration object.
-type ListIntegrationsResultDataIntegrations struct {
+// Integrations - An integration object.
+type Integrations struct {
 	// The time the integration was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// A short description of the integration.
@@ -21,46 +21,46 @@ type ListIntegrationsResultDataIntegrations struct {
 	Provider *string `json:"provider,omitempty"`
 }
 
-func (l ListIntegrationsResultDataIntegrations) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
+func (i Integrations) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
 }
 
-func (l *ListIntegrationsResultDataIntegrations) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+func (i *Integrations) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListIntegrationsResultDataIntegrations) GetCreatedAt() time.Time {
+func (o *Integrations) GetCreatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.CreatedAt
 }
 
-func (o *ListIntegrationsResultDataIntegrations) GetDescription() *string {
+func (o *Integrations) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *ListIntegrationsResultDataIntegrations) GetID() string {
+func (o *Integrations) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ListIntegrationsResultDataIntegrations) GetName() string {
+func (o *Integrations) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ListIntegrationsResultDataIntegrations) GetProvider() *string {
+func (o *Integrations) GetProvider() *string {
 	if o == nil {
 		return nil
 	}
@@ -70,12 +70,12 @@ func (o *ListIntegrationsResultDataIntegrations) GetProvider() *string {
 // ListIntegrationsResultData - Result data.
 type ListIntegrationsResultData struct {
 	// An array of integrations.
-	Integrations []ListIntegrationsResultDataIntegrations `json:"integrations"`
+	Integrations []Integrations `json:"integrations"`
 }
 
-func (o *ListIntegrationsResultData) GetIntegrations() []ListIntegrationsResultDataIntegrations {
+func (o *ListIntegrationsResultData) GetIntegrations() []Integrations {
 	if o == nil {
-		return []ListIntegrationsResultDataIntegrations{}
+		return []Integrations{}
 	}
 	return o.Integrations
 }

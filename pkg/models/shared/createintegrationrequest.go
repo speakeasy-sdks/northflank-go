@@ -7,8 +7,8 @@ import (
 	"fmt"
 )
 
-// CreateIntegrationRequestCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
-type CreateIntegrationRequestCredentials struct {
+// Credentials - Cloud provider credential input, required fields dependent on which provider is chosen.
+type Credentials struct {
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -19,28 +19,28 @@ type CreateIntegrationRequestCredentials struct {
 	SecretKey *string `json:"secretKey,omitempty"`
 }
 
-func (o *CreateIntegrationRequestCredentials) GetAccessKey() *string {
+func (o *Credentials) GetAccessKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AccessKey
 }
 
-func (o *CreateIntegrationRequestCredentials) GetAPIKey() *string {
+func (o *Credentials) GetAPIKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.APIKey
 }
 
-func (o *CreateIntegrationRequestCredentials) GetKeyfileJSON() *string {
+func (o *Credentials) GetKeyfileJSON() *string {
 	if o == nil {
 		return nil
 	}
 	return o.KeyfileJSON
 }
 
-func (o *CreateIntegrationRequestCredentials) GetSecretKey() *string {
+func (o *Credentials) GetSecretKey() *string {
 	if o == nil {
 		return nil
 	}
@@ -96,7 +96,7 @@ func (e *CreateIntegrationRequestProvider) UnmarshalJSON(data []byte) error {
 
 type CreateIntegrationRequest struct {
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
-	Credentials CreateIntegrationRequestCredentials `json:"credentials"`
+	Credentials Credentials `json:"credentials"`
 	// The description of the integration.
 	Description *string `json:"description,omitempty"`
 	// GCP specific data. Required when `provider` is `gcp`.
@@ -107,9 +107,9 @@ type CreateIntegrationRequest struct {
 	Provider CreateIntegrationRequestProvider `json:"provider"`
 }
 
-func (o *CreateIntegrationRequest) GetCredentials() CreateIntegrationRequestCredentials {
+func (o *CreateIntegrationRequest) GetCredentials() Credentials {
 	if o == nil {
-		return CreateIntegrationRequestCredentials{}
+		return Credentials{}
 	}
 	return o.Credentials
 }

@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-// GetDomainResultDataStatus - The status of the domain verification.
-type GetDomainResultDataStatus string
+// GetDomainResultStatus - The status of the domain verification.
+type GetDomainResultStatus string
 
 const (
-	GetDomainResultDataStatusPending  GetDomainResultDataStatus = "pending"
-	GetDomainResultDataStatusVerified GetDomainResultDataStatus = "verified"
+	GetDomainResultStatusPending  GetDomainResultStatus = "pending"
+	GetDomainResultStatusVerified GetDomainResultStatus = "verified"
 )
 
-func (e GetDomainResultDataStatus) ToPointer() *GetDomainResultDataStatus {
+func (e GetDomainResultStatus) ToPointer() *GetDomainResultStatus {
 	return &e
 }
 
-func (e *GetDomainResultDataStatus) UnmarshalJSON(data []byte) error {
+func (e *GetDomainResultStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -28,29 +28,29 @@ func (e *GetDomainResultDataStatus) UnmarshalJSON(data []byte) error {
 	case "pending":
 		fallthrough
 	case "verified":
-		*e = GetDomainResultDataStatus(v)
+		*e = GetDomainResultStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDomainResultDataStatus: %v", v)
+		return fmt.Errorf("invalid value for GetDomainResultStatus: %v", v)
 	}
 }
 
-// GetDomainResultDataSubdomains - Details about a subdomain.
-type GetDomainResultDataSubdomains struct {
+// Subdomains - Details about a subdomain.
+type Subdomains struct {
 	// The full domain including the subdomain.
 	FullName string `json:"fullName"`
 	// The subdomain added, or -default for the empty subdomain.
 	Name string `json:"name"`
 }
 
-func (o *GetDomainResultDataSubdomains) GetFullName() string {
+func (o *Subdomains) GetFullName() string {
 	if o == nil {
 		return ""
 	}
 	return o.FullName
 }
 
-func (o *GetDomainResultDataSubdomains) GetName() string {
+func (o *Subdomains) GetName() string {
 	if o == nil {
 		return ""
 	}
@@ -64,9 +64,9 @@ type GetDomainResultData struct {
 	// The domain name.
 	Name string `json:"name"`
 	// The status of the domain verification.
-	Status GetDomainResultDataStatus `json:"status"`
+	Status GetDomainResultStatus `json:"status"`
 	// A list of subdomains added to this domain.
-	Subdomains []GetDomainResultDataSubdomains `json:"subdomains"`
+	Subdomains []Subdomains `json:"subdomains"`
 	// The token to add as the content of the TXT record to verify the domain.
 	Token string `json:"token"`
 }
@@ -85,16 +85,16 @@ func (o *GetDomainResultData) GetName() string {
 	return o.Name
 }
 
-func (o *GetDomainResultData) GetStatus() GetDomainResultDataStatus {
+func (o *GetDomainResultData) GetStatus() GetDomainResultStatus {
 	if o == nil {
-		return GetDomainResultDataStatus("")
+		return GetDomainResultStatus("")
 	}
 	return o.Status
 }
 
-func (o *GetDomainResultData) GetSubdomains() []GetDomainResultDataSubdomains {
+func (o *GetDomainResultData) GetSubdomains() []Subdomains {
 	if o == nil {
-		return []GetDomainResultDataSubdomains{}
+		return []Subdomains{}
 	}
 	return o.Subdomains
 }

@@ -2,36 +2,36 @@
 
 package shared
 
-// CloudProvidersResultDataProvidersFlags - An object with feature flags to indicate (un)supported features
-type CloudProvidersResultDataProvidersFlags struct {
+// Flags - An object with feature flags to indicate (un)supported features
+type Flags struct {
 	// Node pool autoscaling support
 	Autoscaling *bool `json:"autoscaling,omitempty"`
 	// Preemptible/Spot node pool support
 	Preemptible *bool `json:"preemptible,omitempty"`
 }
 
-func (o *CloudProvidersResultDataProvidersFlags) GetAutoscaling() *bool {
+func (o *Flags) GetAutoscaling() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Autoscaling
 }
 
-func (o *CloudProvidersResultDataProvidersFlags) GetPreemptible() *bool {
+func (o *Flags) GetPreemptible() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Preemptible
 }
 
-// CloudProvidersResultDataProviders - A provider object
-type CloudProvidersResultDataProviders struct {
+// Providers - A provider object
+type Providers struct {
 	// An array of supported node disk sizes
 	DiskSizes []float32 `json:"diskSizes"`
 	// The kubernetes engine used.
 	Engine string `json:"engine"`
 	// An object with feature flags to indicate (un)supported features
-	Flags CloudProvidersResultDataProvidersFlags `json:"flags"`
+	Flags Flags `json:"flags"`
 	// The ID of the provider.
 	ID string `json:"id"`
 	// An array of available kubernetes versions
@@ -44,56 +44,56 @@ type CloudProvidersResultDataProviders struct {
 	Regions []string `json:"regions"`
 }
 
-func (o *CloudProvidersResultDataProviders) GetDiskSizes() []float32 {
+func (o *Providers) GetDiskSizes() []float32 {
 	if o == nil {
 		return []float32{}
 	}
 	return o.DiskSizes
 }
 
-func (o *CloudProvidersResultDataProviders) GetEngine() string {
+func (o *Providers) GetEngine() string {
 	if o == nil {
 		return ""
 	}
 	return o.Engine
 }
 
-func (o *CloudProvidersResultDataProviders) GetFlags() CloudProvidersResultDataProvidersFlags {
+func (o *Providers) GetFlags() Flags {
 	if o == nil {
-		return CloudProvidersResultDataProvidersFlags{}
+		return Flags{}
 	}
 	return o.Flags
 }
 
-func (o *CloudProvidersResultDataProviders) GetID() string {
+func (o *Providers) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *CloudProvidersResultDataProviders) GetKubernetesVersions() []string {
+func (o *Providers) GetKubernetesVersions() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.KubernetesVersions
 }
 
-func (o *CloudProvidersResultDataProviders) GetName() string {
+func (o *Providers) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *CloudProvidersResultDataProviders) GetNodeTypes() []string {
+func (o *Providers) GetNodeTypes() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.NodeTypes
 }
 
-func (o *CloudProvidersResultDataProviders) GetRegions() []string {
+func (o *Providers) GetRegions() []string {
 	if o == nil {
 		return []string{}
 	}
@@ -103,12 +103,12 @@ func (o *CloudProvidersResultDataProviders) GetRegions() []string {
 // CloudProvidersResultData - Result data.
 type CloudProvidersResultData struct {
 	// An array of supported cloud providers
-	Providers []CloudProvidersResultDataProviders `json:"providers"`
+	Providers []Providers `json:"providers"`
 }
 
-func (o *CloudProvidersResultData) GetProviders() []CloudProvidersResultDataProviders {
+func (o *CloudProvidersResultData) GetProviders() []Providers {
 	if o == nil {
-		return []CloudProvidersResultDataProviders{}
+		return []Providers{}
 	}
 	return o.Providers
 }

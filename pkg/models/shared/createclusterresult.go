@@ -3,56 +3,56 @@
 package shared
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"time"
 )
 
-// CreateClusterResultDataNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
-type CreateClusterResultDataNodePoolsAutoscaling struct {
+// CreateClusterResultAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
+type CreateClusterResultAutoscaling struct {
 	Enabled *bool  `default:"false" json:"enabled"`
 	Max     *int64 `json:"max,omitempty"`
 	Min     *int64 `json:"min,omitempty"`
 }
 
-func (c CreateClusterResultDataNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
+func (c CreateClusterResultAutoscaling) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateClusterResultDataNodePoolsAutoscaling) UnmarshalJSON(data []byte) error {
+func (c *CreateClusterResultAutoscaling) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateClusterResultDataNodePoolsAutoscaling) GetEnabled() *bool {
+func (o *CreateClusterResultAutoscaling) GetEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Enabled
 }
 
-func (o *CreateClusterResultDataNodePoolsAutoscaling) GetMax() *int64 {
+func (o *CreateClusterResultAutoscaling) GetMax() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Max
 }
 
-func (o *CreateClusterResultDataNodePoolsAutoscaling) GetMin() *int64 {
+func (o *CreateClusterResultAutoscaling) GetMin() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Min
 }
 
-// CreateClusterResultDataNodePoolsLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
-type CreateClusterResultDataNodePoolsLabels struct {
+// CreateClusterResultLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
+type CreateClusterResultLabels struct {
 }
 
-type CreateClusterResultDataNodePools struct {
+type CreateClusterResultNodePools struct {
 	// Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
-	Autoscaling *CreateClusterResultDataNodePoolsAutoscaling `json:"autoscaling,omitempty"`
+	Autoscaling *CreateClusterResultAutoscaling `json:"autoscaling,omitempty"`
 	// Zones in which the node pool should be provisioned.
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	// Disk size in GB
@@ -62,7 +62,7 @@ type CreateClusterResultDataNodePools struct {
 	// ID of existing node pool. Must be passed when modifying existing node pools. Not relevant for new node pools
 	ID *string `json:"id,omitempty"`
 	// Set of label keys and values that can be used to determine scheduling via resource tags.
-	Labels *CreateClusterResultDataNodePoolsLabels `json:"labels,omitempty"`
+	Labels *CreateClusterResultLabels `json:"labels,omitempty"`
 	// Number of nodes to the node pool should be provisioned with.
 	NodeCount int64 `json:"nodeCount"`
 	// Machine type to be used by the node pool.
@@ -73,141 +73,141 @@ type CreateClusterResultDataNodePools struct {
 	SystemPool *bool `json:"systemPool,omitempty"`
 }
 
-func (c CreateClusterResultDataNodePools) MarshalJSON() ([]byte, error) {
+func (c CreateClusterResultNodePools) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateClusterResultDataNodePools) UnmarshalJSON(data []byte) error {
+func (c *CreateClusterResultNodePools) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateClusterResultDataNodePools) GetAutoscaling() *CreateClusterResultDataNodePoolsAutoscaling {
+func (o *CreateClusterResultNodePools) GetAutoscaling() *CreateClusterResultAutoscaling {
 	if o == nil {
 		return nil
 	}
 	return o.Autoscaling
 }
 
-func (o *CreateClusterResultDataNodePools) GetAvailabilityZones() []string {
+func (o *CreateClusterResultNodePools) GetAvailabilityZones() []string {
 	if o == nil {
 		return nil
 	}
 	return o.AvailabilityZones
 }
 
-func (o *CreateClusterResultDataNodePools) GetDiskSize() int64 {
+func (o *CreateClusterResultNodePools) GetDiskSize() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.DiskSize
 }
 
-func (o *CreateClusterResultDataNodePools) GetDiskType() *string {
+func (o *CreateClusterResultNodePools) GetDiskType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DiskType
 }
 
-func (o *CreateClusterResultDataNodePools) GetID() *string {
+func (o *CreateClusterResultNodePools) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *CreateClusterResultDataNodePools) GetLabels() *CreateClusterResultDataNodePoolsLabels {
+func (o *CreateClusterResultNodePools) GetLabels() *CreateClusterResultLabels {
 	if o == nil {
 		return nil
 	}
 	return o.Labels
 }
 
-func (o *CreateClusterResultDataNodePools) GetNodeCount() int64 {
+func (o *CreateClusterResultNodePools) GetNodeCount() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.NodeCount
 }
 
-func (o *CreateClusterResultDataNodePools) GetNodeType() string {
+func (o *CreateClusterResultNodePools) GetNodeType() string {
 	if o == nil {
 		return ""
 	}
 	return o.NodeType
 }
 
-func (o *CreateClusterResultDataNodePools) GetPreemptible() *bool {
+func (o *CreateClusterResultNodePools) GetPreemptible() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Preemptible
 }
 
-func (o *CreateClusterResultDataNodePools) GetSystemPool() *bool {
+func (o *CreateClusterResultNodePools) GetSystemPool() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.SystemPool
 }
 
-type CreateClusterResultDataStatusState struct {
+type CreateClusterResultState struct {
 	State          *string    `json:"state,omitempty"`
 	TransitionTime *time.Time `json:"transitionTime,omitempty"`
 }
 
-func (c CreateClusterResultDataStatusState) MarshalJSON() ([]byte, error) {
+func (c CreateClusterResultState) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateClusterResultDataStatusState) UnmarshalJSON(data []byte) error {
+func (c *CreateClusterResultState) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateClusterResultDataStatusState) GetState() *string {
+func (o *CreateClusterResultState) GetState() *string {
 	if o == nil {
 		return nil
 	}
 	return o.State
 }
 
-func (o *CreateClusterResultDataStatusState) GetTransitionTime() *time.Time {
+func (o *CreateClusterResultState) GetTransitionTime() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.TransitionTime
 }
 
-type CreateClusterResultDataStatus struct {
-	NextUpdateAfter *time.Time                          `json:"nextUpdateAfter,omitempty"`
-	State           *CreateClusterResultDataStatusState `json:"state,omitempty"`
+type CreateClusterResultStatus struct {
+	NextUpdateAfter *time.Time                `json:"nextUpdateAfter,omitempty"`
+	State           *CreateClusterResultState `json:"state,omitempty"`
 }
 
-func (c CreateClusterResultDataStatus) MarshalJSON() ([]byte, error) {
+func (c CreateClusterResultStatus) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateClusterResultDataStatus) UnmarshalJSON(data []byte) error {
+func (c *CreateClusterResultStatus) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateClusterResultDataStatus) GetNextUpdateAfter() *time.Time {
+func (o *CreateClusterResultStatus) GetNextUpdateAfter() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.NextUpdateAfter
 }
 
-func (o *CreateClusterResultDataStatus) GetState() *CreateClusterResultDataStatusState {
+func (o *CreateClusterResultStatus) GetState() *CreateClusterResultState {
 	if o == nil {
 		return nil
 	}
@@ -227,11 +227,11 @@ type CreateClusterResultData struct {
 	// ID of the provider integration used by this cluster.
 	IntegrationID string `json:"integrationId"`
 	// The name of the cluster.
-	Name      string                           `json:"name"`
-	NodePools CreateClusterResultDataNodePools `json:"nodePools"`
+	Name      string                       `json:"name"`
+	NodePools CreateClusterResultNodePools `json:"nodePools"`
 	// The cloud provider to which this cluster belongs to.
-	Provider *string                        `json:"provider,omitempty"`
-	Status   *CreateClusterResultDataStatus `json:"status,omitempty"`
+	Provider *string                    `json:"provider,omitempty"`
+	Status   *CreateClusterResultStatus `json:"status,omitempty"`
 }
 
 func (c CreateClusterResultData) MarshalJSON() ([]byte, error) {
@@ -287,9 +287,9 @@ func (o *CreateClusterResultData) GetName() string {
 	return o.Name
 }
 
-func (o *CreateClusterResultData) GetNodePools() CreateClusterResultDataNodePools {
+func (o *CreateClusterResultData) GetNodePools() CreateClusterResultNodePools {
 	if o == nil {
-		return CreateClusterResultDataNodePools{}
+		return CreateClusterResultNodePools{}
 	}
 	return o.NodePools
 }
@@ -301,7 +301,7 @@ func (o *CreateClusterResultData) GetProvider() *string {
 	return o.Provider
 }
 
-func (o *CreateClusterResultData) GetStatus() *CreateClusterResultDataStatus {
+func (o *CreateClusterResultData) GetStatus() *CreateClusterResultStatus {
 	if o == nil {
 		return nil
 	}

@@ -3,51 +3,51 @@
 
 ## Supported Types
 
-### LogSinkRequestSinkData1
+### One
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData1(shared.LogSinkRequestSinkData1{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataOne(shared.One{/* values here */})
 ```
 
-### LogSinkRequestSinkData2
+### Two
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData2(shared.LogSinkRequestSinkData2{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataTwo(shared.Two{/* values here */})
 ```
 
-### LogSinkRequestSinkData3
+### Three
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData3(shared.LogSinkRequestSinkData3{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataThree(shared.Three{/* values here */})
 ```
 
-### LogSinkRequestSinkData4
+### Four
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData4(shared.LogSinkRequestSinkData4{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataFour(shared.Four{/* values here */})
 ```
 
-### LogSinkRequestSinkData5
+### Five
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData5(shared.LogSinkRequestSinkData5{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataFive(shared.Five{/* values here */})
 ```
 
-### LogSinkRequestSinkData6
+### Six
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData6(shared.LogSinkRequestSinkData6{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataSix(shared.Six{/* values here */})
 ```
 
-### LogSinkRequestSinkData7
+### Seven
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData7(shared.LogSinkRequestSinkData7{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataSeven(shared.Seven{/* values here */})
 ```
 
-### LogSinkRequestSinkData8
+### Eight
 
 ```go
-logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataLogSinkRequestSinkData8(shared.LogSinkRequestSinkData8{/* values here */})
+logSinkRequestSinkData := shared.CreateLogSinkRequestSinkDataEight(shared.Eight{/* values here */})
 ```
 

@@ -5,11 +5,11 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// AddRegistryType3Auths - The `auths` data extracted from your Docker config file.
-type AddRegistryType3Auths struct {
+// Auths - The `auths` data extracted from your Docker config file.
+type Auths struct {
 }
 
 // AddRegistryType3Provider - The registry provider associated with this set of credentials.
@@ -91,7 +91,7 @@ func (o *AddRegistryType3Restrictions) GetRestricted() *bool {
 // AddRegistryType3 - Validate with a docker config file.
 type AddRegistryType3 struct {
 	// The `auths` data extracted from your Docker config file.
-	Auths AddRegistryType3Auths `json:"auths"`
+	Auths Auths `json:"auths"`
 	// Description of the credentials.
 	Description string `json:"description"`
 	// Name of the credentials.
@@ -102,9 +102,9 @@ type AddRegistryType3 struct {
 	Restrictions *AddRegistryType3Restrictions `json:"restrictions,omitempty"`
 }
 
-func (o *AddRegistryType3) GetAuths() AddRegistryType3Auths {
+func (o *AddRegistryType3) GetAuths() Auths {
 	if o == nil {
-		return AddRegistryType3Auths{}
+		return Auths{}
 	}
 	return o.Auths
 }

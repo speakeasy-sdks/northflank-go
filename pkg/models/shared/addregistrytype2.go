@@ -5,11 +5,11 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// AddRegistryType2Keyfile - Contents of `keyfile.json`, used to authenticate with Google Container Registry.
-type AddRegistryType2Keyfile struct {
+// Keyfile - Contents of `keyfile.json`, used to authenticate with Google Container Registry.
+type Keyfile struct {
 }
 
 // AddRegistryType2Provider - The registry provider associated with this set of credentials.
@@ -93,7 +93,7 @@ type AddRegistryType2 struct {
 	// Description of the credentials.
 	Description string `json:"description"`
 	// Contents of `keyfile.json`, used to authenticate with Google Container Registry.
-	Keyfile AddRegistryType2Keyfile `json:"keyfile"`
+	Keyfile Keyfile `json:"keyfile"`
 	// Name of the credentials.
 	Name string `json:"name"`
 	// The registry provider associated with this set of credentials.
@@ -111,9 +111,9 @@ func (o *AddRegistryType2) GetDescription() string {
 	return o.Description
 }
 
-func (o *AddRegistryType2) GetKeyfile() AddRegistryType2Keyfile {
+func (o *AddRegistryType2) GetKeyfile() Keyfile {
 	if o == nil {
-		return AddRegistryType2Keyfile{}
+		return Keyfile{}
 	}
 	return o.Keyfile
 }

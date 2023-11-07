@@ -3,12 +3,12 @@
 package shared
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"time"
 )
 
-// GetIntegrationResultDataCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
-type GetIntegrationResultDataCredentials struct {
+// GetIntegrationResultCredentials - Cloud provider credential input, required fields dependent on which provider is chosen.
+type GetIntegrationResultCredentials struct {
 	// AWS access key.
 	AccessKey *string `json:"accessKey,omitempty"`
 	// DO API key.
@@ -19,28 +19,28 @@ type GetIntegrationResultDataCredentials struct {
 	SecretKey *string `json:"secretKey,omitempty"`
 }
 
-func (o *GetIntegrationResultDataCredentials) GetAccessKey() *string {
+func (o *GetIntegrationResultCredentials) GetAccessKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AccessKey
 }
 
-func (o *GetIntegrationResultDataCredentials) GetAPIKey() *string {
+func (o *GetIntegrationResultCredentials) GetAPIKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.APIKey
 }
 
-func (o *GetIntegrationResultDataCredentials) GetKeyfileJSON() *string {
+func (o *GetIntegrationResultCredentials) GetKeyfileJSON() *string {
 	if o == nil {
 		return nil
 	}
 	return o.KeyfileJSON
 }
 
-func (o *GetIntegrationResultDataCredentials) GetSecretKey() *string {
+func (o *GetIntegrationResultCredentials) GetSecretKey() *string {
 	if o == nil {
 		return nil
 	}
@@ -52,7 +52,7 @@ type GetIntegrationResultData struct {
 	// The time the integration was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Cloud provider credential input, required fields dependent on which provider is chosen.
-	Credentials GetIntegrationResultDataCredentials `json:"credentials"`
+	Credentials GetIntegrationResultCredentials `json:"credentials"`
 	// A short description of the integration.
 	Description *string `json:"description,omitempty"`
 	// Identifier for the integration.
@@ -79,9 +79,9 @@ func (o *GetIntegrationResultData) GetCreatedAt() time.Time {
 	return o.CreatedAt
 }
 
-func (o *GetIntegrationResultData) GetCredentials() GetIntegrationResultDataCredentials {
+func (o *GetIntegrationResultData) GetCredentials() GetIntegrationResultCredentials {
 	if o == nil {
-		return GetIntegrationResultDataCredentials{}
+		return GetIntegrationResultCredentials{}
 	}
 	return o.Credentials
 }

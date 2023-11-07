@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-// CreateDomainResultDataStatus - The status of the domain verification.
-type CreateDomainResultDataStatus string
+// CreateDomainResultStatus - The status of the domain verification.
+type CreateDomainResultStatus string
 
 const (
-	CreateDomainResultDataStatusPending  CreateDomainResultDataStatus = "pending"
-	CreateDomainResultDataStatusVerified CreateDomainResultDataStatus = "verified"
+	CreateDomainResultStatusPending  CreateDomainResultStatus = "pending"
+	CreateDomainResultStatusVerified CreateDomainResultStatus = "verified"
 )
 
-func (e CreateDomainResultDataStatus) ToPointer() *CreateDomainResultDataStatus {
+func (e CreateDomainResultStatus) ToPointer() *CreateDomainResultStatus {
 	return &e
 }
 
-func (e *CreateDomainResultDataStatus) UnmarshalJSON(data []byte) error {
+func (e *CreateDomainResultStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -28,10 +28,10 @@ func (e *CreateDomainResultDataStatus) UnmarshalJSON(data []byte) error {
 	case "pending":
 		fallthrough
 	case "verified":
-		*e = CreateDomainResultDataStatus(v)
+		*e = CreateDomainResultStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDomainResultDataStatus: %v", v)
+		return fmt.Errorf("invalid value for CreateDomainResultStatus: %v", v)
 	}
 }
 
@@ -42,7 +42,7 @@ type CreateDomainResultData struct {
 	// The domain name.
 	Name string `json:"name"`
 	// The status of the domain verification.
-	Status CreateDomainResultDataStatus `json:"status"`
+	Status CreateDomainResultStatus `json:"status"`
 	// The token to add as the content of the TXT record to verify the domain.
 	Token string `json:"token"`
 }
@@ -61,9 +61,9 @@ func (o *CreateDomainResultData) GetName() string {
 	return o.Name
 }
 
-func (o *CreateDomainResultData) GetStatus() CreateDomainResultDataStatus {
+func (o *CreateDomainResultData) GetStatus() CreateDomainResultStatus {
 	if o == nil {
-		return CreateDomainResultDataStatus("")
+		return CreateDomainResultStatus("")
 	}
 	return o.Status
 }

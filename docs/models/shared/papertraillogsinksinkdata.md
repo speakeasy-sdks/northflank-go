@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### PapertrailLogSinkSinkData1
+### PapertrailLogSink1
 
 ```go
-papertrailLogSinkSinkData := shared.CreatePapertrailLogSinkSinkDataPapertrailLogSinkSinkData1(shared.PapertrailLogSinkSinkData1{/* values here */})
+papertrailLogSinkSinkData := shared.CreatePapertrailLogSinkSinkDataPapertrailLogSink1(shared.PapertrailLogSink1{/* values here */})
 ```
 
-### PapertrailLogSinkSinkData2
+### PapertrailLogSink2
 
 ```go
-papertrailLogSinkSinkData := shared.CreatePapertrailLogSinkSinkDataPapertrailLogSinkSinkData2(shared.PapertrailLogSinkSinkData2{/* values here */})
+papertrailLogSinkSinkData := shared.CreatePapertrailLogSinkSinkDataPapertrailLogSink2(shared.PapertrailLogSink2{/* values here */})
 ```
 

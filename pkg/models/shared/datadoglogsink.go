@@ -5,24 +5,24 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// DatadogLogSinkSinkDataRegion - The Datadog region.
-type DatadogLogSinkSinkDataRegion string
+// DatadogLogSinkRegion - The Datadog region.
+type DatadogLogSinkRegion string
 
 const (
-	DatadogLogSinkSinkDataRegionEu  DatadogLogSinkSinkDataRegion = "eu"
-	DatadogLogSinkSinkDataRegionUs  DatadogLogSinkSinkDataRegion = "us"
-	DatadogLogSinkSinkDataRegionUs3 DatadogLogSinkSinkDataRegion = "us3"
-	DatadogLogSinkSinkDataRegionUs5 DatadogLogSinkSinkDataRegion = "us5"
+	DatadogLogSinkRegionEu  DatadogLogSinkRegion = "eu"
+	DatadogLogSinkRegionUs  DatadogLogSinkRegion = "us"
+	DatadogLogSinkRegionUs3 DatadogLogSinkRegion = "us3"
+	DatadogLogSinkRegionUs5 DatadogLogSinkRegion = "us5"
 )
 
-func (e DatadogLogSinkSinkDataRegion) ToPointer() *DatadogLogSinkSinkDataRegion {
+func (e DatadogLogSinkRegion) ToPointer() *DatadogLogSinkRegion {
 	return &e
 }
 
-func (e *DatadogLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
+func (e *DatadogLogSinkRegion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -35,10 +35,10 @@ func (e *DatadogLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
 	case "us3":
 		fallthrough
 	case "us5":
-		*e = DatadogLogSinkSinkDataRegion(v)
+		*e = DatadogLogSinkRegion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DatadogLogSinkSinkDataRegion: %v", v)
+		return fmt.Errorf("invalid value for DatadogLogSinkRegion: %v", v)
 	}
 }
 
@@ -47,7 +47,7 @@ type DatadogLogSinkSinkData struct {
 	// The Datadog API key.
 	DefaultAPIKey string `json:"default_api_key"`
 	// The Datadog region.
-	Region DatadogLogSinkSinkDataRegion `json:"region"`
+	Region DatadogLogSinkRegion `json:"region"`
 }
 
 func (o *DatadogLogSinkSinkData) GetDefaultAPIKey() string {
@@ -57,9 +57,9 @@ func (o *DatadogLogSinkSinkData) GetDefaultAPIKey() string {
 	return o.DefaultAPIKey
 }
 
-func (o *DatadogLogSinkSinkData) GetRegion() DatadogLogSinkSinkDataRegion {
+func (o *DatadogLogSinkSinkData) GetRegion() DatadogLogSinkRegion {
 	if o == nil {
-		return DatadogLogSinkSinkDataRegion("")
+		return DatadogLogSinkRegion("")
 	}
 	return o.Region
 }

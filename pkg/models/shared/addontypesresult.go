@@ -2,8 +2,8 @@
 
 package shared
 
-// AddonTypesResultDataAddonTypesFeatures - Features supported by this addon type.
-type AddonTypesResultDataAddonTypesFeatures struct {
+// Features supported by this addon type.
+type Features struct {
 	// Whether this addon supports native (dump) backups
 	BackupsDump bool `json:"backupsDump"`
 	// Whether this addon supports customising the database name.
@@ -22,188 +22,188 @@ type AddonTypesResultDataAddonTypesFeatures struct {
 	TLS bool `json:"tls"`
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetBackupsDump() bool {
+func (o *Features) GetBackupsDump() bool {
 	if o == nil {
 		return false
 	}
 	return o.BackupsDump
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetCustomDBName() bool {
+func (o *Features) GetCustomDBName() bool {
 	if o == nil {
 		return false
 	}
 	return o.CustomDBName
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetExternalAccess() bool {
+func (o *Features) GetExternalAccess() bool {
 	if o == nil {
 		return false
 	}
 	return o.ExternalAccess
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetForkAddon() bool {
+func (o *Features) GetForkAddon() bool {
 	if o == nil {
 		return false
 	}
 	return o.ForkAddon
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetImportDump() bool {
+func (o *Features) GetImportDump() bool {
 	if o == nil {
 		return false
 	}
 	return o.ImportDump
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetImportLive() bool {
+func (o *Features) GetImportLive() bool {
 	if o == nil {
 		return false
 	}
 	return o.ImportLive
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetScaleReplicas() bool {
+func (o *Features) GetScaleReplicas() bool {
 	if o == nil {
 		return false
 	}
 	return o.ScaleReplicas
 }
 
-func (o *AddonTypesResultDataAddonTypesFeatures) GetTLS() bool {
+func (o *Features) GetTLS() bool {
 	if o == nil {
 		return false
 	}
 	return o.TLS
 }
 
-// AddonTypesResultDataAddonTypesResourcesReplicas - Details about replica count options for this addon.
-type AddonTypesResultDataAddonTypesResourcesReplicas struct {
+// Replicas - Details about replica count options for this addon.
+type Replicas struct {
 	// The default replica count for this addon.
 	Default float32 `json:"default"`
 	// Available options for replica counts for this addon.
 	Options []float32 `json:"options"`
 }
 
-func (o *AddonTypesResultDataAddonTypesResourcesReplicas) GetDefault() float32 {
+func (o *Replicas) GetDefault() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Default
 }
 
-func (o *AddonTypesResultDataAddonTypesResourcesReplicas) GetOptions() []float32 {
+func (o *Replicas) GetOptions() []float32 {
 	if o == nil {
 		return []float32{}
 	}
 	return o.Options
 }
 
-// AddonTypesResultDataAddonTypesResourcesStorage - Details about storage size options for this addon.
-type AddonTypesResultDataAddonTypesResourcesStorage struct {
+// Storage - Details about storage size options for this addon.
+type Storage struct {
 	// The default storage value for this addon.
 	Default float32 `json:"default"`
 	// Available options for storage size for this addon, in MB.
 	Options []float32 `json:"options"`
 }
 
-func (o *AddonTypesResultDataAddonTypesResourcesStorage) GetDefault() float32 {
+func (o *Storage) GetDefault() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Default
 }
 
-func (o *AddonTypesResultDataAddonTypesResourcesStorage) GetOptions() []float32 {
+func (o *Storage) GetOptions() []float32 {
 	if o == nil {
 		return []float32{}
 	}
 	return o.Options
 }
 
-// AddonTypesResultDataAddonTypesResources - Details about resource options for the addon type.
-type AddonTypesResultDataAddonTypesResources struct {
+// Resources - Details about resource options for the addon type.
+type Resources struct {
 	// Details about replica count options for this addon.
-	Replicas AddonTypesResultDataAddonTypesResourcesReplicas `json:"replicas"`
+	Replicas Replicas `json:"replicas"`
 	// Details about storage size options for this addon.
-	Storage AddonTypesResultDataAddonTypesResourcesStorage `json:"storage"`
+	Storage Storage `json:"storage"`
 }
 
-func (o *AddonTypesResultDataAddonTypesResources) GetReplicas() AddonTypesResultDataAddonTypesResourcesReplicas {
+func (o *Resources) GetReplicas() Replicas {
 	if o == nil {
-		return AddonTypesResultDataAddonTypesResourcesReplicas{}
+		return Replicas{}
 	}
 	return o.Replicas
 }
 
-func (o *AddonTypesResultDataAddonTypesResources) GetStorage() AddonTypesResultDataAddonTypesResourcesStorage {
+func (o *Resources) GetStorage() Storage {
 	if o == nil {
-		return AddonTypesResultDataAddonTypesResourcesStorage{}
+		return Storage{}
 	}
 	return o.Storage
 }
 
-type AddonTypesResultDataAddonTypes struct {
+type AddonTypes struct {
 	// A description of the addon.
 	Description string `json:"description"`
 	// Features supported by this addon type.
-	Features *AddonTypesResultDataAddonTypesFeatures `json:"features,omitempty"`
+	Features *Features `json:"features,omitempty"`
 	// A list of available major versions of the addon type.
 	Major []string `json:"major"`
 	// The name of the addon type.
 	Name string `json:"name"`
 	// Details about resource options for the addon type.
-	Resources AddonTypesResultDataAddonTypesResources `json:"resources"`
+	Resources Resources `json:"resources"`
 	// The identifier for the addon type.
 	Type string `json:"type"`
 	// A list of available versions of the addon type.
 	Versions []string `json:"versions"`
 }
 
-func (o *AddonTypesResultDataAddonTypes) GetDescription() string {
+func (o *AddonTypes) GetDescription() string {
 	if o == nil {
 		return ""
 	}
 	return o.Description
 }
 
-func (o *AddonTypesResultDataAddonTypes) GetFeatures() *AddonTypesResultDataAddonTypesFeatures {
+func (o *AddonTypes) GetFeatures() *Features {
 	if o == nil {
 		return nil
 	}
 	return o.Features
 }
 
-func (o *AddonTypesResultDataAddonTypes) GetMajor() []string {
+func (o *AddonTypes) GetMajor() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Major
 }
 
-func (o *AddonTypesResultDataAddonTypes) GetName() string {
+func (o *AddonTypes) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *AddonTypesResultDataAddonTypes) GetResources() AddonTypesResultDataAddonTypesResources {
+func (o *AddonTypes) GetResources() Resources {
 	if o == nil {
-		return AddonTypesResultDataAddonTypesResources{}
+		return Resources{}
 	}
 	return o.Resources
 }
 
-func (o *AddonTypesResultDataAddonTypes) GetType() string {
+func (o *AddonTypes) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *AddonTypesResultDataAddonTypes) GetVersions() []string {
+func (o *AddonTypes) GetVersions() []string {
 	if o == nil {
 		return []string{}
 	}
@@ -213,12 +213,12 @@ func (o *AddonTypesResultDataAddonTypes) GetVersions() []string {
 // AddonTypesResultData - Result data.
 type AddonTypesResultData struct {
 	// A list of available addon types.
-	AddonTypes []AddonTypesResultDataAddonTypes `json:"addonTypes"`
+	AddonTypes []AddonTypes `json:"addonTypes"`
 }
 
-func (o *AddonTypesResultData) GetAddonTypes() []AddonTypesResultDataAddonTypes {
+func (o *AddonTypesResultData) GetAddonTypes() []AddonTypes {
 	if o == nil {
-		return []AddonTypesResultDataAddonTypes{}
+		return []AddonTypes{}
 	}
 	return o.AddonTypes
 }

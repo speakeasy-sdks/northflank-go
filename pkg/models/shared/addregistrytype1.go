@@ -5,27 +5,27 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// AddRegistryType1Provider - The registry provider associated with this set of credentials.
-type AddRegistryType1Provider string
+// Provider - The registry provider associated with this set of credentials.
+type Provider string
 
 const (
-	AddRegistryType1ProviderDockerhub AddRegistryType1Provider = "dockerhub"
-	AddRegistryType1ProviderGcr       AddRegistryType1Provider = "gcr"
-	AddRegistryType1ProviderGcrEu     AddRegistryType1Provider = "gcr-eu"
-	AddRegistryType1ProviderGcrUs     AddRegistryType1Provider = "gcr-us"
-	AddRegistryType1ProviderGitlab    AddRegistryType1Provider = "gitlab"
-	AddRegistryType1ProviderGithub    AddRegistryType1Provider = "github"
-	AddRegistryType1ProviderCustom    AddRegistryType1Provider = "custom"
+	ProviderDockerhub Provider = "dockerhub"
+	ProviderGcr       Provider = "gcr"
+	ProviderGcrEu     Provider = "gcr-eu"
+	ProviderGcrUs     Provider = "gcr-us"
+	ProviderGitlab    Provider = "gitlab"
+	ProviderGithub    Provider = "github"
+	ProviderCustom    Provider = "custom"
 )
 
-func (e AddRegistryType1Provider) ToPointer() *AddRegistryType1Provider {
+func (e Provider) ToPointer() *Provider {
 	return &e
 }
 
-func (e *AddRegistryType1Provider) UnmarshalJSON(data []byte) error {
+func (e *Provider) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -44,40 +44,40 @@ func (e *AddRegistryType1Provider) UnmarshalJSON(data []byte) error {
 	case "github":
 		fallthrough
 	case "custom":
-		*e = AddRegistryType1Provider(v)
+		*e = Provider(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AddRegistryType1Provider: %v", v)
+		return fmt.Errorf("invalid value for Provider: %v", v)
 	}
 }
 
-// AddRegistryType1Restrictions - Data about whether the credentials are restricted to certain projects.
-type AddRegistryType1Restrictions struct {
+// Restrictions - Data about whether the credentials are restricted to certain projects.
+type Restrictions struct {
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects,omitempty"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted *bool `default:"false" json:"restricted"`
 }
 
-func (a AddRegistryType1Restrictions) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
+func (r Restrictions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
 }
 
-func (a *AddRegistryType1Restrictions) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+func (r *Restrictions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *AddRegistryType1Restrictions) GetProjects() []string {
+func (o *Restrictions) GetProjects() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Projects
 }
 
-func (o *AddRegistryType1Restrictions) GetRestricted() *bool {
+func (o *Restrictions) GetRestricted() *bool {
 	if o == nil {
 		return nil
 	}
@@ -92,11 +92,11 @@ type AddRegistryType1 struct {
 	// Password, Personal Access Token, or API key for the container registry.
 	Password string `json:"password"`
 	// The registry provider associated with this set of credentials.
-	Provider AddRegistryType1Provider `json:"provider"`
+	Provider Provider `json:"provider"`
 	// Custom url for the container registry. Only usable (and required) when `provider` is `custom`.
 	RegistryURL *string `json:"registryUrl,omitempty"`
 	// Data about whether the credentials are restricted to certain projects.
-	Restrictions *AddRegistryType1Restrictions `json:"restrictions,omitempty"`
+	Restrictions *Restrictions `json:"restrictions,omitempty"`
 	// Username for the container registry.
 	Username string `json:"username"`
 }
@@ -122,9 +122,9 @@ func (o *AddRegistryType1) GetPassword() string {
 	return o.Password
 }
 
-func (o *AddRegistryType1) GetProvider() AddRegistryType1Provider {
+func (o *AddRegistryType1) GetProvider() Provider {
 	if o == nil {
-		return AddRegistryType1Provider("")
+		return Provider("")
 	}
 	return o.Provider
 }
@@ -136,7 +136,7 @@ func (o *AddRegistryType1) GetRegistryURL() *string {
 	return o.RegistryURL
 }
 
-func (o *AddRegistryType1) GetRestrictions() *AddRegistryType1Restrictions {
+func (o *AddRegistryType1) GetRestrictions() *Restrictions {
 	if o == nil {
 		return nil
 	}

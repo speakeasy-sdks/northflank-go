@@ -6,93 +6,93 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"time"
 )
 
-// LogSinkDetailsDataSinkData8 - Honeycomb Sink Schema.
-type LogSinkDetailsDataSinkData8 struct {
+// LogSinkDetails8 - Honeycomb Sink Schema.
+type LogSinkDetails8 struct {
 	// Honeycomb API Key
 	APIKey string `json:"api_key"`
 	// Name of the dataset
 	Dataset string `json:"dataset"`
 }
 
-func (o *LogSinkDetailsDataSinkData8) GetAPIKey() string {
+func (o *LogSinkDetails8) GetAPIKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.APIKey
 }
 
-func (o *LogSinkDetailsDataSinkData8) GetDataset() string {
+func (o *LogSinkDetails8) GetDataset() string {
 	if o == nil {
 		return ""
 	}
 	return o.Dataset
 }
 
-// LogSinkDetailsDataSinkData7 - LogDNA Sink Schema.
-type LogSinkDetailsDataSinkData7 struct {
+// LogSinkDetails7 - LogDNA Sink Schema.
+type LogSinkDetails7 struct {
 	// Ingestion Key
 	APIKey string `json:"api_key"`
 }
 
-func (o *LogSinkDetailsDataSinkData7) GetAPIKey() string {
+func (o *LogSinkDetails7) GetAPIKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.APIKey
 }
 
-// LogSinkDetailsDataSinkData6 - Logtail Sink Schema.
-type LogSinkDetailsDataSinkData6 struct {
+// LogSinkDetails6 - Logtail Sink Schema.
+type LogSinkDetails6 struct {
 	// Logtail Source Token
 	Token string `json:"token"`
 }
 
-func (o *LogSinkDetailsDataSinkData6) GetToken() string {
+func (o *LogSinkDetails6) GetToken() string {
 	if o == nil {
 		return ""
 	}
 	return o.Token
 }
 
-// LogSinkDetailsDataSinkData5Auth - Authentication object.
-type LogSinkDetailsDataSinkData5Auth struct {
+// LogSinkDetailsSchemasDataAuth - Authentication object.
+type LogSinkDetailsSchemasDataAuth struct {
 	// Access key id for the bucket.
 	AccessKeyID string `json:"accessKeyId"`
 	// Secret access key for the bucket.
 	SecretAccessKey string `json:"secretAccessKey"`
 }
 
-func (o *LogSinkDetailsDataSinkData5Auth) GetAccessKeyID() string {
+func (o *LogSinkDetailsSchemasDataAuth) GetAccessKeyID() string {
 	if o == nil {
 		return ""
 	}
 	return o.AccessKeyID
 }
 
-func (o *LogSinkDetailsDataSinkData5Auth) GetSecretAccessKey() string {
+func (o *LogSinkDetailsSchemasDataAuth) GetSecretAccessKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.SecretAccessKey
 }
 
-// LogSinkDetailsDataSinkData5Compression - Log file compression method.
-type LogSinkDetailsDataSinkData5Compression string
+// LogSinkDetailsCompression - Log file compression method.
+type LogSinkDetailsCompression string
 
 const (
-	LogSinkDetailsDataSinkData5CompressionGzip LogSinkDetailsDataSinkData5Compression = "gzip"
-	LogSinkDetailsDataSinkData5CompressionNone LogSinkDetailsDataSinkData5Compression = "none"
+	LogSinkDetailsCompressionGzip LogSinkDetailsCompression = "gzip"
+	LogSinkDetailsCompressionNone LogSinkDetailsCompression = "none"
 )
 
-func (e LogSinkDetailsDataSinkData5Compression) ToPointer() *LogSinkDetailsDataSinkData5Compression {
+func (e LogSinkDetailsCompression) ToPointer() *LogSinkDetailsCompression {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData5Compression) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsCompression) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -101,34 +101,34 @@ func (e *LogSinkDetailsDataSinkData5Compression) UnmarshalJSON(data []byte) erro
 	case "gzip":
 		fallthrough
 	case "none":
-		*e = LogSinkDetailsDataSinkData5Compression(v)
+		*e = LogSinkDetailsCompression(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData5Compression: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsCompression: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData5Region - Region of the S3 bucket.
-type LogSinkDetailsDataSinkData5Region string
+// LogSinkDetailsSchemasRegion - Region of the S3 bucket.
+type LogSinkDetailsSchemasRegion string
 
 const (
-	LogSinkDetailsDataSinkData5RegionEuWest1    LogSinkDetailsDataSinkData5Region = "eu-west-1"
-	LogSinkDetailsDataSinkData5RegionEuWest2    LogSinkDetailsDataSinkData5Region = "eu-west-2"
-	LogSinkDetailsDataSinkData5RegionEuWest3    LogSinkDetailsDataSinkData5Region = "eu-west-3"
-	LogSinkDetailsDataSinkData5RegionEuCentral1 LogSinkDetailsDataSinkData5Region = "eu-central-1"
-	LogSinkDetailsDataSinkData5RegionEuSouth1   LogSinkDetailsDataSinkData5Region = "eu-south-1"
-	LogSinkDetailsDataSinkData5RegionEuNorth1   LogSinkDetailsDataSinkData5Region = "eu-north-1"
-	LogSinkDetailsDataSinkData5RegionUsWest1    LogSinkDetailsDataSinkData5Region = "us-west-1"
-	LogSinkDetailsDataSinkData5RegionUsWest2    LogSinkDetailsDataSinkData5Region = "us-west-2"
-	LogSinkDetailsDataSinkData5RegionUsEast1    LogSinkDetailsDataSinkData5Region = "us-east-1"
-	LogSinkDetailsDataSinkData5RegionUsEast2    LogSinkDetailsDataSinkData5Region = "us-east2"
+	LogSinkDetailsSchemasRegionEuWest1    LogSinkDetailsSchemasRegion = "eu-west-1"
+	LogSinkDetailsSchemasRegionEuWest2    LogSinkDetailsSchemasRegion = "eu-west-2"
+	LogSinkDetailsSchemasRegionEuWest3    LogSinkDetailsSchemasRegion = "eu-west-3"
+	LogSinkDetailsSchemasRegionEuCentral1 LogSinkDetailsSchemasRegion = "eu-central-1"
+	LogSinkDetailsSchemasRegionEuSouth1   LogSinkDetailsSchemasRegion = "eu-south-1"
+	LogSinkDetailsSchemasRegionEuNorth1   LogSinkDetailsSchemasRegion = "eu-north-1"
+	LogSinkDetailsSchemasRegionUsWest1    LogSinkDetailsSchemasRegion = "us-west-1"
+	LogSinkDetailsSchemasRegionUsWest2    LogSinkDetailsSchemasRegion = "us-west-2"
+	LogSinkDetailsSchemasRegionUsEast1    LogSinkDetailsSchemasRegion = "us-east-1"
+	LogSinkDetailsSchemasRegionUsEast2    LogSinkDetailsSchemasRegion = "us-east2"
 )
 
-func (e LogSinkDetailsDataSinkData5Region) ToPointer() *LogSinkDetailsDataSinkData5Region {
+func (e LogSinkDetailsSchemasRegion) ToPointer() *LogSinkDetailsSchemasRegion {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData5Region) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsSchemasRegion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -153,301 +153,301 @@ func (e *LogSinkDetailsDataSinkData5Region) UnmarshalJSON(data []byte) error {
 	case "us-east-1":
 		fallthrough
 	case "us-east2":
-		*e = LogSinkDetailsDataSinkData5Region(v)
+		*e = LogSinkDetailsSchemasRegion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData5Region: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsSchemasRegion: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData5 - AWS S3 or compatible API Sink Schema.
-type LogSinkDetailsDataSinkData5 struct {
+// LogSinkDetails5 - AWS S3 or compatible API Sink Schema.
+type LogSinkDetails5 struct {
 	// Authentication object.
-	Auth *LogSinkDetailsDataSinkData5Auth `json:"auth,omitempty"`
+	Auth *LogSinkDetailsSchemasDataAuth `json:"auth,omitempty"`
 	// Name of the S3 Bucket.
 	Bucket string `json:"bucket"`
 	// Log file compression method.
-	Compression LogSinkDetailsDataSinkData5Compression `json:"compression"`
+	Compression LogSinkDetailsCompression `json:"compression"`
 	// Endpoint for the AWS S3 or compatible API bucket.
 	Endpoint string `json:"endpoint"`
 	// Region of the S3 bucket.
-	Region LogSinkDetailsDataSinkData5Region `json:"region"`
+	Region LogSinkDetailsSchemasRegion `json:"region"`
 }
 
-func (o *LogSinkDetailsDataSinkData5) GetAuth() *LogSinkDetailsDataSinkData5Auth {
+func (o *LogSinkDetails5) GetAuth() *LogSinkDetailsSchemasDataAuth {
 	if o == nil {
 		return nil
 	}
 	return o.Auth
 }
 
-func (o *LogSinkDetailsDataSinkData5) GetBucket() string {
+func (o *LogSinkDetails5) GetBucket() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bucket
 }
 
-func (o *LogSinkDetailsDataSinkData5) GetCompression() LogSinkDetailsDataSinkData5Compression {
+func (o *LogSinkDetails5) GetCompression() LogSinkDetailsCompression {
 	if o == nil {
-		return LogSinkDetailsDataSinkData5Compression("")
+		return LogSinkDetailsCompression("")
 	}
 	return o.Compression
 }
 
-func (o *LogSinkDetailsDataSinkData5) GetEndpoint() string {
+func (o *LogSinkDetails5) GetEndpoint() string {
 	if o == nil {
 		return ""
 	}
 	return o.Endpoint
 }
 
-func (o *LogSinkDetailsDataSinkData5) GetRegion() LogSinkDetailsDataSinkData5Region {
+func (o *LogSinkDetails5) GetRegion() LogSinkDetailsSchemasRegion {
 	if o == nil {
-		return LogSinkDetailsDataSinkData5Region("")
+		return LogSinkDetailsSchemasRegion("")
 	}
 	return o.Region
 }
 
-// LogSinkDetailsDataSinkData4Auth3Strategy - Bearer token authentication strategy.
-type LogSinkDetailsDataSinkData4Auth3Strategy string
+// LogSinkDetailsSchemasDataSinkDataStrategy - Bearer token authentication strategy.
+type LogSinkDetailsSchemasDataSinkDataStrategy string
 
 const (
-	LogSinkDetailsDataSinkData4Auth3StrategyBearer LogSinkDetailsDataSinkData4Auth3Strategy = "bearer"
+	LogSinkDetailsSchemasDataSinkDataStrategyBearer LogSinkDetailsSchemasDataSinkDataStrategy = "bearer"
 )
 
-func (e LogSinkDetailsDataSinkData4Auth3Strategy) ToPointer() *LogSinkDetailsDataSinkData4Auth3Strategy {
+func (e LogSinkDetailsSchemasDataSinkDataStrategy) ToPointer() *LogSinkDetailsSchemasDataSinkDataStrategy {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData4Auth3Strategy) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsSchemasDataSinkDataStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "bearer":
-		*e = LogSinkDetailsDataSinkData4Auth3Strategy(v)
+		*e = LogSinkDetailsSchemasDataSinkDataStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData4Auth3Strategy: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsSchemasDataSinkDataStrategy: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData4Auth3 - Authenticate with a bearer token strategy.
-type LogSinkDetailsDataSinkData4Auth3 struct {
+// LogSinkDetailsSchemas3 - Authenticate with a bearer token strategy.
+type LogSinkDetailsSchemas3 struct {
 	// Bearer token authentication strategy.
-	Strategy LogSinkDetailsDataSinkData4Auth3Strategy `json:"strategy"`
+	Strategy LogSinkDetailsSchemasDataSinkDataStrategy `json:"strategy"`
 	// Token for bearer token authentication.
 	Token *string `json:"token,omitempty"`
 }
 
-func (o *LogSinkDetailsDataSinkData4Auth3) GetStrategy() LogSinkDetailsDataSinkData4Auth3Strategy {
+func (o *LogSinkDetailsSchemas3) GetStrategy() LogSinkDetailsSchemasDataSinkDataStrategy {
 	if o == nil {
-		return LogSinkDetailsDataSinkData4Auth3Strategy("")
+		return LogSinkDetailsSchemasDataSinkDataStrategy("")
 	}
 	return o.Strategy
 }
 
-func (o *LogSinkDetailsDataSinkData4Auth3) GetToken() *string {
+func (o *LogSinkDetailsSchemas3) GetToken() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Token
 }
 
-// LogSinkDetailsDataSinkData4Auth2Strategy - Basic HTTP authentication strategy.
-type LogSinkDetailsDataSinkData4Auth2Strategy string
+// LogSinkDetailsSchemasDataStrategy - Basic HTTP authentication strategy.
+type LogSinkDetailsSchemasDataStrategy string
 
 const (
-	LogSinkDetailsDataSinkData4Auth2StrategyBasic LogSinkDetailsDataSinkData4Auth2Strategy = "basic"
+	LogSinkDetailsSchemasDataStrategyBasic LogSinkDetailsSchemasDataStrategy = "basic"
 )
 
-func (e LogSinkDetailsDataSinkData4Auth2Strategy) ToPointer() *LogSinkDetailsDataSinkData4Auth2Strategy {
+func (e LogSinkDetailsSchemasDataStrategy) ToPointer() *LogSinkDetailsSchemasDataStrategy {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData4Auth2Strategy) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsSchemasDataStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "basic":
-		*e = LogSinkDetailsDataSinkData4Auth2Strategy(v)
+		*e = LogSinkDetailsSchemasDataStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData4Auth2Strategy: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsSchemasDataStrategy: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData4Auth2 - Authenticate with a basic http strategy.
-type LogSinkDetailsDataSinkData4Auth2 struct {
+// LogSinkDetailsSchemasData2 - Authenticate with a basic http strategy.
+type LogSinkDetailsSchemasData2 struct {
 	// Password for basic http authentication.
 	Password string `json:"password"`
 	// Basic HTTP authentication strategy.
-	Strategy LogSinkDetailsDataSinkData4Auth2Strategy `json:"strategy"`
+	Strategy LogSinkDetailsSchemasDataStrategy `json:"strategy"`
 	// Username for basic http authentication.
 	User *string `json:"user,omitempty"`
 }
 
-func (o *LogSinkDetailsDataSinkData4Auth2) GetPassword() string {
+func (o *LogSinkDetailsSchemasData2) GetPassword() string {
 	if o == nil {
 		return ""
 	}
 	return o.Password
 }
 
-func (o *LogSinkDetailsDataSinkData4Auth2) GetStrategy() LogSinkDetailsDataSinkData4Auth2Strategy {
+func (o *LogSinkDetailsSchemasData2) GetStrategy() LogSinkDetailsSchemasDataStrategy {
 	if o == nil {
-		return LogSinkDetailsDataSinkData4Auth2Strategy("")
+		return LogSinkDetailsSchemasDataStrategy("")
 	}
 	return o.Strategy
 }
 
-func (o *LogSinkDetailsDataSinkData4Auth2) GetUser() *string {
+func (o *LogSinkDetailsSchemasData2) GetUser() *string {
 	if o == nil {
 		return nil
 	}
 	return o.User
 }
 
-// LogSinkDetailsDataSinkData4Auth1Strategy - No authentication strategy
-type LogSinkDetailsDataSinkData4Auth1Strategy string
+// LogSinkDetailsSchemasStrategy - No authentication strategy
+type LogSinkDetailsSchemasStrategy string
 
 const (
-	LogSinkDetailsDataSinkData4Auth1StrategyNone LogSinkDetailsDataSinkData4Auth1Strategy = "none"
+	LogSinkDetailsSchemasStrategyNone LogSinkDetailsSchemasStrategy = "none"
 )
 
-func (e LogSinkDetailsDataSinkData4Auth1Strategy) ToPointer() *LogSinkDetailsDataSinkData4Auth1Strategy {
+func (e LogSinkDetailsSchemasStrategy) ToPointer() *LogSinkDetailsSchemasStrategy {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData4Auth1Strategy) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsSchemasStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "none":
-		*e = LogSinkDetailsDataSinkData4Auth1Strategy(v)
+		*e = LogSinkDetailsSchemasStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData4Auth1Strategy: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsSchemasStrategy: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData4Auth1 - No authentication strategy
-type LogSinkDetailsDataSinkData4Auth1 struct {
+// LogSinkDetailsSchemasData1 - No authentication strategy
+type LogSinkDetailsSchemasData1 struct {
 	// No authentication strategy
-	Strategy LogSinkDetailsDataSinkData4Auth1Strategy `json:"strategy"`
+	Strategy LogSinkDetailsSchemasStrategy `json:"strategy"`
 }
 
-func (o *LogSinkDetailsDataSinkData4Auth1) GetStrategy() LogSinkDetailsDataSinkData4Auth1Strategy {
+func (o *LogSinkDetailsSchemasData1) GetStrategy() LogSinkDetailsSchemasStrategy {
 	if o == nil {
-		return LogSinkDetailsDataSinkData4Auth1Strategy("")
+		return LogSinkDetailsSchemasStrategy("")
 	}
 	return o.Strategy
 }
 
-type LogSinkDetailsDataSinkData4AuthType string
+type LogSinkDetailsSchemasAuthType string
 
 const (
-	LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth1 LogSinkDetailsDataSinkData4AuthType = "LogSinkDetails_data_sinkData_4_auth_1"
-	LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth2 LogSinkDetailsDataSinkData4AuthType = "LogSinkDetails_data_sinkData_4_auth_2"
-	LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth3 LogSinkDetailsDataSinkData4AuthType = "LogSinkDetails_data_sinkData_4_auth_3"
+	LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemasData1 LogSinkDetailsSchemasAuthType = "LogSinkDetails_Schemas_data_1"
+	LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemasData2 LogSinkDetailsSchemasAuthType = "LogSinkDetails_Schemas_data_2"
+	LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemas3     LogSinkDetailsSchemasAuthType = "LogSinkDetails_Schemas_3"
 )
 
-type LogSinkDetailsDataSinkData4Auth struct {
-	LogSinkDetailsDataSinkData4Auth1 *LogSinkDetailsDataSinkData4Auth1
-	LogSinkDetailsDataSinkData4Auth2 *LogSinkDetailsDataSinkData4Auth2
-	LogSinkDetailsDataSinkData4Auth3 *LogSinkDetailsDataSinkData4Auth3
+type LogSinkDetailsSchemasAuth struct {
+	LogSinkDetailsSchemasData1 *LogSinkDetailsSchemasData1
+	LogSinkDetailsSchemasData2 *LogSinkDetailsSchemasData2
+	LogSinkDetailsSchemas3     *LogSinkDetailsSchemas3
 
-	Type LogSinkDetailsDataSinkData4AuthType
+	Type LogSinkDetailsSchemasAuthType
 }
 
-func CreateLogSinkDetailsDataSinkData4AuthLogSinkDetailsDataSinkData4Auth1(logSinkDetailsDataSinkData4Auth1 LogSinkDetailsDataSinkData4Auth1) LogSinkDetailsDataSinkData4Auth {
-	typ := LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth1
+func CreateLogSinkDetailsSchemasAuthLogSinkDetailsSchemasData1(logSinkDetailsSchemasData1 LogSinkDetailsSchemasData1) LogSinkDetailsSchemasAuth {
+	typ := LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemasData1
 
-	return LogSinkDetailsDataSinkData4Auth{
-		LogSinkDetailsDataSinkData4Auth1: &logSinkDetailsDataSinkData4Auth1,
-		Type:                             typ,
+	return LogSinkDetailsSchemasAuth{
+		LogSinkDetailsSchemasData1: &logSinkDetailsSchemasData1,
+		Type:                       typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkData4AuthLogSinkDetailsDataSinkData4Auth2(logSinkDetailsDataSinkData4Auth2 LogSinkDetailsDataSinkData4Auth2) LogSinkDetailsDataSinkData4Auth {
-	typ := LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth2
+func CreateLogSinkDetailsSchemasAuthLogSinkDetailsSchemasData2(logSinkDetailsSchemasData2 LogSinkDetailsSchemasData2) LogSinkDetailsSchemasAuth {
+	typ := LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemasData2
 
-	return LogSinkDetailsDataSinkData4Auth{
-		LogSinkDetailsDataSinkData4Auth2: &logSinkDetailsDataSinkData4Auth2,
-		Type:                             typ,
+	return LogSinkDetailsSchemasAuth{
+		LogSinkDetailsSchemasData2: &logSinkDetailsSchemasData2,
+		Type:                       typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkData4AuthLogSinkDetailsDataSinkData4Auth3(logSinkDetailsDataSinkData4Auth3 LogSinkDetailsDataSinkData4Auth3) LogSinkDetailsDataSinkData4Auth {
-	typ := LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth3
+func CreateLogSinkDetailsSchemasAuthLogSinkDetailsSchemas3(logSinkDetailsSchemas3 LogSinkDetailsSchemas3) LogSinkDetailsSchemasAuth {
+	typ := LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemas3
 
-	return LogSinkDetailsDataSinkData4Auth{
-		LogSinkDetailsDataSinkData4Auth3: &logSinkDetailsDataSinkData4Auth3,
-		Type:                             typ,
+	return LogSinkDetailsSchemasAuth{
+		LogSinkDetailsSchemas3: &logSinkDetailsSchemas3,
+		Type:                   typ,
 	}
 }
 
-func (u *LogSinkDetailsDataSinkData4Auth) UnmarshalJSON(data []byte) error {
+func (u *LogSinkDetailsSchemasAuth) UnmarshalJSON(data []byte) error {
 
-	logSinkDetailsDataSinkData4Auth1 := LogSinkDetailsDataSinkData4Auth1{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4Auth1, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4Auth1 = &logSinkDetailsDataSinkData4Auth1
-		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth1
+	logSinkDetailsSchemasData1 := LogSinkDetailsSchemasData1{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsSchemasData1, "", true, true); err == nil {
+		u.LogSinkDetailsSchemasData1 = &logSinkDetailsSchemasData1
+		u.Type = LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemasData1
 		return nil
 	}
 
-	logSinkDetailsDataSinkData4Auth3 := LogSinkDetailsDataSinkData4Auth3{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4Auth3, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4Auth3 = &logSinkDetailsDataSinkData4Auth3
-		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth3
+	logSinkDetailsSchemas3 := LogSinkDetailsSchemas3{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsSchemas3, "", true, true); err == nil {
+		u.LogSinkDetailsSchemas3 = &logSinkDetailsSchemas3
+		u.Type = LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemas3
 		return nil
 	}
 
-	logSinkDetailsDataSinkData4Auth2 := LogSinkDetailsDataSinkData4Auth2{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4Auth2, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4Auth2 = &logSinkDetailsDataSinkData4Auth2
-		u.Type = LogSinkDetailsDataSinkData4AuthTypeLogSinkDetailsDataSinkData4Auth2
+	logSinkDetailsSchemasData2 := LogSinkDetailsSchemasData2{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsSchemasData2, "", true, true); err == nil {
+		u.LogSinkDetailsSchemasData2 = &logSinkDetailsSchemasData2
+		u.Type = LogSinkDetailsSchemasAuthTypeLogSinkDetailsSchemasData2
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u LogSinkDetailsDataSinkData4Auth) MarshalJSON() ([]byte, error) {
-	if u.LogSinkDetailsDataSinkData4Auth1 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData4Auth1, "", true)
+func (u LogSinkDetailsSchemasAuth) MarshalJSON() ([]byte, error) {
+	if u.LogSinkDetailsSchemasData1 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsSchemasData1, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData4Auth2 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData4Auth2, "", true)
+	if u.LogSinkDetailsSchemasData2 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsSchemasData2, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData4Auth3 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData4Auth3, "", true)
+	if u.LogSinkDetailsSchemas3 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsSchemas3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// LogSinkDetailsDataSinkData4EncodingCodec - Codec to encode logs in
-type LogSinkDetailsDataSinkData4EncodingCodec string
+// LogSinkDetailsSchemasCodec - Codec to encode logs in
+type LogSinkDetailsSchemasCodec string
 
 const (
-	LogSinkDetailsDataSinkData4EncodingCodecText LogSinkDetailsDataSinkData4EncodingCodec = "text"
-	LogSinkDetailsDataSinkData4EncodingCodecJSON LogSinkDetailsDataSinkData4EncodingCodec = "json"
+	LogSinkDetailsSchemasCodecText LogSinkDetailsSchemasCodec = "text"
+	LogSinkDetailsSchemasCodecJSON LogSinkDetailsSchemasCodec = "json"
 )
 
-func (e LogSinkDetailsDataSinkData4EncodingCodec) ToPointer() *LogSinkDetailsDataSinkData4EncodingCodec {
+func (e LogSinkDetailsSchemasCodec) ToPointer() *LogSinkDetailsSchemasCodec {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData4EncodingCodec) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsSchemasCodec) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -456,246 +456,246 @@ func (e *LogSinkDetailsDataSinkData4EncodingCodec) UnmarshalJSON(data []byte) er
 	case "text":
 		fallthrough
 	case "json":
-		*e = LogSinkDetailsDataSinkData4EncodingCodec(v)
+		*e = LogSinkDetailsSchemasCodec(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData4EncodingCodec: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsSchemasCodec: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData4Encoding - Encoding options
-type LogSinkDetailsDataSinkData4Encoding struct {
+// LogSinkDetailsSchemasEncoding - Encoding options
+type LogSinkDetailsSchemasEncoding struct {
 	// Codec to encode logs in
-	Codec LogSinkDetailsDataSinkData4EncodingCodec `json:"codec"`
+	Codec LogSinkDetailsSchemasCodec `json:"codec"`
 }
 
-func (o *LogSinkDetailsDataSinkData4Encoding) GetCodec() LogSinkDetailsDataSinkData4EncodingCodec {
+func (o *LogSinkDetailsSchemasEncoding) GetCodec() LogSinkDetailsSchemasCodec {
 	if o == nil {
-		return LogSinkDetailsDataSinkData4EncodingCodec("")
+		return LogSinkDetailsSchemasCodec("")
 	}
 	return o.Codec
 }
 
-// LogSinkDetailsDataSinkData4 - HTTP Sink Schema.
-type LogSinkDetailsDataSinkData4 struct {
-	Auth LogSinkDetailsDataSinkData4Auth `json:"auth"`
+// LogSinkDetails4 - HTTP Sink Schema.
+type LogSinkDetails4 struct {
+	Auth LogSinkDetailsSchemasAuth `json:"auth"`
 	// Encoding options
-	Encoding *LogSinkDetailsDataSinkData4Encoding `json:"encoding,omitempty"`
+	Encoding *LogSinkDetailsSchemasEncoding `json:"encoding,omitempty"`
 	// Uri to send logs to.
 	URI string `json:"uri"`
 }
 
-func (o *LogSinkDetailsDataSinkData4) GetAuth() LogSinkDetailsDataSinkData4Auth {
+func (o *LogSinkDetails4) GetAuth() LogSinkDetailsSchemasAuth {
 	if o == nil {
-		return LogSinkDetailsDataSinkData4Auth{}
+		return LogSinkDetailsSchemasAuth{}
 	}
 	return o.Auth
 }
 
-func (o *LogSinkDetailsDataSinkData4) GetEncoding() *LogSinkDetailsDataSinkData4Encoding {
+func (o *LogSinkDetails4) GetEncoding() *LogSinkDetailsSchemasEncoding {
 	if o == nil {
 		return nil
 	}
 	return o.Encoding
 }
 
-func (o *LogSinkDetailsDataSinkData4) GetURI() string {
+func (o *LogSinkDetails4) GetURI() string {
 	if o == nil {
 		return ""
 	}
 	return o.URI
 }
 
-// LogSinkDetailsDataSinkData32AuthenticationStrategy - The authentication strategy.
-type LogSinkDetailsDataSinkData32AuthenticationStrategy string
+// LogSinkDetailsAuthenticationStrategy - The authentication strategy.
+type LogSinkDetailsAuthenticationStrategy string
 
 const (
-	LogSinkDetailsDataSinkData32AuthenticationStrategyToken LogSinkDetailsDataSinkData32AuthenticationStrategy = "token"
+	LogSinkDetailsAuthenticationStrategyToken LogSinkDetailsAuthenticationStrategy = "token"
 )
 
-func (e LogSinkDetailsDataSinkData32AuthenticationStrategy) ToPointer() *LogSinkDetailsDataSinkData32AuthenticationStrategy {
+func (e LogSinkDetailsAuthenticationStrategy) ToPointer() *LogSinkDetailsAuthenticationStrategy {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData32AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsAuthenticationStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "token":
-		*e = LogSinkDetailsDataSinkData32AuthenticationStrategy(v)
+		*e = LogSinkDetailsAuthenticationStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData32AuthenticationStrategy: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsAuthenticationStrategy: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData32 - Authenticate with a token.
-type LogSinkDetailsDataSinkData32 struct {
+// LogSinkDetailsSchemas2 - Authenticate with a token.
+type LogSinkDetailsSchemas2 struct {
 	// The authentication strategy.
-	AuthenticationStrategy LogSinkDetailsDataSinkData32AuthenticationStrategy `json:"authenticationStrategy"`
+	AuthenticationStrategy LogSinkDetailsAuthenticationStrategy `json:"authenticationStrategy"`
 	// The HTTP Token for the Papertrail log destination.
 	Token string `json:"token"`
 	// The uri for the Papertrail log destination.
 	URI string `json:"uri"`
 }
 
-func (o *LogSinkDetailsDataSinkData32) GetAuthenticationStrategy() LogSinkDetailsDataSinkData32AuthenticationStrategy {
+func (o *LogSinkDetailsSchemas2) GetAuthenticationStrategy() LogSinkDetailsAuthenticationStrategy {
 	if o == nil {
-		return LogSinkDetailsDataSinkData32AuthenticationStrategy("")
+		return LogSinkDetailsAuthenticationStrategy("")
 	}
 	return o.AuthenticationStrategy
 }
 
-func (o *LogSinkDetailsDataSinkData32) GetToken() string {
+func (o *LogSinkDetailsSchemas2) GetToken() string {
 	if o == nil {
 		return ""
 	}
 	return o.Token
 }
 
-func (o *LogSinkDetailsDataSinkData32) GetURI() string {
+func (o *LogSinkDetailsSchemas2) GetURI() string {
 	if o == nil {
 		return ""
 	}
 	return o.URI
 }
 
-// LogSinkDetailsDataSinkData31AuthenticationStrategy - The authentication strategy.
-type LogSinkDetailsDataSinkData31AuthenticationStrategy string
+// LogSinkDetailsSchemasAuthenticationStrategy - The authentication strategy.
+type LogSinkDetailsSchemasAuthenticationStrategy string
 
 const (
-	LogSinkDetailsDataSinkData31AuthenticationStrategyPort LogSinkDetailsDataSinkData31AuthenticationStrategy = "port"
+	LogSinkDetailsSchemasAuthenticationStrategyPort LogSinkDetailsSchemasAuthenticationStrategy = "port"
 )
 
-func (e LogSinkDetailsDataSinkData31AuthenticationStrategy) ToPointer() *LogSinkDetailsDataSinkData31AuthenticationStrategy {
+func (e LogSinkDetailsSchemasAuthenticationStrategy) ToPointer() *LogSinkDetailsSchemasAuthenticationStrategy {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData31AuthenticationStrategy) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsSchemasAuthenticationStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "port":
-		*e = LogSinkDetailsDataSinkData31AuthenticationStrategy(v)
+		*e = LogSinkDetailsSchemasAuthenticationStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData31AuthenticationStrategy: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsSchemasAuthenticationStrategy: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData31 - Authenticate with a host/port
-type LogSinkDetailsDataSinkData31 struct {
+// LogSinkDetailsSchemas1 - Authenticate with a host/port
+type LogSinkDetailsSchemas1 struct {
 	// The authentication strategy.
-	AuthenticationStrategy LogSinkDetailsDataSinkData31AuthenticationStrategy `json:"authenticationStrategy"`
+	AuthenticationStrategy LogSinkDetailsSchemasAuthenticationStrategy `json:"authenticationStrategy"`
 	// The host for the Papertrail log destination.
 	Host string `json:"host"`
 	// The port for the Papertrail log destination.
 	Port float32 `json:"port"`
 }
 
-func (o *LogSinkDetailsDataSinkData31) GetAuthenticationStrategy() LogSinkDetailsDataSinkData31AuthenticationStrategy {
+func (o *LogSinkDetailsSchemas1) GetAuthenticationStrategy() LogSinkDetailsSchemasAuthenticationStrategy {
 	if o == nil {
-		return LogSinkDetailsDataSinkData31AuthenticationStrategy("")
+		return LogSinkDetailsSchemasAuthenticationStrategy("")
 	}
 	return o.AuthenticationStrategy
 }
 
-func (o *LogSinkDetailsDataSinkData31) GetHost() string {
+func (o *LogSinkDetailsSchemas1) GetHost() string {
 	if o == nil {
 		return ""
 	}
 	return o.Host
 }
 
-func (o *LogSinkDetailsDataSinkData31) GetPort() float32 {
+func (o *LogSinkDetailsSchemas1) GetPort() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Port
 }
 
-type LogSinkDetailsDataSinkData3Type string
+type LogSinkDetails3Type string
 
 const (
-	LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData31 LogSinkDetailsDataSinkData3Type = "LogSinkDetails_data_sinkData_3_1"
-	LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData32 LogSinkDetailsDataSinkData3Type = "LogSinkDetails_data_sinkData_3_2"
+	LogSinkDetails3TypeLogSinkDetailsSchemas1 LogSinkDetails3Type = "LogSinkDetails_Schemas_1"
+	LogSinkDetails3TypeLogSinkDetailsSchemas2 LogSinkDetails3Type = "LogSinkDetails_Schemas_2"
 )
 
-type LogSinkDetailsDataSinkData3 struct {
-	LogSinkDetailsDataSinkData31 *LogSinkDetailsDataSinkData31
-	LogSinkDetailsDataSinkData32 *LogSinkDetailsDataSinkData32
+type LogSinkDetails3 struct {
+	LogSinkDetailsSchemas1 *LogSinkDetailsSchemas1
+	LogSinkDetailsSchemas2 *LogSinkDetailsSchemas2
 
-	Type LogSinkDetailsDataSinkData3Type
+	Type LogSinkDetails3Type
 }
 
-func CreateLogSinkDetailsDataSinkData3LogSinkDetailsDataSinkData31(logSinkDetailsDataSinkData31 LogSinkDetailsDataSinkData31) LogSinkDetailsDataSinkData3 {
-	typ := LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData31
+func CreateLogSinkDetails3LogSinkDetailsSchemas1(logSinkDetailsSchemas1 LogSinkDetailsSchemas1) LogSinkDetails3 {
+	typ := LogSinkDetails3TypeLogSinkDetailsSchemas1
 
-	return LogSinkDetailsDataSinkData3{
-		LogSinkDetailsDataSinkData31: &logSinkDetailsDataSinkData31,
-		Type:                         typ,
+	return LogSinkDetails3{
+		LogSinkDetailsSchemas1: &logSinkDetailsSchemas1,
+		Type:                   typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkData3LogSinkDetailsDataSinkData32(logSinkDetailsDataSinkData32 LogSinkDetailsDataSinkData32) LogSinkDetailsDataSinkData3 {
-	typ := LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData32
+func CreateLogSinkDetails3LogSinkDetailsSchemas2(logSinkDetailsSchemas2 LogSinkDetailsSchemas2) LogSinkDetails3 {
+	typ := LogSinkDetails3TypeLogSinkDetailsSchemas2
 
-	return LogSinkDetailsDataSinkData3{
-		LogSinkDetailsDataSinkData32: &logSinkDetailsDataSinkData32,
-		Type:                         typ,
+	return LogSinkDetails3{
+		LogSinkDetailsSchemas2: &logSinkDetailsSchemas2,
+		Type:                   typ,
 	}
 }
 
-func (u *LogSinkDetailsDataSinkData3) UnmarshalJSON(data []byte) error {
+func (u *LogSinkDetails3) UnmarshalJSON(data []byte) error {
 
-	logSinkDetailsDataSinkData31 := LogSinkDetailsDataSinkData31{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData31, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData31 = &logSinkDetailsDataSinkData31
-		u.Type = LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData31
+	logSinkDetailsSchemas1 := LogSinkDetailsSchemas1{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsSchemas1, "", true, true); err == nil {
+		u.LogSinkDetailsSchemas1 = &logSinkDetailsSchemas1
+		u.Type = LogSinkDetails3TypeLogSinkDetailsSchemas1
 		return nil
 	}
 
-	logSinkDetailsDataSinkData32 := LogSinkDetailsDataSinkData32{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData32, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData32 = &logSinkDetailsDataSinkData32
-		u.Type = LogSinkDetailsDataSinkData3TypeLogSinkDetailsDataSinkData32
+	logSinkDetailsSchemas2 := LogSinkDetailsSchemas2{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetailsSchemas2, "", true, true); err == nil {
+		u.LogSinkDetailsSchemas2 = &logSinkDetailsSchemas2
+		u.Type = LogSinkDetails3TypeLogSinkDetailsSchemas2
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u LogSinkDetailsDataSinkData3) MarshalJSON() ([]byte, error) {
-	if u.LogSinkDetailsDataSinkData31 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData31, "", true)
+func (u LogSinkDetails3) MarshalJSON() ([]byte, error) {
+	if u.LogSinkDetailsSchemas1 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsSchemas1, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData32 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData32, "", true)
+	if u.LogSinkDetailsSchemas2 != nil {
+		return utils.MarshalJSON(u.LogSinkDetailsSchemas2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// LogSinkDetailsDataSinkData2Region - The Datadog region.
-type LogSinkDetailsDataSinkData2Region string
+// LogSinkDetailsRegion - The Datadog region.
+type LogSinkDetailsRegion string
 
 const (
-	LogSinkDetailsDataSinkData2RegionEu  LogSinkDetailsDataSinkData2Region = "eu"
-	LogSinkDetailsDataSinkData2RegionUs  LogSinkDetailsDataSinkData2Region = "us"
-	LogSinkDetailsDataSinkData2RegionUs3 LogSinkDetailsDataSinkData2Region = "us3"
-	LogSinkDetailsDataSinkData2RegionUs5 LogSinkDetailsDataSinkData2Region = "us5"
+	LogSinkDetailsRegionEu  LogSinkDetailsRegion = "eu"
+	LogSinkDetailsRegionUs  LogSinkDetailsRegion = "us"
+	LogSinkDetailsRegionUs3 LogSinkDetailsRegion = "us3"
+	LogSinkDetailsRegionUs5 LogSinkDetailsRegion = "us5"
 )
 
-func (e LogSinkDetailsDataSinkData2Region) ToPointer() *LogSinkDetailsDataSinkData2Region {
+func (e LogSinkDetailsRegion) ToPointer() *LogSinkDetailsRegion {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData2Region) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsRegion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -708,104 +708,104 @@ func (e *LogSinkDetailsDataSinkData2Region) UnmarshalJSON(data []byte) error {
 	case "us3":
 		fallthrough
 	case "us5":
-		*e = LogSinkDetailsDataSinkData2Region(v)
+		*e = LogSinkDetailsRegion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData2Region: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsRegion: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData2 - Data about the log sink.
-type LogSinkDetailsDataSinkData2 struct {
+// LogSinkDetails2 - Data about the log sink.
+type LogSinkDetails2 struct {
 	// The Datadog API key.
 	DefaultAPIKey string `json:"default_api_key"`
 	// The Datadog region.
-	Region LogSinkDetailsDataSinkData2Region `json:"region"`
+	Region LogSinkDetailsRegion `json:"region"`
 }
 
-func (o *LogSinkDetailsDataSinkData2) GetDefaultAPIKey() string {
+func (o *LogSinkDetails2) GetDefaultAPIKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.DefaultAPIKey
 }
 
-func (o *LogSinkDetailsDataSinkData2) GetRegion() LogSinkDetailsDataSinkData2Region {
+func (o *LogSinkDetails2) GetRegion() LogSinkDetailsRegion {
 	if o == nil {
-		return LogSinkDetailsDataSinkData2Region("")
+		return LogSinkDetailsRegion("")
 	}
 	return o.Region
 }
 
-// LogSinkDetailsDataSinkData1AuthStrategy - The authentication strategy.
-type LogSinkDetailsDataSinkData1AuthStrategy string
+// LogSinkDetailsStrategy - The authentication strategy.
+type LogSinkDetailsStrategy string
 
 const (
-	LogSinkDetailsDataSinkData1AuthStrategyBasic LogSinkDetailsDataSinkData1AuthStrategy = "basic"
+	LogSinkDetailsStrategyBasic LogSinkDetailsStrategy = "basic"
 )
 
-func (e LogSinkDetailsDataSinkData1AuthStrategy) ToPointer() *LogSinkDetailsDataSinkData1AuthStrategy {
+func (e LogSinkDetailsStrategy) ToPointer() *LogSinkDetailsStrategy {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData1AuthStrategy) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "basic":
-		*e = LogSinkDetailsDataSinkData1AuthStrategy(v)
+		*e = LogSinkDetailsStrategy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData1AuthStrategy: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsStrategy: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData1Auth - Object containing authentication data for the log sink.
-type LogSinkDetailsDataSinkData1Auth struct {
+// LogSinkDetailsAuth - Object containing authentication data for the log sink.
+type LogSinkDetailsAuth struct {
 	// The password for the log sink.
 	Password *string `json:"password,omitempty"`
 	// The authentication strategy.
-	Strategy *LogSinkDetailsDataSinkData1AuthStrategy `json:"strategy,omitempty"`
+	Strategy *LogSinkDetailsStrategy `json:"strategy,omitempty"`
 	// The username for the log sink.
 	User *string `json:"user,omitempty"`
 }
 
-func (o *LogSinkDetailsDataSinkData1Auth) GetPassword() *string {
+func (o *LogSinkDetailsAuth) GetPassword() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Password
 }
 
-func (o *LogSinkDetailsDataSinkData1Auth) GetStrategy() *LogSinkDetailsDataSinkData1AuthStrategy {
+func (o *LogSinkDetailsAuth) GetStrategy() *LogSinkDetailsStrategy {
 	if o == nil {
 		return nil
 	}
 	return o.Strategy
 }
 
-func (o *LogSinkDetailsDataSinkData1Auth) GetUser() *string {
+func (o *LogSinkDetailsAuth) GetUser() *string {
 	if o == nil {
 		return nil
 	}
 	return o.User
 }
 
-// LogSinkDetailsDataSinkData1EncodingCodec - Codec to encode logs in
-type LogSinkDetailsDataSinkData1EncodingCodec string
+// LogSinkDetailsCodec - Codec to encode logs in
+type LogSinkDetailsCodec string
 
 const (
-	LogSinkDetailsDataSinkData1EncodingCodecText LogSinkDetailsDataSinkData1EncodingCodec = "text"
-	LogSinkDetailsDataSinkData1EncodingCodecJSON LogSinkDetailsDataSinkData1EncodingCodec = "json"
+	LogSinkDetailsCodecText LogSinkDetailsCodec = "text"
+	LogSinkDetailsCodecJSON LogSinkDetailsCodec = "json"
 )
 
-func (e LogSinkDetailsDataSinkData1EncodingCodec) ToPointer() *LogSinkDetailsDataSinkData1EncodingCodec {
+func (e LogSinkDetailsCodec) ToPointer() *LogSinkDetailsCodec {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkData1EncodingCodec) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsCodec) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -814,273 +814,273 @@ func (e *LogSinkDetailsDataSinkData1EncodingCodec) UnmarshalJSON(data []byte) er
 	case "text":
 		fallthrough
 	case "json":
-		*e = LogSinkDetailsDataSinkData1EncodingCodec(v)
+		*e = LogSinkDetailsCodec(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkData1EncodingCodec: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsCodec: %v", v)
 	}
 }
 
-// LogSinkDetailsDataSinkData1Encoding - Encoding options
-type LogSinkDetailsDataSinkData1Encoding struct {
+// LogSinkDetailsEncoding - Encoding options
+type LogSinkDetailsEncoding struct {
 	// Codec to encode logs in
-	Codec LogSinkDetailsDataSinkData1EncodingCodec `json:"codec"`
+	Codec LogSinkDetailsCodec `json:"codec"`
 }
 
-func (o *LogSinkDetailsDataSinkData1Encoding) GetCodec() LogSinkDetailsDataSinkData1EncodingCodec {
+func (o *LogSinkDetailsEncoding) GetCodec() LogSinkDetailsCodec {
 	if o == nil {
-		return LogSinkDetailsDataSinkData1EncodingCodec("")
+		return LogSinkDetailsCodec("")
 	}
 	return o.Codec
 }
 
-// LogSinkDetailsDataSinkData1 - Data about the log sink.
-type LogSinkDetailsDataSinkData1 struct {
+// LogSinkDetails1 - Data about the log sink.
+type LogSinkDetails1 struct {
 	// Object containing authentication data for the log sink.
-	Auth *LogSinkDetailsDataSinkData1Auth `json:"auth,omitempty"`
+	Auth *LogSinkDetailsAuth `json:"auth,omitempty"`
 	// Encoding options
-	Encoding *LogSinkDetailsDataSinkData1Encoding `json:"encoding,omitempty"`
+	Encoding *LogSinkDetailsEncoding `json:"encoding,omitempty"`
 	// The endpoint of the Loki log sink.
 	Endpoint string `json:"endpoint"`
 }
 
-func (o *LogSinkDetailsDataSinkData1) GetAuth() *LogSinkDetailsDataSinkData1Auth {
+func (o *LogSinkDetails1) GetAuth() *LogSinkDetailsAuth {
 	if o == nil {
 		return nil
 	}
 	return o.Auth
 }
 
-func (o *LogSinkDetailsDataSinkData1) GetEncoding() *LogSinkDetailsDataSinkData1Encoding {
+func (o *LogSinkDetails1) GetEncoding() *LogSinkDetailsEncoding {
 	if o == nil {
 		return nil
 	}
 	return o.Encoding
 }
 
-func (o *LogSinkDetailsDataSinkData1) GetEndpoint() string {
+func (o *LogSinkDetails1) GetEndpoint() string {
 	if o == nil {
 		return ""
 	}
 	return o.Endpoint
 }
 
-type LogSinkDetailsDataSinkDataType string
+type LogSinkDetailsSinkDataType string
 
 const (
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData1 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_1"
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData2 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_2"
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData3 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_3"
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData4 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_4"
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData5 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_5"
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData6 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_6"
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData7 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_7"
-	LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData8 LogSinkDetailsDataSinkDataType = "LogSinkDetails_data_sinkData_8"
+	LogSinkDetailsSinkDataTypeLogSinkDetails1 LogSinkDetailsSinkDataType = "LogSinkDetails_1"
+	LogSinkDetailsSinkDataTypeLogSinkDetails2 LogSinkDetailsSinkDataType = "LogSinkDetails_2"
+	LogSinkDetailsSinkDataTypeLogSinkDetails3 LogSinkDetailsSinkDataType = "LogSinkDetails_3"
+	LogSinkDetailsSinkDataTypeLogSinkDetails4 LogSinkDetailsSinkDataType = "LogSinkDetails_4"
+	LogSinkDetailsSinkDataTypeLogSinkDetails5 LogSinkDetailsSinkDataType = "LogSinkDetails_5"
+	LogSinkDetailsSinkDataTypeLogSinkDetails6 LogSinkDetailsSinkDataType = "LogSinkDetails_6"
+	LogSinkDetailsSinkDataTypeLogSinkDetails7 LogSinkDetailsSinkDataType = "LogSinkDetails_7"
+	LogSinkDetailsSinkDataTypeLogSinkDetails8 LogSinkDetailsSinkDataType = "LogSinkDetails_8"
 )
 
-type LogSinkDetailsDataSinkData struct {
-	LogSinkDetailsDataSinkData1 *LogSinkDetailsDataSinkData1
-	LogSinkDetailsDataSinkData2 *LogSinkDetailsDataSinkData2
-	LogSinkDetailsDataSinkData3 *LogSinkDetailsDataSinkData3
-	LogSinkDetailsDataSinkData4 *LogSinkDetailsDataSinkData4
-	LogSinkDetailsDataSinkData5 *LogSinkDetailsDataSinkData5
-	LogSinkDetailsDataSinkData6 *LogSinkDetailsDataSinkData6
-	LogSinkDetailsDataSinkData7 *LogSinkDetailsDataSinkData7
-	LogSinkDetailsDataSinkData8 *LogSinkDetailsDataSinkData8
+type LogSinkDetailsSinkData struct {
+	LogSinkDetails1 *LogSinkDetails1
+	LogSinkDetails2 *LogSinkDetails2
+	LogSinkDetails3 *LogSinkDetails3
+	LogSinkDetails4 *LogSinkDetails4
+	LogSinkDetails5 *LogSinkDetails5
+	LogSinkDetails6 *LogSinkDetails6
+	LogSinkDetails7 *LogSinkDetails7
+	LogSinkDetails8 *LogSinkDetails8
 
-	Type LogSinkDetailsDataSinkDataType
+	Type LogSinkDetailsSinkDataType
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData1(logSinkDetailsDataSinkData1 LogSinkDetailsDataSinkData1) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData1
+func CreateLogSinkDetailsSinkDataLogSinkDetails1(logSinkDetails1 LogSinkDetails1) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails1
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData1: &logSinkDetailsDataSinkData1,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails1: &logSinkDetails1,
+		Type:            typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData2(logSinkDetailsDataSinkData2 LogSinkDetailsDataSinkData2) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData2
+func CreateLogSinkDetailsSinkDataLogSinkDetails2(logSinkDetails2 LogSinkDetails2) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails2
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData2: &logSinkDetailsDataSinkData2,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails2: &logSinkDetails2,
+		Type:            typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData3(logSinkDetailsDataSinkData3 LogSinkDetailsDataSinkData3) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData3
+func CreateLogSinkDetailsSinkDataLogSinkDetails3(logSinkDetails3 LogSinkDetails3) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails3
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData3: &logSinkDetailsDataSinkData3,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails3: &logSinkDetails3,
+		Type:            typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData4(logSinkDetailsDataSinkData4 LogSinkDetailsDataSinkData4) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData4
+func CreateLogSinkDetailsSinkDataLogSinkDetails4(logSinkDetails4 LogSinkDetails4) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails4
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData4: &logSinkDetailsDataSinkData4,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails4: &logSinkDetails4,
+		Type:            typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData5(logSinkDetailsDataSinkData5 LogSinkDetailsDataSinkData5) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData5
+func CreateLogSinkDetailsSinkDataLogSinkDetails5(logSinkDetails5 LogSinkDetails5) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails5
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData5: &logSinkDetailsDataSinkData5,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails5: &logSinkDetails5,
+		Type:            typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData6(logSinkDetailsDataSinkData6 LogSinkDetailsDataSinkData6) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData6
+func CreateLogSinkDetailsSinkDataLogSinkDetails6(logSinkDetails6 LogSinkDetails6) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails6
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData6: &logSinkDetailsDataSinkData6,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails6: &logSinkDetails6,
+		Type:            typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData7(logSinkDetailsDataSinkData7 LogSinkDetailsDataSinkData7) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData7
+func CreateLogSinkDetailsSinkDataLogSinkDetails7(logSinkDetails7 LogSinkDetails7) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails7
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData7: &logSinkDetailsDataSinkData7,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails7: &logSinkDetails7,
+		Type:            typ,
 	}
 }
 
-func CreateLogSinkDetailsDataSinkDataLogSinkDetailsDataSinkData8(logSinkDetailsDataSinkData8 LogSinkDetailsDataSinkData8) LogSinkDetailsDataSinkData {
-	typ := LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData8
+func CreateLogSinkDetailsSinkDataLogSinkDetails8(logSinkDetails8 LogSinkDetails8) LogSinkDetailsSinkData {
+	typ := LogSinkDetailsSinkDataTypeLogSinkDetails8
 
-	return LogSinkDetailsDataSinkData{
-		LogSinkDetailsDataSinkData8: &logSinkDetailsDataSinkData8,
-		Type:                        typ,
+	return LogSinkDetailsSinkData{
+		LogSinkDetails8: &logSinkDetails8,
+		Type:            typ,
 	}
 }
 
-func (u *LogSinkDetailsDataSinkData) UnmarshalJSON(data []byte) error {
+func (u *LogSinkDetailsSinkData) UnmarshalJSON(data []byte) error {
 
-	logSinkDetailsDataSinkData6 := LogSinkDetailsDataSinkData6{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData6, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData6 = &logSinkDetailsDataSinkData6
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData6
+	logSinkDetails6 := LogSinkDetails6{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails6, "", true, true); err == nil {
+		u.LogSinkDetails6 = &logSinkDetails6
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails6
 		return nil
 	}
 
-	logSinkDetailsDataSinkData7 := LogSinkDetailsDataSinkData7{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData7, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData7 = &logSinkDetailsDataSinkData7
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData7
+	logSinkDetails7 := LogSinkDetails7{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails7, "", true, true); err == nil {
+		u.LogSinkDetails7 = &logSinkDetails7
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails7
 		return nil
 	}
 
-	logSinkDetailsDataSinkData2 := LogSinkDetailsDataSinkData2{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData2, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData2 = &logSinkDetailsDataSinkData2
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData2
+	logSinkDetails2 := LogSinkDetails2{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails2, "", true, true); err == nil {
+		u.LogSinkDetails2 = &logSinkDetails2
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails2
 		return nil
 	}
 
-	logSinkDetailsDataSinkData8 := LogSinkDetailsDataSinkData8{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData8, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData8 = &logSinkDetailsDataSinkData8
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData8
+	logSinkDetails8 := LogSinkDetails8{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails8, "", true, true); err == nil {
+		u.LogSinkDetails8 = &logSinkDetails8
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails8
 		return nil
 	}
 
-	logSinkDetailsDataSinkData1 := LogSinkDetailsDataSinkData1{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData1, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData1 = &logSinkDetailsDataSinkData1
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData1
+	logSinkDetails1 := LogSinkDetails1{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails1, "", true, true); err == nil {
+		u.LogSinkDetails1 = &logSinkDetails1
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails1
 		return nil
 	}
 
-	logSinkDetailsDataSinkData4 := LogSinkDetailsDataSinkData4{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData4, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData4 = &logSinkDetailsDataSinkData4
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData4
+	logSinkDetails4 := LogSinkDetails4{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails4, "", true, true); err == nil {
+		u.LogSinkDetails4 = &logSinkDetails4
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails4
 		return nil
 	}
 
-	logSinkDetailsDataSinkData5 := LogSinkDetailsDataSinkData5{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData5, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData5 = &logSinkDetailsDataSinkData5
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData5
+	logSinkDetails5 := LogSinkDetails5{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails5, "", true, true); err == nil {
+		u.LogSinkDetails5 = &logSinkDetails5
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails5
 		return nil
 	}
 
-	logSinkDetailsDataSinkData3 := LogSinkDetailsDataSinkData3{}
-	if err := utils.UnmarshalJSON(data, &logSinkDetailsDataSinkData3, "", true, true); err == nil {
-		u.LogSinkDetailsDataSinkData3 = &logSinkDetailsDataSinkData3
-		u.Type = LogSinkDetailsDataSinkDataTypeLogSinkDetailsDataSinkData3
+	logSinkDetails3 := LogSinkDetails3{}
+	if err := utils.UnmarshalJSON(data, &logSinkDetails3, "", true, true); err == nil {
+		u.LogSinkDetails3 = &logSinkDetails3
+		u.Type = LogSinkDetailsSinkDataTypeLogSinkDetails3
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u LogSinkDetailsDataSinkData) MarshalJSON() ([]byte, error) {
-	if u.LogSinkDetailsDataSinkData1 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData1, "", true)
+func (u LogSinkDetailsSinkData) MarshalJSON() ([]byte, error) {
+	if u.LogSinkDetails1 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails1, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData2 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData2, "", true)
+	if u.LogSinkDetails2 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails2, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData3 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData3, "", true)
+	if u.LogSinkDetails3 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails3, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData4 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData4, "", true)
+	if u.LogSinkDetails4 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails4, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData5 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData5, "", true)
+	if u.LogSinkDetails5 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails5, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData6 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData6, "", true)
+	if u.LogSinkDetails6 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails6, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData7 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData7, "", true)
+	if u.LogSinkDetails7 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails7, "", true)
 	}
 
-	if u.LogSinkDetailsDataSinkData8 != nil {
-		return utils.MarshalJSON(u.LogSinkDetailsDataSinkData8, "", true)
+	if u.LogSinkDetails8 != nil {
+		return utils.MarshalJSON(u.LogSinkDetails8, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// LogSinkDetailsDataSinkType - The type of the log sink.
-type LogSinkDetailsDataSinkType string
+// LogSinkDetailsSinkType - The type of the log sink.
+type LogSinkDetailsSinkType string
 
 const (
-	LogSinkDetailsDataSinkTypeLoki        LogSinkDetailsDataSinkType = "loki"
-	LogSinkDetailsDataSinkTypeDatadogLogs LogSinkDetailsDataSinkType = "datadog_logs"
-	LogSinkDetailsDataSinkTypePapertrail  LogSinkDetailsDataSinkType = "papertrail"
-	LogSinkDetailsDataSinkTypeHTTP        LogSinkDetailsDataSinkType = "http"
-	LogSinkDetailsDataSinkTypeAwsS3       LogSinkDetailsDataSinkType = "aws_s3"
-	LogSinkDetailsDataSinkTypeLogdna      LogSinkDetailsDataSinkType = "logdna"
-	LogSinkDetailsDataSinkTypeCoralogix   LogSinkDetailsDataSinkType = "coralogix"
-	LogSinkDetailsDataSinkTypeLogtail     LogSinkDetailsDataSinkType = "logtail"
-	LogSinkDetailsDataSinkTypeHoneycomb   LogSinkDetailsDataSinkType = "honeycomb"
-	LogSinkDetailsDataSinkTypeLogzio      LogSinkDetailsDataSinkType = "logzio"
+	LogSinkDetailsSinkTypeLoki        LogSinkDetailsSinkType = "loki"
+	LogSinkDetailsSinkTypeDatadogLogs LogSinkDetailsSinkType = "datadog_logs"
+	LogSinkDetailsSinkTypePapertrail  LogSinkDetailsSinkType = "papertrail"
+	LogSinkDetailsSinkTypeHTTP        LogSinkDetailsSinkType = "http"
+	LogSinkDetailsSinkTypeAwsS3       LogSinkDetailsSinkType = "aws_s3"
+	LogSinkDetailsSinkTypeLogdna      LogSinkDetailsSinkType = "logdna"
+	LogSinkDetailsSinkTypeCoralogix   LogSinkDetailsSinkType = "coralogix"
+	LogSinkDetailsSinkTypeLogtail     LogSinkDetailsSinkType = "logtail"
+	LogSinkDetailsSinkTypeHoneycomb   LogSinkDetailsSinkType = "honeycomb"
+	LogSinkDetailsSinkTypeLogzio      LogSinkDetailsSinkType = "logzio"
 )
 
-func (e LogSinkDetailsDataSinkType) ToPointer() *LogSinkDetailsDataSinkType {
+func (e LogSinkDetailsSinkType) ToPointer() *LogSinkDetailsSinkType {
 	return &e
 }
 
-func (e *LogSinkDetailsDataSinkType) UnmarshalJSON(data []byte) error {
+func (e *LogSinkDetailsSinkType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1105,10 +1105,10 @@ func (e *LogSinkDetailsDataSinkType) UnmarshalJSON(data []byte) error {
 	case "honeycomb":
 		fallthrough
 	case "logzio":
-		*e = LogSinkDetailsDataSinkType(v)
+		*e = LogSinkDetailsSinkType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogSinkDetailsDataSinkType: %v", v)
+		return fmt.Errorf("invalid value for LogSinkDetailsSinkType: %v", v)
 	}
 }
 
@@ -1127,9 +1127,9 @@ type LogSinkDetailsData struct {
 	// If `true`, only logs from the projects in `projects` will be sent to the log sink.
 	Restricted bool `json:"restricted"`
 	// Data about the log sink.
-	SinkData *LogSinkDetailsDataSinkData `json:"sinkData,omitempty"`
+	SinkData *LogSinkDetailsSinkData `json:"sinkData,omitempty"`
 	// The type of the log sink.
-	SinkType LogSinkDetailsDataSinkType `json:"sinkType"`
+	SinkType LogSinkDetailsSinkType `json:"sinkType"`
 	// Timestamp of when the log sink was last updated.
 	UpdatedAt time.Time `json:"updatedAt"`
 	// If `true`, we will do additional parsing on your JSON formatted log lines and your extract custom labels
@@ -1189,16 +1189,16 @@ func (o *LogSinkDetailsData) GetRestricted() bool {
 	return o.Restricted
 }
 
-func (o *LogSinkDetailsData) GetSinkData() *LogSinkDetailsDataSinkData {
+func (o *LogSinkDetailsData) GetSinkData() *LogSinkDetailsSinkData {
 	if o == nil {
 		return nil
 	}
 	return o.SinkData
 }
 
-func (o *LogSinkDetailsData) GetSinkType() LogSinkDetailsDataSinkType {
+func (o *LogSinkDetailsData) GetSinkType() LogSinkDetailsSinkType {
 	if o == nil {
-		return LogSinkDetailsDataSinkType("")
+		return LogSinkDetailsSinkType("")
 	}
 	return o.SinkType
 }

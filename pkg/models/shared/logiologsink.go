@@ -5,27 +5,27 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// LogioLogSinkSinkDataRegion - Your Logzio region code
-type LogioLogSinkSinkDataRegion string
+// LogioLogSinkRegion - Your Logzio region code
+type LogioLogSinkRegion string
 
 const (
-	LogioLogSinkSinkDataRegionEu LogioLogSinkSinkDataRegion = "eu"
-	LogioLogSinkSinkDataRegionUk LogioLogSinkSinkDataRegion = "uk"
-	LogioLogSinkSinkDataRegionUs LogioLogSinkSinkDataRegion = "us"
-	LogioLogSinkSinkDataRegionCa LogioLogSinkSinkDataRegion = "ca"
-	LogioLogSinkSinkDataRegionAu LogioLogSinkSinkDataRegion = "au"
-	LogioLogSinkSinkDataRegionNl LogioLogSinkSinkDataRegion = "nl"
-	LogioLogSinkSinkDataRegionWa LogioLogSinkSinkDataRegion = "wa"
+	LogioLogSinkRegionEu LogioLogSinkRegion = "eu"
+	LogioLogSinkRegionUk LogioLogSinkRegion = "uk"
+	LogioLogSinkRegionUs LogioLogSinkRegion = "us"
+	LogioLogSinkRegionCa LogioLogSinkRegion = "ca"
+	LogioLogSinkRegionAu LogioLogSinkRegion = "au"
+	LogioLogSinkRegionNl LogioLogSinkRegion = "nl"
+	LogioLogSinkRegionWa LogioLogSinkRegion = "wa"
 )
 
-func (e LogioLogSinkSinkDataRegion) ToPointer() *LogioLogSinkSinkDataRegion {
+func (e LogioLogSinkRegion) ToPointer() *LogioLogSinkRegion {
 	return &e
 }
 
-func (e *LogioLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
+func (e *LogioLogSinkRegion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -44,24 +44,24 @@ func (e *LogioLogSinkSinkDataRegion) UnmarshalJSON(data []byte) error {
 	case "nl":
 		fallthrough
 	case "wa":
-		*e = LogioLogSinkSinkDataRegion(v)
+		*e = LogioLogSinkRegion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LogioLogSinkSinkDataRegion: %v", v)
+		return fmt.Errorf("invalid value for LogioLogSinkRegion: %v", v)
 	}
 }
 
 // LogioLogSinkSinkData - Details about the Logz.io log sink.
 type LogioLogSinkSinkData struct {
 	// Your Logzio region code
-	Region LogioLogSinkSinkDataRegion `json:"region"`
+	Region LogioLogSinkRegion `json:"region"`
 	// The Log Shipping Token of the account you want to ship to
 	Token string `json:"token"`
 }
 
-func (o *LogioLogSinkSinkData) GetRegion() LogioLogSinkSinkDataRegion {
+func (o *LogioLogSinkSinkData) GetRegion() LogioLogSinkRegion {
 	if o == nil {
-		return LogioLogSinkSinkDataRegion("")
+		return LogioLogSinkRegion("")
 	}
 	return o.Region
 }

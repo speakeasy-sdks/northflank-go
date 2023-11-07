@@ -6,28 +6,28 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-type addons struct {
+type Addons struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAddons(sdkConfig sdkConfiguration) *addons {
-	return &addons{
+func newAddons(sdkConfig sdkConfiguration) *Addons {
+	return &Addons{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // ListAddonTypes - List addon types
 // Gets information about the available addon types
-func (s *addons) ListAddonTypes(ctx context.Context) (*operations.ListAddonTypesResponse, error) {
+func (s *Addons) ListAddonTypes(ctx context.Context) (*operations.ListAddonTypesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/addon-types"
 
@@ -75,6 +75,10 @@ func (s *addons) ListAddonTypes(ctx context.Context) (*operations.ListAddonTypes
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
 // BranchesResultData - Result data.
@@ -57,8 +57,8 @@ func (o *BranchesResultData) GetVcsLinkID() *string {
 	return o.VcsLinkID
 }
 
-// BranchesResultPagination - Data about the endpoint pagination.
-type BranchesResultPagination struct {
+// Pagination - Data about the endpoint pagination.
+type Pagination struct {
 	// The number of results returned by this request.
 	Count float32 `json:"count"`
 	// The cursor to access the next page of results.
@@ -67,21 +67,21 @@ type BranchesResultPagination struct {
 	HasNextPage bool `json:"hasNextPage"`
 }
 
-func (o *BranchesResultPagination) GetCount() float32 {
+func (o *Pagination) GetCount() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Count
 }
 
-func (o *BranchesResultPagination) GetCursor() *string {
+func (o *Pagination) GetCursor() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Cursor
 }
 
-func (o *BranchesResultPagination) GetHasNextPage() bool {
+func (o *Pagination) GetHasNextPage() bool {
 	if o == nil {
 		return false
 	}
@@ -93,7 +93,7 @@ type BranchesResult struct {
 	// Result data.
 	Data BranchesResultData `json:"data"`
 	// Data about the endpoint pagination.
-	Pagination BranchesResultPagination `json:"pagination"`
+	Pagination Pagination `json:"pagination"`
 }
 
 func (o *BranchesResult) GetData() BranchesResultData {
@@ -103,9 +103,9 @@ func (o *BranchesResult) GetData() BranchesResultData {
 	return o.Data
 }
 
-func (o *BranchesResult) GetPagination() BranchesResultPagination {
+func (o *BranchesResult) GetPagination() Pagination {
 	if o == nil {
-		return BranchesResultPagination{}
+		return Pagination{}
 	}
 	return o.Pagination
 }

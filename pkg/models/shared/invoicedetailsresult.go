@@ -7,43 +7,43 @@ import (
 	"fmt"
 )
 
-// InvoiceDetailsResultDataPeriod - Information about the billing period of the invoice.
-type InvoiceDetailsResultDataPeriod struct {
+// Period - Information about the billing period of the invoice.
+type Period struct {
 	// Unix timestamp of the end of the billing period.
 	End float32 `json:"end"`
 	// Unix timestamp of the start of the billing period.
 	Start float32 `json:"start"`
 }
 
-func (o *InvoiceDetailsResultDataPeriod) GetEnd() float32 {
+func (o *Period) GetEnd() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.End
 }
 
-func (o *InvoiceDetailsResultDataPeriod) GetStart() float32 {
+func (o *Period) GetStart() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Start
 }
 
-// InvoiceDetailsResultDataProjectsItemsNfObjectType - The type of the object.
-type InvoiceDetailsResultDataProjectsItemsNfObjectType string
+// NfObjectType - The type of the object.
+type NfObjectType string
 
 const (
-	InvoiceDetailsResultDataProjectsItemsNfObjectTypeJob     InvoiceDetailsResultDataProjectsItemsNfObjectType = "job"
-	InvoiceDetailsResultDataProjectsItemsNfObjectTypeService InvoiceDetailsResultDataProjectsItemsNfObjectType = "service"
-	InvoiceDetailsResultDataProjectsItemsNfObjectTypeAddon   InvoiceDetailsResultDataProjectsItemsNfObjectType = "addon"
-	InvoiceDetailsResultDataProjectsItemsNfObjectTypeVolume  InvoiceDetailsResultDataProjectsItemsNfObjectType = "volume"
+	NfObjectTypeJob     NfObjectType = "job"
+	NfObjectTypeService NfObjectType = "service"
+	NfObjectTypeAddon   NfObjectType = "addon"
+	NfObjectTypeVolume  NfObjectType = "volume"
 )
 
-func (e InvoiceDetailsResultDataProjectsItemsNfObjectType) ToPointer() *InvoiceDetailsResultDataProjectsItemsNfObjectType {
+func (e NfObjectType) ToPointer() *NfObjectType {
 	return &e
 }
 
-func (e *InvoiceDetailsResultDataProjectsItemsNfObjectType) UnmarshalJSON(data []byte) error {
+func (e *NfObjectType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -56,15 +56,15 @@ func (e *InvoiceDetailsResultDataProjectsItemsNfObjectType) UnmarshalJSON(data [
 	case "addon":
 		fallthrough
 	case "volume":
-		*e = InvoiceDetailsResultDataProjectsItemsNfObjectType(v)
+		*e = NfObjectType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for InvoiceDetailsResultDataProjectsItemsNfObjectType: %v", v)
+		return fmt.Errorf("invalid value for NfObjectType: %v", v)
 	}
 }
 
-// InvoiceDetailsResultDataProjectsItemsPrice - Details about the price of a object, broken down by resource type.
-type InvoiceDetailsResultDataProjectsItemsPrice struct {
+// InvoiceDetailsResultPrice - Details about the price of a object, broken down by resource type.
+type InvoiceDetailsResultPrice struct {
 	// Price of CPU usage for this object, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for this object, in cents.
@@ -75,76 +75,76 @@ type InvoiceDetailsResultDataProjectsItemsPrice struct {
 	Total float32 `json:"total"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsItemsPrice) GetCPU() float32 {
+func (o *InvoiceDetailsResultPrice) GetCPU() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CPU
 }
 
-func (o *InvoiceDetailsResultDataProjectsItemsPrice) GetMemory() float32 {
+func (o *InvoiceDetailsResultPrice) GetMemory() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Memory
 }
 
-func (o *InvoiceDetailsResultDataProjectsItemsPrice) GetStorage() float32 {
+func (o *InvoiceDetailsResultPrice) GetStorage() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Storage
 }
 
-func (o *InvoiceDetailsResultDataProjectsItemsPrice) GetTotal() float32 {
+func (o *InvoiceDetailsResultPrice) GetTotal() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Total
 }
 
-// InvoiceDetailsResultDataProjectsItems - Billing details about an object.
-type InvoiceDetailsResultDataProjectsItems struct {
+// Items - Billing details about an object.
+type Items struct {
 	// Duration the object has been running in this billing period, in seconds.
 	Duration string `json:"duration"`
 	// The ID of the object.
 	NfObjectID string `json:"nfObjectId"`
 	// The type of the object.
-	NfObjectType InvoiceDetailsResultDataProjectsItemsNfObjectType `json:"nfObjectType"`
+	NfObjectType NfObjectType `json:"nfObjectType"`
 	// Details about the price of a object, broken down by resource type.
-	Price InvoiceDetailsResultDataProjectsItemsPrice `json:"price"`
+	Price InvoiceDetailsResultPrice `json:"price"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsItems) GetDuration() string {
+func (o *Items) GetDuration() string {
 	if o == nil {
 		return ""
 	}
 	return o.Duration
 }
 
-func (o *InvoiceDetailsResultDataProjectsItems) GetNfObjectID() string {
+func (o *Items) GetNfObjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.NfObjectID
 }
 
-func (o *InvoiceDetailsResultDataProjectsItems) GetNfObjectType() InvoiceDetailsResultDataProjectsItemsNfObjectType {
+func (o *Items) GetNfObjectType() NfObjectType {
 	if o == nil {
-		return InvoiceDetailsResultDataProjectsItemsNfObjectType("")
+		return NfObjectType("")
 	}
 	return o.NfObjectType
 }
 
-func (o *InvoiceDetailsResultDataProjectsItems) GetPrice() InvoiceDetailsResultDataProjectsItemsPrice {
+func (o *Items) GetPrice() InvoiceDetailsResultPrice {
 	if o == nil {
-		return InvoiceDetailsResultDataProjectsItemsPrice{}
+		return InvoiceDetailsResultPrice{}
 	}
 	return o.Price
 }
 
-// InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice - Details about the price for all addons in this project, broken down by resource type.
-type InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice struct {
+// InvoiceDetailsResultSchemasPrice - Details about the price for all addons in this project, broken down by resource type.
+type InvoiceDetailsResultSchemasPrice struct {
 	// Price of CPU usage for all addons in this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for all addons in this project, in cents.
@@ -155,57 +155,57 @@ type InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice struct {
 	Total float32 `json:"total"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) GetCPU() float32 {
+func (o *InvoiceDetailsResultSchemasPrice) GetCPU() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CPU
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) GetMemory() float32 {
+func (o *InvoiceDetailsResultSchemasPrice) GetMemory() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Memory
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) GetStorage() float32 {
+func (o *InvoiceDetailsResultSchemasPrice) GetStorage() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Storage
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice) GetTotal() float32 {
+func (o *InvoiceDetailsResultSchemasPrice) GetTotal() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Total
 }
 
-type InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon struct {
+type Addon struct {
 	// Duration addons have been running in this billing period, in seconds.
 	Duration float32 `json:"duration"`
 	// Details about the price for all addons in this project, broken down by resource type.
-	Price *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice `json:"price,omitempty"`
+	Price *InvoiceDetailsResultSchemasPrice `json:"price,omitempty"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon) GetDuration() float32 {
+func (o *Addon) GetDuration() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Duration
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon) GetPrice() *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddonPrice {
+func (o *Addon) GetPrice() *InvoiceDetailsResultSchemasPrice {
 	if o == nil {
 		return nil
 	}
 	return o.Price
 }
 
-// InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice - Details about the price for all jobs in this project, broken down by resource type.
-type InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice struct {
+// InvoiceDetailsResultSchemasDataPrice - Details about the price for all jobs in this project, broken down by resource type.
+type InvoiceDetailsResultSchemasDataPrice struct {
 	// Price of CPU usage for all jobs in this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for all jobs in this project, in cents.
@@ -216,57 +216,57 @@ type InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice struct {
 	Total float32 `json:"total"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) GetCPU() float32 {
+func (o *InvoiceDetailsResultSchemasDataPrice) GetCPU() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CPU
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) GetMemory() float32 {
+func (o *InvoiceDetailsResultSchemasDataPrice) GetMemory() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Memory
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) GetStorage() float32 {
+func (o *InvoiceDetailsResultSchemasDataPrice) GetStorage() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Storage
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice) GetTotal() float32 {
+func (o *InvoiceDetailsResultSchemasDataPrice) GetTotal() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Total
 }
 
-type InvoiceDetailsResultDataProjectsObjectTypeTotalsJob struct {
+type Job struct {
 	// Duration jobs have been running in this billing period, in seconds.
 	Duration float32 `json:"duration"`
 	// Details about the price for all jobs in this project, broken down by resource type.
-	Price *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice `json:"price,omitempty"`
+	Price *InvoiceDetailsResultSchemasDataPrice `json:"price,omitempty"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob) GetDuration() float32 {
+func (o *Job) GetDuration() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Duration
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob) GetPrice() *InvoiceDetailsResultDataProjectsObjectTypeTotalsJobPrice {
+func (o *Job) GetPrice() *InvoiceDetailsResultSchemasDataPrice {
 	if o == nil {
 		return nil
 	}
 	return o.Price
 }
 
-// InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice - Details about the price for all services in this project, broken down by resource type.
-type InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice struct {
+// InvoiceDetailsResultSchemasDataProjectsPrice - Details about the price for all services in this project, broken down by resource type.
+type InvoiceDetailsResultSchemasDataProjectsPrice struct {
 	// Price of CPU usage for all services in this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for all services in this project, in cents.
@@ -277,85 +277,85 @@ type InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice struct {
 	Total float32 `json:"total"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) GetCPU() float32 {
+func (o *InvoiceDetailsResultSchemasDataProjectsPrice) GetCPU() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CPU
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) GetMemory() float32 {
+func (o *InvoiceDetailsResultSchemasDataProjectsPrice) GetMemory() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Memory
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) GetStorage() float32 {
+func (o *InvoiceDetailsResultSchemasDataProjectsPrice) GetStorage() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Storage
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice) GetTotal() float32 {
+func (o *InvoiceDetailsResultSchemasDataProjectsPrice) GetTotal() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Total
 }
 
-type InvoiceDetailsResultDataProjectsObjectTypeTotalsService struct {
+type Service struct {
 	// Duration services have been running in this billing period, in seconds.
 	Duration float32 `json:"duration"`
 	// Details about the price for all services in this project, broken down by resource type.
-	Price *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice `json:"price,omitempty"`
+	Price *InvoiceDetailsResultSchemasDataProjectsPrice `json:"price,omitempty"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsService) GetDuration() float32 {
+func (o *Service) GetDuration() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Duration
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotalsService) GetPrice() *InvoiceDetailsResultDataProjectsObjectTypeTotalsServicePrice {
+func (o *Service) GetPrice() *InvoiceDetailsResultSchemasDataProjectsPrice {
 	if o == nil {
 		return nil
 	}
 	return o.Price
 }
 
-// InvoiceDetailsResultDataProjectsObjectTypeTotals - Details about the price of a project, broken down by object type.
-type InvoiceDetailsResultDataProjectsObjectTypeTotals struct {
-	Addon   *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon   `json:"addon,omitempty"`
-	Job     *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob     `json:"job,omitempty"`
-	Service *InvoiceDetailsResultDataProjectsObjectTypeTotalsService `json:"service,omitempty"`
+// ObjectTypeTotals - Details about the price of a project, broken down by object type.
+type ObjectTypeTotals struct {
+	Addon   *Addon   `json:"addon,omitempty"`
+	Job     *Job     `json:"job,omitempty"`
+	Service *Service `json:"service,omitempty"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotals) GetAddon() *InvoiceDetailsResultDataProjectsObjectTypeTotalsAddon {
+func (o *ObjectTypeTotals) GetAddon() *Addon {
 	if o == nil {
 		return nil
 	}
 	return o.Addon
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotals) GetJob() *InvoiceDetailsResultDataProjectsObjectTypeTotalsJob {
+func (o *ObjectTypeTotals) GetJob() *Job {
 	if o == nil {
 		return nil
 	}
 	return o.Job
 }
 
-func (o *InvoiceDetailsResultDataProjectsObjectTypeTotals) GetService() *InvoiceDetailsResultDataProjectsObjectTypeTotalsService {
+func (o *ObjectTypeTotals) GetService() *Service {
 	if o == nil {
 		return nil
 	}
 	return o.Service
 }
 
-// InvoiceDetailsResultDataProjectsPrice - Details about the price of a project, broken down by resource type.
-type InvoiceDetailsResultDataProjectsPrice struct {
+// Price - Details about the price of a project, broken down by resource type.
+type Price struct {
 	// Price of CPU usage for this project, in cents.
 	CPU float32 `json:"cpu"`
 	// Price of memory usage for this project, in cents.
@@ -366,99 +366,99 @@ type InvoiceDetailsResultDataProjectsPrice struct {
 	Total float32 `json:"total"`
 }
 
-func (o *InvoiceDetailsResultDataProjectsPrice) GetCPU() float32 {
+func (o *Price) GetCPU() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CPU
 }
 
-func (o *InvoiceDetailsResultDataProjectsPrice) GetMemory() float32 {
+func (o *Price) GetMemory() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Memory
 }
 
-func (o *InvoiceDetailsResultDataProjectsPrice) GetStorage() float32 {
+func (o *Price) GetStorage() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Storage
 }
 
-func (o *InvoiceDetailsResultDataProjectsPrice) GetTotal() float32 {
+func (o *Price) GetTotal() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Total
 }
 
-// InvoiceDetailsResultDataProjects - Billing details about a project.
-type InvoiceDetailsResultDataProjects struct {
+// Projects - Billing details about a project.
+type Projects struct {
 	// Duration the project has been running in this billing period, in seconds.
 	Duration string `json:"duration"`
 	// An array of objects belonging to this project that are billed in this invoice. If `addonId`, `serviceId` or `jobId` are passed in, only objects matching that ID will be returned.
-	Items []InvoiceDetailsResultDataProjectsItems `json:"items"`
+	Items []Items `json:"items"`
 	// Details about the price of a project, broken down by object type.
-	ObjectTypeTotals InvoiceDetailsResultDataProjectsObjectTypeTotals `json:"objectTypeTotals"`
+	ObjectTypeTotals ObjectTypeTotals `json:"objectTypeTotals"`
 	// Details about the price of a project, broken down by resource type.
-	Price InvoiceDetailsResultDataProjectsPrice `json:"price"`
+	Price Price `json:"price"`
 	// ID of the project.
 	ProjectID string `json:"projectId"`
 }
 
-func (o *InvoiceDetailsResultDataProjects) GetDuration() string {
+func (o *Projects) GetDuration() string {
 	if o == nil {
 		return ""
 	}
 	return o.Duration
 }
 
-func (o *InvoiceDetailsResultDataProjects) GetItems() []InvoiceDetailsResultDataProjectsItems {
+func (o *Projects) GetItems() []Items {
 	if o == nil {
-		return []InvoiceDetailsResultDataProjectsItems{}
+		return []Items{}
 	}
 	return o.Items
 }
 
-func (o *InvoiceDetailsResultDataProjects) GetObjectTypeTotals() InvoiceDetailsResultDataProjectsObjectTypeTotals {
+func (o *Projects) GetObjectTypeTotals() ObjectTypeTotals {
 	if o == nil {
-		return InvoiceDetailsResultDataProjectsObjectTypeTotals{}
+		return ObjectTypeTotals{}
 	}
 	return o.ObjectTypeTotals
 }
 
-func (o *InvoiceDetailsResultDataProjects) GetPrice() InvoiceDetailsResultDataProjectsPrice {
+func (o *Projects) GetPrice() Price {
 	if o == nil {
-		return InvoiceDetailsResultDataProjectsPrice{}
+		return Price{}
 	}
 	return o.Price
 }
 
-func (o *InvoiceDetailsResultDataProjects) GetProjectID() string {
+func (o *Projects) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-// InvoiceDetailsResultDataTax - Details about the tax on the invoice.
-type InvoiceDetailsResultDataTax struct {
+// Tax - Details about the tax on the invoice.
+type Tax struct {
 	// Percentage of subtotal to be applied as tax.
 	Percent float32 `json:"percent"`
 	// Value of the tax on the invoice.
 	Value float32 `json:"value"`
 }
 
-func (o *InvoiceDetailsResultDataTax) GetPercent() float32 {
+func (o *Tax) GetPercent() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Percent
 }
 
-func (o *InvoiceDetailsResultDataTax) GetValue() float32 {
+func (o *Tax) GetValue() float32 {
 	if o == nil {
 		return 0.0
 	}
@@ -472,13 +472,13 @@ type InvoiceDetailsResultData struct {
 	// If `timestamp` is passed in, whether the invoice has been paid.
 	Paid *bool `json:"paid,omitempty"`
 	// Information about the billing period of the invoice.
-	Period InvoiceDetailsResultDataPeriod `json:"period"`
+	Period Period `json:"period"`
 	// An array of projects billed in this invoice. If `projectId` is passed in, only projects with a `projectId` matching the value will be returned.
-	Projects []InvoiceDetailsResultDataProjects `json:"projects"`
+	Projects []Projects `json:"projects"`
 	// Total cost of the invoice, in cents, excluding tax.
 	SubTotal float32 `json:"subTotal"`
 	// Details about the tax on the invoice.
-	Tax InvoiceDetailsResultDataTax `json:"tax"`
+	Tax Tax `json:"tax"`
 	// Total cost of the invoice, in cents, including tax.
 	Total float32 `json:"total"`
 }
@@ -497,16 +497,16 @@ func (o *InvoiceDetailsResultData) GetPaid() *bool {
 	return o.Paid
 }
 
-func (o *InvoiceDetailsResultData) GetPeriod() InvoiceDetailsResultDataPeriod {
+func (o *InvoiceDetailsResultData) GetPeriod() Period {
 	if o == nil {
-		return InvoiceDetailsResultDataPeriod{}
+		return Period{}
 	}
 	return o.Period
 }
 
-func (o *InvoiceDetailsResultData) GetProjects() []InvoiceDetailsResultDataProjects {
+func (o *InvoiceDetailsResultData) GetProjects() []Projects {
 	if o == nil {
-		return []InvoiceDetailsResultDataProjects{}
+		return []Projects{}
 	}
 	return o.Projects
 }
@@ -518,9 +518,9 @@ func (o *InvoiceDetailsResultData) GetSubTotal() float32 {
 	return o.SubTotal
 }
 
-func (o *InvoiceDetailsResultData) GetTax() InvoiceDetailsResultDataTax {
+func (o *InvoiceDetailsResultData) GetTax() Tax {
 	if o == nil {
-		return InvoiceDetailsResultDataTax{}
+		return Tax{}
 	}
 	return o.Tax
 }

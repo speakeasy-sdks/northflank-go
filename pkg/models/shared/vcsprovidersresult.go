@@ -7,21 +7,21 @@ import (
 	"fmt"
 )
 
-// VCSProvidersResultDataVCSAccountLinksVCSService - The type of version control provider the account is linked to.
-type VCSProvidersResultDataVCSAccountLinksVCSService string
+// VCSProvidersResultVCSService - The type of version control provider the account is linked to.
+type VCSProvidersResultVCSService string
 
 const (
-	VCSProvidersResultDataVCSAccountLinksVCSServiceBitbucket  VCSProvidersResultDataVCSAccountLinksVCSService = "bitbucket"
-	VCSProvidersResultDataVCSAccountLinksVCSServiceGitlab     VCSProvidersResultDataVCSAccountLinksVCSService = "gitlab"
-	VCSProvidersResultDataVCSAccountLinksVCSServiceGithub     VCSProvidersResultDataVCSAccountLinksVCSService = "github"
-	VCSProvidersResultDataVCSAccountLinksVCSServiceSelfHosted VCSProvidersResultDataVCSAccountLinksVCSService = "self-hosted"
+	VCSProvidersResultVCSServiceBitbucket  VCSProvidersResultVCSService = "bitbucket"
+	VCSProvidersResultVCSServiceGitlab     VCSProvidersResultVCSService = "gitlab"
+	VCSProvidersResultVCSServiceGithub     VCSProvidersResultVCSService = "github"
+	VCSProvidersResultVCSServiceSelfHosted VCSProvidersResultVCSService = "self-hosted"
 )
 
-func (e VCSProvidersResultDataVCSAccountLinksVCSService) ToPointer() *VCSProvidersResultDataVCSAccountLinksVCSService {
+func (e VCSProvidersResultVCSService) ToPointer() *VCSProvidersResultVCSService {
 	return &e
 }
 
-func (e *VCSProvidersResultDataVCSAccountLinksVCSService) UnmarshalJSON(data []byte) error {
+func (e *VCSProvidersResultVCSService) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -34,40 +34,40 @@ func (e *VCSProvidersResultDataVCSAccountLinksVCSService) UnmarshalJSON(data []b
 	case "github":
 		fallthrough
 	case "self-hosted":
-		*e = VCSProvidersResultDataVCSAccountLinksVCSService(v)
+		*e = VCSProvidersResultVCSService(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for VCSProvidersResultDataVCSAccountLinksVCSService: %v", v)
+		return fmt.Errorf("invalid value for VCSProvidersResultVCSService: %v", v)
 	}
 }
 
-// VCSProvidersResultDataVCSAccountLinksVCSType - The type of the self-hosted vcs provider. Only returned for self-hosted links.
-type VCSProvidersResultDataVCSAccountLinksVCSType string
+// VcsType - The type of the self-hosted vcs provider. Only returned for self-hosted links.
+type VcsType string
 
 const (
-	VCSProvidersResultDataVCSAccountLinksVCSTypeGitlabEe VCSProvidersResultDataVCSAccountLinksVCSType = "gitlab-ee"
+	VcsTypeGitlabEe VcsType = "gitlab-ee"
 )
 
-func (e VCSProvidersResultDataVCSAccountLinksVCSType) ToPointer() *VCSProvidersResultDataVCSAccountLinksVCSType {
+func (e VcsType) ToPointer() *VcsType {
 	return &e
 }
 
-func (e *VCSProvidersResultDataVCSAccountLinksVCSType) UnmarshalJSON(data []byte) error {
+func (e *VcsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "gitlab-ee":
-		*e = VCSProvidersResultDataVCSAccountLinksVCSType(v)
+		*e = VcsType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for VCSProvidersResultDataVCSAccountLinksVCSType: %v", v)
+		return fmt.Errorf("invalid value for VcsType: %v", v)
 	}
 }
 
-// VCSProvidersResultDataVCSAccountLinks - Details about the linked version control account.
-type VCSProvidersResultDataVCSAccountLinks struct {
+// VcsAccountLinks - Details about the linked version control account.
+type VcsAccountLinks struct {
 	// The email of the account linked with this provider.
 	Email string `json:"email"`
 	// The name of the team the self-hosted vcs belongs to. Only returned for self-hosted links.
@@ -79,63 +79,63 @@ type VCSProvidersResultDataVCSAccountLinks struct {
 	// The name of the version control provider. Only returned for self-hosted links.
 	Name *string `json:"name,omitempty"`
 	// The type of version control provider the account is linked to.
-	VcsService VCSProvidersResultDataVCSAccountLinksVCSService `json:"vcsService"`
+	VcsService VCSProvidersResultVCSService `json:"vcsService"`
 	// The type of the self-hosted vcs provider. Only returned for self-hosted links.
-	VcsType *VCSProvidersResultDataVCSAccountLinksVCSType `json:"vcsType,omitempty"`
+	VcsType *VcsType `json:"vcsType,omitempty"`
 	// The url of the version control provider. Only returned for self-hosted links.
 	VcsURL *string `json:"vcsUrl,omitempty"`
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetEmail() string {
+func (o *VcsAccountLinks) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetEntityName() *string {
+func (o *VcsAccountLinks) GetEntityName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EntityName
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetInternalID() *string {
+func (o *VcsAccountLinks) GetInternalID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.InternalID
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetLogin() string {
+func (o *VcsAccountLinks) GetLogin() string {
 	if o == nil {
 		return ""
 	}
 	return o.Login
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetName() *string {
+func (o *VcsAccountLinks) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsService() VCSProvidersResultDataVCSAccountLinksVCSService {
+func (o *VcsAccountLinks) GetVcsService() VCSProvidersResultVCSService {
 	if o == nil {
-		return VCSProvidersResultDataVCSAccountLinksVCSService("")
+		return VCSProvidersResultVCSService("")
 	}
 	return o.VcsService
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsType() *VCSProvidersResultDataVCSAccountLinksVCSType {
+func (o *VcsAccountLinks) GetVcsType() *VcsType {
 	if o == nil {
 		return nil
 	}
 	return o.VcsType
 }
 
-func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsURL() *string {
+func (o *VcsAccountLinks) GetVcsURL() *string {
 	if o == nil {
 		return nil
 	}
@@ -145,12 +145,12 @@ func (o *VCSProvidersResultDataVCSAccountLinks) GetVcsURL() *string {
 // VCSProvidersResultData - Result data.
 type VCSProvidersResultData struct {
 	// The version control accounts linked to this Northflank account.
-	VcsAccountLinks []VCSProvidersResultDataVCSAccountLinks `json:"vcsAccountLinks"`
+	VcsAccountLinks []VcsAccountLinks `json:"vcsAccountLinks"`
 }
 
-func (o *VCSProvidersResultData) GetVcsAccountLinks() []VCSProvidersResultDataVCSAccountLinks {
+func (o *VCSProvidersResultData) GetVcsAccountLinks() []VcsAccountLinks {
 	if o == nil {
-		return []VCSProvidersResultDataVCSAccountLinks{}
+		return []VcsAccountLinks{}
 	}
 	return o.VcsAccountLinks
 }

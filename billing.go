@@ -6,28 +6,28 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-type billing struct {
+type Billing struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newBilling(sdkConfig sdkConfiguration) *billing {
-	return &billing{
+func newBilling(sdkConfig sdkConfiguration) *Billing {
+	return &Billing{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Get - List invoices
 // Get a list of past invoices
-func (s *billing) Get(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetPastInvoicesResponse, error) {
+func (s *Billing) Get(ctx context.Context, cursor *string, page *int64, perPage *int64) (*operations.GetPastInvoicesResponse, error) {
 	request := operations.GetPastInvoicesRequest{
 		Cursor:  cursor,
 		Page:    page,
@@ -85,6 +85,10 @@ func (s *billing) Get(ctx context.Context, cursor *string, page *int64, perPage 
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -92,7 +96,7 @@ func (s *billing) Get(ctx context.Context, cursor *string, page *int64, perPage 
 
 // GetDetails - Get invoice details
 // Get details about an invoice. If `timestamp` is passed in as a query parameter, this endpoint returns details about the invoice containing that timestamp. Otherwise, returns a preview invoice displaying billing data from after the most recent invoice.
-func (s *billing) GetDetails(ctx context.Context, request operations.GetInvoiceDetailsRequest) (*operations.GetInvoiceDetailsResponse, error) {
+func (s *Billing) GetDetails(ctx context.Context, request operations.GetInvoiceDetailsRequest) (*operations.GetInvoiceDetailsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/billing/invoices/details"
 
@@ -144,6 +148,10 @@ func (s *billing) GetDetails(ctx context.Context, request operations.GetInvoiceD
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

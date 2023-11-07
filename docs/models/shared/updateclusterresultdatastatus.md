@@ -1,9 +1,0 @@
-# UpdateClusterResultDataStatus
-
-
-## Fields
-
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `NextUpdateAfter`                                                                                | [*time.Time](https://pkg.go.dev/time#Time)                                                       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `State`                                                                                          | [*UpdateClusterResultDataStatusState](../../models/shared/updateclusterresultdatastatusstate.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |

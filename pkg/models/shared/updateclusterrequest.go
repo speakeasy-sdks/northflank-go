@@ -6,55 +6,55 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 )
 
-// UpdateClusterRequestNodePoolsAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
-type UpdateClusterRequestNodePoolsAutoscaling struct {
+// UpdateClusterRequestAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
+type UpdateClusterRequestAutoscaling struct {
 	Enabled *bool  `default:"false" json:"enabled"`
 	Max     *int64 `json:"max,omitempty"`
 	Min     *int64 `json:"min,omitempty"`
 }
 
-func (u UpdateClusterRequestNodePoolsAutoscaling) MarshalJSON() ([]byte, error) {
+func (u UpdateClusterRequestAutoscaling) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateClusterRequestNodePoolsAutoscaling) UnmarshalJSON(data []byte) error {
+func (u *UpdateClusterRequestAutoscaling) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateClusterRequestNodePoolsAutoscaling) GetEnabled() *bool {
+func (o *UpdateClusterRequestAutoscaling) GetEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Enabled
 }
 
-func (o *UpdateClusterRequestNodePoolsAutoscaling) GetMax() *int64 {
+func (o *UpdateClusterRequestAutoscaling) GetMax() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Max
 }
 
-func (o *UpdateClusterRequestNodePoolsAutoscaling) GetMin() *int64 {
+func (o *UpdateClusterRequestAutoscaling) GetMin() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Min
 }
 
-// UpdateClusterRequestNodePoolsLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
-type UpdateClusterRequestNodePoolsLabels struct {
+// UpdateClusterRequestLabels - Set of label keys and values that can be used to determine scheduling via resource tags.
+type UpdateClusterRequestLabels struct {
 }
 
 type UpdateClusterRequestNodePools struct {
 	// Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.
-	Autoscaling *UpdateClusterRequestNodePoolsAutoscaling `json:"autoscaling,omitempty"`
+	Autoscaling *UpdateClusterRequestAutoscaling `json:"autoscaling,omitempty"`
 	// Zones in which the node pool should be provisioned.
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	// Disk size in GB
@@ -64,7 +64,7 @@ type UpdateClusterRequestNodePools struct {
 	// ID of existing node pool. Must be passed when modifying existing node pools. Not relevant for new node pools
 	ID *string `json:"id,omitempty"`
 	// Set of label keys and values that can be used to determine scheduling via resource tags.
-	Labels *UpdateClusterRequestNodePoolsLabels `json:"labels,omitempty"`
+	Labels *UpdateClusterRequestLabels `json:"labels,omitempty"`
 	// Number of nodes to the node pool should be provisioned with.
 	NodeCount int64 `json:"nodeCount"`
 	// Machine type to be used by the node pool.
@@ -86,7 +86,7 @@ func (u *UpdateClusterRequestNodePools) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateClusterRequestNodePools) GetAutoscaling() *UpdateClusterRequestNodePoolsAutoscaling {
+func (o *UpdateClusterRequestNodePools) GetAutoscaling() *UpdateClusterRequestAutoscaling {
 	if o == nil {
 		return nil
 	}
@@ -121,7 +121,7 @@ func (o *UpdateClusterRequestNodePools) GetID() *string {
 	return o.ID
 }
 
-func (o *UpdateClusterRequestNodePools) GetLabels() *UpdateClusterRequestNodePoolsLabels {
+func (o *UpdateClusterRequestNodePools) GetLabels() *UpdateClusterRequestLabels {
 	if o == nil {
 		return nil
 	}
@@ -156,19 +156,19 @@ func (o *UpdateClusterRequestNodePools) GetSystemPool() *bool {
 	return o.SystemPool
 }
 
-type UpdateClusterRequestSettingsBuildsMode string
+type UpdateClusterRequestMode string
 
 const (
-	UpdateClusterRequestSettingsBuildsModePaas         UpdateClusterRequestSettingsBuildsMode = "paas"
-	UpdateClusterRequestSettingsBuildsModeInternal     UpdateClusterRequestSettingsBuildsMode = "internal"
-	UpdateClusterRequestSettingsBuildsModeBuildCluster UpdateClusterRequestSettingsBuildsMode = "build-cluster"
+	UpdateClusterRequestModePaas         UpdateClusterRequestMode = "paas"
+	UpdateClusterRequestModeInternal     UpdateClusterRequestMode = "internal"
+	UpdateClusterRequestModeBuildCluster UpdateClusterRequestMode = "build-cluster"
 )
 
-func (e UpdateClusterRequestSettingsBuildsMode) ToPointer() *UpdateClusterRequestSettingsBuildsMode {
+func (e UpdateClusterRequestMode) ToPointer() *UpdateClusterRequestMode {
 	return &e
 }
 
-func (e *UpdateClusterRequestSettingsBuildsMode) UnmarshalJSON(data []byte) error {
+func (e *UpdateClusterRequestMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -179,155 +179,155 @@ func (e *UpdateClusterRequestSettingsBuildsMode) UnmarshalJSON(data []byte) erro
 	case "internal":
 		fallthrough
 	case "build-cluster":
-		*e = UpdateClusterRequestSettingsBuildsMode(v)
+		*e = UpdateClusterRequestMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateClusterRequestSettingsBuildsMode: %v", v)
+		return fmt.Errorf("invalid value for UpdateClusterRequestMode: %v", v)
 	}
 }
 
-type UpdateClusterRequestSettingsBuilds struct {
+type UpdateClusterRequestBuilds struct {
 	// Cluster to use for scheduling builds
-	ClusterID *string                                 `json:"clusterId,omitempty"`
-	Mode      *UpdateClusterRequestSettingsBuildsMode `json:"mode,omitempty"`
+	ClusterID *string                   `json:"clusterId,omitempty"`
+	Mode      *UpdateClusterRequestMode `json:"mode,omitempty"`
 	// Plan to use for builds if they are run on the cluster
 	Plan *string `json:"plan,omitempty"`
 }
 
-func (o *UpdateClusterRequestSettingsBuilds) GetClusterID() *string {
+func (o *UpdateClusterRequestBuilds) GetClusterID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ClusterID
 }
 
-func (o *UpdateClusterRequestSettingsBuilds) GetMode() *UpdateClusterRequestSettingsBuildsMode {
+func (o *UpdateClusterRequestBuilds) GetMode() *UpdateClusterRequestMode {
 	if o == nil {
 		return nil
 	}
 	return o.Mode
 }
 
-func (o *UpdateClusterRequestSettingsBuilds) GetPlan() *string {
+func (o *UpdateClusterRequestBuilds) GetPlan() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Plan
 }
 
-type UpdateClusterRequestSettingsLoggingLoki2 struct {
+type UpdateClusterRequest2 struct {
 }
 
-type UpdateClusterRequestSettingsLoggingLoki1 struct {
+type UpdateClusterRequest1 struct {
 	S3AccessKey  string `json:"s3AccessKey"`
 	S3BucketName string `json:"s3BucketName"`
 	S3Region     string `json:"s3Region"`
 	S3SecretKey  string `json:"s3SecretKey"`
 }
 
-func (o *UpdateClusterRequestSettingsLoggingLoki1) GetS3AccessKey() string {
+func (o *UpdateClusterRequest1) GetS3AccessKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3AccessKey
 }
 
-func (o *UpdateClusterRequestSettingsLoggingLoki1) GetS3BucketName() string {
+func (o *UpdateClusterRequest1) GetS3BucketName() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3BucketName
 }
 
-func (o *UpdateClusterRequestSettingsLoggingLoki1) GetS3Region() string {
+func (o *UpdateClusterRequest1) GetS3Region() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3Region
 }
 
-func (o *UpdateClusterRequestSettingsLoggingLoki1) GetS3SecretKey() string {
+func (o *UpdateClusterRequest1) GetS3SecretKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.S3SecretKey
 }
 
-type UpdateClusterRequestSettingsLoggingLokiType string
+type UpdateClusterRequestLokiType string
 
 const (
-	UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1 UpdateClusterRequestSettingsLoggingLokiType = "UpdateClusterRequest_settings_logging_loki_1"
-	UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki2 UpdateClusterRequestSettingsLoggingLokiType = "UpdateClusterRequest_settings_logging_loki_2"
+	UpdateClusterRequestLokiTypeUpdateClusterRequest1 UpdateClusterRequestLokiType = "UpdateClusterRequest_1"
+	UpdateClusterRequestLokiTypeUpdateClusterRequest2 UpdateClusterRequestLokiType = "UpdateClusterRequest_2"
 )
 
-type UpdateClusterRequestSettingsLoggingLoki struct {
-	UpdateClusterRequestSettingsLoggingLoki1 *UpdateClusterRequestSettingsLoggingLoki1
-	UpdateClusterRequestSettingsLoggingLoki2 *UpdateClusterRequestSettingsLoggingLoki2
+type UpdateClusterRequestLoki struct {
+	UpdateClusterRequest1 *UpdateClusterRequest1
+	UpdateClusterRequest2 *UpdateClusterRequest2
 
-	Type UpdateClusterRequestSettingsLoggingLokiType
+	Type UpdateClusterRequestLokiType
 }
 
-func CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki1(updateClusterRequestSettingsLoggingLoki1 UpdateClusterRequestSettingsLoggingLoki1) UpdateClusterRequestSettingsLoggingLoki {
-	typ := UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1
+func CreateUpdateClusterRequestLokiUpdateClusterRequest1(updateClusterRequest1 UpdateClusterRequest1) UpdateClusterRequestLoki {
+	typ := UpdateClusterRequestLokiTypeUpdateClusterRequest1
 
-	return UpdateClusterRequestSettingsLoggingLoki{
-		UpdateClusterRequestSettingsLoggingLoki1: &updateClusterRequestSettingsLoggingLoki1,
-		Type:                                     typ,
+	return UpdateClusterRequestLoki{
+		UpdateClusterRequest1: &updateClusterRequest1,
+		Type:                  typ,
 	}
 }
 
-func CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki2(updateClusterRequestSettingsLoggingLoki2 UpdateClusterRequestSettingsLoggingLoki2) UpdateClusterRequestSettingsLoggingLoki {
-	typ := UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki2
+func CreateUpdateClusterRequestLokiUpdateClusterRequest2(updateClusterRequest2 UpdateClusterRequest2) UpdateClusterRequestLoki {
+	typ := UpdateClusterRequestLokiTypeUpdateClusterRequest2
 
-	return UpdateClusterRequestSettingsLoggingLoki{
-		UpdateClusterRequestSettingsLoggingLoki2: &updateClusterRequestSettingsLoggingLoki2,
-		Type:                                     typ,
+	return UpdateClusterRequestLoki{
+		UpdateClusterRequest2: &updateClusterRequest2,
+		Type:                  typ,
 	}
 }
 
-func (u *UpdateClusterRequestSettingsLoggingLoki) UnmarshalJSON(data []byte) error {
+func (u *UpdateClusterRequestLoki) UnmarshalJSON(data []byte) error {
 
-	updateClusterRequestSettingsLoggingLoki2 := UpdateClusterRequestSettingsLoggingLoki2{}
-	if err := utils.UnmarshalJSON(data, &updateClusterRequestSettingsLoggingLoki2, "", true, true); err == nil {
-		u.UpdateClusterRequestSettingsLoggingLoki2 = &updateClusterRequestSettingsLoggingLoki2
-		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki2
+	updateClusterRequest2 := UpdateClusterRequest2{}
+	if err := utils.UnmarshalJSON(data, &updateClusterRequest2, "", true, true); err == nil {
+		u.UpdateClusterRequest2 = &updateClusterRequest2
+		u.Type = UpdateClusterRequestLokiTypeUpdateClusterRequest2
 		return nil
 	}
 
-	updateClusterRequestSettingsLoggingLoki1 := UpdateClusterRequestSettingsLoggingLoki1{}
-	if err := utils.UnmarshalJSON(data, &updateClusterRequestSettingsLoggingLoki1, "", true, true); err == nil {
-		u.UpdateClusterRequestSettingsLoggingLoki1 = &updateClusterRequestSettingsLoggingLoki1
-		u.Type = UpdateClusterRequestSettingsLoggingLokiTypeUpdateClusterRequestSettingsLoggingLoki1
+	updateClusterRequest1 := UpdateClusterRequest1{}
+	if err := utils.UnmarshalJSON(data, &updateClusterRequest1, "", true, true); err == nil {
+		u.UpdateClusterRequest1 = &updateClusterRequest1
+		u.Type = UpdateClusterRequestLokiTypeUpdateClusterRequest1
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u UpdateClusterRequestSettingsLoggingLoki) MarshalJSON() ([]byte, error) {
-	if u.UpdateClusterRequestSettingsLoggingLoki1 != nil {
-		return utils.MarshalJSON(u.UpdateClusterRequestSettingsLoggingLoki1, "", true)
+func (u UpdateClusterRequestLoki) MarshalJSON() ([]byte, error) {
+	if u.UpdateClusterRequest1 != nil {
+		return utils.MarshalJSON(u.UpdateClusterRequest1, "", true)
 	}
 
-	if u.UpdateClusterRequestSettingsLoggingLoki2 != nil {
-		return utils.MarshalJSON(u.UpdateClusterRequestSettingsLoggingLoki2, "", true)
+	if u.UpdateClusterRequest2 != nil {
+		return utils.MarshalJSON(u.UpdateClusterRequest2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type UpdateClusterRequestSettingsLoggingMode string
+type UpdateClusterRequestSchemasMode string
 
 const (
-	UpdateClusterRequestSettingsLoggingModePaas UpdateClusterRequestSettingsLoggingMode = "paas"
-	UpdateClusterRequestSettingsLoggingModeLoki UpdateClusterRequestSettingsLoggingMode = "loki"
+	UpdateClusterRequestSchemasModePaas UpdateClusterRequestSchemasMode = "paas"
+	UpdateClusterRequestSchemasModeLoki UpdateClusterRequestSchemasMode = "loki"
 )
 
-func (e UpdateClusterRequestSettingsLoggingMode) ToPointer() *UpdateClusterRequestSettingsLoggingMode {
+func (e UpdateClusterRequestSchemasMode) ToPointer() *UpdateClusterRequestSchemasMode {
 	return &e
 }
 
-func (e *UpdateClusterRequestSettingsLoggingMode) UnmarshalJSON(data []byte) error {
+func (e *UpdateClusterRequestSchemasMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -336,44 +336,44 @@ func (e *UpdateClusterRequestSettingsLoggingMode) UnmarshalJSON(data []byte) err
 	case "paas":
 		fallthrough
 	case "loki":
-		*e = UpdateClusterRequestSettingsLoggingMode(v)
+		*e = UpdateClusterRequestSchemasMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateClusterRequestSettingsLoggingMode: %v", v)
+		return fmt.Errorf("invalid value for UpdateClusterRequestSchemasMode: %v", v)
 	}
 }
 
-type UpdateClusterRequestSettingsLogging struct {
-	Loki *UpdateClusterRequestSettingsLoggingLoki `json:"loki,omitempty"`
-	Mode *UpdateClusterRequestSettingsLoggingMode `json:"mode,omitempty"`
+type UpdateClusterRequestLogging struct {
+	Loki *UpdateClusterRequestLoki        `json:"loki,omitempty"`
+	Mode *UpdateClusterRequestSchemasMode `json:"mode,omitempty"`
 }
 
-func (o *UpdateClusterRequestSettingsLogging) GetLoki() *UpdateClusterRequestSettingsLoggingLoki {
+func (o *UpdateClusterRequestLogging) GetLoki() *UpdateClusterRequestLoki {
 	if o == nil {
 		return nil
 	}
 	return o.Loki
 }
 
-func (o *UpdateClusterRequestSettingsLogging) GetMode() *UpdateClusterRequestSettingsLoggingMode {
+func (o *UpdateClusterRequestLogging) GetMode() *UpdateClusterRequestSchemasMode {
 	if o == nil {
 		return nil
 	}
 	return o.Mode
 }
 
-type UpdateClusterRequestSettingsRegistryMode string
+type UpdateClusterRequestSchemasSettingsMode string
 
 const (
-	UpdateClusterRequestSettingsRegistryModePaas       UpdateClusterRequestSettingsRegistryMode = "paas"
-	UpdateClusterRequestSettingsRegistryModeSelfHosted UpdateClusterRequestSettingsRegistryMode = "self-hosted"
+	UpdateClusterRequestSchemasSettingsModePaas       UpdateClusterRequestSchemasSettingsMode = "paas"
+	UpdateClusterRequestSchemasSettingsModeSelfHosted UpdateClusterRequestSchemasSettingsMode = "self-hosted"
 )
 
-func (e UpdateClusterRequestSettingsRegistryMode) ToPointer() *UpdateClusterRequestSettingsRegistryMode {
+func (e UpdateClusterRequestSchemasSettingsMode) ToPointer() *UpdateClusterRequestSchemasSettingsMode {
 	return &e
 }
 
-func (e *UpdateClusterRequestSettingsRegistryMode) UnmarshalJSON(data []byte) error {
+func (e *UpdateClusterRequestSchemasSettingsMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -382,27 +382,27 @@ func (e *UpdateClusterRequestSettingsRegistryMode) UnmarshalJSON(data []byte) er
 	case "paas":
 		fallthrough
 	case "self-hosted":
-		*e = UpdateClusterRequestSettingsRegistryMode(v)
+		*e = UpdateClusterRequestSchemasSettingsMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateClusterRequestSettingsRegistryMode: %v", v)
+		return fmt.Errorf("invalid value for UpdateClusterRequestSchemasSettingsMode: %v", v)
 	}
 }
 
-type UpdateClusterRequestSettingsRegistry struct {
-	Mode *UpdateClusterRequestSettingsRegistryMode `json:"mode,omitempty"`
+type UpdateClusterRequestRegistry struct {
+	Mode *UpdateClusterRequestSchemasSettingsMode `json:"mode,omitempty"`
 	// Credentials to use for storing of images.
 	RegistryID *string `json:"registryId,omitempty"`
 }
 
-func (o *UpdateClusterRequestSettingsRegistry) GetMode() *UpdateClusterRequestSettingsRegistryMode {
+func (o *UpdateClusterRequestRegistry) GetMode() *UpdateClusterRequestSchemasSettingsMode {
 	if o == nil {
 		return nil
 	}
 	return o.Mode
 }
 
-func (o *UpdateClusterRequestSettingsRegistry) GetRegistryID() *string {
+func (o *UpdateClusterRequestRegistry) GetRegistryID() *string {
 	if o == nil {
 		return nil
 	}
@@ -410,26 +410,26 @@ func (o *UpdateClusterRequestSettingsRegistry) GetRegistryID() *string {
 }
 
 type UpdateClusterRequestSettings struct {
-	Builds   *UpdateClusterRequestSettingsBuilds   `json:"builds,omitempty"`
-	Logging  *UpdateClusterRequestSettingsLogging  `json:"logging,omitempty"`
-	Registry *UpdateClusterRequestSettingsRegistry `json:"registry,omitempty"`
+	Builds   *UpdateClusterRequestBuilds   `json:"builds,omitempty"`
+	Logging  *UpdateClusterRequestLogging  `json:"logging,omitempty"`
+	Registry *UpdateClusterRequestRegistry `json:"registry,omitempty"`
 }
 
-func (o *UpdateClusterRequestSettings) GetBuilds() *UpdateClusterRequestSettingsBuilds {
+func (o *UpdateClusterRequestSettings) GetBuilds() *UpdateClusterRequestBuilds {
 	if o == nil {
 		return nil
 	}
 	return o.Builds
 }
 
-func (o *UpdateClusterRequestSettings) GetLogging() *UpdateClusterRequestSettingsLogging {
+func (o *UpdateClusterRequestSettings) GetLogging() *UpdateClusterRequestLogging {
 	if o == nil {
 		return nil
 	}
 	return o.Logging
 }
 
-func (o *UpdateClusterRequestSettings) GetRegistry() *UpdateClusterRequestSettingsRegistry {
+func (o *UpdateClusterRequestSettings) GetRegistry() *UpdateClusterRequestRegistry {
 	if o == nil {
 		return nil
 	}

@@ -6,28 +6,28 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-type integrations struct {
+type Integrations struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newIntegrations(sdkConfig sdkConfiguration) *integrations {
-	return &integrations{
+func newIntegrations(sdkConfig sdkConfiguration) *Integrations {
+	return &Integrations{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Add registry
 // Adds a new set of container registry credentials to this account.
-func (s *integrations) Add(ctx context.Context, request operations.AddRegistryRequestBody) (*operations.AddRegistryResponse, error) {
+func (s *Integrations) Add(ctx context.Context, request operations.AddRegistryRequestBody) (*operations.AddRegistryResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/integrations/registries"
 
@@ -85,6 +85,10 @@ func (s *integrations) Add(ctx context.Context, request operations.AddRegistryRe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -92,7 +96,7 @@ func (s *integrations) Add(ctx context.Context, request operations.AddRegistryRe
 
 // Create log sink
 // Creates a new log sink.
-func (s *integrations) Create(ctx context.Context, request operations.CreateLogSinkRequestBody) (*operations.CreateLogSinkResponse, error) {
+func (s *Integrations) Create(ctx context.Context, request operations.CreateLogSinkRequestBody) (*operations.CreateLogSinkResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/integrations/log-sinks"
 
@@ -150,6 +154,10 @@ func (s *integrations) Create(ctx context.Context, request operations.CreateLogS
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -157,7 +165,7 @@ func (s *integrations) Create(ctx context.Context, request operations.CreateLogS
 
 // Delete log sink
 // Deletes a log sink.
-func (s *integrations) Delete(ctx context.Context, logSinkID string) (*operations.DeleteLogSinkResponse, error) {
+func (s *Integrations) Delete(ctx context.Context, logSinkID string) (*operations.DeleteLogSinkResponse, error) {
 	request := operations.DeleteLogSinkRequest{
 		LogSinkID: logSinkID,
 	}
@@ -212,6 +220,10 @@ func (s *integrations) Delete(ctx context.Context, logSinkID string) (*operation
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -219,7 +231,7 @@ func (s *integrations) Delete(ctx context.Context, logSinkID string) (*operation
 
 // DeleteRegistry - Delete registry
 // Deletes a set of registry credential data.
-func (s *integrations) DeleteRegistry(ctx context.Context, credentialID string) (*operations.DeleteRegistryResponse, error) {
+func (s *Integrations) DeleteRegistry(ctx context.Context, credentialID string) (*operations.DeleteRegistryResponse, error) {
 	request := operations.DeleteRegistryRequest{
 		CredentialID: credentialID,
 	}
@@ -274,6 +286,10 @@ func (s *integrations) DeleteRegistry(ctx context.Context, credentialID string) 
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -281,7 +297,7 @@ func (s *integrations) DeleteRegistry(ctx context.Context, credentialID string) 
 
 // GenerateVCSToken - Generate VCS token
 // Generate a token for a specific VCS link.
-func (s *integrations) GenerateVCSToken(ctx context.Context, customVCSID string, vcsLinkID string) (*operations.GenerateVCSTokenResponse, error) {
+func (s *Integrations) GenerateVCSToken(ctx context.Context, customVCSID string, vcsLinkID string) (*operations.GenerateVCSTokenResponse, error) {
 	request := operations.GenerateVCSTokenRequest{
 		CustomVCSID: customVCSID,
 		VcsLinkID:   vcsLinkID,
@@ -337,6 +353,10 @@ func (s *integrations) GenerateVCSToken(ctx context.Context, customVCSID string,
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -344,7 +364,7 @@ func (s *integrations) GenerateVCSToken(ctx context.Context, customVCSID string,
 
 // Get log sink details
 // Gets details about a given log sink.
-func (s *integrations) Get(ctx context.Context, logSinkID string) (*operations.GetLogSinkResponse, error) {
+func (s *Integrations) Get(ctx context.Context, logSinkID string) (*operations.GetLogSinkResponse, error) {
 	request := operations.GetLogSinkRequest{
 		LogSinkID: logSinkID,
 	}
@@ -399,6 +419,10 @@ func (s *integrations) Get(ctx context.Context, logSinkID string) (*operations.G
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -406,7 +430,7 @@ func (s *integrations) Get(ctx context.Context, logSinkID string) (*operations.G
 
 // GetBranches - List branches
 // Gets a list of branches for the repo
-func (s *integrations) GetBranches(ctx context.Context, request operations.GetBranchesRequest) (*operations.GetBranchesResponse, error) {
+func (s *Integrations) GetBranches(ctx context.Context, request operations.GetBranchesRequest) (*operations.GetBranchesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/integrations/vcs/repos/{vcsService}/{repositoryOwner}/{repositoryName}/branches", request, nil)
 	if err != nil {
@@ -461,6 +485,10 @@ func (s *integrations) GetBranches(ctx context.Context, request operations.GetBr
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -468,7 +496,7 @@ func (s *integrations) GetBranches(ctx context.Context, request operations.GetBr
 
 // GetRegistry - Get registry
 // Views a set of registry credential data.
-func (s *integrations) GetRegistry(ctx context.Context, credentialID string) (*operations.GetRegistryResponse, error) {
+func (s *Integrations) GetRegistry(ctx context.Context, credentialID string) (*operations.GetRegistryResponse, error) {
 	request := operations.GetRegistryRequest{
 		CredentialID: credentialID,
 	}
@@ -523,6 +551,10 @@ func (s *integrations) GetRegistry(ctx context.Context, credentialID string) (*o
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -530,7 +562,7 @@ func (s *integrations) GetRegistry(ctx context.Context, credentialID string) (*o
 
 // GetRepos - List repositories
 // Gets a list of repositories accessible to this account
-func (s *integrations) GetRepos(ctx context.Context, request operations.GetRepositoriesRequest) (*operations.GetRepositoriesResponse, error) {
+func (s *Integrations) GetRepos(ctx context.Context, request operations.GetRepositoriesRequest) (*operations.GetRepositoriesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/integrations/vcs/repos"
 
@@ -582,6 +614,10 @@ func (s *integrations) GetRepos(ctx context.Context, request operations.GetRepos
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -589,7 +625,7 @@ func (s *integrations) GetRepos(ctx context.Context, request operations.GetRepos
 
 // ListLogSinks - List log sinks
 // Gets a list of log sinks added to this account.
-func (s *integrations) ListLogSinks(ctx context.Context, cursor *string, perPage *int64) (*operations.GetLogSinksResponse, error) {
+func (s *Integrations) ListLogSinks(ctx context.Context, cursor *string, perPage *int64) (*operations.GetLogSinksResponse, error) {
 	request := operations.GetLogSinksRequest{
 		Cursor:  cursor,
 		PerPage: perPage,
@@ -646,6 +682,10 @@ func (s *integrations) ListLogSinks(ctx context.Context, cursor *string, perPage
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -653,7 +693,7 @@ func (s *integrations) ListLogSinks(ctx context.Context, cursor *string, perPage
 
 // ListRegistries - List registries
 // Lists the container registry credentials saved to this account. Does not display secrets.
-func (s *integrations) ListRegistries(ctx context.Context, cursor *string, perPage *int64) (*operations.GetRegistriesResponse, error) {
+func (s *Integrations) ListRegistries(ctx context.Context, cursor *string, perPage *int64) (*operations.GetRegistriesResponse, error) {
 	request := operations.GetRegistriesRequest{
 		Cursor:  cursor,
 		PerPage: perPage,
@@ -710,6 +750,10 @@ func (s *integrations) ListRegistries(ctx context.Context, cursor *string, perPa
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -717,7 +761,7 @@ func (s *integrations) ListRegistries(ctx context.Context, cursor *string, perPa
 
 // ListVcsProviders - List VCS providers
 // Lists linked version control providers
-func (s *integrations) ListVcsProviders(ctx context.Context) (*operations.GetVCSProvidersResponse, error) {
+func (s *Integrations) ListVcsProviders(ctx context.Context) (*operations.GetVCSProvidersResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/integrations/vcs"
 
@@ -765,6 +809,10 @@ func (s *integrations) ListVcsProviders(ctx context.Context) (*operations.GetVCS
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -772,7 +820,7 @@ func (s *integrations) ListVcsProviders(ctx context.Context) (*operations.GetVCS
 
 // Pause log sink
 // Pauses a given log sink.
-func (s *integrations) Pause(ctx context.Context, logSinkID string) (*operations.PauseLogSinkResponse, error) {
+func (s *Integrations) Pause(ctx context.Context, logSinkID string) (*operations.PauseLogSinkResponse, error) {
 	request := operations.PauseLogSinkRequest{
 		LogSinkID: logSinkID,
 	}
@@ -827,6 +875,10 @@ func (s *integrations) Pause(ctx context.Context, logSinkID string) (*operations
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -834,7 +886,7 @@ func (s *integrations) Pause(ctx context.Context, logSinkID string) (*operations
 
 // Resume log sink
 // Resumes a paused log sink.
-func (s *integrations) Resume(ctx context.Context, logSinkID string) (*operations.ResumeLogSinkResponse, error) {
+func (s *Integrations) Resume(ctx context.Context, logSinkID string) (*operations.ResumeLogSinkResponse, error) {
 	request := operations.ResumeLogSinkRequest{
 		LogSinkID: logSinkID,
 	}
@@ -889,6 +941,10 @@ func (s *integrations) Resume(ctx context.Context, logSinkID string) (*operation
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -896,7 +952,7 @@ func (s *integrations) Resume(ctx context.Context, logSinkID string) (*operation
 
 // Update log sink
 // Updates the settings for a log sink.
-func (s *integrations) Update(ctx context.Context, logSinkRequest shared.LogSinkRequest, logSinkID string) (*operations.UpdateLogSinkResponse, error) {
+func (s *Integrations) Update(ctx context.Context, logSinkRequest shared.LogSinkRequest, logSinkID string) (*operations.UpdateLogSinkResponse, error) {
 	request := operations.UpdateLogSinkRequest{
 		LogSinkRequest: logSinkRequest,
 		LogSinkID:      logSinkID,
@@ -962,6 +1018,10 @@ func (s *integrations) Update(ctx context.Context, logSinkRequest shared.LogSink
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -969,7 +1029,7 @@ func (s *integrations) Update(ctx context.Context, logSinkRequest shared.LogSink
 
 // UpdateRegistry - Update registry
 // Updates a set of registry credential data.
-func (s *integrations) UpdateRegistry(ctx context.Context, requestBody operations.UpdateRegistryRequestBody, credentialID string) (*operations.UpdateRegistryResponse, error) {
+func (s *Integrations) UpdateRegistry(ctx context.Context, requestBody operations.UpdateRegistryRequestBody, credentialID string) (*operations.UpdateRegistryResponse, error) {
 	request := operations.UpdateRegistryRequest{
 		RequestBody:  requestBody,
 		CredentialID: credentialID,
@@ -1035,6 +1095,10 @@ func (s *integrations) UpdateRegistry(ctx context.Context, requestBody operation
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

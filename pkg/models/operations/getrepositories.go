@@ -5,26 +5,26 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"net/http"
 )
 
-// GetRepositoriesVcsService - If provided, only returns repositories belonging to this version control provider.
-type GetRepositoriesVcsService string
+// VcsService - If provided, only returns repositories belonging to this version control provider.
+type VcsService string
 
 const (
-	GetRepositoriesVcsServiceBitbucket  GetRepositoriesVcsService = "bitbucket"
-	GetRepositoriesVcsServiceGitlab     GetRepositoriesVcsService = "gitlab"
-	GetRepositoriesVcsServiceGithub     GetRepositoriesVcsService = "github"
-	GetRepositoriesVcsServiceSelfHosted GetRepositoriesVcsService = "self-hosted"
+	VcsServiceBitbucket  VcsService = "bitbucket"
+	VcsServiceGitlab     VcsService = "gitlab"
+	VcsServiceGithub     VcsService = "github"
+	VcsServiceSelfHosted VcsService = "self-hosted"
 )
 
-func (e GetRepositoriesVcsService) ToPointer() *GetRepositoriesVcsService {
+func (e VcsService) ToPointer() *VcsService {
 	return &e
 }
 
-func (e *GetRepositoriesVcsService) UnmarshalJSON(data []byte) error {
+func (e *VcsService) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -37,10 +37,10 @@ func (e *GetRepositoriesVcsService) UnmarshalJSON(data []byte) error {
 	case "github":
 		fallthrough
 	case "self-hosted":
-		*e = GetRepositoriesVcsService(v)
+		*e = VcsService(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRepositoriesVcsService: %v", v)
+		return fmt.Errorf("invalid value for VcsService: %v", v)
 	}
 }
 
@@ -51,7 +51,7 @@ type GetRepositoriesRequest struct {
 	SelfHostedVcsID *string `queryParam:"style=form,explode=true,name=self_hosted_vcs_id"`
 	VcsLinkID       *string `queryParam:"style=form,explode=true,name=vcs_link_id"`
 	// If provided, only returns repositories belonging to this version control provider.
-	VcsService *GetRepositoriesVcsService `queryParam:"style=form,explode=true,name=vcs_service"`
+	VcsService *VcsService `queryParam:"style=form,explode=true,name=vcs_service"`
 }
 
 func (g GetRepositoriesRequest) MarshalJSON() ([]byte, error) {
@@ -100,7 +100,7 @@ func (o *GetRepositoriesRequest) GetVcsLinkID() *string {
 	return o.VcsLinkID
 }
 
-func (o *GetRepositoriesRequest) GetVcsService() *GetRepositoriesVcsService {
+func (o *GetRepositoriesRequest) GetVcsService() *VcsService {
 	if o == nil {
 		return nil
 	}

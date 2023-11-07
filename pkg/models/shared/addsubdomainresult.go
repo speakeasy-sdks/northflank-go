@@ -2,8 +2,8 @@
 
 package shared
 
-// AddSubDomainResultData - Result data.
-type AddSubDomainResultData struct {
+// Data - Result data.
+type Data struct {
 	// The content to set the DNS record to
 	Content string `json:"content"`
 	// The full domain name with subdomain
@@ -16,35 +16,35 @@ type AddSubDomainResultData struct {
 	Verified bool `json:"verified"`
 }
 
-func (o *AddSubDomainResultData) GetContent() string {
+func (o *Data) GetContent() string {
 	if o == nil {
 		return ""
 	}
 	return o.Content
 }
 
-func (o *AddSubDomainResultData) GetFullName() string {
+func (o *Data) GetFullName() string {
 	if o == nil {
 		return ""
 	}
 	return o.FullName
 }
 
-func (o *AddSubDomainResultData) GetName() string {
+func (o *Data) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *AddSubDomainResultData) GetRecordType() string {
+func (o *Data) GetRecordType() string {
 	if o == nil {
 		return ""
 	}
 	return o.RecordType
 }
 
-func (o *AddSubDomainResultData) GetVerified() bool {
+func (o *Data) GetVerified() bool {
 	if o == nil {
 		return false
 	}
@@ -54,12 +54,12 @@ func (o *AddSubDomainResultData) GetVerified() bool {
 // AddSubDomainResult - Response object.
 type AddSubDomainResult struct {
 	// Result data.
-	Data AddSubDomainResultData `json:"data"`
+	Data Data `json:"data"`
 }
 
-func (o *AddSubDomainResult) GetData() AddSubDomainResultData {
+func (o *AddSubDomainResult) GetData() Data {
 	if o == nil {
-		return AddSubDomainResultData{}
+		return Data{}
 	}
 	return o.Data
 }

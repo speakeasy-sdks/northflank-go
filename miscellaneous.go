@@ -6,28 +6,28 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-type miscellaneous struct {
+type Miscellaneous struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newMiscellaneous(sdkConfig sdkConfiguration) *miscellaneous {
-	return &miscellaneous{
+func newMiscellaneous(sdkConfig sdkConfiguration) *Miscellaneous {
+	return &Miscellaneous{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetDNSID - Get DNS ID
 // Returns the partially random string used when generating host names for the authenticated account.
-func (s *miscellaneous) GetDNSID(ctx context.Context) (*operations.GetDNSIDResponse, error) {
+func (s *Miscellaneous) GetDNSID(ctx context.Context) (*operations.GetDNSIDResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/dns-id"
 
@@ -75,6 +75,10 @@ func (s *miscellaneous) GetDNSID(ctx context.Context) (*operations.GetDNSIDRespo
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -82,7 +86,7 @@ func (s *miscellaneous) GetDNSID(ctx context.Context) (*operations.GetDNSIDRespo
 
 // HealthCheck - Health check
 // Returns api service status
-func (s *miscellaneous) HealthCheck(ctx context.Context) (*operations.GetHealthCheckResponse, error) {
+func (s *Miscellaneous) HealthCheck(ctx context.Context) (*operations.GetHealthCheckResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/"
 
@@ -119,6 +123,10 @@ func (s *miscellaneous) HealthCheck(ctx context.Context) (*operations.GetHealthC
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
 	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

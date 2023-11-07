@@ -7,24 +7,24 @@ import (
 	"fmt"
 )
 
-// RegistriesResultDataCredentialsProvider - The registry provider associated with this set of credentials.
-type RegistriesResultDataCredentialsProvider string
+// RegistriesResultProvider - The registry provider associated with this set of credentials.
+type RegistriesResultProvider string
 
 const (
-	RegistriesResultDataCredentialsProviderDockerhub RegistriesResultDataCredentialsProvider = "dockerhub"
-	RegistriesResultDataCredentialsProviderGcr       RegistriesResultDataCredentialsProvider = "gcr"
-	RegistriesResultDataCredentialsProviderGcrEu     RegistriesResultDataCredentialsProvider = "gcr-eu"
-	RegistriesResultDataCredentialsProviderGcrUs     RegistriesResultDataCredentialsProvider = "gcr-us"
-	RegistriesResultDataCredentialsProviderGitlab    RegistriesResultDataCredentialsProvider = "gitlab"
-	RegistriesResultDataCredentialsProviderGithub    RegistriesResultDataCredentialsProvider = "github"
-	RegistriesResultDataCredentialsProviderCustom    RegistriesResultDataCredentialsProvider = "custom"
+	RegistriesResultProviderDockerhub RegistriesResultProvider = "dockerhub"
+	RegistriesResultProviderGcr       RegistriesResultProvider = "gcr"
+	RegistriesResultProviderGcrEu     RegistriesResultProvider = "gcr-eu"
+	RegistriesResultProviderGcrUs     RegistriesResultProvider = "gcr-us"
+	RegistriesResultProviderGitlab    RegistriesResultProvider = "gitlab"
+	RegistriesResultProviderGithub    RegistriesResultProvider = "github"
+	RegistriesResultProviderCustom    RegistriesResultProvider = "custom"
 )
 
-func (e RegistriesResultDataCredentialsProvider) ToPointer() *RegistriesResultDataCredentialsProvider {
+func (e RegistriesResultProvider) ToPointer() *RegistriesResultProvider {
 	return &e
 }
 
-func (e *RegistriesResultDataCredentialsProvider) UnmarshalJSON(data []byte) error {
+func (e *RegistriesResultProvider) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -43,36 +43,36 @@ func (e *RegistriesResultDataCredentialsProvider) UnmarshalJSON(data []byte) err
 	case "github":
 		fallthrough
 	case "custom":
-		*e = RegistriesResultDataCredentialsProvider(v)
+		*e = RegistriesResultProvider(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RegistriesResultDataCredentialsProvider: %v", v)
+		return fmt.Errorf("invalid value for RegistriesResultProvider: %v", v)
 	}
 }
 
-// RegistriesResultDataCredentialsRestrictions - Data about whether the credentials are restricted to certain projects.
-type RegistriesResultDataCredentialsRestrictions struct {
+// RegistriesResultRestrictions - Data about whether the credentials are restricted to certain projects.
+type RegistriesResultRestrictions struct {
 	// An array of projects the credentials are restricted to, if applicable.
 	Projects []string `json:"projects"`
 	// Whether the credentials are restricted to specific projects.
 	Restricted bool `json:"restricted"`
 }
 
-func (o *RegistriesResultDataCredentialsRestrictions) GetProjects() []string {
+func (o *RegistriesResultRestrictions) GetProjects() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Projects
 }
 
-func (o *RegistriesResultDataCredentialsRestrictions) GetRestricted() bool {
+func (o *RegistriesResultRestrictions) GetRestricted() bool {
 	if o == nil {
 		return false
 	}
 	return o.Restricted
 }
 
-type RegistriesResultDataCredentials struct {
+type RegistriesResultCredentials struct {
 	// Description of the saved credentials.
 	Description string `json:"description"`
 	// Identifier for the credentials.
@@ -80,42 +80,42 @@ type RegistriesResultDataCredentials struct {
 	// Name of the saved credentials.
 	Name string `json:"name"`
 	// The registry provider associated with this set of credentials.
-	Provider RegistriesResultDataCredentialsProvider `json:"provider"`
+	Provider RegistriesResultProvider `json:"provider"`
 	// Data about whether the credentials are restricted to certain projects.
-	Restrictions RegistriesResultDataCredentialsRestrictions `json:"restrictions"`
+	Restrictions RegistriesResultRestrictions `json:"restrictions"`
 }
 
-func (o *RegistriesResultDataCredentials) GetDescription() string {
+func (o *RegistriesResultCredentials) GetDescription() string {
 	if o == nil {
 		return ""
 	}
 	return o.Description
 }
 
-func (o *RegistriesResultDataCredentials) GetID() string {
+func (o *RegistriesResultCredentials) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *RegistriesResultDataCredentials) GetName() string {
+func (o *RegistriesResultCredentials) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RegistriesResultDataCredentials) GetProvider() RegistriesResultDataCredentialsProvider {
+func (o *RegistriesResultCredentials) GetProvider() RegistriesResultProvider {
 	if o == nil {
-		return RegistriesResultDataCredentialsProvider("")
+		return RegistriesResultProvider("")
 	}
 	return o.Provider
 }
 
-func (o *RegistriesResultDataCredentials) GetRestrictions() RegistriesResultDataCredentialsRestrictions {
+func (o *RegistriesResultCredentials) GetRestrictions() RegistriesResultRestrictions {
 	if o == nil {
-		return RegistriesResultDataCredentialsRestrictions{}
+		return RegistriesResultRestrictions{}
 	}
 	return o.Restrictions
 }
@@ -123,12 +123,12 @@ func (o *RegistriesResultDataCredentials) GetRestrictions() RegistriesResultData
 // RegistriesResultData - Result data.
 type RegistriesResultData struct {
 	// An array of credentials saved to this account.
-	Credentials []RegistriesResultDataCredentials `json:"credentials"`
+	Credentials []RegistriesResultCredentials `json:"credentials"`
 }
 
-func (o *RegistriesResultData) GetCredentials() []RegistriesResultDataCredentials {
+func (o *RegistriesResultData) GetCredentials() []RegistriesResultCredentials {
 	if o == nil {
-		return []RegistriesResultDataCredentials{}
+		return []RegistriesResultCredentials{}
 	}
 	return o.Credentials
 }

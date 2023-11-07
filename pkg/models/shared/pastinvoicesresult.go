@@ -2,70 +2,70 @@
 
 package shared
 
-// PastInvoicesResultDataInvoicesPeriod - Information about the billing period of the invoice.
-type PastInvoicesResultDataInvoicesPeriod struct {
+// PastInvoicesResultPeriod - Information about the billing period of the invoice.
+type PastInvoicesResultPeriod struct {
 	// Unix timestamp of the end of the billing period.
 	End float32 `json:"end"`
 	// Unix timestamp of the start of the billing period.
 	Start float32 `json:"start"`
 }
 
-func (o *PastInvoicesResultDataInvoicesPeriod) GetEnd() float32 {
+func (o *PastInvoicesResultPeriod) GetEnd() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.End
 }
 
-func (o *PastInvoicesResultDataInvoicesPeriod) GetStart() float32 {
+func (o *PastInvoicesResultPeriod) GetStart() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Start
 }
 
-type PastInvoicesResultDataInvoices struct {
+type Invoices struct {
 	// Currency code for the currency the invoice is billed in.
 	Currency string `json:"currency"`
 	// If `timestamp` is passed in, whether the invoice has been paid.
 	Paid *bool `json:"paid,omitempty"`
 	// Information about the billing period of the invoice.
-	Period PastInvoicesResultDataInvoicesPeriod `json:"period"`
+	Period PastInvoicesResultPeriod `json:"period"`
 	// Total cost of the invoice, in cents, excluding tax.
 	SubTotal float32 `json:"subTotal"`
 	// Total cost of the invoice, in cents, including tax.
 	Total float32 `json:"total"`
 }
 
-func (o *PastInvoicesResultDataInvoices) GetCurrency() string {
+func (o *Invoices) GetCurrency() string {
 	if o == nil {
 		return ""
 	}
 	return o.Currency
 }
 
-func (o *PastInvoicesResultDataInvoices) GetPaid() *bool {
+func (o *Invoices) GetPaid() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Paid
 }
 
-func (o *PastInvoicesResultDataInvoices) GetPeriod() PastInvoicesResultDataInvoicesPeriod {
+func (o *Invoices) GetPeriod() PastInvoicesResultPeriod {
 	if o == nil {
-		return PastInvoicesResultDataInvoicesPeriod{}
+		return PastInvoicesResultPeriod{}
 	}
 	return o.Period
 }
 
-func (o *PastInvoicesResultDataInvoices) GetSubTotal() float32 {
+func (o *Invoices) GetSubTotal() float32 {
 	if o == nil {
 		return 0.0
 	}
 	return o.SubTotal
 }
 
-func (o *PastInvoicesResultDataInvoices) GetTotal() float32 {
+func (o *Invoices) GetTotal() float32 {
 	if o == nil {
 		return 0.0
 	}
@@ -74,10 +74,10 @@ func (o *PastInvoicesResultDataInvoices) GetTotal() float32 {
 
 // PastInvoicesResultData - Result data.
 type PastInvoicesResultData struct {
-	Invoices *PastInvoicesResultDataInvoices `json:"invoices,omitempty"`
+	Invoices *Invoices `json:"invoices,omitempty"`
 }
 
-func (o *PastInvoicesResultData) GetInvoices() *PastInvoicesResultDataInvoices {
+func (o *PastInvoicesResultData) GetInvoices() *Invoices {
 	if o == nil {
 		return nil
 	}

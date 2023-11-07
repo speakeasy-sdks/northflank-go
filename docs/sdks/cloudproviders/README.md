@@ -1,5 +1,5 @@
 # CloudProviders
-(*CloudProviders*)
+(*.CloudProviders*)
 
 ### Available Operations
 
@@ -27,8 +27,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -43,7 +43,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.CloudProviders.Create(ctx, shared.CreateIntegrationRequest{
-        Credentials: shared.CreateIntegrationRequestCredentials{},
+        Credentials: shared.Credentials{},
         Description: northflankgo.String("This is a new cloud provider integration."),
         Gcp: &shared.CreateIntegrationRequestGcp{
             ProjectID: "string",
@@ -86,8 +86,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -103,16 +103,16 @@ func main() {
     ctx := context.Background()
     res, err := s.CloudProviders.CreateCluster(ctx, shared.CreateClusterRequest{
         Description: northflankgo.String("This is a new cluster."),
-        Gcp: &shared.CreateClusterRequestGcp{
+        Gcp: &shared.Gcp{
             ProjectID: "example-project-id",
         },
-        Integration: &shared.CreateClusterRequestIntegration{},
+        Integration: &shared.Integration{},
         IntegrationID: northflankgo.String("gcp-integration"),
         KubernetesVersion: "1.23.8",
         Name: "GCP Cluster 1",
-        NodePools: []shared.CreateClusterRequestNodePools{
-            shared.CreateClusterRequestNodePools{
-                Autoscaling: &shared.CreateClusterRequestNodePoolsAutoscaling{
+        NodePools: []shared.NodePools{
+            shared.NodePools{
+                Autoscaling: &shared.Autoscaling{
                     Enabled: northflankgo.Bool(true),
                     Max: northflankgo.Int64(10),
                     Min: northflankgo.Int64(1),
@@ -121,7 +121,7 @@ func main() {
                     "string",
                 },
                 DiskSize: 100,
-                Labels: &shared.CreateClusterRequestNodePoolsLabels{},
+                Labels: &shared.Labels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
                 Preemptible: northflankgo.Bool(false),
@@ -129,17 +129,17 @@ func main() {
         },
         Provider: shared.CreateClusterRequestProviderGcp,
         Region: "europe-west2",
-        Settings: shared.CreateClusterRequestSettings{
-            Builds: &shared.CreateClusterRequestSettingsBuilds{
+        Settings: shared.Settings{
+            Builds: &shared.Builds{
                 ClusterID: northflankgo.String("build-cluster"),
                 Plan: northflankgo.String("nf-compute-200"),
             },
-            Logging: &shared.CreateClusterRequestSettingsLogging{
-                Loki: shared.CreateCreateClusterRequestSettingsLoggingLokiCreateClusterRequestSettingsLoggingLoki2(
-                        shared.CreateClusterRequestSettingsLoggingLoki2{},
+            Logging: &shared.Logging{
+                Loki: shared.CreateLokiCreateClusterRequest2(
+                        shared.CreateClusterRequest2{},
                 ),
             },
-            Registry: &shared.CreateClusterRequestSettingsRegistry{
+            Registry: &shared.Registry{
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
@@ -179,8 +179,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -233,8 +233,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -287,8 +287,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -337,8 +337,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -391,8 +391,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -445,8 +445,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -505,8 +505,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -565,8 +565,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -584,7 +584,7 @@ func main() {
         Description: northflankgo.String("This is an updated description."),
         NodePools: []shared.UpdateClusterRequestNodePools{
             shared.UpdateClusterRequestNodePools{
-                Autoscaling: &shared.UpdateClusterRequestNodePoolsAutoscaling{
+                Autoscaling: &shared.UpdateClusterRequestAutoscaling{
                     Enabled: northflankgo.Bool(true),
                     Max: northflankgo.Int64(10),
                     Min: northflankgo.Int64(1),
@@ -594,20 +594,20 @@ func main() {
                 },
                 DiskSize: 100,
                 ID: northflankgo.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                Labels: &shared.UpdateClusterRequestNodePoolsLabels{},
+                Labels: &shared.UpdateClusterRequestLabels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
                 Preemptible: northflankgo.Bool(false),
             },
         },
         Settings: &shared.UpdateClusterRequestSettings{
-            Builds: &shared.UpdateClusterRequestSettingsBuilds{
+            Builds: &shared.UpdateClusterRequestBuilds{
                 ClusterID: northflankgo.String("build-cluster"),
                 Plan: northflankgo.String("nf-compute-200"),
             },
-            Logging: &shared.UpdateClusterRequestSettingsLogging{
-                Loki: shared.CreateUpdateClusterRequestSettingsLoggingLokiUpdateClusterRequestSettingsLoggingLoki1(
-                        shared.UpdateClusterRequestSettingsLoggingLoki1{
+            Logging: &shared.UpdateClusterRequestLogging{
+                Loki: shared.CreateUpdateClusterRequestLokiUpdateClusterRequest1(
+                        shared.UpdateClusterRequest1{
                             S3AccessKey: "string",
                             S3BucketName: "string",
                             S3Region: "string",
@@ -615,7 +615,7 @@ func main() {
                         },
                 ),
             },
-            Registry: &shared.UpdateClusterRequestSettingsRegistry{
+            Registry: &shared.UpdateClusterRequestRegistry{
                 RegistryID: northflankgo.String("my-registry-credentials"),
             },
         },
@@ -661,8 +661,8 @@ package main
 import(
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {

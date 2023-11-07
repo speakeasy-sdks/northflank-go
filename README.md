@@ -24,8 +24,8 @@ package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"log"
 )
 
@@ -40,12 +40,12 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Addons.ListAddonTypes(ctx)
+	res, err := s.Miscellaneous.GetDNSID(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.AddonTypesResult != nil {
+	if res.DNSIDResult != nil {
 		// handle response
 	}
 }
@@ -57,16 +57,21 @@ func main() {
 ## Available Resources and Operations
 
 
-### [Addons](docs/sdks/addons/README.md)
+### [.Miscellaneous](docs/sdks/miscellaneous/README.md)
+
+* [GetDNSID](docs/sdks/miscellaneous/README.md#getdnsid) - Get DNS ID
+* [HealthCheck](docs/sdks/miscellaneous/README.md#healthcheck) - Health check
+
+### [.Addons](docs/sdks/addons/README.md)
 
 * [ListAddonTypes](docs/sdks/addons/README.md#listaddontypes) - List addon types
 
-### [Billing](docs/sdks/billing/README.md)
+### [.Billing](docs/sdks/billing/README.md)
 
 * [Get](docs/sdks/billing/README.md#get) - List invoices
 * [GetDetails](docs/sdks/billing/README.md#getdetails) - Get invoice details
 
-### [CloudProviders](docs/sdks/cloudproviders/README.md)
+### [.CloudProviders](docs/sdks/cloudproviders/README.md)
 
 * [Create](docs/sdks/cloudproviders/README.md#create) - Create integration
 * [CreateCluster](docs/sdks/cloudproviders/README.md#createcluster) - Create cluster
@@ -80,7 +85,7 @@ func main() {
 * [UpdateCluster](docs/sdks/cloudproviders/README.md#updatecluster) - Update cluster
 * [UpdateIntegration](docs/sdks/cloudproviders/README.md#updateintegration) - Update integration
 
-### [Domains](docs/sdks/domains/README.md)
+### [.Domains](docs/sdks/domains/README.md)
 
 * [Add](docs/sdks/domains/README.md#add) - Add subdomain
 * [Assign](docs/sdks/domains/README.md#assign) - Assign service to subdomain
@@ -96,7 +101,7 @@ func main() {
 * [Verify](docs/sdks/domains/README.md#verify) - Verify subdomain
 * [VerifyDomain](docs/sdks/domains/README.md#verifydomain) - Verify domain
 
-### [Integrations](docs/sdks/integrations/README.md)
+### [.Integrations](docs/sdks/integrations/README.md)
 
 * [Add](docs/sdks/integrations/README.md#add) - Add registry
 * [Create](docs/sdks/integrations/README.md#create) - Create log sink
@@ -114,11 +119,6 @@ func main() {
 * [Resume](docs/sdks/integrations/README.md#resume) - Resume log sink
 * [Update](docs/sdks/integrations/README.md#update) - Update log sink
 * [UpdateRegistry](docs/sdks/integrations/README.md#updateregistry) - Update registry
-
-### [Miscellaneous](docs/sdks/miscellaneous/README.md)
-
-* [GetDNSID](docs/sdks/miscellaneous/README.md#getdnsid) - Get DNS ID
-* [HealthCheck](docs/sdks/miscellaneous/README.md#healthcheck) - Health check
 <!-- End SDK Available Operations -->
 
 
@@ -153,6 +153,44 @@ Here's an example of one such pagination call:
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
 
 
+## Example
+
+```go
+package main
+
+import (
+	"context"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := northflankgo.New(
+		northflankgo.WithSecurity(shared.Security{
+			BasicAuth: &shared.SchemeBasicAuth{
+				Password: "",
+				Username: "",
+			},
+		}),
+	)
+
+	var clusterID string = "gcp-cluster-1"
+
+	ctx := context.Background()
+	res, err := s.CloudProviders.DeleteCluster(ctx, clusterID)
+	if err != nil {
+
+		var e *sdkerrors.APIErrorResult
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+	}
+}
+
+```
 <!-- End Error Handling -->
 
 
@@ -170,35 +208,34 @@ You can override the default server globally using the `WithServerIndex` option 
 
 For example:
 
-
 ```go
 package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"log"
 )
 
 func main() {
 	s := northflankgo.New(
+		northflankgo.WithServerIndex(0),
 		northflankgo.WithSecurity(shared.Security{
 			BasicAuth: &shared.SchemeBasicAuth{
 				Password: "",
 				Username: "",
 			},
 		}),
-		northflankgo.WithServerIndex(0),
 	)
 
 	ctx := context.Background()
-	res, err := s.Addons.ListAddonTypes(ctx)
+	res, err := s.Miscellaneous.GetDNSID(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.AddonTypesResult != nil {
+	if res.DNSIDResult != nil {
 		// handle response
 	}
 }
@@ -210,35 +247,34 @@ func main() {
 
 The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
 
-
 ```go
 package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go"
-	"github.com/speakeasy-sdks/northflank-go/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 	"log"
 )
 
 func main() {
 	s := northflankgo.New(
+		northflankgo.WithServerURL("https://api.northflank.com"),
 		northflankgo.WithSecurity(shared.Security{
 			BasicAuth: &shared.SchemeBasicAuth{
 				Password: "",
 				Username: "",
 			},
 		}),
-		northflankgo.WithServerURL("https://api.northflank.com"),
 	)
 
 	ctx := context.Background()
-	res, err := s.Addons.ListAddonTypes(ctx)
+	res, err := s.Miscellaneous.GetDNSID(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.AddonTypesResult != nil {
+	if res.DNSIDResult != nil {
 		// handle response
 	}
 }
@@ -276,6 +312,57 @@ var (
 
 This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security schemes globally:
+
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `BasicAuth`  | http         | HTTP Basic   |
+| `BearerAuth` | http         | HTTP Bearer  |
+
+You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```go
+package main
+
+import (
+	"context"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := northflankgo.New(
+		northflankgo.WithSecurity(shared.Security{
+			BasicAuth: &shared.SchemeBasicAuth{
+				Password: "",
+				Username: "",
+			},
+		}),
+	)
+
+	ctx := context.Background()
+	res, err := s.Miscellaneous.GetDNSID(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.DNSIDResult != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

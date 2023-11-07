@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-// ListDomainsResultDataDomainsStatus - The status of the domain verification.
-type ListDomainsResultDataDomainsStatus string
+// ListDomainsResultStatus - The status of the domain verification.
+type ListDomainsResultStatus string
 
 const (
-	ListDomainsResultDataDomainsStatusPending  ListDomainsResultDataDomainsStatus = "pending"
-	ListDomainsResultDataDomainsStatusVerified ListDomainsResultDataDomainsStatus = "verified"
+	ListDomainsResultStatusPending  ListDomainsResultStatus = "pending"
+	ListDomainsResultStatusVerified ListDomainsResultStatus = "verified"
 )
 
-func (e ListDomainsResultDataDomainsStatus) ToPointer() *ListDomainsResultDataDomainsStatus {
+func (e ListDomainsResultStatus) ToPointer() *ListDomainsResultStatus {
 	return &e
 }
 
-func (e *ListDomainsResultDataDomainsStatus) UnmarshalJSON(data []byte) error {
+func (e *ListDomainsResultStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -28,47 +28,47 @@ func (e *ListDomainsResultDataDomainsStatus) UnmarshalJSON(data []byte) error {
 	case "pending":
 		fallthrough
 	case "verified":
-		*e = ListDomainsResultDataDomainsStatus(v)
+		*e = ListDomainsResultStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListDomainsResultDataDomainsStatus: %v", v)
+		return fmt.Errorf("invalid value for ListDomainsResultStatus: %v", v)
 	}
 }
 
-// ListDomainsResultDataDomains - Details about a domain.
-type ListDomainsResultDataDomains struct {
+// Domains - Details about a domain.
+type Domains struct {
 	// The hostname to add to your domain's DNS records as a TXT record to verify the domain.
 	Hostname string `json:"hostname"`
 	// The domain name.
 	Name string `json:"name"`
 	// The status of the domain verification.
-	Status ListDomainsResultDataDomainsStatus `json:"status"`
+	Status ListDomainsResultStatus `json:"status"`
 	// The token to add as the content of the TXT record to verify the domain.
 	Token string `json:"token"`
 }
 
-func (o *ListDomainsResultDataDomains) GetHostname() string {
+func (o *Domains) GetHostname() string {
 	if o == nil {
 		return ""
 	}
 	return o.Hostname
 }
 
-func (o *ListDomainsResultDataDomains) GetName() string {
+func (o *Domains) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ListDomainsResultDataDomains) GetStatus() ListDomainsResultDataDomainsStatus {
+func (o *Domains) GetStatus() ListDomainsResultStatus {
 	if o == nil {
-		return ListDomainsResultDataDomainsStatus("")
+		return ListDomainsResultStatus("")
 	}
 	return o.Status
 }
 
-func (o *ListDomainsResultDataDomains) GetToken() string {
+func (o *Domains) GetToken() string {
 	if o == nil {
 		return ""
 	}
@@ -78,12 +78,12 @@ func (o *ListDomainsResultDataDomains) GetToken() string {
 // ListDomainsResultData - Result data.
 type ListDomainsResultData struct {
 	// A list of domains registered to this account.
-	Domains []ListDomainsResultDataDomains `json:"domains"`
+	Domains []Domains `json:"domains"`
 }
 
-func (o *ListDomainsResultData) GetDomains() []ListDomainsResultDataDomains {
+func (o *ListDomainsResultData) GetDomains() []Domains {
 	if o == nil {
-		return []ListDomainsResultDataDomains{}
+		return []Domains{}
 	}
 	return o.Domains
 }

@@ -1,9 +1,0 @@
-# UpdateClusterRequestSettingsLogging
-
-
-## Fields
-
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `Loki`                                                                                                     | [*UpdateClusterRequestSettingsLoggingLoki](../../models/shared/updateclusterrequestsettingsloggingloki.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
-| `Mode`                                                                                                     | [*UpdateClusterRequestSettingsLoggingMode](../../models/shared/updateclusterrequestsettingsloggingmode.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |

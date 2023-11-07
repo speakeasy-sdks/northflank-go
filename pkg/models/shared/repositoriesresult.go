@@ -7,34 +7,34 @@ import (
 	"fmt"
 )
 
-// RepositoriesResultDataReposOwner - Details about the repository owner.
-type RepositoriesResultDataReposOwner struct {
+// Owner - Details about the repository owner.
+type Owner struct {
 	// The login of the repository owner.
 	Login string `json:"login"`
 }
 
-func (o *RepositoriesResultDataReposOwner) GetLogin() string {
+func (o *Owner) GetLogin() string {
 	if o == nil {
 		return ""
 	}
 	return o.Login
 }
 
-// RepositoriesResultDataReposVcsService - Version control provider of the repository.
-type RepositoriesResultDataReposVcsService string
+// RepositoriesResultVcsService - Version control provider of the repository.
+type RepositoriesResultVcsService string
 
 const (
-	RepositoriesResultDataReposVcsServiceBitbucket  RepositoriesResultDataReposVcsService = "bitbucket"
-	RepositoriesResultDataReposVcsServiceGitlab     RepositoriesResultDataReposVcsService = "gitlab"
-	RepositoriesResultDataReposVcsServiceGithub     RepositoriesResultDataReposVcsService = "github"
-	RepositoriesResultDataReposVcsServiceSelfHosted RepositoriesResultDataReposVcsService = "self-hosted"
+	RepositoriesResultVcsServiceBitbucket  RepositoriesResultVcsService = "bitbucket"
+	RepositoriesResultVcsServiceGitlab     RepositoriesResultVcsService = "gitlab"
+	RepositoriesResultVcsServiceGithub     RepositoriesResultVcsService = "github"
+	RepositoriesResultVcsServiceSelfHosted RepositoriesResultVcsService = "self-hosted"
 )
 
-func (e RepositoriesResultDataReposVcsService) ToPointer() *RepositoriesResultDataReposVcsService {
+func (e RepositoriesResultVcsService) ToPointer() *RepositoriesResultVcsService {
 	return &e
 }
 
-func (e *RepositoriesResultDataReposVcsService) UnmarshalJSON(data []byte) error {
+func (e *RepositoriesResultVcsService) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -47,15 +47,15 @@ func (e *RepositoriesResultDataReposVcsService) UnmarshalJSON(data []byte) error
 	case "github":
 		fallthrough
 	case "self-hosted":
-		*e = RepositoriesResultDataReposVcsService(v)
+		*e = RepositoriesResultVcsService(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RepositoriesResultDataReposVcsService: %v", v)
+		return fmt.Errorf("invalid value for RepositoriesResultVcsService: %v", v)
 	}
 }
 
-// RepositoriesResultDataRepos - Details about an accessible repository.
-type RepositoriesResultDataRepos struct {
+// Repos - Details about an accessible repository.
+type Repos struct {
 	// The login of the linked version control account that can access this repository.
 	AccountLogin string `json:"accountLogin"`
 	// The full name of the repository.
@@ -65,67 +65,67 @@ type RepositoriesResultDataRepos struct {
 	// The name of the repository.
 	Name string `json:"name"`
 	// Details about the repository owner.
-	Owner RepositoriesResultDataReposOwner `json:"owner"`
+	Owner Owner `json:"owner"`
 	// If `vcsService` is `self-hosted`, the ID of the self-hosted provider.
 	SelfHostedVcsID *string `json:"selfHostedVcsId,omitempty"`
 	// The url of the repository.
 	URL string `json:"url"`
 	// Version control provider of the repository.
-	VcsService RepositoriesResultDataReposVcsService `json:"vcsService"`
+	VcsService RepositoriesResultVcsService `json:"vcsService"`
 }
 
-func (o *RepositoriesResultDataRepos) GetAccountLogin() string {
+func (o *Repos) GetAccountLogin() string {
 	if o == nil {
 		return ""
 	}
 	return o.AccountLogin
 }
 
-func (o *RepositoriesResultDataRepos) GetFullName() string {
+func (o *Repos) GetFullName() string {
 	if o == nil {
 		return ""
 	}
 	return o.FullName
 }
 
-func (o *RepositoriesResultDataRepos) GetID() string {
+func (o *Repos) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *RepositoriesResultDataRepos) GetName() string {
+func (o *Repos) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RepositoriesResultDataRepos) GetOwner() RepositoriesResultDataReposOwner {
+func (o *Repos) GetOwner() Owner {
 	if o == nil {
-		return RepositoriesResultDataReposOwner{}
+		return Owner{}
 	}
 	return o.Owner
 }
 
-func (o *RepositoriesResultDataRepos) GetSelfHostedVcsID() *string {
+func (o *Repos) GetSelfHostedVcsID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SelfHostedVcsID
 }
 
-func (o *RepositoriesResultDataRepos) GetURL() string {
+func (o *Repos) GetURL() string {
 	if o == nil {
 		return ""
 	}
 	return o.URL
 }
 
-func (o *RepositoriesResultDataRepos) GetVcsService() RepositoriesResultDataReposVcsService {
+func (o *Repos) GetVcsService() RepositoriesResultVcsService {
 	if o == nil {
-		return RepositoriesResultDataReposVcsService("")
+		return RepositoriesResultVcsService("")
 	}
 	return o.VcsService
 }
@@ -133,10 +133,10 @@ func (o *RepositoriesResultDataRepos) GetVcsService() RepositoriesResultDataRepo
 // RepositoriesResultData - Result data.
 type RepositoriesResultData struct {
 	// A list of accessible repositories.
-	Repos []RepositoriesResultDataRepos `json:"repos,omitempty"`
+	Repos []Repos `json:"repos,omitempty"`
 }
 
-func (o *RepositoriesResultData) GetRepos() []RepositoriesResultDataRepos {
+func (o *RepositoriesResultData) GetRepos() []Repos {
 	if o == nil {
 		return nil
 	}
