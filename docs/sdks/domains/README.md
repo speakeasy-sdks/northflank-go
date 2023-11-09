@@ -1,5 +1,5 @@
 # Domains
-(*.Domains*)
+(*Domains*)
 
 ### Available Operations
 
@@ -69,17 +69,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |                                                                          |
-| `addSubDomainRequest`                                                    | [shared.AddSubDomainRequest](../../models/shared/addsubdomainrequest.md) | :heavy_check_mark:                                                       | Request body                                                             |                                                                          |
-| `domain`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      | example.com                                                              |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `ctx`                                                                           | [context.Context](https://pkg.go.dev/context#Context)                           | :heavy_check_mark:                                                              | The context to use for the request.                                             |                                                                                 |
+| `addSubDomainRequest`                                                           | [shared.AddSubDomainRequest](../../../pkg/models/shared/addsubdomainrequest.md) | :heavy_check_mark:                                                              | Request body                                                                    |                                                                                 |
+| `domain`                                                                        | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             | example.com                                                                     |
 
 
 ### Response
 
-**[*operations.AddSubDomainResponse](../../models/operations/addsubdomainresponse.md), error**
-
+**[*operations.AddSubDomainResponse](../../pkg/models/operations/addsubdomainresponse.md), error**
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 400,409                  | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |
 
 ## Assign
 
@@ -132,18 +135,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
-| `assignSubDomainRequest`                                                       | [shared.AssignSubDomainRequest](../../models/shared/assignsubdomainrequest.md) | :heavy_check_mark:                                                             | Request body                                                                   |                                                                                |
-| `domain`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | example.com                                                                    |
-| `subdomain`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | app                                                                            |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |                                                                                       |
+| `assignSubDomainRequest`                                                              | [shared.AssignSubDomainRequest](../../../pkg/models/shared/assignsubdomainrequest.md) | :heavy_check_mark:                                                                    | Request body                                                                          |                                                                                       |
+| `domain`                                                                              | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   | example.com                                                                           |
+| `subdomain`                                                                           | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   | app                                                                                   |
 
 
 ### Response
 
-**[*operations.AssignSubDomainResponse](../../models/operations/assignsubdomainresponse.md), error**
-
+**[*operations.AssignSubDomainResponse](../../pkg/models/operations/assignsubdomainresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Create
 
@@ -187,16 +192,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |
-| `request`                                                                | [shared.CreateDomainRequest](../../models/shared/createdomainrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [shared.CreateDomainRequest](../../pkg/models/shared/createdomainrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 
 
 ### Response
 
-**[*operations.CreateDomainResponse](../../models/operations/createdomainresponse.md), error**
-
+**[*operations.CreateDomainResponse](../../pkg/models/operations/createdomainresponse.md), error**
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 400,409                  | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |
 
 ## Delete
 
@@ -249,8 +257,10 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteDomainResponse](../../models/operations/deletedomainresponse.md), error**
-
+**[*operations.DeleteDomainResponse](../../pkg/models/operations/deletedomainresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeleteCdn
 
@@ -301,18 +311,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                              | Type                                                   | Required                                               | Description                                            | Example                                                |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `ctx`                                                  | [context.Context](https://pkg.go.dev/context#Context)  | :heavy_check_mark:                                     | The context to use for the request.                    |                                                        |
-| `cdnRequest`                                           | [shared.CDNRequest](../../models/shared/cdnrequest.md) | :heavy_check_mark:                                     | Request body                                           |                                                        |
-| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | example.com                                            |
-| `subdomain`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | app                                                    |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `ctx`                                                         | [context.Context](https://pkg.go.dev/context#Context)         | :heavy_check_mark:                                            | The context to use for the request.                           |                                                               |
+| `cdnRequest`                                                  | [shared.CDNRequest](../../../pkg/models/shared/cdnrequest.md) | :heavy_check_mark:                                            | Request body                                                  |                                                               |
+| `domain`                                                      | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | example.com                                                   |
+| `subdomain`                                                   | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | app                                                           |
 
 
 ### Response
 
-**[*operations.DeleteCDNResponse](../../models/operations/deletecdnresponse.md), error**
-
+**[*operations.DeleteCDNResponse](../../pkg/models/operations/deletecdnresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeleteSubdomain
 
@@ -368,8 +380,11 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteSubDomainResponse](../../models/operations/deletesubdomainresponse.md), error**
-
+**[*operations.DeleteSubDomainResponse](../../pkg/models/operations/deletesubdomainresponse.md), error**
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 400,404                  | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |
 
 ## Enable
 
@@ -420,18 +435,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                              | Type                                                   | Required                                               | Description                                            | Example                                                |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `ctx`                                                  | [context.Context](https://pkg.go.dev/context#Context)  | :heavy_check_mark:                                     | The context to use for the request.                    |                                                        |
-| `cdnRequest`                                           | [shared.CDNRequest](../../models/shared/cdnrequest.md) | :heavy_check_mark:                                     | Request body                                           |                                                        |
-| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | example.com                                            |
-| `subdomain`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    | app                                                    |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `ctx`                                                         | [context.Context](https://pkg.go.dev/context#Context)         | :heavy_check_mark:                                            | The context to use for the request.                           |                                                               |
+| `cdnRequest`                                                  | [shared.CDNRequest](../../../pkg/models/shared/cdnrequest.md) | :heavy_check_mark:                                            | Request body                                                  |                                                               |
+| `domain`                                                      | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | example.com                                                   |
+| `subdomain`                                                   | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | app                                                           |
 
 
 ### Response
 
-**[*operations.EnableCDNResponse](../../models/operations/enablecdnresponse.md), error**
-
+**[*operations.EnableCDNResponse](../../pkg/models/operations/enablecdnresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Get
 
@@ -484,8 +501,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetDomainResponse](../../models/operations/getdomainresponse.md), error**
-
+**[*operations.GetDomainResponse](../../pkg/models/operations/getdomainresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetSubdomain
 
@@ -541,8 +560,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetSubDomainResponse](../../models/operations/getsubdomainresponse.md), error**
-
+**[*operations.GetSubDomainResponse](../../pkg/models/operations/getsubdomainresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ListDomains
 
@@ -601,8 +622,10 @@ func main() {
 
 ### Response
 
-**[*operations.ListDomainsResponse](../../models/operations/listdomainsresponse.md), error**
-
+**[*operations.ListDomainsResponse](../../pkg/models/operations/listdomainsresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Unassign
 
@@ -658,8 +681,10 @@ func main() {
 
 ### Response
 
-**[*operations.UnassignSubDomainResponse](../../models/operations/unassignsubdomainresponse.md), error**
-
+**[*operations.UnassignSubDomainResponse](../../pkg/models/operations/unassignsubdomainresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Verify
 
@@ -715,8 +740,11 @@ func main() {
 
 ### Response
 
-**[*operations.VerifySubDomainResponse](../../models/operations/verifysubdomainresponse.md), error**
-
+**[*operations.VerifySubDomainResponse](../../pkg/models/operations/verifysubdomainresponse.md), error**
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 400                      | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |
 
 ## VerifyDomain
 
@@ -769,5 +797,8 @@ func main() {
 
 ### Response
 
-**[*operations.VerifyDomainResponse](../../models/operations/verifydomainresponse.md), error**
-
+**[*operations.VerifyDomainResponse](../../pkg/models/operations/verifydomainresponse.md), error**
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 400                      | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |

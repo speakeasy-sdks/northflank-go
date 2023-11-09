@@ -1,0 +1,10 @@
+# AddSubDomainResult
+
+Response object.
+
+
+## Fields
+
+| Field                                             | Type                                              | Required                                          | Description                                       |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| `Data`                                            | [shared.Data](../../../pkg/models/shared/data.md) | :heavy_check_mark:                                | Result data.                                      |

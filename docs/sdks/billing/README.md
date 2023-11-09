@@ -1,5 +1,5 @@
 # Billing
-(*.Billing*)
+(*Billing*)
 
 ### Available Operations
 
@@ -63,8 +63,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetPastInvoicesResponse](../../models/operations/getpastinvoicesresponse.md), error**
-
+**[*operations.GetPastInvoicesResponse](../../pkg/models/operations/getpastinvoicesresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetDetails
 
@@ -113,13 +115,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.GetInvoiceDetailsRequest](../../models/operations/getinvoicedetailsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.GetInvoiceDetailsRequest](../../pkg/models/operations/getinvoicedetailsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 
 
 ### Response
 
-**[*operations.GetInvoiceDetailsResponse](../../models/operations/getinvoicedetailsresponse.md), error**
-
+**[*operations.GetInvoiceDetailsResponse](../../pkg/models/operations/getinvoicedetailsresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

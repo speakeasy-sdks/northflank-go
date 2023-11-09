@@ -1,0 +1,13 @@
+# VCSTokenResultData
+
+Result data.
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `InstallationID`                                                              | **int64*                                                                      | :heavy_minus_sign:                                                            | Installation ID of the GitHub installation the token belongs to (GitHub only) | 1234567                                                                       |
+| `InstallationToken`                                                           | **string*                                                                     | :heavy_minus_sign:                                                            | Installation token (GitHub only).                                             | ghs_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                          |
+| `Token`                                                                       | *string*                                                                      | :heavy_check_mark:                                                            | OAuth token.                                                                  | ghu_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                          |
+| `VcsService`                                                                  | [shared.VcsService](../../../pkg/models/shared/vcsservice.md)                 | :heavy_check_mark:                                                            | VCS provider the token belongs to.                                            | github                                                                        |

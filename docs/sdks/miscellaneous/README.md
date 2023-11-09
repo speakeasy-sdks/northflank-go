@@ -1,5 +1,5 @@
 # Miscellaneous
-(*.Miscellaneous*)
+(*Miscellaneous*)
 
 ### Available Operations
 
@@ -53,8 +53,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetDNSIDResponse](../../models/operations/getdnsidresponse.md), error**
-
+**[*operations.GetDNSIDResponse](../../pkg/models/operations/getdnsidresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## HealthCheck
 
@@ -103,5 +105,7 @@ func main() {
 
 ### Response
 
-**[*operations.GetHealthCheckResponse](../../models/operations/gethealthcheckresponse.md), error**
-
+**[*operations.GetHealthCheckResponse](../../pkg/models/operations/gethealthcheckresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

@@ -1,0 +1,12 @@
+# LokiLogSinkAuth
+
+Object containing authentication data for the log sink.
+
+
+## Fields
+
+| Field                                                      | Type                                                       | Required                                                   | Description                                                | Example                                                    |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `Password`                                                 | **string*                                                  | :heavy_minus_sign:                                         | The password for the log sink.                             | password1234                                               |
+| `Strategy`                                                 | [*shared.Strategy](../../../pkg/models/shared/strategy.md) | :heavy_minus_sign:                                         | The authentication strategy.                               | basic                                                      |
+| `User`                                                     | **string*                                                  | :heavy_minus_sign:                                         | The username for the log sink.                             | admin                                                      |

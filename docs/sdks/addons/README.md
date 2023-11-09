@@ -1,5 +1,5 @@
 # Addons
-(*.Addons*)
+(*Addons*)
 
 ### Available Operations
 
@@ -52,5 +52,7 @@ func main() {
 
 ### Response
 
-**[*operations.ListAddonTypesResponse](../../models/operations/listaddontypesresponse.md), error**
-
+**[*operations.ListAddonTypesResponse](../../pkg/models/operations/listaddontypesresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

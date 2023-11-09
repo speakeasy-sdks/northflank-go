@@ -57,21 +57,21 @@ func main() {
 ## Available Resources and Operations
 
 
-### [.Miscellaneous](docs/sdks/miscellaneous/README.md)
+### [Miscellaneous](docs/sdks/miscellaneous/README.md)
 
 * [GetDNSID](docs/sdks/miscellaneous/README.md#getdnsid) - Get DNS ID
 * [HealthCheck](docs/sdks/miscellaneous/README.md#healthcheck) - Health check
 
-### [.Addons](docs/sdks/addons/README.md)
+### [Addons](docs/sdks/addons/README.md)
 
 * [ListAddonTypes](docs/sdks/addons/README.md#listaddontypes) - List addon types
 
-### [.Billing](docs/sdks/billing/README.md)
+### [Billing](docs/sdks/billing/README.md)
 
 * [Get](docs/sdks/billing/README.md#get) - List invoices
 * [GetDetails](docs/sdks/billing/README.md#getdetails) - Get invoice details
 
-### [.CloudProviders](docs/sdks/cloudproviders/README.md)
+### [CloudProviders](docs/sdks/cloudproviders/README.md)
 
 * [Create](docs/sdks/cloudproviders/README.md#create) - Create integration
 * [CreateCluster](docs/sdks/cloudproviders/README.md#createcluster) - Create cluster
@@ -85,7 +85,7 @@ func main() {
 * [UpdateCluster](docs/sdks/cloudproviders/README.md#updatecluster) - Update cluster
 * [UpdateIntegration](docs/sdks/cloudproviders/README.md#updateintegration) - Update integration
 
-### [.Domains](docs/sdks/domains/README.md)
+### [Domains](docs/sdks/domains/README.md)
 
 * [Add](docs/sdks/domains/README.md#add) - Add subdomain
 * [Assign](docs/sdks/domains/README.md#assign) - Assign service to subdomain
@@ -101,7 +101,7 @@ func main() {
 * [Verify](docs/sdks/domains/README.md#verify) - Verify subdomain
 * [VerifyDomain](docs/sdks/domains/README.md#verifydomain) - Verify domain
 
-### [.Integrations](docs/sdks/integrations/README.md)
+### [Integrations](docs/sdks/integrations/README.md)
 
 * [Add](docs/sdks/integrations/README.md#add) - Add registry
 * [Create](docs/sdks/integrations/README.md#create) - Create log sink
@@ -150,7 +150,12 @@ Here's an example of one such pagination call:
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 409                      | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |
 
 
 ## Example
@@ -187,6 +192,11 @@ func main() {
 			log.Fatal(e.Error())
 		}
 
+		var e *sdkerrors.SDKError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
 	}
 }
 
@@ -316,12 +326,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security schemes globally:
+This SDK supports the following security schemes globally:
 
 | Name         | Type         | Scheme       |
 | ------------ | ------------ | ------------ |

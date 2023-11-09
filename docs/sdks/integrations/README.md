@@ -1,5 +1,5 @@
 # Integrations
-(*.Integrations*)
+(*Integrations*)
 
 ### Available Operations
 
@@ -89,16 +89,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.AddRegistryRequestBody](../../models/operations/addregistryrequestbody.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.AddRegistryRequestBody](../../pkg/models/operations/addregistryrequestbody.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 
 
 ### Response
 
-**[*operations.AddRegistryResponse](../../models/operations/addregistryresponse.md), error**
-
+**[*operations.AddRegistryResponse](../../pkg/models/operations/addregistryresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Create
 
@@ -180,16 +182,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.CreateLogSinkRequestBody](../../models/operations/createlogsinkrequestbody.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.CreateLogSinkRequestBody](../../pkg/models/operations/createlogsinkrequestbody.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 
 
 ### Response
 
-**[*operations.CreateLogSinkResponse](../../models/operations/createlogsinkresponse.md), error**
-
+**[*operations.CreateLogSinkResponse](../../pkg/models/operations/createlogsinkresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Delete
 
@@ -242,8 +246,10 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteLogSinkResponse](../../models/operations/deletelogsinkresponse.md), error**
-
+**[*operations.DeleteLogSinkResponse](../../pkg/models/operations/deletelogsinkresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeleteRegistry
 
@@ -296,8 +302,10 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteRegistryResponse](../../models/operations/deleteregistryresponse.md), error**
-
+**[*operations.DeleteRegistryResponse](../../pkg/models/operations/deleteregistryresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GenerateVCSToken
 
@@ -353,8 +361,10 @@ func main() {
 
 ### Response
 
-**[*operations.GenerateVCSTokenResponse](../../models/operations/generatevcstokenresponse.md), error**
-
+**[*operations.GenerateVCSTokenResponse](../../pkg/models/operations/generatevcstokenresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Get
 
@@ -407,8 +417,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetLogSinkResponse](../../models/operations/getlogsinkresponse.md), error**
-
+**[*operations.GetLogSinkResponse](../../pkg/models/operations/getlogsinkresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetBranches
 
@@ -456,16 +468,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [operations.GetBranchesRequest](../../models/operations/getbranchesrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `request`                                                                          | [operations.GetBranchesRequest](../../pkg/models/operations/getbranchesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 
 ### Response
 
-**[*operations.GetBranchesResponse](../../models/operations/getbranchesresponse.md), error**
-
+**[*operations.GetBranchesResponse](../../pkg/models/operations/getbranchesresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetRegistry
 
@@ -518,8 +532,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetRegistryResponse](../../models/operations/getregistryresponse.md), error**
-
+**[*operations.GetRegistryResponse](../../pkg/models/operations/getregistryresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetRepos
 
@@ -566,16 +582,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.GetRepositoriesRequest](../../models/operations/getrepositoriesrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.GetRepositoriesRequest](../../pkg/models/operations/getrepositoriesrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 
 
 ### Response
 
-**[*operations.GetRepositoriesResponse](../../models/operations/getrepositoriesresponse.md), error**
-
+**[*operations.GetRepositoriesResponse](../../pkg/models/operations/getrepositoriesresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ListLogSinks
 
@@ -631,8 +649,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetLogSinksResponse](../../models/operations/getlogsinksresponse.md), error**
-
+**[*operations.GetLogSinksResponse](../../pkg/models/operations/getlogsinksresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ListRegistries
 
@@ -688,8 +708,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetRegistriesResponse](../../models/operations/getregistriesresponse.md), error**
-
+**[*operations.GetRegistriesResponse](../../pkg/models/operations/getregistriesresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ListVcsProviders
 
@@ -738,8 +760,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetVCSProvidersResponse](../../models/operations/getvcsprovidersresponse.md), error**
-
+**[*operations.GetVCSProvidersResponse](../../pkg/models/operations/getvcsprovidersresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Pause
 
@@ -792,8 +816,10 @@ func main() {
 
 ### Response
 
-**[*operations.PauseLogSinkResponse](../../models/operations/pauselogsinkresponse.md), error**
-
+**[*operations.PauseLogSinkResponse](../../pkg/models/operations/pauselogsinkresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Resume
 
@@ -846,8 +872,10 @@ func main() {
 
 ### Response
 
-**[*operations.ResumeLogSinkResponse](../../models/operations/resumelogsinkresponse.md), error**
-
+**[*operations.ResumeLogSinkResponse](../../pkg/models/operations/resumelogsinkresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Update
 
@@ -920,17 +948,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |                                                                |
-| `logSinkRequest`                                               | [shared.LogSinkRequest](../../models/shared/logsinkrequest.md) | :heavy_check_mark:                                             | Request body                                                   |                                                                |
-| `logSinkID`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            | example-log-sink                                               |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |                                                                       |
+| `logSinkRequest`                                                      | [shared.LogSinkRequest](../../../pkg/models/shared/logsinkrequest.md) | :heavy_check_mark:                                                    | Request body                                                          |                                                                       |
+| `logSinkID`                                                           | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   | example-log-sink                                                      |
 
 
 ### Response
 
-**[*operations.UpdateLogSinkResponse](../../models/operations/updatelogsinkresponse.md), error**
-
+**[*operations.UpdateLogSinkResponse](../../pkg/models/operations/updatelogsinkresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UpdateRegistry
 
@@ -1005,14 +1035,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `requestBody`                                                                                | [operations.UpdateRegistryRequestBody](../../models/operations/updateregistryrequestbody.md) | :heavy_check_mark:                                                                           | Request body                                                                                 |                                                                                              |
-| `credentialID`                                                                               | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | example-credentials                                                                          |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                               | :heavy_check_mark:                                                                                  | The context to use for the request.                                                                 |                                                                                                     |
+| `requestBody`                                                                                       | [operations.UpdateRegistryRequestBody](../../../pkg/models/operations/updateregistryrequestbody.md) | :heavy_check_mark:                                                                                  | Request body                                                                                        |                                                                                                     |
+| `credentialID`                                                                                      | *string*                                                                                            | :heavy_check_mark:                                                                                  | N/A                                                                                                 | example-credentials                                                                                 |
 
 
 ### Response
 
-**[*operations.UpdateRegistryResponse](../../models/operations/updateregistryresponse.md), error**
-
+**[*operations.UpdateRegistryResponse](../../pkg/models/operations/updateregistryresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

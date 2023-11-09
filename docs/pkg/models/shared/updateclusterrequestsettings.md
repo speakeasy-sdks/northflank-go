@@ -1,0 +1,10 @@
+# UpdateClusterRequestSettings
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `Builds`                                                                                           | [*shared.UpdateClusterRequestBuilds](../../../pkg/models/shared/updateclusterrequestbuilds.md)     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `Logging`                                                                                          | [*shared.UpdateClusterRequestLogging](../../../pkg/models/shared/updateclusterrequestlogging.md)   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `Registry`                                                                                         | [*shared.UpdateClusterRequestRegistry](../../../pkg/models/shared/updateclusterrequestregistry.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

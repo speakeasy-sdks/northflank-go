@@ -1,5 +1,5 @@
 # CloudProviders
-(*.CloudProviders*)
+(*CloudProviders*)
 
 ### Available Operations
 
@@ -63,16 +63,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [shared.CreateIntegrationRequest](../../models/shared/createintegrationrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `request`                                                                              | [shared.CreateIntegrationRequest](../../pkg/models/shared/createintegrationrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 
 
 ### Response
 
-**[*operations.CreateIntegrationResponse](../../models/operations/createintegrationresponse.md), error**
-
+**[*operations.CreateIntegrationResponse](../../pkg/models/operations/createintegrationresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## CreateCluster
 
@@ -156,16 +158,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [shared.CreateClusterRequest](../../models/shared/createclusterrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [shared.CreateClusterRequest](../../pkg/models/shared/createclusterrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 
 
 ### Response
 
-**[*operations.CreateClusterResponse](../../models/operations/createclusterresponse.md), error**
-
+**[*operations.CreateClusterResponse](../../pkg/models/operations/createclusterresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeleteCluster
 
@@ -218,8 +222,11 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteClusterResponse](../../models/operations/deleteclusterresponse.md), error**
-
+**[*operations.DeleteClusterResponse](../../pkg/models/operations/deleteclusterresponse.md), error**
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 409                      | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |
 
 ## DeleteIntegration
 
@@ -272,8 +279,11 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteIntegrationResponse](../../models/operations/deleteintegrationresponse.md), error**
-
+**[*operations.DeleteIntegrationResponse](../../pkg/models/operations/deleteintegrationresponse.md), error**
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| sdkerrors.APIErrorResult | 409                      | application/json         |
+| sdkerrors.SDKError       | 400-600                  | */*                      |
 
 ## Get
 
@@ -322,8 +332,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetCloudProvidersResponse](../../models/operations/getcloudprovidersresponse.md), error**
-
+**[*operations.GetCloudProvidersResponse](../../pkg/models/operations/getcloudprovidersresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetCluster
 
@@ -376,8 +388,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetClusterResponse](../../models/operations/getclusterresponse.md), error**
-
+**[*operations.GetClusterResponse](../../pkg/models/operations/getclusterresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetIntegration
 
@@ -430,8 +444,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetIntegrationResponse](../../models/operations/getintegrationresponse.md), error**
-
+**[*operations.GetIntegrationResponse](../../pkg/models/operations/getintegrationresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ListClusters
 
@@ -490,8 +506,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetClustersResponse](../../models/operations/getclustersresponse.md), error**
-
+**[*operations.GetClustersResponse](../../pkg/models/operations/getclustersresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ListIntegrations
 
@@ -550,8 +568,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetIntegrationsResponse](../../models/operations/getintegrationsresponse.md), error**
-
+**[*operations.GetIntegrationsResponse](../../pkg/models/operations/getintegrationsresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UpdateCluster
 
@@ -637,17 +657,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |                                                                            |
-| `updateClusterRequest`                                                     | [shared.UpdateClusterRequest](../../models/shared/updateclusterrequest.md) | :heavy_check_mark:                                                         | Request body                                                               |                                                                            |
-| `clusterID`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | gcp-cluster-1                                                              |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
+| `updateClusterRequest`                                                            | [shared.UpdateClusterRequest](../../../pkg/models/shared/updateclusterrequest.md) | :heavy_check_mark:                                                                | Request body                                                                      |                                                                                   |
+| `clusterID`                                                                       | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | gcp-cluster-1                                                                     |
 
 
 ### Response
 
-**[*operations.UpdateClusterResponse](../../models/operations/updateclusterresponse.md), error**
-
+**[*operations.UpdateClusterResponse](../../pkg/models/operations/updateclusterresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UpdateIntegration
 
@@ -697,14 +719,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `updateIntegrationRequest`                                                         | [shared.UpdateIntegrationRequest](../../models/shared/updateintegrationrequest.md) | :heavy_check_mark:                                                                 | Request body                                                                       |                                                                                    |
-| `integrationID`                                                                    | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | gcp-integration-1                                                                  |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `ctx`                                                                                     | [context.Context](https://pkg.go.dev/context#Context)                                     | :heavy_check_mark:                                                                        | The context to use for the request.                                                       |                                                                                           |
+| `updateIntegrationRequest`                                                                | [shared.UpdateIntegrationRequest](../../../pkg/models/shared/updateintegrationrequest.md) | :heavy_check_mark:                                                                        | Request body                                                                              |                                                                                           |
+| `integrationID`                                                                           | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       | gcp-integration-1                                                                         |
 
 
 ### Response
 
-**[*operations.UpdateIntegrationResponse](../../models/operations/updateintegrationresponse.md), error**
-
+**[*operations.UpdateIntegrationResponse](../../pkg/models/operations/updateintegrationresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
