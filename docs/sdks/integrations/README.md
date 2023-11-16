@@ -30,11 +30,10 @@ Adds a new set of container registry credentials to this account.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
 )
 
 func main() {
@@ -112,11 +111,10 @@ Creates a new log sink.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
 )
 
 func main() {
@@ -205,10 +203,10 @@ Deletes a log sink.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -261,10 +259,10 @@ Deletes a set of registry credential data.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -317,10 +315,10 @@ Generate a token for a specific VCS link.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -376,10 +374,10 @@ Gets details about a given log sink.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -432,11 +430,11 @@ Gets a list of branches for the repo
 package main
 
 import(
-	"context"
-	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"context"
 	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -491,10 +489,10 @@ Views a set of registry credential data.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -547,11 +545,11 @@ Gets a list of repositories accessible to this account
 package main
 
 import(
-	"context"
-	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"context"
 	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -605,10 +603,10 @@ Gets a list of log sinks added to this account.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -664,10 +662,10 @@ Lists the container registry credentials saved to this account. Does not display
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -723,10 +721,10 @@ Lists linked version control providers
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -775,10 +773,10 @@ Pauses a given log sink.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -831,10 +829,10 @@ Resumes a paused log sink.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -887,10 +885,10 @@ Updates the settings for a log sink.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -972,11 +970,11 @@ Updates a set of registry credential data.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
 )
 
 func main() {

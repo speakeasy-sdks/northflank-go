@@ -16,10 +16,10 @@ Returns the partially random string used when generating host names for the auth
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -68,10 +68,11 @@ Returns api service status
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {

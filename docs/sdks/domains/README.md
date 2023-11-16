@@ -27,10 +27,10 @@ Adds a new subdomain to the domain.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -94,10 +94,10 @@ Assigns a service port to the given subdomain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -160,10 +160,10 @@ Registers a new domain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -216,10 +216,10 @@ Deletes a domain and each of its registered subdomains.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -272,10 +272,10 @@ Removes the CDN integration from the given subdomain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -336,10 +336,10 @@ Removes a subdomain from a domain.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -396,10 +396,10 @@ Enables a CDN integration on the given subdomain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -460,10 +460,10 @@ Get the details about a domain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -516,10 +516,10 @@ Gets details about the given subdomain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -575,10 +575,10 @@ Lists available domains
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -637,10 +637,10 @@ Removes a subdomain from its assigned service
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -696,10 +696,10 @@ Gets details about the given subdomain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -756,10 +756,10 @@ Attempts to verify the domain
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {

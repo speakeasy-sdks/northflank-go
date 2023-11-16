@@ -25,10 +25,10 @@ Creates a new integration.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -86,10 +86,10 @@ Creates a new cluster.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -181,10 +181,10 @@ Delete the given cluster. Fails if the cluster has associated projects.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -238,10 +238,10 @@ Delete the given integration. Fails if the integration is associated with existi
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -295,10 +295,10 @@ Lists supported cloud providers
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -347,10 +347,10 @@ Get information about the given cluster
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -403,10 +403,10 @@ Get information about the given integration
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -459,10 +459,10 @@ Lists clusters for the authenticated user or team.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -521,10 +521,10 @@ Lists integrations for the authenticated user or team.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -583,10 +583,10 @@ Update an existing cluster.
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
@@ -681,10 +681,10 @@ Update information about the given integration
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {

@@ -15,10 +15,10 @@ Gets information about the available addon types
 package main
 
 import(
+	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
 	"context"
 	"log"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
 )
 
 func main() {
