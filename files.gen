@@ -125,7 +125,6 @@ pkg/utils/utils.go
 /pkg/models/shared/security.go
 /pkg/models/shared/schemebasicauth.go
 /pkg/models/sdkerrors/apierrorresult.go
-USAGE.md
 docs/pkg/models/operations/getdnsidresponse.md
 docs/pkg/models/operations/gethealthcheckresponse.md
 docs/pkg/models/operations/listaddontypesresponse.md
@@ -526,4 +525,5 @@ docs/sdks/billing/README.md
 docs/sdks/cloudproviders/README.md
 docs/sdks/domains/README.md
 docs/sdks/integrations/README.md
+USAGE.md
 .gitattributes
