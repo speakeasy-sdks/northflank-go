@@ -36,8 +36,8 @@ func main() {
 	s := northflankgo.New(
 		northflankgo.WithSecurity(shared.Security{
 			BasicAuth: &shared.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -165,8 +165,8 @@ func main() {
 	s := northflankgo.New(
 		northflankgo.WithSecurity(shared.Security{
 			BasicAuth: &shared.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -224,8 +224,8 @@ func main() {
 		northflankgo.WithServerIndex(0),
 		northflankgo.WithSecurity(shared.Security{
 			BasicAuth: &shared.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -262,8 +262,8 @@ func main() {
 		northflankgo.WithServerURL("https://api.northflank.com"),
 		northflankgo.WithSecurity(shared.Security{
 			BasicAuth: &shared.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -342,8 +342,8 @@ func main() {
 	s := northflankgo.New(
 		northflankgo.WithSecurity(shared.Security{
 			BasicAuth: &shared.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)

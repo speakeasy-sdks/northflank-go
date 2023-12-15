@@ -37,8 +37,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -69,11 +69,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `ctx`                                                                           | [context.Context](https://pkg.go.dev/context#Context)                           | :heavy_check_mark:                                                              | The context to use for the request.                                             |                                                                                 |
-| `addSubDomainRequest`                                                           | [shared.AddSubDomainRequest](../../../pkg/models/shared/addsubdomainrequest.md) | :heavy_check_mark:                                                              | Request body                                                                    |                                                                                 |
-| `domain`                                                                        | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             | example.com                                                                     |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |                                                                              |
+| `addSubDomainRequest`                                                        | [shared.AddSubDomainRequest](../../pkg/models/shared/addsubdomainrequest.md) | :heavy_check_mark:                                                           | Request body                                                                 |                                                                              |
+| `domain`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          | example.com                                                                  |
 
 
 ### Response
@@ -104,8 +104,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -135,12 +135,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |                                                                                       |
-| `assignSubDomainRequest`                                                              | [shared.AssignSubDomainRequest](../../../pkg/models/shared/assignsubdomainrequest.md) | :heavy_check_mark:                                                                    | Request body                                                                          |                                                                                       |
-| `domain`                                                                              | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   | example.com                                                                           |
-| `subdomain`                                                                           | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   | app                                                                                   |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `assignSubDomainRequest`                                                           | [shared.AssignSubDomainRequest](../../pkg/models/shared/assignsubdomainrequest.md) | :heavy_check_mark:                                                                 | Request body                                                                       |                                                                                    |
+| `domain`                                                                           | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | example.com                                                                        |
+| `subdomain`                                                                        | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | app                                                                                |
 
 
 ### Response
@@ -170,8 +170,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -226,8 +226,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -282,8 +282,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -311,12 +311,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `ctx`                                                         | [context.Context](https://pkg.go.dev/context#Context)         | :heavy_check_mark:                                            | The context to use for the request.                           |                                                               |
-| `cdnRequest`                                                  | [shared.CDNRequest](../../../pkg/models/shared/cdnrequest.md) | :heavy_check_mark:                                            | Request body                                                  |                                                               |
-| `domain`                                                      | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | example.com                                                   |
-| `subdomain`                                                   | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | app                                                           |
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                | Example                                                    |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `ctx`                                                      | [context.Context](https://pkg.go.dev/context#Context)      | :heavy_check_mark:                                         | The context to use for the request.                        |                                                            |
+| `cdnRequest`                                               | [shared.CDNRequest](../../pkg/models/shared/cdnrequest.md) | :heavy_check_mark:                                         | Request body                                               |                                                            |
+| `domain`                                                   | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        | example.com                                                |
+| `subdomain`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        | app                                                        |
 
 
 ### Response
@@ -346,8 +346,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -406,8 +406,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -435,12 +435,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `ctx`                                                         | [context.Context](https://pkg.go.dev/context#Context)         | :heavy_check_mark:                                            | The context to use for the request.                           |                                                               |
-| `cdnRequest`                                                  | [shared.CDNRequest](../../../pkg/models/shared/cdnrequest.md) | :heavy_check_mark:                                            | Request body                                                  |                                                               |
-| `domain`                                                      | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | example.com                                                   |
-| `subdomain`                                                   | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           | app                                                           |
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                | Example                                                    |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `ctx`                                                      | [context.Context](https://pkg.go.dev/context#Context)      | :heavy_check_mark:                                         | The context to use for the request.                        |                                                            |
+| `cdnRequest`                                               | [shared.CDNRequest](../../pkg/models/shared/cdnrequest.md) | :heavy_check_mark:                                         | Request body                                               |                                                            |
+| `domain`                                                   | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        | example.com                                                |
+| `subdomain`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        | app                                                        |
 
 
 ### Response
@@ -470,8 +470,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -526,8 +526,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -585,8 +585,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -647,8 +647,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -706,8 +706,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -766,8 +766,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )

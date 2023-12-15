@@ -40,8 +40,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -56,21 +56,7 @@ func main() {
                 RegistryURL: northflankgo.String("https://example.com"),
                 Restrictions: &shared.AddRegistryType2Restrictions{
                     Projects: []string{
-                        "d",
-                        "e",
-                        "f",
-                        "a",
-                        "u",
-                        "l",
-                        "t",
-                        "-",
-                        "p",
-                        "r",
-                        "o",
-                        "j",
-                        "e",
-                        "c",
-                        "t",
+                        "default-project",
                     },
                     Restricted: northflankgo.Bool(true),
                 },
@@ -121,8 +107,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -134,21 +120,7 @@ func main() {
                 ForwardAccessLogs: northflankgo.Bool(true),
                 Name: "example-log-sink",
                 Projects: []string{
-                    "d",
-                    "e",
-                    "f",
-                    "a",
-                    "u",
-                    "l",
-                    "t",
-                    "-",
-                    "p",
-                    "r",
-                    "o",
-                    "j",
-                    "e",
-                    "c",
-                    "t",
+                    "default-project",
                 },
                 Restricted: northflankgo.Bool(true),
                 SinkData: shared.HTTPLogSinkSinkData{
@@ -213,8 +185,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -269,8 +241,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -325,8 +297,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -384,8 +356,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -441,8 +413,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -499,8 +471,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -556,8 +528,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -613,8 +585,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -672,8 +644,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -731,8 +703,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -783,8 +755,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -839,8 +811,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -895,8 +867,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -904,21 +876,7 @@ func main() {
 
     logSinkRequest := shared.LogSinkRequest{
         Projects: []string{
-            "d",
-            "e",
-            "f",
-            "a",
-            "u",
-            "l",
-            "t",
-            "-",
-            "p",
-            "r",
-            "o",
-            "j",
-            "e",
-            "c",
-            "t",
+            "default-project",
         },
         Restricted: northflankgo.Bool(true),
         ResumeLogSink: northflankgo.Bool(false),
@@ -946,11 +904,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |                                                                       |
-| `logSinkRequest`                                                      | [shared.LogSinkRequest](../../../pkg/models/shared/logsinkrequest.md) | :heavy_check_mark:                                                    | Request body                                                          |                                                                       |
-| `logSinkID`                                                           | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   | example-log-sink                                                      |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `ctx`                                                              | [context.Context](https://pkg.go.dev/context#Context)              | :heavy_check_mark:                                                 | The context to use for the request.                                |                                                                    |
+| `logSinkRequest`                                                   | [shared.LogSinkRequest](../../pkg/models/shared/logsinkrequest.md) | :heavy_check_mark:                                                 | Request body                                                       |                                                                    |
+| `logSinkID`                                                        | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                | example-log-sink                                                   |
 
 
 ### Response
@@ -981,8 +939,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -995,21 +953,7 @@ func main() {
                 RegistryURL: northflankgo.String("https://example.com"),
                 Restrictions: &shared.UpdateRegistryType2Restrictions{
                     Projects: []string{
-                        "d",
-                        "e",
-                        "f",
-                        "a",
-                        "u",
-                        "l",
-                        "t",
-                        "-",
-                        "p",
-                        "r",
-                        "o",
-                        "j",
-                        "e",
-                        "c",
-                        "t",
+                        "default-project",
                     },
                     Restricted: true,
                 },
@@ -1033,11 +977,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                               | :heavy_check_mark:                                                                                  | The context to use for the request.                                                                 |                                                                                                     |
-| `requestBody`                                                                                       | [operations.UpdateRegistryRequestBody](../../../pkg/models/operations/updateregistryrequestbody.md) | :heavy_check_mark:                                                                                  | Request body                                                                                        |                                                                                                     |
-| `credentialID`                                                                                      | *string*                                                                                            | :heavy_check_mark:                                                                                  | N/A                                                                                                 | example-credentials                                                                                 |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |                                                                                                  |
+| `requestBody`                                                                                    | [operations.UpdateRegistryRequestBody](../../pkg/models/operations/updateregistryrequestbody.md) | :heavy_check_mark:                                                                               | Request body                                                                                     |                                                                                                  |
+| `credentialID`                                                                                   | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              | example-credentials                                                                              |
 
 
 ### Response

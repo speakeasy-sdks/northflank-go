@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 9ab4ae9ee20626ac9759af48d9f35d90
   docVersion: 1.0.0
-  speakeasyVersion: 1.125.1
-  generationVersion: 2.210.3
+  speakeasyVersion: 1.126.3
+  generationVersion: 2.214.3
 generation:
   comments: {}
   sdkClassName: Northflank
@@ -13,14 +13,14 @@ generation:
 features:
   go:
     constsAndDefaults: 0.1.2
-    core: 3.1.5
+    core: 3.2.0
     flattening: 2.81.1
-    globalSecurity: 2.82.2
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
     nameOverrides: 2.81.1
     unions: 2.85.0
 go:
-  version: 2.0.4
+  version: 2.1.0
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:

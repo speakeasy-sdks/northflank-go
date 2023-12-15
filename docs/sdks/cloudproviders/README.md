@@ -35,8 +35,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -96,8 +96,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -191,8 +191,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -248,8 +248,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -305,8 +305,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -357,8 +357,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -413,8 +413,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -469,8 +469,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -531,8 +531,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -593,8 +593,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -657,11 +657,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
-| `updateClusterRequest`                                                            | [shared.UpdateClusterRequest](../../../pkg/models/shared/updateclusterrequest.md) | :heavy_check_mark:                                                                | Request body                                                                      |                                                                                   |
-| `clusterID`                                                                       | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | gcp-cluster-1                                                                     |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
+| `updateClusterRequest`                                                         | [shared.UpdateClusterRequest](../../pkg/models/shared/updateclusterrequest.md) | :heavy_check_mark:                                                             | Request body                                                                   |                                                                                |
+| `clusterID`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | gcp-cluster-1                                                                  |
 
 
 ### Response
@@ -691,8 +691,8 @@ func main() {
     s := northflankgo.New(
         northflankgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -719,11 +719,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `ctx`                                                                                     | [context.Context](https://pkg.go.dev/context#Context)                                     | :heavy_check_mark:                                                                        | The context to use for the request.                                                       |                                                                                           |
-| `updateIntegrationRequest`                                                                | [shared.UpdateIntegrationRequest](../../../pkg/models/shared/updateintegrationrequest.md) | :heavy_check_mark:                                                                        | Request body                                                                              |                                                                                           |
-| `integrationID`                                                                           | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       | gcp-integration-1                                                                         |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |                                                                                        |
+| `updateIntegrationRequest`                                                             | [shared.UpdateIntegrationRequest](../../pkg/models/shared/updateintegrationrequest.md) | :heavy_check_mark:                                                                     | Request body                                                                           |                                                                                        |
+| `integrationID`                                                                        | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | gcp-integration-1                                                                      |
 
 
 ### Response
