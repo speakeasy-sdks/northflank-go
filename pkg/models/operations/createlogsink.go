@@ -23,6 +23,7 @@ const (
 	CreateLogSinkRequestBodyTypeLogioLogSink      CreateLogSinkRequestBodyType = "LogioLogSink"
 )
 
+// CreateLogSinkRequestBody - Request body
 type CreateLogSinkRequestBody struct {
 	LokiLogSink       *shared.LokiLogSink
 	DatadogLogSink    *shared.DatadogLogSink

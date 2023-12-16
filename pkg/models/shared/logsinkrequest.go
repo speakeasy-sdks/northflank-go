@@ -624,6 +624,7 @@ const (
 	ThreeTypeLogSinkRequest2 ThreeType = "LogSinkRequest_2"
 )
 
+// Three - Papertrail Sink Schema.
 type Three struct {
 	LogSinkRequest1 *LogSinkRequest1
 	LogSinkRequest2 *LogSinkRequest2
@@ -827,6 +828,7 @@ const (
 	LogSinkRequestSinkDataTypeEight LogSinkRequestSinkDataType = "8"
 )
 
+// LogSinkRequestSinkData - Data about the log sink.
 type LogSinkRequestSinkData struct {
 	One   *One
 	Two   *Two

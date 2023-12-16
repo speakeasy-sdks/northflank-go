@@ -18,6 +18,7 @@ const (
 	UpdateRegistryRequestBodyTypeUpdateRegistryType4 UpdateRegistryRequestBodyType = "UpdateRegistryType4"
 )
 
+// UpdateRegistryRequestBody - Request body
 type UpdateRegistryRequestBody struct {
 	UpdateRegistryType1 *shared.UpdateRegistryType1
 	UpdateRegistryType2 *shared.UpdateRegistryType2

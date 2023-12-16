@@ -1,5 +1,7 @@
 # Three
 
+Papertrail Sink Schema.
+
 
 ## Supported Types
 

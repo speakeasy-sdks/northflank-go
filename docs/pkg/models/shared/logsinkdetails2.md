@@ -1,7 +1,5 @@
 # LogSinkDetails2
 
-Data about the log sink.
-
 
 ## Fields
 

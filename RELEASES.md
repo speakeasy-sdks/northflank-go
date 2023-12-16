@@ -205,3 +205,13 @@ Based on:
 - [go v2.1.0] .
 ### Releases
 - [Go v2.1.0] https://github.com/speakeasy-sdks/northflank-go/releases/tag/v2.1.0 - .
+
+## 2023-12-16 00:46:22
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.126.4 (2.214.10) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v2.1.1] .
+### Releases
+- [Go v2.1.1] https://github.com/speakeasy-sdks/northflank-go/releases/tag/v2.1.1 - .

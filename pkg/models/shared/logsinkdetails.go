@@ -625,6 +625,7 @@ const (
 	LogSinkDetails3TypeLogSinkDetailsSchemas2 LogSinkDetails3Type = "LogSinkDetails_Schemas_2"
 )
 
+// LogSinkDetails3 - Papertrail Sink Schema.
 type LogSinkDetails3 struct {
 	LogSinkDetailsSchemas1 *LogSinkDetailsSchemas1
 	LogSinkDetailsSchemas2 *LogSinkDetailsSchemas2
@@ -715,7 +716,6 @@ func (e *LogSinkDetailsRegion) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// LogSinkDetails2 - Data about the log sink.
 type LogSinkDetails2 struct {
 	// The Datadog API key.
 	DefaultAPIKey string `json:"default_api_key"`
@@ -834,7 +834,6 @@ func (o *LogSinkDetailsEncoding) GetCodec() LogSinkDetailsCodec {
 	return o.Codec
 }
 
-// LogSinkDetails1 - Data about the log sink.
 type LogSinkDetails1 struct {
 	// Object containing authentication data for the log sink.
 	Auth *LogSinkDetailsAuth `json:"auth,omitempty"`
@@ -878,6 +877,7 @@ const (
 	LogSinkDetailsSinkDataTypeLogSinkDetails8 LogSinkDetailsSinkDataType = "LogSinkDetails_8"
 )
 
+// LogSinkDetailsSinkData - Data about the log sink.
 type LogSinkDetailsSinkData struct {
 	LogSinkDetails1 *LogSinkDetails1
 	LogSinkDetails2 *LogSinkDetails2

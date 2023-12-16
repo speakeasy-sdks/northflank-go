@@ -1,5 +1,7 @@
 # PapertrailLogSinkSinkData
 
+Papertrail Sink Schema.
+
 
 ## Supported Types
 

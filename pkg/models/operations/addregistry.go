@@ -17,6 +17,7 @@ const (
 	AddRegistryRequestBodyTypeAddRegistryType3 AddRegistryRequestBodyType = "AddRegistryType3"
 )
 
+// AddRegistryRequestBody - Request body
 type AddRegistryRequestBody struct {
 	AddRegistryType1 *shared.AddRegistryType1
 	AddRegistryType2 *shared.AddRegistryType2

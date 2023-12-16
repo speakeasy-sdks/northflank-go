@@ -128,6 +128,7 @@ const (
 	PapertrailLogSinkSinkDataTypePapertrailLogSink2 PapertrailLogSinkSinkDataType = "PapertrailLogSink_2"
 )
 
+// PapertrailLogSinkSinkData - Papertrail Sink Schema.
 type PapertrailLogSinkSinkData struct {
 	PapertrailLogSink1 *PapertrailLogSink1
 	PapertrailLogSink2 *PapertrailLogSink2

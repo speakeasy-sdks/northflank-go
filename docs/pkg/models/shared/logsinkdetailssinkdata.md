@@ -1,5 +1,7 @@
 # LogSinkDetailsSinkData
 
+Data about the log sink.
+
 
 ## Supported Types
 
