@@ -66,7 +66,7 @@ func main() {
 **[*operations.GetPastInvoicesResponse](../../pkg/models/operations/getpastinvoicesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetDetails
 
@@ -126,4 +126,4 @@ func main() {
 **[*operations.GetInvoiceDetailsResponse](../../pkg/models/operations/getinvoicedetailsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

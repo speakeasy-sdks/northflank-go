@@ -74,7 +74,7 @@ func main() {
 **[*operations.CreateIntegrationResponse](../../pkg/models/operations/createintegrationresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## CreateCluster
 
@@ -169,7 +169,7 @@ func main() {
 **[*operations.CreateClusterResponse](../../pkg/models/operations/createclusterresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteCluster
 
@@ -226,7 +226,7 @@ func main() {
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | sdkerrors.APIErrorResult | 409                      | application/json         |
-| sdkerrors.SDKError       | 400-600                  | */*                      |
+| sdkerrors.SDKError       | 4xx-5xx                  | */*                      |
 
 ## DeleteIntegration
 
@@ -283,7 +283,7 @@ func main() {
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | sdkerrors.APIErrorResult | 409                      | application/json         |
-| sdkerrors.SDKError       | 400-600                  | */*                      |
+| sdkerrors.SDKError       | 4xx-5xx                  | */*                      |
 
 ## Get
 
@@ -335,7 +335,7 @@ func main() {
 **[*operations.GetCloudProvidersResponse](../../pkg/models/operations/getcloudprovidersresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetCluster
 
@@ -391,7 +391,7 @@ func main() {
 **[*operations.GetClusterResponse](../../pkg/models/operations/getclusterresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetIntegration
 
@@ -447,7 +447,7 @@ func main() {
 **[*operations.GetIntegrationResponse](../../pkg/models/operations/getintegrationresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListClusters
 
@@ -509,7 +509,7 @@ func main() {
 **[*operations.GetClustersResponse](../../pkg/models/operations/getclustersresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListIntegrations
 
@@ -571,7 +571,7 @@ func main() {
 **[*operations.GetIntegrationsResponse](../../pkg/models/operations/getintegrationsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateCluster
 
@@ -669,7 +669,7 @@ func main() {
 **[*operations.UpdateClusterResponse](../../pkg/models/operations/updateclusterresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateIntegration
 
@@ -731,4 +731,4 @@ func main() {
 **[*operations.UpdateIntegrationResponse](../../pkg/models/operations/updateintegrationresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

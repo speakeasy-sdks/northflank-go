@@ -82,7 +82,7 @@ func main() {
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | sdkerrors.APIErrorResult | 400,409                  | application/json         |
-| sdkerrors.SDKError       | 400-600                  | */*                      |
+| sdkerrors.SDKError       | 4xx-5xx                  | */*                      |
 
 ## Assign
 
@@ -148,7 +148,7 @@ func main() {
 **[*operations.AssignSubDomainResponse](../../pkg/models/operations/assignsubdomainresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Create
 
@@ -204,7 +204,7 @@ func main() {
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | sdkerrors.APIErrorResult | 400,409                  | application/json         |
-| sdkerrors.SDKError       | 400-600                  | */*                      |
+| sdkerrors.SDKError       | 4xx-5xx                  | */*                      |
 
 ## Delete
 
@@ -260,7 +260,7 @@ func main() {
 **[*operations.DeleteDomainResponse](../../pkg/models/operations/deletedomainresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteCdn
 
@@ -324,7 +324,7 @@ func main() {
 **[*operations.DeleteCDNResponse](../../pkg/models/operations/deletecdnresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteSubdomain
 
@@ -384,7 +384,7 @@ func main() {
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | sdkerrors.APIErrorResult | 400,404                  | application/json         |
-| sdkerrors.SDKError       | 400-600                  | */*                      |
+| sdkerrors.SDKError       | 4xx-5xx                  | */*                      |
 
 ## Enable
 
@@ -448,7 +448,7 @@ func main() {
 **[*operations.EnableCDNResponse](../../pkg/models/operations/enablecdnresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Get
 
@@ -504,7 +504,7 @@ func main() {
 **[*operations.GetDomainResponse](../../pkg/models/operations/getdomainresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetSubdomain
 
@@ -563,7 +563,7 @@ func main() {
 **[*operations.GetSubDomainResponse](../../pkg/models/operations/getsubdomainresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListDomains
 
@@ -625,7 +625,7 @@ func main() {
 **[*operations.ListDomainsResponse](../../pkg/models/operations/listdomainsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Unassign
 
@@ -684,7 +684,7 @@ func main() {
 **[*operations.UnassignSubDomainResponse](../../pkg/models/operations/unassignsubdomainresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Verify
 
@@ -744,7 +744,7 @@ func main() {
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | sdkerrors.APIErrorResult | 400                      | application/json         |
-| sdkerrors.SDKError       | 400-600                  | */*                      |
+| sdkerrors.SDKError       | 4xx-5xx                  | */*                      |
 
 ## VerifyDomain
 
@@ -801,4 +801,4 @@ func main() {
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | sdkerrors.APIErrorResult | 400                      | application/json         |
-| sdkerrors.SDKError       | 400-600                  | */*                      |
+| sdkerrors.SDKError       | 4xx-5xx                  | */*                      |

@@ -55,4 +55,4 @@ func main() {
 **[*operations.ListAddonTypesResponse](../../pkg/models/operations/listaddontypesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

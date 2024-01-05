@@ -85,7 +85,7 @@ func main() {
 **[*operations.AddRegistryResponse](../../pkg/models/operations/addregistryresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Create
 
@@ -163,7 +163,7 @@ func main() {
 **[*operations.CreateLogSinkResponse](../../pkg/models/operations/createlogsinkresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Delete
 
@@ -219,7 +219,7 @@ func main() {
 **[*operations.DeleteLogSinkResponse](../../pkg/models/operations/deletelogsinkresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteRegistry
 
@@ -275,7 +275,7 @@ func main() {
 **[*operations.DeleteRegistryResponse](../../pkg/models/operations/deleteregistryresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GenerateVCSToken
 
@@ -334,7 +334,7 @@ func main() {
 **[*operations.GenerateVCSTokenResponse](../../pkg/models/operations/generatevcstokenresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Get
 
@@ -390,7 +390,7 @@ func main() {
 **[*operations.GetLogSinkResponse](../../pkg/models/operations/getlogsinkresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetBranches
 
@@ -449,7 +449,7 @@ func main() {
 **[*operations.GetBranchesResponse](../../pkg/models/operations/getbranchesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetRegistry
 
@@ -505,7 +505,7 @@ func main() {
 **[*operations.GetRegistryResponse](../../pkg/models/operations/getregistryresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetRepos
 
@@ -563,7 +563,7 @@ func main() {
 **[*operations.GetRepositoriesResponse](../../pkg/models/operations/getrepositoriesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListLogSinks
 
@@ -622,7 +622,7 @@ func main() {
 **[*operations.GetLogSinksResponse](../../pkg/models/operations/getlogsinksresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListRegistries
 
@@ -681,7 +681,7 @@ func main() {
 **[*operations.GetRegistriesResponse](../../pkg/models/operations/getregistriesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListVcsProviders
 
@@ -733,7 +733,7 @@ func main() {
 **[*operations.GetVCSProvidersResponse](../../pkg/models/operations/getvcsprovidersresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Pause
 
@@ -789,7 +789,7 @@ func main() {
 **[*operations.PauseLogSinkResponse](../../pkg/models/operations/pauselogsinkresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Resume
 
@@ -845,7 +845,7 @@ func main() {
 **[*operations.ResumeLogSinkResponse](../../pkg/models/operations/resumelogsinkresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Update
 
@@ -916,7 +916,7 @@ func main() {
 **[*operations.UpdateLogSinkResponse](../../pkg/models/operations/updatelogsinkresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateRegistry
 
@@ -989,4 +989,4 @@ func main() {
 **[*operations.UpdateRegistryResponse](../../pkg/models/operations/updateregistryresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

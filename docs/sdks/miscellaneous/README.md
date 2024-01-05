@@ -56,7 +56,7 @@ func main() {
 **[*operations.GetDNSIDResponse](../../pkg/models/operations/getdnsidresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## HealthCheck
 
@@ -109,4 +109,4 @@ func main() {
 **[*operations.GetHealthCheckResponse](../../pkg/models/operations/gethealthcheckresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
