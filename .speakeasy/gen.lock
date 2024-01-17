@@ -4,9 +4,9 @@ management:
   docChecksum: 9ab4ae9ee20626ac9759af48d9f35d90
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.225.2
-  releaseVersion: 2.1.1
-  configChecksum: f84779a1ef180c3ba3009137416383d1
+  generationVersion: 2.234.3
+  releaseVersion: 2.1.2
+  configChecksum: e5acc379e76d340a15e297fc6444bafe
   repoURL: https://github.com/speakeasy-sdks/northflank-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/northflank-go
@@ -14,7 +14,7 @@ management:
 features:
   go:
     constsAndDefaults: 0.1.2
-    core: 3.3.0
+    core: 3.3.1
     flattening: 2.81.1
     globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
