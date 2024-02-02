@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/types"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )

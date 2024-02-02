@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/utils"
 )
 
 // UpdateClusterRequestAutoscaling - Auto scaling settings to use for the node pool. Requires that the cloud provider supports this feature.

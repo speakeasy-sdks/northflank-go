@@ -15,8 +15,8 @@ Gets information about the available addon types
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )

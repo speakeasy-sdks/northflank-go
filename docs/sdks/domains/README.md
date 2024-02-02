@@ -27,8 +27,8 @@ Adds a new subdomain to the domain.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -94,8 +94,8 @@ Assigns a service port to the given subdomain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -160,8 +160,8 @@ Registers a new domain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -216,8 +216,8 @@ Deletes a domain and each of its registered subdomains.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -272,8 +272,8 @@ Removes the CDN integration from the given subdomain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -336,8 +336,8 @@ Removes a subdomain from a domain.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -396,8 +396,8 @@ Enables a CDN integration on the given subdomain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -460,8 +460,8 @@ Get the details about a domain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -516,8 +516,8 @@ Gets details about the given subdomain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -575,8 +575,8 @@ Lists available domains
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -637,8 +637,8 @@ Removes a subdomain from its assigned service
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -696,8 +696,8 @@ Gets details about the given subdomain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -756,8 +756,8 @@ Attempts to verify the domain
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )

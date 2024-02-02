@@ -16,8 +16,8 @@ Get a list of past invoices
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -78,10 +78,10 @@ Get details about an invoice. If `timestamp` is passed in as a query parameter, 
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/operations"
 	"log"
 )
 

@@ -4,8 +4,8 @@ package operations
 
 import (
 	"errors"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/utils"
 	"net/http"
 )
 

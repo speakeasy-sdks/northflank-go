@@ -27,8 +27,8 @@ package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -155,9 +155,9 @@ package main
 import (
 	"context"
 	"errors"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -214,8 +214,8 @@ package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -252,8 +252,8 @@ package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -333,8 +333,8 @@ package main
 
 import (
 	"context"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
 	"log"
 )
 

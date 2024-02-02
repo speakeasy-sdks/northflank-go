@@ -25,8 +25,8 @@ Creates a new integration.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -86,8 +86,8 @@ Creates a new cluster.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -181,8 +181,8 @@ Delete the given cluster. Fails if the cluster has associated projects.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -238,8 +238,8 @@ Delete the given integration. Fails if the integration is associated with existi
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -295,8 +295,8 @@ Lists supported cloud providers
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -347,8 +347,8 @@ Get information about the given cluster
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -403,8 +403,8 @@ Get information about the given integration
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -459,8 +459,8 @@ Lists clusters for the authenticated user or team.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -521,8 +521,8 @@ Lists integrations for the authenticated user or team.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -583,8 +583,8 @@ Update an existing cluster.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -681,8 +681,8 @@ Update information about the given integration
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )

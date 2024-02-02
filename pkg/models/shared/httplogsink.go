@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/utils"
 )
 
 // HTTPLogSinkSchemasStrategy - Bearer token authentication strategy.

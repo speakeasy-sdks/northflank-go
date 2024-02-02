@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/utils"
 )
 
 // BranchesResultData - Result data.

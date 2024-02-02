@@ -1,4 +1,4 @@
-module github.com/speakeasy-sdks/northflank-go/v2
+module github.com/speakeasy-sdks/northflank-go/v3
 
 go 1.20
 

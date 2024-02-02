@@ -30,8 +30,8 @@ Adds a new set of container registry credentials to this account.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -97,8 +97,8 @@ Creates a new log sink.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -175,8 +175,8 @@ Deletes a log sink.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -231,8 +231,8 @@ Deletes a set of registry credential data.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -287,8 +287,8 @@ Generate a token for a specific VCS link.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -346,8 +346,8 @@ Gets details about a given log sink.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -402,10 +402,10 @@ Gets a list of branches for the repo
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/operations"
 	"log"
 )
 
@@ -461,8 +461,8 @@ Views a set of registry credential data.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -517,10 +517,10 @@ Gets a list of repositories accessible to this account
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/operations"
 	"log"
 )
 
@@ -575,8 +575,8 @@ Gets a list of log sinks added to this account.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -634,8 +634,8 @@ Lists the container registry credentials saved to this account. Does not display
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -693,8 +693,8 @@ Lists linked version control providers
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -745,8 +745,8 @@ Pauses a given log sink.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -801,8 +801,8 @@ Resumes a paused log sink.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -857,8 +857,8 @@ Updates the settings for a log sink.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
 )
@@ -928,9 +928,9 @@ Updates a set of registry credential data.
 package main
 
 import(
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/shared"
-	northflankgo "github.com/speakeasy-sdks/northflank-go/v2"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/shared"
+	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/models/operations"
 	"context"
 	"log"
 )

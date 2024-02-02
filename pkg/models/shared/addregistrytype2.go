@@ -5,7 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/northflank-go/v2/pkg/utils"
+	"github.com/speakeasy-sdks/northflank-go/v3/pkg/utils"
 )
 
 // Keyfile - Contents of `keyfile.json`, used to authenticate with Google Container Registry.
