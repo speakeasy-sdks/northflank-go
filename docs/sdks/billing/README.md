@@ -33,11 +33,11 @@ func main() {
     )
 
 
-    var cursor *string = "24"
+    var cursor *string = northflankgo.String("24")
 
-    var page *int64 = 1
+    var page *int64 = northflankgo.Int64(1)
 
-    var perPage *int64 = 50
+    var perPage *int64 = northflankgo.Int64(50)
 
     ctx := context.Background()
     res, err := s.Billing.Get(ctx, cursor, page, perPage)

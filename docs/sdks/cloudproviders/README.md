@@ -45,9 +45,6 @@ func main() {
     res, err := s.CloudProviders.Create(ctx, shared.CreateIntegrationRequest{
         Credentials: shared.Credentials{},
         Description: northflankgo.String("This is a new cloud provider integration."),
-        Gcp: &shared.CreateIntegrationRequestGcp{
-            ProjectID: "string",
-        },
         Name: "New Integration",
         Provider: shared.CreateIntegrationRequestProviderGcp,
     })
@@ -105,25 +102,12 @@ func main() {
     ctx := context.Background()
     res, err := s.CloudProviders.CreateCluster(ctx, shared.CreateClusterRequest{
         Description: northflankgo.String("This is a new cluster."),
-        Gcp: &shared.Gcp{
-            ProjectID: "example-project-id",
-        },
-        Integration: &shared.Integration{},
         IntegrationID: northflankgo.String("gcp-integration"),
         KubernetesVersion: "1.23.8",
         Name: "GCP Cluster 1",
         NodePools: []shared.NodePools{
             shared.NodePools{
-                Autoscaling: &shared.Autoscaling{
-                    Enabled: northflankgo.Bool(true),
-                    Max: northflankgo.Int64(10),
-                    Min: northflankgo.Int64(1),
-                },
-                AvailabilityZones: []string{
-                    "string",
-                },
                 DiskSize: 100,
-                Labels: &shared.Labels{},
                 NodeCount: 3,
                 NodeType: "n2-standard-8",
                 Preemptible: northflankgo.Bool(false),
@@ -131,20 +115,7 @@ func main() {
         },
         Provider: shared.CreateClusterRequestProviderGcp,
         Region: "europe-west2",
-        Settings: shared.Settings{
-            Builds: &shared.Builds{
-                ClusterID: northflankgo.String("build-cluster"),
-                Plan: northflankgo.String("nf-compute-200"),
-            },
-            Logging: &shared.Logging{
-                Loki: shared.CreateLokiCreateClusterRequest2(
-                        shared.CreateClusterRequest2{},
-                ),
-            },
-            Registry: &shared.Registry{
-                RegistryID: northflankgo.String("my-registry-credentials"),
-            },
-        },
+        Settings: shared.Settings{},
     })
     if err != nil {
         log.Fatal(err)
@@ -476,11 +447,11 @@ func main() {
     )
 
 
-    var cursor *string = "24"
+    var cursor *string = northflankgo.String("24")
 
-    var page *int64 = 1
+    var page *int64 = northflankgo.Int64(1)
 
-    var perPage *int64 = 50
+    var perPage *int64 = northflankgo.Int64(50)
 
     ctx := context.Background()
     res, err := s.CloudProviders.ListClusters(ctx, cursor, page, perPage)
@@ -538,11 +509,11 @@ func main() {
     )
 
 
-    var cursor *string = "string"
+    var cursor *string = northflankgo.String("<value>")
 
-    var page *int64 = 1
+    var page *int64 = northflankgo.Int64(1)
 
-    var perPage *int64 = 50
+    var perPage *int64 = northflankgo.Int64(50)
 
     ctx := context.Background()
     res, err := s.CloudProviders.ListIntegrations(ctx, cursor, page, perPage)
@@ -602,43 +573,6 @@ func main() {
 
     updateClusterRequest := shared.UpdateClusterRequest{
         Description: northflankgo.String("This is an updated description."),
-        NodePools: []shared.UpdateClusterRequestNodePools{
-            shared.UpdateClusterRequestNodePools{
-                Autoscaling: &shared.UpdateClusterRequestAutoscaling{
-                    Enabled: northflankgo.Bool(true),
-                    Max: northflankgo.Int64(10),
-                    Min: northflankgo.Int64(1),
-                },
-                AvailabilityZones: []string{
-                    "string",
-                },
-                DiskSize: 100,
-                ID: northflankgo.String("6aa96121-0345-43ad-bade-af36d540c222"),
-                Labels: &shared.UpdateClusterRequestLabels{},
-                NodeCount: 3,
-                NodeType: "n2-standard-8",
-                Preemptible: northflankgo.Bool(false),
-            },
-        },
-        Settings: &shared.UpdateClusterRequestSettings{
-            Builds: &shared.UpdateClusterRequestBuilds{
-                ClusterID: northflankgo.String("build-cluster"),
-                Plan: northflankgo.String("nf-compute-200"),
-            },
-            Logging: &shared.UpdateClusterRequestLogging{
-                Loki: shared.CreateUpdateClusterRequestLokiUpdateClusterRequest1(
-                        shared.UpdateClusterRequest1{
-                            S3AccessKey: "string",
-                            S3BucketName: "string",
-                            S3Region: "string",
-                            S3SecretKey: "string",
-                        },
-                ),
-            },
-            Registry: &shared.UpdateClusterRequestRegistry{
-                RegistryID: northflankgo.String("my-registry-credentials"),
-            },
-        },
     }
 
     var clusterID string = "gcp-cluster-1"

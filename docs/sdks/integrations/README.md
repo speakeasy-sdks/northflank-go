@@ -54,12 +54,6 @@ func main() {
                 Name: "Example Credentials",
                 Provider: shared.AddRegistryType2ProviderDockerhub,
                 RegistryURL: northflankgo.String("https://example.com"),
-                Restrictions: &shared.AddRegistryType2Restrictions{
-                    Projects: []string{
-                        "default-project",
-                    },
-                    Restricted: northflankgo.Bool(true),
-                },
             },
     ))
     if err != nil {
@@ -119,9 +113,6 @@ func main() {
                 Description: northflankgo.String("This is an example log sink."),
                 ForwardAccessLogs: northflankgo.Bool(true),
                 Name: "example-log-sink",
-                Projects: []string{
-                    "default-project",
-                },
                 Restricted: northflankgo.Bool(true),
                 SinkData: shared.HTTPLogSinkSinkData{
                     Auth: shared.CreateHTTPLogSinkAuthHTTPLogSink2(
@@ -131,9 +122,6 @@ func main() {
                                 User: northflankgo.String("my-user"),
                             },
                     ),
-                    Encoding: &shared.Encoding{
-                        Codec: shared.CodecJSON,
-                    },
                     URI: "my.log-collector.com",
                 },
                 SinkType: shared.HTTPLogSinkSinkTypeHTTP,
@@ -592,9 +580,9 @@ func main() {
     )
 
 
-    var cursor *string = "string"
+    var cursor *string = northflankgo.String("<value>")
 
-    var perPage *int64 = 50
+    var perPage *int64 = northflankgo.Int64(50)
 
     ctx := context.Background()
     res, err := s.Integrations.ListLogSinks(ctx, cursor, perPage)
@@ -651,9 +639,9 @@ func main() {
     )
 
 
-    var cursor *string = "string"
+    var cursor *string = northflankgo.String("<value>")
 
-    var perPage *int64 = 50
+    var perPage *int64 = northflankgo.Int64(50)
 
     ctx := context.Background()
     res, err := s.Integrations.ListRegistries(ctx, cursor, perPage)
@@ -875,16 +863,8 @@ func main() {
 
 
     logSinkRequest := shared.LogSinkRequest{
-        Projects: []string{
-            "default-project",
-        },
         Restricted: northflankgo.Bool(true),
         ResumeLogSink: northflankgo.Bool(false),
-        SinkData: shared.CreateLogSinkRequestSinkDataSeven(
-                shared.Seven{
-                    APIKey: "b1dd3feb585asd1a3e9edpo9kmn5e590hg9",
-                },
-        ),
         UseCustomLabels: northflankgo.Bool(true),
     }
 
@@ -951,12 +931,6 @@ func main() {
                 Description: northflankgo.String("This is a set of saved credentials."),
                 Password: "password1234",
                 RegistryURL: northflankgo.String("https://example.com"),
-                Restrictions: &shared.UpdateRegistryType2Restrictions{
-                    Projects: []string{
-                        "default-project",
-                    },
-                    Restricted: true,
-                },
                 Username: "test-user",
             },
     )

@@ -45,11 +45,6 @@ func main() {
 
 
     addSubDomainRequest := shared.AddSubDomainRequest{
-        Cdn: &shared.Cdn{
-            Cloudfront: &shared.Cloudfront{
-                Enabled: false,
-            },
-        },
         Subdomain: "site",
     }
 
@@ -592,11 +587,11 @@ func main() {
     )
 
 
-    var cursor *string = "string"
+    var cursor *string = northflankgo.String("<value>")
 
-    var page *int64 = 1
+    var page *int64 = northflankgo.Int64(1)
 
-    var perPage *int64 = 50
+    var perPage *int64 = northflankgo.Int64(50)
 
     ctx := context.Background()
     res, err := s.Domains.ListDomains(ctx, cursor, page, perPage)
