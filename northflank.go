@@ -147,9 +147,9 @@ func New(opts ...SDKOption) *Northflank {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "3.1.1",
-			GenVersion:        "2.272.7",
-			UserAgent:         "speakeasy-sdk/go 3.1.1 2.272.7 1.0.0 github.com/speakeasy-sdks/northflank-go",
+			SDKVersion:        "3.1.2",
+			GenVersion:        "2.277.0",
+			UserAgent:         "speakeasy-sdk/go 3.1.2 2.277.0 1.0.0 github.com/speakeasy-sdks/northflank-go",
 			Hooks:             hooks.New(),
 		},
 	}

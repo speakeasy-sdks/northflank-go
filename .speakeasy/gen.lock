@@ -4,22 +4,22 @@ management:
   docChecksum: 9ab4ae9ee20626ac9759af48d9f35d90
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.272.7
-  releaseVersion: 3.1.1
-  configChecksum: 5af69c3b7fa28de120476898fc9d8059
+  generationVersion: 2.277.0
+  releaseVersion: 3.1.2
+  configChecksum: d6465475bd18792d81eb5aedd1091a5e
   repoURL: https://github.com/speakeasy-sdks/northflank-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/northflank-go
   published: true
 features:
   go:
-    constsAndDefaults: 0.1.3
+    constsAndDefaults: 0.1.4
     core: 3.4.3
     flattening: 2.81.1
     globalSecurity: 2.82.8
     globalServerURLs: 2.82.1
     nameOverrides: 2.81.1
-    unions: 2.85.3
+    unions: 2.85.4
 generatedFiles:
   - miscellaneous.go
   - addons.go
