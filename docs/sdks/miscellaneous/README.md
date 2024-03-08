@@ -37,7 +37,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DNSIDResult != nil {
         // handle response
     }
@@ -72,7 +71,6 @@ import(
 	northflankgo "github.com/speakeasy-sdks/northflank-go/v3"
 	"context"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -90,8 +88,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }

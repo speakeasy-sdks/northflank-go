@@ -51,7 +51,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateIntegrationResult != nil {
         // handle response
     }
@@ -120,7 +119,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateClusterResult != nil {
         // handle response
     }
@@ -176,7 +174,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -233,7 +230,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -287,7 +283,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CloudProvidersResult != nil {
         // handle response
     }
@@ -342,7 +337,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ClusterDetailsResult != nil {
         // handle response
     }
@@ -398,7 +392,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetIntegrationResult != nil {
         // handle response
     }
@@ -458,7 +451,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ClustersResult != nil {
         // handle response
     }
@@ -520,7 +512,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListIntegrationsResult != nil {
         // handle response
     }
@@ -582,7 +573,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.UpdateClusterResult != nil {
         // handle response
     }
@@ -644,7 +634,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.UpdateIntegrationResult != nil {
         // handle response
     }

@@ -55,7 +55,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.AddSubDomainResult != nil {
         // handle response
     }
@@ -121,7 +120,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -178,7 +176,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateDomainResult != nil {
         // handle response
     }
@@ -235,7 +232,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -297,7 +293,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -357,7 +352,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -421,7 +415,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -479,7 +472,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetDomainResult != nil {
         // handle response
     }
@@ -537,7 +529,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetSubDomainResult != nil {
         // handle response
     }
@@ -598,7 +589,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListDomainsResult != nil {
         // handle response
     }
@@ -658,7 +648,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -717,7 +706,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
@@ -775,7 +763,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SuccessResult != nil {
         // handle response
     }
