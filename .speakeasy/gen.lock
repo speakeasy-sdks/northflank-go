@@ -3,10 +3,10 @@ id: 9b872db2-c70c-4608-9eb4-a96c151bd7d7
 management:
   docChecksum: 9ab4ae9ee20626ac9759af48d9f35d90
   docVersion: 1.0.0
-  speakeasyVersion: 1.207.1
-  generationVersion: 2.280.6
-  releaseVersion: 3.2.1
-  configChecksum: aa97dfc09c4e1faf7c4aa408f2cde64d
+  speakeasyVersion: 1.219.2
+  generationVersion: 2.286.7
+  releaseVersion: 3.2.2
+  configChecksum: 3583ce3d49ae0e0a1ab17d6178b5384f
   repoURL: https://github.com/speakeasy-sdks/northflank-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/northflank-go
@@ -16,7 +16,7 @@ features:
     constsAndDefaults: 0.1.4
     core: 3.4.4
     flattening: 2.81.1
-    globalSecurity: 2.82.8
+    globalSecurity: 2.82.9
     globalServerURLs: 2.82.2
     nameOverrides: 2.81.1
     responseFormat: 0.1.0
